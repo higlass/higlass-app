@@ -1,0 +1,15 @@
+.home-logo {
+  height: 80px;
+}
+
+.home-header {
+  background-color: #fff;
+  height: 150px;
+  padding: 20px;
+  color: #000;
+  border-bottom: 2px solid #efefef;
+}
+
+.home-intro {
+  font-size: large;
+}
