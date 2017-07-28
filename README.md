@@ -41,3 +41,5 @@ $ git submodule update --recursive --remote
 **Production build**: `npm run build`
 
 **Run tests**: `npm test`
+
+**Update wiki**: `npm run update-wiki`
