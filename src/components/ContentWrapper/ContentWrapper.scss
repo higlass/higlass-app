@@ -1,0 +1,9 @@
+.content-wrapper {
+  padding-top: 3rem;
+  overflow: auto;
+  background: yellow;
+
+  &.content-wrapper-bottom-bar {
+    padding-bottom: 2rem;
+  }
+}
