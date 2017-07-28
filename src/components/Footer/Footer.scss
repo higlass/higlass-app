@@ -1,3 +1,6 @@
+@import '../../styles/colors';
+@import '../../styles/transitions';
+
 .footer {
   color: $gray-dark;
   border-top: 2px solid $gray-lightest;
@@ -14,17 +17,17 @@
     box-shadow: inset 0 -2px 0 0 $primary;
   }
 
-  .logo {
+  .icon {
     height: 3em;
     margin: 0 0.5rem;
   }
 
-  .logo-hms,
-  .logo-seas {
+  .icon-logo-hms,
+  .icon-logo-seas {
     width: 3rem;
   }
 
-  .logo-mit {
+  .icon-logo-mit {
     width: 6rem;
     padding: 0.25rem 0;
   }
