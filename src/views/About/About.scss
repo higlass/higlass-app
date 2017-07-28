@@ -1,36 +1,36 @@
-#about-teaser {
-  background-image: url('./teaser.jpg');
-}
+@import '../../styles/ratio';
 
-#author-list li {
-  margin: 0.25rem 0;
-  // padding-left: 0.25rem;
-
-  &:after {
-    content: ',';
-    margin-left: -0.2rem;
-    margin-right: 0.5rem;
+.about {
+  .about-teaser {
+    background-image: url('./teaser.jpg');
   }
 
-  &:last-child:after {
-    display: none;
+  .about-author-list li {
+    margin: 0.25rem 0;
+    // padding-left: 0.25rem;
+
+    &:after {
+      content: ',';
+      margin-left: 0.05rem;
+      margin-right: 0.5rem;
+    }
+
+    &:last-child:after {
+      display: none;
+    }
+
+    &:nth-last-child(2):after {
+      content: ', and';
+      margin-right: 0.33rem;
+    }
+
+    > * {
+      display: inline-block;
+    }
   }
 
-  &:nth-last-child(2):after {
-    content: 'and';
-    margin-left: 0.33rem;
-    margin-right: 0.33rem;
+  .iconized p {
+    margin-top: 0;
+    margin-bottom: 0;
   }
-}
-
-.person {
-  display: inline-block;
-}
-
-.person + p {
-  margin-top: 0;
-}
-
-#youtube {
-  @include ratio(0.553571429);  // 310 / 560
 }
