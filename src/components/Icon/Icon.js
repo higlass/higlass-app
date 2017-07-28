@@ -18,7 +18,7 @@ const id = id => id ? id.replace(/-/g, '_').toUpperCase() : '';
 const wrapHtml = html => ({ __html: html });
 
 const Icon = (props) => (
-  <div className="icon">
+  <div className={`icon icon-${props.iconId}`}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="full-dim"
