@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 
 // Components
 import ContentWithFooter from '../../components/ContentWithFooter/ContentWithFooter';
@@ -12,12 +12,19 @@ import './Home.scss';
 const Home = () => (
   <ContentWrapper>
     <ContentWithFooter name='home'>
-      <div className='home-header'>
-        <h2>Welcome to HiGlass</h2>
+      <div className='wrap'>
+        <section className='flex-c m-t-1 m-b-2'>
+          <p className='home-intro flex-g-1'>
+          HiGlass is a tool for exploring genomic contact matrices and tracks.
+          Please take a look at the <Link to='/examples'>examples</Link> and <Link to='/docs'>documentation</Link> for a description of the ways that it can be configured to explore and
+          compare contact matrices. To load private data, HiGlass can be <a href='https://github.com/hms-dbmi/higlass/wiki#running-locally' target='_blank' rel='noopener noreferrer'>run
+          locally within a docker container</a>.
+          </p>
+        </section>
+        <div className='home-four-third'>
+          <div id='higlass' className='full-dim'></div>
+        </div>
       </div>
-      <p className='home-intro'>
-        Let&apos;s build an awesome HiGlass app.
-      </p>
     </ContentWithFooter>
   </ContentWrapper>
 );
