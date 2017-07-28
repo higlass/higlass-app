@@ -18,7 +18,7 @@ const getViewBox = id => (icons[id] && icons[id].viewBox ?
 const convertId = id => (id ? id.replace(/-/g, '_').toUpperCase() : '');
 
 const Icon = props => (
-  <div className={`icon icon-${props.iconId}`}>
+  <div className={`icon icon-${props.iconId}`} title={props.title}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="full-dim"
@@ -30,6 +30,7 @@ const Icon = props => (
 
 Icon.propTypes = {
   iconId: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default Icon;
