@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 
 // Stylesheets
-import './Home.css';
+import './Home.scss';
 
 // Assets
 import logo from './logo.svg';

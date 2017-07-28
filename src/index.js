@@ -6,7 +6,7 @@ import { history, state } from './services/state';
 
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import './index.scss';
 
 // Initialize store
 const store = state.configure().store;

@@ -10,7 +10,7 @@ import NotFound from '../../views/NotFound/NotFound';
 // Router
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   render() {
