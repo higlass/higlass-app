@@ -2,6 +2,7 @@
 @import '../../styles/transitions';
 
 .footer {
+  padding: 0.66rem 0;
   color: $gray-dark;
   border-top: 2px solid $gray-lightest;
 
@@ -18,23 +19,25 @@
   }
 
   .icon {
-    height: 3em;
-    margin: 0 0.5rem;
+    height: 2em;
+    margin: 0 0.2em;
   }
 
   .icon-logo-hms,
   .icon-logo-seas {
-    width: 3rem;
+    width: 2em;
+  }
+
+  .icon-logo-hms {
+    margin-left: 0;
   }
 
   .icon-logo-mit {
-    width: 6rem;
-    padding: 0.25rem 0;
+    width: 3.5rem;
+    padding: 0.1em;
   }
 
   nav {
-    margin: 1rem 0;
-
     li {
       &::before {
         content: '·';
@@ -53,6 +56,7 @@
   }
 
   .copyright {
+    margin: 0.2rem 0 0 0;
     font-size: 0.8em;
     color: transparentize($gray-dark, 0.5);
   }
