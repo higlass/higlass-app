@@ -3,6 +3,8 @@ import React from 'react';
 
 import icons, { WARNING } from '../../configs/icons';
 
+import './Icon.scss';
+
 const getSvg = id => wrapHtml(icons[id] ? icons[id].svg : WARNING.svg);
 
 const getFillRule = id => icons[id] && icons[id].fillRule ?
@@ -16,9 +18,10 @@ const id = id => id ? id.replace(/-/g, '_').toUpperCase() : '';
 const wrapHtml = html => ({ __html: html });
 
 const Icon = (props) => (
-  <div className="svg-icon">
+  <div className="icon">
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      className="full-dim"
       viewBox={getViewBox(id(props.iconId))}
       fillRule={getFillRule(id(props.iconId))}
       dangerouslySetInnerHTML={getSvg(id(props.iconId))} />
