@@ -44,23 +44,56 @@
 
   .branding {
     position: relative;
-    display: block;
     font-weight: bold;
     color: $black;
     box-shadow: none;
     font-size: 1.375rem;  // 22 / 16
 
-    @include underline($black, -2px, 2px);
-
     &.is-active {
       box-shadow: 0 2px 0 0 $primary;
     }
 
-    &:hover .higlass-hi,
-    &:active .higlass-hi,
-    &:focus .higlass-hi,
-    &.is-active .higlass-hi {
-      color: $primary;
+    &:hover,
+    &:active,
+    &:focus,
+    &.is-active {
+      .higlass::before {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+
+      .higlass-hi {
+        color: $primary;
+      }
+
+      svg {
+        color: $primary;
+
+        .lense {
+          transform: scale(2);
+        }
+      }
+    }
+
+    .higlass {
+      position: relative;
+      @include underline($black, -2px, 2px);
+      transition: color $fast-transition $easing;
+    }
+
+    .icon {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 0.25em;
+
+      svg {
+        transition: color $slow-transition $easing;
+
+        .lense {
+          transition: transform $slow-transition $easing;
+          transform-origin: 50% 50%;
+        }
+      }
     }
   }
 
@@ -91,10 +124,8 @@
       box-shadow: 0 0 0 1px $primary;
     }
 
-    .icon {
-      display: block;
+    &.icon-only {
       width: 1.5rem;
-      height: 1.5rem;
       padding: 0.33rem;
     }
   }
@@ -183,125 +214,6 @@
   }
 }
 
-body.dark-theme #topbar {
-  background: rgba(34, 34, 34, 0.75);
-  box-shadow: 0 2px 0 0 transparentize($white, 0.95);
-
-  .branding:active,
-  nav li a:active {
-    color: $white;
-    background: transparentize($white, 0.9);
-    box-shadow: 0 2px 0 0 $white;
-  }
-
-  .branding:focus,
-  nav li a:focus {
-    color: $white;
-    background: transparentize($white, 0.9);
-    box-shadow: 0 2px 0 0 $white;
-
-    &.is-active {
-      background: transparentize($secondary, 0.85);
-    }
-  }
-
-  .branding {
-    color: $white;
-
-    @include underline($white, -2px, 2px);
-
-    &:hover {
-      color: $white;
-    }
-
-    &.is-active {
-      box-shadow: 0 2px 0 0 $secondary;
-    }
-
-    &:hover .higlass-hi,
-    &:active .higlass-hi,
-    &:focus .higlass-hi,
-    &.is-active .higlass-hi {
-      color: $secondary;
-    }
-  }
-
-  .btn {
-    color: $gray-light;
-    box-shadow: 0 0 0 1px $gray-darker;
-
-    &:hover,
-    &:focus {
-      color: $white;
-      background: none;
-      box-shadow: 0 0 0 1px $white;
-    }
-
-    &.is-active,
-    &.is-active:focus,
-    &:active {
-      color: $gray-darkest;
-      background: $secondary;
-      box-shadow: 0 0 0 1px $secondary;
-    }
-  }
-
-  nav li {
-    line-height: inherit;
-
-    &.separated-left {
-      &::before {
-        background: transparentize($white, 0.95);
-      }
-    }
-
-    a {
-      @include underline($white, -2px, 2px);
-
-      &.is-active,
-      &:hover.is-active {
-        color: $secondary;
-        box-shadow: 0 2px 0 0 $secondary;
-
-        &::before {
-          display: none;
-        }
-      }
-
-      &.icon-only:hover {
-        color: $white;
-
-        &::before {
-          display: none;
-        }
-      }
-    }
-  }
-
-  .disable-dark-theme,
-  .disable-dark-theme a.icon-only:hover {
-    display: flex;
-    color: $secondary !important;
-  }
-
-  .menu-toggler.c-hamburger {
-    span,
-    span::before,
-    span::after {
-      background: $gray-medium;
-    }
-
-    &.c-hamburger--htx.is-active span::before,
-    &.c-hamburger--htx.is-active span::after {
-      background: $secondary;
-    }
-  }
-}
-
-body.dark-theme-disabled #topbar .disable-dark-theme {
-  display: flex;
-}
-
 
 /*
  * -----------------------------------------------------------------------------
@@ -333,7 +245,8 @@ body.dark-theme-disabled #topbar .disable-dark-theme {
         opacity: 0;
         background: rgba(234, 234, 234, 0.9);
         transform: scale(1, 0);
-        transition: opacity $fast-transition $easing, transform $fast-transition $easing;
+        transition: opacity $fast-transition $easing,
+                    transform $fast-transition $easing;
         transform-origin: top center;
 
         &.flex-c {
@@ -369,27 +282,6 @@ body.dark-theme-disabled #topbar .disable-dark-theme {
         opacity: 1;
         transform: scale(1, 1);
       }
-    }
-  }
-
-  body.dark-theme #topbar {
-    nav ul {
-      background: rgba(44, 44, 44, 0.9);
-    }
-  }
-
-  #topbar nav li.disable-dark-theme,
-  body.dark-theme #topbar nav li.disable-dark-theme,
-  body.dark-theme-disabled #topbar nav li.disable-dark-theme {
-    &::before {
-      display: none;
-    }
-
-    a.icon-only,
-    a.icon-only:hover {
-      display: block;
-      width: 100%;
-      margin: 0 1rem;
     }
   }
 }

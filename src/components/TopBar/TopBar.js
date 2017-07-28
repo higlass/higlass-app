@@ -11,7 +11,8 @@ const TopBar = () => (
   <header className="top-bar">
     <div className="wrap flex-c flex-jc-sb">
       <div className="flex-c branding-launch">
-        <Link to='/' className="branding">
+        <Link to='/' className="flex-c flex-a-c branding">
+          <Icon iconId="logo-two-tone" />
           <span className="higlass"><span className="higlass-hi">Hi</span>Glass</span>
         </Link>
         <a
