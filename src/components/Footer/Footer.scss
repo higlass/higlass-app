@@ -1,0 +1,56 @@
+.footer {
+  color: $gray-dark;
+  border-top: 2px solid $gray-lightest;
+
+  a {
+    &:hover,
+    &.is-active {
+      color: $primary;
+    }
+  }
+
+  a.is-active {
+    font-weight: bold;
+    box-shadow: inset 0 -2px 0 0 $primary;
+  }
+
+  .logo {
+    height: 3em;
+    margin: 0 0.5rem;
+  }
+
+  .logo-hms,
+  .logo-seas {
+    width: 3rem;
+  }
+
+  .logo-mit {
+    width: 6rem;
+    padding: 0.25rem 0;
+  }
+
+  nav {
+    margin: 1rem 0;
+
+    li {
+      &::before {
+        content: '·';
+        color: transparentize($gray-dark, 0.5);
+      }
+
+      &:first-child::before {
+        display: none;
+      }
+
+      a {
+        margin: 0 0.175rem;
+        padding: 0.125rem;
+      }
+    }
+  }
+
+  .copyright {
+    font-size: 0.8em;
+    color: transparentize($gray-dark, 0.5);
+  }
+}

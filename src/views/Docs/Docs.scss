@@ -1,0 +1,89 @@
+pre,
+code {
+  padding: 0 0.125rem;
+  font-family: 'Roboto Mono', monospace;
+  background: #f3f3f3;
+}
+
+pre {
+  padding: 0.25rem;
+  font-size: 0.9em;
+  line-height: 1.5em;
+}
+
+.index-headline {
+  margin: 0;
+}
+
+.page {
+  position: relative;
+  border-top: 2px solid #f3f3f3;
+
+  &:first-child {
+    border-top: 0;
+  }
+
+  &.active {
+    > * {
+      display: inherit;
+    }
+
+    > h1:first-child {
+      color: #000;
+      background: #f3f3f3;
+
+      &::before {
+        position: absolute;
+        content: '';
+        top: -2px;
+        right: -2px;
+        bottom: 0;
+        width: 2px;
+        background: #000;
+      }
+    }
+  }
+
+  > * {
+    display: none;
+  }
+
+  > h1:first-child {
+    display: block;
+    margin: 0;
+    padding: 0.5rem 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    &:hover {
+      color: #000;
+      background: #f3f3f3;
+    }
+
+    .hidden-anchor > .icon {
+      height: 3rem;
+    }
+  }
+
+  *:last-child {
+    margin-bottom: 1rem;
+  }
+
+  table {
+    line-height: 1.5em;
+
+    th {
+      font-weight: bold;
+      border-collapse: collapse;
+    }
+
+    td, th {
+      padding: 0.5rem;
+      border: 1px solid #e5e5e5;
+    }
+
+    tr:nth-child(even) td {
+      background: #f3f3f3;
+    }
+  }
+}

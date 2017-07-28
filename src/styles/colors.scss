@@ -1,0 +1,23 @@
+$white: #fff;
+$black: #000;
+
+$gray-darkest-extreme: #1a1a1a;
+$gray-darkest: #222;
+$gray-darker: #444;
+$gray-dark: #666;
+$gray-medium: #999;
+$gray-light: #bbb;
+$gray-lighter: #ddd;
+$gray-lightest: #eee;
+
+$blue: #0F5D92;
+$blue-dark-faded: adjust-color($blue, $saturation: -66%, $lightness: -15%);
+$orange: #f28c0c;
+
+$primary: $blue;
+$secondary: $orange;
+
+$text: $gray-dark;
+$text-em: $gray-darkest;
+
+$crimson: #a51c30;
