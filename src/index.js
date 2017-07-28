@@ -17,22 +17,22 @@ ReactDOM.render(
             <App />
         </ConnectedRouter>
     </Provider>,
-    document.getElementById('root')
+    document.getElementById('root'),
 );
 
 if (module.hot) {
-    module.hot.accept('./components/App/App', () => {
-        const NextApp = require('./components/App/App').default;
-        ReactDOM.render(
-            <Provider store={store}>
-                <ConnectedRouter history={history}>
-                    <NextApp />
-                </ConnectedRouter>
-            </Provider>,
-            document.getElementById('root')
-        );
-    });
-    window.store = store;
+  module.hot.accept('./components/App/App', () => {
+    const NextApp = require('./components/App/App').default;  // eslint-disable-line global-require
+    ReactDOM.render(
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <NextApp />
+        </ConnectedRouter>
+      </Provider>,
+      document.getElementById('root'),
+    );
+  });
+  window.store = store;
 }
 
 registerServiceWorker();

@@ -42,6 +42,6 @@ const TopBar = () => (
       </nav>
     </div>
   </header>
-)
+);
 
 export default TopBar;

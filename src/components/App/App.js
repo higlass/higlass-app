@@ -11,6 +11,6 @@ const App = () => (
     <TopBar />
     <Main />
   </div>
-)
+);
 
 export default App;

@@ -188,5 +188,5 @@ export default {
   RESET,
   TRASH,
   VIDEO,
-  WARNING
+  WARNING,
 };
