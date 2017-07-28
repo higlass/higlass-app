@@ -16,7 +16,7 @@ const Footer = () => (
           <Icon iconId="logo-seas" title="Harvard John A. Paulson School of Engineering and Applied Sciences" />
           <Icon iconId="logo-mit" title="Massachusetts Institute of Technology" />
         </div>
-        <p className="copyright">&copy; 2017 <NavLink to='/about'>Harvard College</NavLink>.</p>
+        <p className="copyright">&copy; 2017 <NavLink to='/about#copyright'>Harvard College</NavLink>.</p>
       </div>
 
       <nav>
@@ -29,6 +29,6 @@ const Footer = () => (
       </nav>
     </div>
   </footer>
-)
+);
 
 export default Footer;

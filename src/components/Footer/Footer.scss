@@ -39,17 +39,8 @@
 
   nav {
     li {
-      &::before {
-        content: '·';
-        color: transparentize($gray-dark, 0.5);
-      }
-
-      &:first-child::before {
-        display: none;
-      }
-
       a {
-        margin: 0 0.175rem;
+        margin: 0 0.25rem;
         padding: 0.125rem;
       }
     }
