@@ -2,14 +2,15 @@ import PropTypes from 'prop-types';
 
 import React from 'react';
 
-const Content = (props) => (
-  <div className='content flex-g-1'>
+const Content = props => (
+  <main className={`content flex-g-1 ${props.name}`}>
     {props.children}
-  </div>
-)
+  </main>
+);
 
 Content.propTypes = {
   children: PropTypes.node,
-}
+  name: PropTypes.string.isRequired,
+};
 
 export default Content;
