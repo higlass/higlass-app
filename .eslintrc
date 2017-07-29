@@ -5,8 +5,8 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
-    "airbnb/base"
+    "airbnb/base",
+    "plugin:react/recommended"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -18,6 +18,14 @@
     "react"
   ],
   "rules": {
+    "class-methods-use-this": [
+      "error",
+      {
+        "exceptMethods": [
+          "render"
+        ]
+      }
+    ],
     "max-len": [
       "error",
       {
