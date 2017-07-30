@@ -15,7 +15,7 @@ ContentWrapper.defaultProps = {
 };
 
 ContentWrapper.propTypes = {
-  bottomBar: PropTypes.node.bool,
+  bottomBar: PropTypes.bool,
   children: PropTypes.node,
 };
 
