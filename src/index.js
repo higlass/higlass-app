@@ -17,7 +17,7 @@ ReactDOM.render(
             <App />
         </ConnectedRouter>
     </Provider>,
-    document.getElementById('root'),
+    document.getElementById('root')
 );
 
 if (module.hot) {
@@ -29,7 +29,7 @@ if (module.hot) {
           <NextApp />
         </ConnectedRouter>
       </Provider>,
-      document.getElementById('root'),
+      document.getElementById('root')
     );
   });
   window.store = store;

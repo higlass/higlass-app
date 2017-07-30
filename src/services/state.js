@@ -45,7 +45,7 @@ const configure = (initialState) => {
       limit: 20,
     }),
     initialState,
-    compose(...middleware),
+    compose(...middleware)
   );
 
   // Snippet to allow hot reload to work with reducers

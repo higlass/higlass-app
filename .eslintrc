@@ -26,6 +26,16 @@
         ]
       }
     ],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always",
+        "objects": "always",
+        "imports": "ignore",
+        "exports": "ignore",
+        "functions": "never"
+      }
+    ],
     "max-len": [
       "error",
       {

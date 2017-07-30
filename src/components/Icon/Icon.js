@@ -5,7 +5,7 @@ import icons, { WARNING } from '../../configs/icons';
 
 import './Icon.scss';
 
-const wrapHtml = html => ({ __html: html });
+const wrapHtml = html => ({ __html: html, });
 
 const getSvg = id => wrapHtml(icons[id] ? icons[id].svg : WARNING.svg);
 

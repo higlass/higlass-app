@@ -14,8 +14,8 @@ const isLocalhost = Boolean(
     window.location.hostname === '[::1]' ||
     // 127.0.0.1/8 is considered localhost for IPv4.
     window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/,
-    ),
+      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+    )
 );
 
 function registerValidSW(swUrl) {
@@ -32,14 +32,14 @@ function registerValidSW(swUrl) {
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
               console.log(   // eslint-disable-line no-console
-                'New content is available; please refresh.',
+                'New content is available; please refresh.'
               );
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
               console.log(  // eslint-disable-line no-console
-                'Content is cached for offline use.',
+                'Content is cached for offline use.'
               );
             }
           }
@@ -49,7 +49,7 @@ function registerValidSW(swUrl) {
     .catch((error) => {
       console.error(  // eslint-disable-line no-console
         'Error during service worker registration:',
-        error,
+        error
       );
     });
 }
@@ -76,7 +76,7 @@ function checkValidServiceWorker(swUrl) {
     })
     .catch(() => {
       console.log(  // eslint-disable-line no-console
-        'No internet connection found. App is running in offline mode.',
+        'No internet connection found. App is running in offline mode.'
       );
     });
 }

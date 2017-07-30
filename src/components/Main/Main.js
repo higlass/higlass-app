@@ -5,6 +5,7 @@ import { withRouter } from 'react-router';
 
 // Views
 import About from '../../views/About/About';
+import Examples from '../../views/Examples/Examples';
 import Home from '../../views/Home/Home';
 import NotFound from '../../views/NotFound/NotFound';
 
@@ -16,6 +17,7 @@ const Main = () => (
     <Switch>
       <Route exact path='/' component={Home} />
       <Route exact path='/about' component={About} />
+      <Route exact path='/examples' component={Examples} />
       <Route component={NotFound}/>
     </Switch>
   </ScrollToTop>
