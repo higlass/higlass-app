@@ -1,18 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
 
 // Components
 import ContentWithFooter from '../../components/ContentWithFooter/ContentWithFooter';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
+import ErrorMsgCenter from '../../components/ErrorMsg/ErrorMsgCenter';
 import ExampleList from '../../components/ExampleList/ExampleList';
-import SpinnerCenter from '../../components/SpinnerCenter/SpinnerCenter';
+import SpinnerCenter from '../../components/Spinner/SpinnerCenter';
 
 // Services
 import Logger from '../../utils/logger';
-
-// Stylesheets
-import './Examples.scss';
 
 const URL = 'https://gist.githubusercontent.com/pkerpedjiev/104f6c37fbfd0d7d41c73a06010a3b7e/raw/higlass-examples.json';
 
@@ -24,7 +21,7 @@ class Examples extends React.Component {
     super(props);
 
     this.state = {
-      isError: false,
+      error: '',
       isLoading: true,
       examples: [],
     };
@@ -33,6 +30,7 @@ class Examples extends React.Component {
       .then(response => response.json())
       .then((examples) => {
         this.setState({
+          error: '',
           isLoading: false,
           examples,
         });
@@ -40,7 +38,7 @@ class Examples extends React.Component {
       .catch((error) => {
         logger.error('Could not retrieve or parse examples.', error);
         this.setState({
-          isError: true,
+          error: 'Could not load examples.',
           isLoading: false,
         });
       });
@@ -50,19 +48,24 @@ class Examples extends React.Component {
     return (
       <ContentWrapper>
         <ContentWithFooter name='examples'>
-          <div className='border-bottom p-t-1 p-b-1'>
-            <div className='wrap'>
-              <p>
-              The examples below are meant to showcase HiGlass&aps;s capabilities as a
-              contact map explorer as well as to point out loci of interest.
-              </p>
+          <div className='flex-c flex-v full-wh'>
+            <div className='border-bottom p-t-1 p-b-1'>
+              <div className='wrap'>
+                <p>
+                The examples below are meant to showcase HiGlass&apos;s capabilities as a
+                contact map explorer as well as to point out loci of interest.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className='flex-g-1 wrap p-t-1 p-b-1 test'>
-            {this.state.isLoading ?
-              <SpinnerCenter /> : <ExampleList examples={this.state.examples} />
-            }
+            <div className='flex-g-1 wrap rel p-t-1 p-b-1'>
+              {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
+              {!this.state.error && (
+                this.state.isLoading ?
+                  <SpinnerCenter /> : <ExampleList examples={this.state.examples} />
+                )
+              }
+            </div>
           </div>
         </ContentWithFooter>
       </ContentWrapper>
