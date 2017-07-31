@@ -1,4 +1,6 @@
 @mixin underline($color, $bottom, $height) {
+  position: relative;
+
   &::before {
     position: absolute;
     display: block;
