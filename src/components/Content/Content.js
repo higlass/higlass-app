@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const Content = props => (
-  <main className={`content flex-g-1 ${props.name}`}>
+  <main className={`flex-g-1 content ${props.name}`}>
     {props.children}
   </main>
 );
