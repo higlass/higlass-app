@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 
 // Components
-import ContentWithFooter from '../../components/ContentWithFooter/ContentWithFooter';
+import ContentWithFooter from '../../components/Content/ContentWithFooter';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 import Icon from '../../components/Icon/Icon';
 

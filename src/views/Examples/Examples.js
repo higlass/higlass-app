@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Components
-import ContentWithFooter from '../../components/ContentWithFooter/ContentWithFooter';
+import ContentWithFooter from '../../components/Content/ContentWithFooter';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 import ErrorMsgCenter from '../../components/ErrorMsg/ErrorMsgCenter';
 import ExampleList from '../../components/ExampleList/ExampleList';
