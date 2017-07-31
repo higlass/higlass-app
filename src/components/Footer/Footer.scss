@@ -1,5 +1,6 @@
 @import '../../styles/colors';
 @import '../../styles/transitions';
+@import '../../styles/underline';
 
 .footer {
   padding: 0.66rem 0;
@@ -7,7 +8,16 @@
   border-top: 2px solid $gray-lightest;
 
   a {
+    @include underline($black, 1px, 1px);
+    box-shadow: none;
+
     &:hover,
+    &:active,
+    &:focus {
+      color: $black;
+      box-shadow: none;
+    }
+
     &.is-active {
       color: $primary;
     }
