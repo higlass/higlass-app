@@ -132,6 +132,11 @@ export const PEOPLE = {
 //   svg: '<path d="M16,1.067H8.266V0.267C8.266,0.119,8.147,0,8,0C7.852,0,7.733,0.119,7.733,0.267v0.801H0v11.2 h7.355l-3.278,3.276c-0.104,0.104-0.104,0.273,0,0.378C4.13,15.974,4.198,16,4.266,16c0.068,0,0.137-0.026,0.188-0.078 l3.278-3.278v2.556c0,0.146,0.119,0.267,0.267,0.267c0.147,0,0.266-0.12,0.266-0.267v-2.556l3.279,3.278 C11.596,15.974,11.664,16,11.732,16s0.137-0.026,0.188-0.078c0.104-0.104,0.104-0.273,0-0.378l-3.276-3.276H16V1.067L16,1.067z M0.533,1.6h14.933v10.133H0.533V1.6z" fill="currentColor"/><circle cx="2.5" cy="10" r="1" fill="currentColor"/><circle cx="10" cy="7.724" r="1" fill="currentColor"/><circle cx="6" cy="6" r="1" fill="currentColor"/><circle cx="13.5" cy="4" r="1" fill="currentColor"/><polygon points="2.782,10.247 2.218,9.753 5.901,5.543 9.907,7.357 13.224,3.747 13.776,4.253 10.093,8.265 6.099,6.457" fill="currentColor"/>',
 // };
 
+export const SAD = {
+  viewBox: '0 0 16 16',
+  svg: '<g transform="matrix(0.505538,0,0,0.505538,-13.793,-17.5515)"><path d="M37.5,38.5L37.5,46.5" fill="none" stroke="currentColor" stroke-width="3px"/></g><g transform="matrix(0.505538,0,0,0.505538,-13.793,-17.5515)"><path d="M49.5,38.5L49.5,46.5" fill="none" stroke="currentColor" stroke-width="3px"/></g><g transform="matrix(-0.505538,0,0,-0.505538,29.793,39.972)"><path d="M29.262,53.353C29.262,53.353 41.882,69.284 56.955,53.353" fill="none" stroke="currentColor" stroke-width="3px"/></g>',
+};
+
 // export const TAG = {
 //   viewBox: '0 0 16 16',
 //   fillRule: 'evenodd',
@@ -189,6 +194,7 @@ export default {
   MAXIMIZE,
   PEOPLE,
   // PRESENTATION,
+  SAD,
   // TAG,
   TEXT,
   // RESET,
