@@ -15,9 +15,9 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 const Main = () => (
   <ScrollToTop>
     <Switch>
-      <Route exact path='/' component={Home} />
       <Route exact path='/about' component={About} />
       <Route exact path='/examples' component={Examples} />
+      <Route exact path='/' component={Home} />
       <Route component={NotFound}/>
     </Switch>
   </ScrollToTop>
