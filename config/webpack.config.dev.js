@@ -11,6 +11,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const mdJsx = require('./md-jsx');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -143,6 +144,7 @@ module.exports = {
           /\.bmp$/,
           /\.gif$/,
           /\.jpe?g$/,
+          /\.md$/,
           /\.png$/,
         ],
         loader: require.resolve('file-loader'),
@@ -210,8 +212,29 @@ module.exports = {
             },
           },
           {
-            loader: require.resolve('sass-loader') // compiles Sass to CSS
-          }
+            loader: require.resolve('sass-loader'),  // compiles Sass to CSS
+          },
+        ],
+      },
+      {
+        test: /\.md$/,
+        use: [
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              // This is a feature of `babel-loader` for webpack (not Babel itself).
+              // It enables caching results in ./node_modules/.cache/babel-loader/
+              // directory for faster rebuilds.
+              cacheDirectory: true,
+            },
+          },
+          {
+            loader: require.resolve('markdown-jsx-loader'),
+            options: {
+              renderer: mdJsx.mdRenderer,
+              render: mdJsx.jsxRenderer,
+            },
+          },
         ],
       },
       // ** STOP ** Are you adding a new loader?
