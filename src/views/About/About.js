@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
 
 // Components
 import ContentWithFooter from '../../components/Content/ContentWithFooter';
@@ -200,10 +198,4 @@ const About = () => (
   </ContentWrapper>
 );
 
-const mapStateToProps = state => ({
-  routing: state.routing,
-});
-
-const mapDispatchToProps = () => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(About);
+export default About;

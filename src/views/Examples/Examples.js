@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 // Components
 import ContentWithFooter from '../../components/Content/ContentWithFooter';
@@ -73,10 +72,4 @@ class Examples extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  routing: state.routing,
-});
-
-const mapDispatchToProps = () => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Examples);
+export default Examples;
