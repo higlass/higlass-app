@@ -19,7 +19,7 @@
   ],
   "rules": {
     "class-methods-use-this": [
-      "error",
+      "warn",
       {
         "exceptMethods": [
           "render"
@@ -36,6 +36,7 @@
         "functions": "never"
       }
     ],
+    "import/prefer-default-export": "warn",
     "max-len": [
       "error",
       {
