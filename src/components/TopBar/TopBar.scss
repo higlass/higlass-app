@@ -10,6 +10,10 @@
   box-shadow: 0 2px 0 0 transparentize($black, 0.95);
   line-height: 3rem;
 
+  .top-bar-wrapper {
+    transition: margin $normal-transition $easing;
+  }
+
   nav li a:hover,
   nav li a:focus {
     color: $black;
@@ -139,10 +143,9 @@
     line-height: inherit;
 
     &.separated-left::before,
-    &.disable-dark-theme::before,
     &.menu-toggler::before {
       content: '';
-      width: 1px;
+      width: 2px;
     }
 
     &.separated-left::before {
