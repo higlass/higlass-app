@@ -23,3 +23,7 @@
 *~
 *.zip
 .idea/
+
+# app specific
+src/sidebar.md
+src/wiki.md
