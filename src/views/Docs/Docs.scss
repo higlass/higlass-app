@@ -1,89 +1,96 @@
-pre,
-code {
-  padding: 0 0.125rem;
-  font-family: 'Roboto Mono', monospace;
-  background: #f3f3f3;
-}
+@import '../../styles/colors';
+@import '../../styles/columns';
 
-pre {
-  padding: 0.25rem;
-  font-size: 0.9em;
-  line-height: 1.5em;
-}
-
-.index-headline {
-  margin: 0;
-}
-
-.page {
-  position: relative;
-  border-top: 2px solid #f3f3f3;
-
-  &:first-child {
-    border-top: 0;
+.docs {
+  pre,
+  code {
+    padding: 0 0.125rem;
+    font-family: 'Roboto Mono', monospace;
+    background: $gray-lightest;
   }
 
-  &.active {
-    > * {
-      display: inherit;
+  pre {
+    padding: 0.25rem;
+    font-size: 0.9em;
+    line-height: 1.5em;
+  }
+
+  .index-headline {
+    margin: 0;
+  }
+
+  .wiki {
+    position: relative;
+
+    &:first-child {
+      border-top: 0;
     }
 
-    > h1:first-child {
-      color: #000;
-      background: #f3f3f3;
+    h1 {
+      display: block;
+      margin: 4rem 0 1rem;
+      padding: 0;
+      text-transform: uppercase;
+      border-bottom: 2px solid $gray-lightest;
 
-      &::before {
-        position: absolute;
-        content: '';
-        top: -2px;
-        right: -2px;
-        bottom: 0;
-        width: 2px;
-        background: #000;
+      &:hover {
+        color: $black;
+      }
+
+      .hidden-anchor > .icon {
+        height: 3rem;
       }
     }
-  }
 
-  > * {
-    display: none;
-  }
-
-  > h1:first-child {
-    display: block;
-    margin: 0;
-    padding: 0.5rem 0;
-    font-size: 1.5rem;
-    cursor: pointer;
-
-    &:hover {
-      color: #000;
-      background: #f3f3f3;
+    &:first-child h1 {
+      margin-top: 2rem;
     }
 
-    .hidden-anchor > .icon {
-      height: 3rem;
+    h2, h3, h4 {
+      margin: 1em 0 0.5em;
     }
-  }
 
-  *:last-child {
-    margin-bottom: 1rem;
-  }
+    h2 {
+      font-size: 1.5em;
+      line-height: 1.5em;
+    }
 
-  table {
-    line-height: 1.5em;
+    h3 {
+      font-size: 1.25em;
+    }
 
-    th {
-      font-weight: bold;
+    h4 {
+      font-size: 1em;
+      font-weight: 500;
+      color: $black;
+    }
+
+    *:last-child {
+      margin-bottom: 1rem;
+    }
+
+    table {
+      margin-bottom: 0.5rem;
+      font-size: 0.85em;
       border-collapse: collapse;
+
+      th {
+        font-weight: bold;
+      }
+
+      td, th {
+        padding: 0.25rem;
+        border: 1px solid green;
+      }
+
+      tr:nth-child(even) td {
+        background: $gray-lightest;
+      }
     }
 
-    td, th {
-      padding: 0.5rem;
-      border: 1px solid #e5e5e5;
-    }
-
-    tr:nth-child(even) td {
-      background: #f3f3f3;
+    li {
+      margin-left: 1.5rem;
+      list-style-type: disc;
     }
   }
 }
