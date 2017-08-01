@@ -1,9 +1,15 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 // Components
 import DropNotifier from '../DropNotifier/DropNotifier';
 import Main from '../Main/Main';
 import TopBar from '../TopBar/TopBar';
+
+// Actions
+import { setViewConfig } from '../../actions';
 
 // Utils
 import Logger from '../../utils/logger';
@@ -14,10 +20,15 @@ const logger = Logger('App');
 
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.dropHandler = this.dropHandler.bind(this);
+  render() {
+    return (
+      <div className='app full-dim'>
+        <DropNotifier
+          drop={this.dropHandler.bind(this)} />
+        <TopBar />
+        <Main />
+      </div>
+    );
   }
 
   dropHandler(event) {
@@ -26,9 +37,7 @@ class App extends React.Component {
 
     reader.addEventListener('load', (fileEvent) => {
       try {
-        this.setState({
-          config: JSON.parse(fileEvent.target.result),
-        });
+        this.props.setViewConfig(JSON.parse(fileEvent.target.result));
       } catch (e) {
         logger.error('Only drop valid JSON', e);
       }
@@ -36,17 +45,18 @@ class App extends React.Component {
 
     reader.readAsText(file);
   }
-
-  render() {
-    return (
-      <div className='app full-dim'>
-        <DropNotifier
-          drop={this.dropHandler} />
-        <TopBar />
-        <Main />
-      </div>
-    );
-  }
 }
 
-export default App;
+App.propTypes = {
+  setViewConfig: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = dispatch => ({
+  setViewConfig: (viewConfig) => {
+    dispatch(setViewConfig(viewConfig));
+  },
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
