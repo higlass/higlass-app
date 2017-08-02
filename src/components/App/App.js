@@ -12,7 +12,7 @@ import TopBar from '../TopBar/TopBar';
 import { setViewConfig } from '../../actions';
 
 // Services
-import scroll from '../../services/scroll';
+import domEvent from '../../services/dom-event';
 
 // Utils
 import Logger from '../../utils/logger';
@@ -24,11 +24,15 @@ const logger = Logger('App');
 
 class App extends React.Component {
   componentDidMount() {
-    scroll.register(document);
+    domEvent.register('orientationchange', window);
+    domEvent.register('resize', window);
+    domEvent.register('scroll', document);
   }
 
   componentWillUnmount() {
-    scroll.unregister(document);
+    domEvent.unregister('orientationchange', window);
+    domEvent.unregister('resize', window);
+    domEvent.unregister('scroll', document);
   }
 
   render() {
