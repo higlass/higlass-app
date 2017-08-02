@@ -55,6 +55,13 @@
         "ignoreTemplateLiterals": true
       }
     ],
-    "no-console": "warn"
+    "no-console": "warn",
+    "no-continue": "off",
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ]
   }
 }
