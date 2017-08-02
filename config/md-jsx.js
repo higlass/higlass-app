@@ -3,6 +3,9 @@ const mdJsx = require('markdown-jsx-loader');
 
 const mdRenderer = new mdJsx.Renderer();
 
+mdRenderer.code = code =>
+  mdRenderer.constructor.prototype.code(code.replace(/\\/g, '\\\\'));
+
 mdRenderer.heading = (text, level) => {
   const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
 
@@ -13,8 +16,19 @@ mdRenderer.heading = (text, level) => {
   </a>
   <span>${text}</span>
 </h${level + 1}>
-  `;
+`;
 };
+
+mdRenderer.table = (header, body) => `
+<table class='pure-table'>
+  <thead>
+    ${header}
+  </thead>
+  <tbody>
+    ${body}
+  </tbody>
+</table>
+`;
 
 const jsxRenderer = contents => (`
 import React from 'react';
