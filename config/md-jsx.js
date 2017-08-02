@@ -23,10 +23,15 @@ mdRenderer.heading = (text, level) => {
 `;
 };
 
-const removeAlign = str => str.replace(/align=("|')[^"']*("|')/g, '');
+mdRenderer.html = html =>
+  mdRenderer.constructor.prototype.html(
+    html.replace(/align=("|')[^"']*("|')/g, '')
+  );
 
-mdRenderer.html = removeAlign;
-mdRenderer.paragraph = removeAlign;
+mdRenderer.paragraph = paragraph =>
+  mdRenderer.constructor.prototype.paragraph(
+    paragraph.replace(/align=("|')[^"']*("|')/g, '')
+  );
 
 mdRenderer.table = (header, body) => `
 <table>
