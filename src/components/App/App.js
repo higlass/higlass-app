@@ -15,6 +15,7 @@ import { setViewConfig } from '../../actions';
 import domEvent from '../../services/dom-event';
 
 // Utils
+import loadViewConfig from '../../utils/load-view-config';
 import Logger from '../../utils/logger';
 
 import './App.scss';
@@ -49,22 +50,13 @@ class App extends React.Component {
   /* ------------------------------ Custom Methods -------------------------- */
 
   dropHandler(event) {
-    const file = event.dataTransfer.files[0];
-    const reader = new FileReader();
-
-    reader.addEventListener('load', (fileEvent) => {
-      try {
-        this.props.setViewConfig(JSON.parse(fileEvent.target.result));
-      } catch (e) {
-        logger.error('Only drop valid JSON', e);
-      }
-    });
-
-    try {
-      reader.readAsText(file);
-    } catch (e) {
-      logger.error('Only drop actual files');
-    }
+    loadViewConfig(event.dataTransfer.files[0])
+      .then(() => {
+        logger.log('JSON loaded');
+      })
+      .catch((error) => {
+        logger.error(error);
+      });
   }
 }
 
