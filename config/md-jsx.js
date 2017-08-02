@@ -12,9 +12,9 @@ mdRenderer.heading = (text, level) => {
   const newLevel = level === 1 ? 1 : level + 1;
 
   return `
-<h${newLevel} id='/docs/${escapedText}' className='underlined anchored'>
+<h${newLevel} id='${escapedText}' className='underlined anchored'>
   <div className='anchor-wrapper'>
-    <a href='#/docs/${escapedText}' className='hidden-anchor'>
+    <a href='#${escapedText}' className='hidden-anchor'>
       <Icon iconId='link' />
     </a>
     <span>${text}</span>

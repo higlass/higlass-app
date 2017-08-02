@@ -41,12 +41,9 @@
       display: block;
       margin: 4rem 0 1rem;
       padding: 0;
+      color: $black;
       text-transform: uppercase;
       border-bottom: 2px solid $gray-lightest;
-
-      &:hover {
-        color: $black;
-      }
 
       &:first-child {
         margin-top: 0;
@@ -63,6 +60,10 @@
 
     h2, h3, h4 {
       margin: 1em 0 0.5em;
+
+      span:after {
+        content: ':';
+      }
     }
 
     h2 {
@@ -75,9 +76,7 @@
     }
 
     h4 {
-      font-size: 1em;
-      font-weight: 500;
-      color: $black;
+      font-size: 1.125em;
     }
 
     img {
@@ -99,20 +98,29 @@
     table {
       margin-bottom: 0.5rem;
       font-size: 0.85em;
+      border: 1px solid $gray-lighter;
       border-collapse: collapse;
 
       th {
         font-weight: bold;
+        border: 1px solid $gray-lighter;
       }
 
       td, th {
         padding: 0.25rem;
-        border: 1px solid green;
+      }
+
+      td {
+        outline: 0;
       }
 
       tr:nth-child(even) td {
         background: $gray-lightest;
       }
+    }
+
+    ul {
+      padding-left: 0.75rem;
     }
 
     li {
