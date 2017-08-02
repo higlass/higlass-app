@@ -23,6 +23,11 @@ mdRenderer.heading = (text, level) => {
 `;
 };
 
+const removeAlign = str => str.replace(/align=("|')[^"']*("|')/g, '');
+
+mdRenderer.html = removeAlign;
+mdRenderer.paragraph = removeAlign;
+
 mdRenderer.table = (header, body) => `
 <table>
   <thead>
