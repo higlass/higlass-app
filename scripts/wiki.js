@@ -33,9 +33,12 @@ let finalContent = '';
 
 for (let i = 0; i < pageOrder.length; i++) {
   const page = pageOrder[i];
+  const pageName = page.substr(0, page.length - 3);
 
-  let contents = `# ${page.substr(0, page.length - 3)}\n\n`;
-  contents += fs.readFileSync(path.join(wikiPath, page), 'utf8');
+  let contents = `# ${pageName}\n\n`;
+  contents += fs
+    .readFileSync(path.join(wikiPath, page), 'utf8')
+    .replace(/(#+)\s/g, `$1# ${pageName} `);
   contents += '\n\n';
 
   if (!contents) { continue; }
@@ -46,5 +49,14 @@ for (let i = 0; i < pageOrder.length; i++) {
 // Write concatenated wiki page
 fs.writeFileSync(path.join(paths.appSrc, 'wiki.md'), finalContent);
 
-fs.createReadStream(sidebarPath)
-  .pipe(fs.createWriteStream(path.join(paths.appSrc, 'sidebar.md')));
+
+// Update links of the sidebar
+let sidebar = fs.readFileSync(sidebarPath, 'utf8');
+
+sidebar = sidebar.replace(/#/g, '-');
+sidebar = sidebar.replace(
+    /\(([^#)]+)/g,
+    (...args) => `(#${args[1].toLowerCase()}`
+);
+
+fs.writeFileSync(path.join(paths.appSrc, 'sidebar.md'), sidebar);
