@@ -201,57 +201,77 @@ svg.centered {
 
 .anchored {
   position: relative;
-}
 
-.hidden-anchor {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: -2rem;
-  bottom: 0;
-  width: 2.5rem;
-  padding: 0 1.5rem 0 0.25rem;
-  opacity: 0.33;
-  transform: scale(0);
-  transition: all $fast-transition $easing;
-  border-bottom: 0;
-  box-shadow: none !important;
-  cursor: pointer;
-
-  .icon {
-    width: 1.25rem;
-    height: 100%;
-  }
-}
-
-.anchored:hover .hidden-anchor,
-.anchored:target .hidden-anchor {
-  transform: scale(1);
-}
-
-.hidden-anchor:hover,
-.anchored:target .hidden-anchor {
-  opacity: 1;
-}
-
-.anchored:target {
-  color: $black;
-
-  &.underlined::after {
-    position: absolute;
-    z-index: -1;
-    display: block;
-    top: 0;
-    left: -2rem;
-    border-bottom: 2px solid $primary;
-    background: transparentize($primary, 0.9);
+  .anchor-wrapper {
+    position: relative;
   }
 
   .hidden-anchor {
-    width: 1.5rem;
-    color: $white;
-    background: $primary;
-    border-radius: 0.25rem;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: -2rem;
+    bottom: 0;
+    width: 2.5rem;
+    padding: 0 1.5rem 0 0.25rem;
+    opacity: 0.33;
+    transform: scale(0);
+    transition: color $fast-transition $easing,
+                opacity $fast-transition $easing,
+                transform $fast-transition $easing;
+    border-bottom: 0;
+    box-shadow: none !important;
+    cursor: pointer;
+
+    .icon {
+      width: 1.25rem;
+      height: 100%;
+    }
+
+    &:active,
+    &:focus {
+      background: none;
+    }
+  }
+
+  &:hover .hidden-anchor,
+  &:target .hidden-anchor {
+    transform: scale(1);
+  }
+
+  .hidden-anchor:hover,
+  &:target .hidden-anchor {
+    opacity: 1;
+  }
+
+  &:target {
+    color: $black;
+
+    &:before {
+      content: '';
+      display: block;
+      height: 4rem;
+      margin-top: -4rem;
+    }
+
+    &.underlined .anchor-wrapper::after {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 0;
+      left: -1rem;
+      right: 0;
+      bottom: 0;
+      background: transparentize($primary, 0.9);
+      border-radius: 0.25rem;
+    }
+
+    .hidden-anchor {
+      width: 1.5rem;
+      color: $white;
+      background: $primary;
+      border-radius: 0.25rem;
+    }
   }
 }
 
