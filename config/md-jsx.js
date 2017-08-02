@@ -1,4 +1,5 @@
-const fs = require('fs');
+/* eslint-disable import/no-extraneous-dependencies */
+
 const mdJsx = require('markdown-jsx-loader');
 
 const mdRenderer = new mdJsx.Renderer();
@@ -8,14 +9,17 @@ mdRenderer.code = code =>
 
 mdRenderer.heading = (text, level) => {
   const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+  const newLevel = level === 1 ? 1 : level + 1;
 
   return `
-<h${level + 1} id='/docs/${escapedText}' className='underlined anchored'>
-  <a href='#/docs/${escapedText}' className='hidden-anchor'>
-    <Icon iconId='link' />
-  </a>
-  <span>${text}</span>
-</h${level + 1}>
+<h${newLevel} id='/docs/${escapedText}' className='underlined anchored'>
+  <div className='anchor-wrapper'>
+    <a href='#/docs/${escapedText}' className='hidden-anchor'>
+      <Icon iconId='link' />
+    </a>
+    <span>${text}</span>
+  </div>
+</h${newLevel}>
 `;
 };
 
