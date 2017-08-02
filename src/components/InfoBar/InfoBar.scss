@@ -1,0 +1,25 @@
+@import '../../styles/colors';
+
+.info-bar {
+  margin-top: 3rem;
+  padding: 1rem 0;
+  color: $blue-dark;
+  background: $blue-light;
+
+  p {
+    margin: 0;
+  }
+
+  .button-icon {
+    color: transparentize($blue-dark, 0.6);
+    border-color: transparentize($blue-dark, 0.8);
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: $blue-light;
+      border-color: $blue-dark;
+      background: $blue-dark;
+    }
+  }
+}
