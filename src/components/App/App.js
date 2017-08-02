@@ -60,7 +60,11 @@ class App extends React.Component {
       }
     });
 
-    reader.readAsText(file);
+    try {
+      reader.readAsText(file);
+    } catch (e) {
+      logger.error('Only drop actual files');
+    }
   }
 }
 
