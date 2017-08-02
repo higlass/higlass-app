@@ -48,13 +48,17 @@
         color: $black;
       }
 
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:target {
+        border-bottom: 0;
+      }
+
       .hidden-anchor > .icon {
         height: 3rem;
       }
-    }
-
-    &:first-child h1 {
-      margin-top: 2rem;
     }
 
     h2, h3, h4 {
