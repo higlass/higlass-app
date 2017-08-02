@@ -15,6 +15,7 @@ class SideBar extends React.Component {
   constructor(props) {
     super(props);
 
+    this.checkStickAbilityDb = debounce(this.checkStickAbility.bind(this), 50);
     this.scrollHandlerDb = debounce(this.scrollHandler.bind(this), 50);
 
     this.sidebarOffsetTop = 0;
@@ -27,9 +28,12 @@ class SideBar extends React.Component {
 
   componentDidMount() {
     if (this.props.isSticky) {
+      this.checkStickAbility();
+
       this.sidebarOffsetTop = this.sideBarEl.getBoundingClientRect().top -
         document.body.getBoundingClientRect().top;
 
+      pubSub.subscribe('resize', this.checkStickAbilityDb);
       pubSub.subscribe('scrollTop', this.scrollHandlerDb);
     }
   }
@@ -53,12 +57,35 @@ class SideBar extends React.Component {
 
   /* ---------------------------- Custom Methods ---------------------------- */
 
+  checkStickAbility() {
+    if (!this.sideBarEl) {
+      this.stickinessDisabled = true;
+      return;
+    }
+
+    // Header = 3rem; Margin = 1rem; 1rem = 16px
+    const height = this.sideBarEl.getBoundingClientRect().height + (16 * 4);
+
+    this.stickinessDisabled = window.innerHeight < height;
+  }
+
   scrollHandler(scrollTop) {
-    this.setState({
-      style: {
-        marginTop: `${scrollTop}px`,
-      },
-    });
+    if (!this.stickinessDisabled) {
+      this.setState({
+        style: {
+          marginTop: `${scrollTop}px`,
+        },
+      });
+    } else if (
+      this.state.style.marginTop !== 0 ||
+      this.state.style.marginTop !== '0px'
+    ) {
+      this.setState({
+        style: {
+          marginTop: 0,
+        },
+      });
+    }
   }
 }
 
