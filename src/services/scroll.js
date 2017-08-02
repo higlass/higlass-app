@@ -2,7 +2,10 @@ import pubSub from './pub-sub';
 
 let currentElement;
 
-const scrollHandler = event => pubSub.publish('contentScroll', event);
+const scrollHandler = event => pubSub.publish(
+  'scrollTop',
+  event.target.scrollTop || document.body.scrollTop
+);
 
 const unregister = (element) => {
   element.removeEventListener('scroll', scrollHandler);

@@ -30,13 +30,13 @@ class SideBar extends React.Component {
       this.sidebarOffsetTop = this.sideBarEl.getBoundingClientRect().top -
         document.body.getBoundingClientRect().top;
 
-      pubSub.subscribe('contentScroll', this.scrollHandlerDb);
+      pubSub.subscribe('scrollTop', this.scrollHandlerDb);
     }
   }
 
   componentWillUnmount() {
     if (this.props.isSticky) {
-      pubSub.unsubscribe('contentScroll', this.scrollHandlerDb);
+      pubSub.unsubscribe('scrollTop', this.scrollHandlerDb);
     }
   }
 
@@ -51,10 +51,12 @@ class SideBar extends React.Component {
     );
   }
 
-  scrollHandler(event) {
+  /* ---------------------------- Custom Methods ---------------------------- */
+
+  scrollHandler(scrollTop) {
     this.setState({
       style: {
-        marginTop: `${event.target.scrollTop}px`,
+        marginTop: `${scrollTop}px`,
       },
     });
   }

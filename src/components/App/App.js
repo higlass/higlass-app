@@ -11,6 +11,9 @@ import TopBar from '../TopBar/TopBar';
 // Actions
 import { setViewConfig } from '../../actions';
 
+// Services
+import scroll from '../../services/scroll';
+
 // Utils
 import Logger from '../../utils/logger';
 
@@ -20,9 +23,17 @@ const logger = Logger('App');
 
 
 class App extends React.Component {
+  componentDidMount() {
+    scroll.register(document);
+  }
+
+  componentWillUnmount() {
+    scroll.unregister(document);
+  }
+
   render() {
     return (
-      <div className='app full-dim'>
+      <div className='app full-mdim'>
         <DropNotifier
           drop={this.dropHandler.bind(this)} />
         <TopBar />
@@ -30,6 +41,8 @@ class App extends React.Component {
       </div>
     );
   }
+
+  /* ------------------------------ Custom Methods -------------------------- */
 
   dropHandler(event) {
     const file = event.dataTransfer.files[0];
