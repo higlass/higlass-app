@@ -1,16 +1,17 @@
 import React from 'react';
 
 // Components
-import ContentWithFooter from '../../components/Content/ContentWithFooter';
+import Content from '../../components/Content/Content';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
+import Footer from '../../components/Footer/Footer';
 import Icon from '../../components/Icon/Icon';
 
 import './NotFound.scss';
 
 const NotFound = () => (
-    <ContentWrapper>
-    <ContentWithFooter name='not-found' wrap={true}>
-      <div className="flex-c flex-v flex-a-c flex-jc-c full-wh">
+  <ContentWrapper>
+    <Content name='not-found' wrap={true} rel={true}>
+      <div className="flex-c flex-v flex-a-c flex-jc-c full-dim">
         <div className='flex-c flex-v flex-a-c not-found-header'>
           <div className="icon-wrapper"><Icon iconId='sad' /></div>
           <h2 className='m-t-0'>Oh no&hellip; nothing found!</h2>
@@ -19,7 +20,8 @@ const NotFound = () => (
           The requested page either moved or does not exist.
         </em>
       </div>
-    </ContentWithFooter>
+    </Content>
+    <Footer />
   </ContentWrapper>
 );
 

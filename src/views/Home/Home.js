@@ -2,15 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import ContentWithFooter from '../../components/Content/ContentWithFooter';
+import Content from '../../components/Content/Content';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
+import Footer from '../../components/Footer/Footer';
 
 // Stylesheets
 import './Home.scss';
 
 const Home = () => (
   <ContentWrapper>
-    <ContentWithFooter name='home' wrap={true}>
+    <Content name='home' wrap={true}>
       <section className='flex-c m-t-1 m-b-2'>
         <p className='home-intro flex-g-1'>
         HiGlass is a tool for exploring genomic contact matrices and tracks.
@@ -22,7 +23,8 @@ const Home = () => (
       <div className='home-four-third'>
         <div id='higlass' className='full-dim'></div>
       </div>
-    </ContentWithFooter>
+    </Content>
+    <Footer />
   </ContentWrapper>
 );
 

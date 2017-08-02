@@ -1,8 +1,9 @@
 import React from 'react';
 
 // Components
-import ContentWithFooter from '../../components/Content/ContentWithFooter';
+import Content from '../../components/Content/Content';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
+import Footer from '../../components/Footer/Footer';
 import SideBar from '../../components/SideBar/SideBar';
 
 // Docs
@@ -15,7 +16,7 @@ import './Docs.scss';
 
 const Docs = () => (
   <ContentWrapper>
-    <ContentWithFooter name='docs'>
+    <Content name='docs'>
       <div className='flex-c flex-g-1 wrap p-t-1 p-b-1'>
         <div className="rel column-3-4 wiki">
           <Wiki />
@@ -24,7 +25,8 @@ const Docs = () => (
           <SideBar isSticky={true}><SideBarNav /></SideBar>
         </div>
       </div>
-    </ContentWithFooter>
+    </Content>
+    <Footer />
   </ContentWrapper>
 );
 

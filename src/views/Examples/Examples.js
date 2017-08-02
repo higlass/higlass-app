@@ -1,9 +1,10 @@
 import React from 'react';
 
 // Components
-import ContentWithFooter from '../../components/Content/ContentWithFooter';
+import Content from '../../components/Content/Content';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 import ErrorMsgCenter from '../../components/ErrorMsg/ErrorMsgCenter';
+import Footer from '../../components/Footer/Footer';
 import ExampleList from '../../components/ExampleList/ExampleList';
 import SpinnerCenter from '../../components/Spinner/SpinnerCenter';
 
@@ -46,7 +47,7 @@ class Examples extends React.Component {
   render() {
     return (
       <ContentWrapper>
-        <ContentWithFooter name='examples'>
+        <Content name='examples'>
           <div className='flex-c flex-v full-wh'>
             <div className='border-bottom p-t-1 p-b-1'>
               <div className='wrap'>
@@ -66,7 +67,8 @@ class Examples extends React.Component {
               }
             </div>
           </div>
-        </ContentWithFooter>
+        </Content>
+        <Footer />
       </ContentWrapper>
     );
   }
