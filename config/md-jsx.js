@@ -24,7 +24,7 @@ mdRenderer.heading = (text, level) => {
 };
 
 mdRenderer.table = (header, body) => `
-<table class='pure-table'>
+<table>
   <thead>
     ${header}
   </thead>
