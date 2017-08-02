@@ -178,7 +178,8 @@ svg.centered {
 
 .wrap,
 .wrap-basic {
-  margin: 0 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .wrap.smaller {
@@ -198,6 +199,10 @@ svg.centered {
   }
 }
 
+.anchored {
+  position: relative;
+}
+
 .hidden-anchor {
   position: absolute;
   display: block;
@@ -209,30 +214,27 @@ svg.centered {
   opacity: 0.33;
   transform: scale(0);
   transition: all $fast-transition $easing;
+  border-bottom: 0;
   box-shadow: none !important;
   cursor: pointer;
 
-  > .icon {
-    width: 1.125rem;
-    height: 1.125rem;
+  .icon {
+    width: 1.25rem;
+    height: 100%;
   }
 }
 
-h1:hover .hidden-anchor,
-h1:target .hidden-anchor,
-h2:hover .hidden-anchor,
-h2:target .hidden-anchor {
+.anchored:hover .hidden-anchor,
+.anchored:target .hidden-anchor {
   transform: scale(1);
 }
 
 .hidden-anchor:hover,
-h1:target .hidden-anchor,
-h2:target .hidden-anchor {
+.anchored:target .hidden-anchor {
   opacity: 1;
 }
 
-h1:target,
-h2:target {
+.anchored:target {
   color: $black;
 
   &.underlined::after {
@@ -249,11 +251,8 @@ h2:target {
     width: 1.5rem;
     color: $white;
     background: $primary;
+    border-radius: 0.25rem;
   }
-}
-
-.anchored {
-  transition: all $fast-transition $easing;
 }
 
 .button-like:hover,
@@ -488,6 +487,14 @@ ul.iconized {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+.full-mdim {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  min-height: 100vh;
 }
 
 .full-dim-cont {
