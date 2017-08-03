@@ -6,13 +6,18 @@ import { Link } from 'react-router-dom';
 import './ButtonLikeLink.scss';
 
 const ButtonLikeLink = props => (
-  <div className='button-like-link'>
+  <div className={`flex-c flex-a-c button-like-link ${props.className}`}>
     <Link to={props.to}>{props.children}</Link>
   </div>
 );
 
+ButtonLikeLink.defaultProps = {
+  className: '',
+};
+
 ButtonLikeLink.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
   to: PropTypes.string.isRequired,
 };
 
