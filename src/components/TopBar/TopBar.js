@@ -24,7 +24,6 @@ const TopBar = props => (
           title='Launch HiGlass in Full Screen'>
           <Icon iconId='maximize' />
         </NavLink>
-        <span>{!new URLSearchParams(props.location.search).get('config')}</span>
       </div>
       <nav className='flex-c flex-jc-e flex-a-s is-toggable'>
         <ul className='flex-c flex-jc-e flex-a-s no-list-style'>
