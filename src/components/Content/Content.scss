@@ -1,5 +1,10 @@
 .content {
   margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.info-bar + .content {
+  margin-top: 1rem;
 }
 
 .content-wrapper-bottom-bar .content {
