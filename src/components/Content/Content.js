@@ -5,7 +5,7 @@ import './Content.scss';
 
 const Content = props => (
   <main
-    className={`flex-g-1 content ${props.name} ${props.wrap ? 'wrap' : ''} ${props.rel ? 'rel' : ''}`}>
+    className={`flex-g-1 content ${props.name}-content ${props.wrap ? 'wrap' : ''} ${props.rel ? 'rel' : ''}`}>
     {props.children}
   </main>
 );

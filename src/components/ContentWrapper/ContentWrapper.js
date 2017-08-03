@@ -3,7 +3,7 @@ import React from 'react';
 
 const ContentWrapper = props => (
   <div
-    className={`content-wrapper flex-c flex-v full-mdim ${props.bottomBar ? 'content-wrapper-bottom-bar' : ''}`}>
+    className={`flex-c flex-v full-mdim content-wrapper ${props.name} ${props.bottomBar ? 'content-wrapper-bottom-bar' : ''}`}>
     {props.children}
   </div>
 );
@@ -15,6 +15,7 @@ ContentWrapper.defaultProps = {
 ContentWrapper.propTypes = {
   bottomBar: PropTypes.bool,
   children: PropTypes.node,
+  name: PropTypes.string.isRequired,
 };
 
 export default ContentWrapper;
