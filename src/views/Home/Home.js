@@ -64,10 +64,8 @@ const Home = props => (
         </div>
       </div>
     </InfoBar>
-    <Content name='home' wrap={true}>
-      <div className='home-four-third'>
-        <div id='higlass' className='full-dim'></div>
-      </div>
+    <Content name='home' rel={true} wrap={true}>
+      <div id='higlass' className='full-dim'></div>
     </Content>
     <Footer />
   </ContentWrapper>
