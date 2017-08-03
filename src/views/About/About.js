@@ -10,7 +10,7 @@ import Icon from '../../components/Icon/Icon';
 import './About.scss';
 
 const About = () => (
-  <ContentWrapper>
+  <ContentWrapper name='about'>
     <Content name='about'>
       <div className='teaser border-bottom fade-out'>
         <figure className='about-teaser'></figure>

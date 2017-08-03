@@ -46,7 +46,7 @@ class Examples extends React.Component {
 
   render() {
     return (
-      <ContentWrapper>
+      <ContentWrapper name='examples'>
         <Content name='examples'>
           <div className='flex-c flex-v full-wh'>
             <div className='border-bottom p-t-1 p-b-1'>

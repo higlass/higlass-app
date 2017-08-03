@@ -15,7 +15,7 @@ import './Docs.scss';
 
 
 const Docs = () => (
-  <ContentWrapper>
+  <ContentWrapper name='docs'>
     <Content name='docs'>
       <div className='flex-c flex-g-1 wrap p-t-1 p-b-1'>
         <div className="rel column-3-4 wiki">

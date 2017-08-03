@@ -50,7 +50,7 @@ class Viewer extends React.Component {
 
   render() {
     return (
-      <ContentWrapper bottomBar={true}>
+      <ContentWrapper name='viewer' bottomBar={true}>
         <Content name='viewer'>
           <div className='full-wh'>
             {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}

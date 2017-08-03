@@ -9,7 +9,7 @@ import Icon from '../../components/Icon/Icon';
 import './NotFound.scss';
 
 const NotFound = () => (
-  <ContentWrapper>
+  <ContentWrapper name='not-found'>
     <Content name='not-found' wrap={true} rel={true}>
       <div className="flex-c flex-v flex-a-c flex-jc-c full-dim">
         <div className='flex-c flex-v flex-a-c not-found-header'>
