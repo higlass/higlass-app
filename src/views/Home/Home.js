@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // Components
 import ButtonLikeLink from '../../components/ButtonLikeLink/ButtonLikeLink';
@@ -10,6 +12,9 @@ import DropArea from '../../components/DropArea/DropArea';
 import Footer from '../../components/Footer/Footer';
 import Icon from '../../components/Icon/Icon';
 import InfoBar from '../../components/InfoBar/InfoBar';
+
+// Actions
+import { setHomeInfoBarClose } from '../../actions';
 
 // Utils
 import loadViewConfig from '../../utils/load-view-config';
@@ -30,13 +35,13 @@ const selectHandler = (event) => {
     });
 };
 
-const infoBarCloseHandler = () => {
-  logger.debug('Close that info bar');
-};
-
-const Home = () => (
+const Home = props => (
   <ContentWrapper name='home'>
-    <InfoBar isClosable={true} onClose={infoBarCloseHandler} wrap={true}>
+    <InfoBar
+      isClose={props.homeInfoBarClose}
+      isClosable={true}
+      onClose={() => props.setHomeInfoBarClose(!props.homeInfoBarClose)}
+      wrap={true}>
       <div className='flex-c'>
         <p className='column-1-2 m-r-1 home-info-intro'>
         HiGlass is a tool for exploring and compare genomic contact matrices and tracks.
@@ -53,7 +58,9 @@ const Home = () => (
             <div className='flex-g-1'>Drag &amp; drop a local config</div>
             <Icon iconId='drag' />
           </DropArea>
-          <ButtonLikeFileSelect className='flex-g-1' select={selectHandler}>Select a local config</ButtonLikeFileSelect>
+          <ButtonLikeFileSelect
+            className='flex-g-1'
+            select={selectHandler}>Select a local config</ButtonLikeFileSelect>
         </div>
       </div>
     </InfoBar>
@@ -66,4 +73,19 @@ const Home = () => (
   </ContentWrapper>
 );
 
-export default Home;
+Home.propTypes = {
+  homeInfoBarClose: PropTypes.bool,
+  setHomeInfoBarClose: PropTypes.func,
+};
+
+const mapStateToProps = state => ({
+  homeInfoBarClose: state.present.homeInfoBarClose,
+});
+
+const mapDispatchToProps = dispatch => ({
+  setHomeInfoBarClose: (isClosed) => {
+    dispatch(setHomeInfoBarClose(isClosed));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
