@@ -4,35 +4,68 @@ import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import { history, state } from './services/state';
 
-import App from './components/App/App';
+// Components
+// import App from './components/App/App';
+import AppFake from './components/AppFake/AppFake';
+
+// Utils
+import Logger from './utils/logger';
 import registerServiceWorker from './registerServiceWorker';
+
+// Styles
 import './index.scss';
 
+const logger = Logger('Index');
+
 // Initialize store
-const store = state.configure().store;
+let rehydratedStore;
+const storeRehydrated = state.configure().store;
 
-ReactDOM.render(
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <App />
-        </ConnectedRouter>
-    </Provider>,
-    document.getElementById('root')
-);
-
-if (module.hot) {
-  module.hot.accept('./components/App/App', () => {
-    const NextApp = require('./components/App/App').default;  // eslint-disable-line global-require
+const render = (Component, store, error) => {
+  if (!store) {
+    ReactDOM.render(
+      <AppFake error={error}/>,
+      document.getElementById('root')
+    );
+  } else {
     ReactDOM.render(
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <NextApp />
+          <Component />
         </ConnectedRouter>
       </Provider>,
       document.getElementById('root')
     );
+  }
+};
+
+render(AppFake);
+
+storeRehydrated
+  .then((store) => {
+    rehydratedStore = store;
+    // render(App, store);
+    // render(undefined, undefined, 'Failed rehydrating the store!');
+  })
+  .catch((error) => {
+    logger.error('Failed to rehydrate the store! This is fatal!', error);
+    render(undefined, undefined, 'Failed to initialize! This is bad, please contact an admin.');
   });
-  window.store = store;
+
+if (module.hot) {
+  module.hot.accept('./components/App/App', () => {
+    const NextApp = require('./components/App/App').default;  // eslint-disable-line global-require
+    // ReactDOM.render(
+    //   <Provider store={store}>
+    //     <ConnectedRouter history={history}>
+    //       <NextApp />
+    //     </ConnectedRouter>
+    //   </Provider>,
+    //   document.getElementById('root')
+    // );
+    render(NextApp, rehydratedStore);
+  });
+  storeRehydrated.then((store) => { window.store = store; });
 }
 
 registerServiceWorker();

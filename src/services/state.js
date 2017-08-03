@@ -55,9 +55,15 @@ const configure = (initialState) => {
     });
   }
 
-  persistStore(store, config);
-
-  return store;
+  return new Promise((resolve, reject) => {
+    persistStore(store, config, (error) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(store);
+      }
+    });
+  });
 };
 
 class State {
