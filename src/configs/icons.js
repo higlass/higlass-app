@@ -9,6 +9,11 @@ export const ARROW_BOTTOM = {
   svg: '<path d="M1 5l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2"/>',
 };
 
+export const ARROW_RIGHT = {
+  viewBox: '0 0 16 16',
+  svg: '<path d="M4.49 15l7.02-6.978L4.533 1" fill="none" stroke="currentColor" stroke-width="2"/>',
+};
+
 // export const BAR_CHART = {
 //   viewBox: '0 0 16 16',
 //   svg: '<path d="M0 10h3v4H0zM4 4h3v10H4zM8 7h3v7H8zM12 1h3v13h-3zM0 15h15v1H0z" fill="currentColor"/>',
@@ -38,6 +43,11 @@ export const CROSS = {
 export const DOCUMENT = {
   viewBox: '0 0 16 16',
   svg: '<path d="M9.777 0h.297l3.555 4.148V14.82c0 .647-.53 1.18-1.185 1.18h-8.89c-.657 0-1.185-.532-1.185-1.19V1.19C2.37.533 2.902 0 3.558 0h6.22zM9.48.593H3.553c-.326 0-.59.27-.59.59v13.634c0 .326.27.59.592.59h8.888c.328 0 .594-.264.594-.59V4.74h-2.37c-.655 0-1.187-.526-1.187-1.19V.594zm.594.296v2.66c0 .33.268.598.59.598h2.195L10.073.888zM4.148 4.147v.593h4.148V4.15H4.148zm0-1.777v.593h4.148V2.37H4.148zm0 3.556v.593h7.704v-.594H4.148zm0 1.778v.593h7.704v-.593H4.148zm0 1.777v.594h7.704V9.48H4.148zm0 1.78v.592h7.704v-.593H4.148zm0 1.777v.593h7.704v-.593H4.148z" fill="currentColor"/>',
+};
+
+export const DRAG = {
+  viewBox: '0 0 16 16',
+  svg: '<path d="M11 3H9v4h4V5l3 3-3 3V9H9v4h2l-3 3-3-3h2V9H3v2L0 8.003 3 5v2h4V3H5L8 .003 11 3z" fill="currentColor"/>',
 };
 
 // export const EXTERNAL = {
@@ -176,12 +186,14 @@ export const WARNING = {
 export default {
   // ANNOTATION,
   ARROW_BOTTOM,
+  ARROW_RIGHT,
   // BAR_CHART,
   // CALENDAR,
   CODE,
   CROSS,
   // DATA,
   DOCUMENT,
+  DRAG,
   // EXTERNAL,
   // GEZWITSCHER,
   GITHUB,
