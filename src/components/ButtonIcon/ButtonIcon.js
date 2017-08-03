@@ -9,7 +9,7 @@ import './ButtonIcon.scss';
 
 const ButtonIcon = props => (
   <button
-    className={`flex-c flex-a-c button-icon ${props.iconOnly ? 'button-icon-only' : ''}`}
+    className={`flex-c flex-a-c flex-jc-c button-icon ${props.iconOnly ? 'button-icon-only' : ''}`}
     title={props.title}
     onClick={props.onClick}>
     <Icon iconId={props.icon} />
