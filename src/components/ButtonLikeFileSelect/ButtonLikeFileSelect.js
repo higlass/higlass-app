@@ -9,7 +9,9 @@ import './ButtonLikeFileSelect.scss';
 let inputEl;
 
 const ButtonLikeFileSelect = props => (
-  <div className='flex-c button-like-file-select' onClick={() => inputEl.click()}>
+  <div
+    className={`flex-c flex-a-c button-like-file-select ${props.className}`}
+    onClick={() => inputEl.click()}>
     <span className='flex-g-1 button-like-select-text'>{props.children}</span>
     <Icon iconId='arrow-bottom' />
     <input
@@ -20,8 +22,13 @@ const ButtonLikeFileSelect = props => (
   </div>
 );
 
+ButtonLikeFileSelect.defaultProps = {
+  className: '',
+};
+
 ButtonLikeFileSelect.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
   select: PropTypes.func.isRequired,
 };
 
