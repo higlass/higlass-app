@@ -8,7 +8,7 @@ import Icon from '../Icon/Icon';
 import './Footer.scss';
 
 const Footer = () => (
-  <footer className="footer m-t-2">
+  <footer className="footer">
     <div className="wrap flex-c flex-a-c flex-jc-sb">
       <div className="flex-c flex-a-c flex-v">
         <div className="flex-c">
