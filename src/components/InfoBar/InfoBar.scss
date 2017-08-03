@@ -2,7 +2,7 @@
 
 .info-bar {
   margin-top: 3rem;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   color: $blue-dark;
   background: $blue-light;
 
@@ -10,16 +10,43 @@
     margin: 0;
   }
 
-  .button-icon {
-    color: transparentize($blue-dark, 0.6);
-    border-color: transparentize($blue-dark, 0.8);
+  .button-like-file-select,
+  .button-like-link,
+  .drop-area {
+    background-color: transparentize($blue-dark, 0.8);
+  }
 
-    &:active,
-    &:focus,
-    &:hover {
-      color: $blue-light;
-      border-color: $blue-dark;
-      background: $blue-dark;
+  .button-like-file-select:hover,
+  .button-like-link:hover {
+    background-image: linear-gradient(180deg, transparent, transparentize($primary, 0.9));
+  }
+
+  .icon {
+    width: 1em;
+    height: 1em;
+  }
+
+  .info-bar-close {
+    margin: 0.75rem 0 -2.25rem 0;
+
+    .button-icon {
+      color: transparentize($blue-dark, 0.6);
+      border-color: $white;
+      background: $blue-light;
+
+      &:focus,
+      &:hover {
+        color: $white;
+        background: $primary;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:active {
+        background: $black;
+      }
     }
   }
 }
