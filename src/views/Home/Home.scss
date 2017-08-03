@@ -1,38 +1,46 @@
 @import '../../styles/colors';
 @import '../../styles/ratio';
 
-.home-logo {
-  height: 80px;
-}
+.home {
+  .home-info-actions {
+    > * {
+      margin: 0.125rem 0;
+      font-size: 0.9em;
 
-.home-header {
-  height: 150px;
-  padding: 20px;
-  color: #000;
-  border-bottom: 2px solid #efefef;
-}
+      &:first-child {
+        margin-top: 0;
+        margin-bottom: 0.25rem;
+      }
 
-.home-intro {
-  font-size: 1.125em;
-  text-align: left;
-}
+      &:last-child {
+        margin-top: 0.25rem;
+        margin-bottom: 0;
+      }
+    }
 
-.home-four-third {
-  position: relative;
-  border: 1px solid $gray-lightest;
-  border-radius: 0.25rem;
-
-  @include ratio(0.66);
-
-  .fwh {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    .drop-area:after {
+      top: 0.125rem;
+      right: 0.125rem;
+      bottom: 0.125rem;
+      left: 0.125rem;
+      border-width: 1px;
+      border-color: $blue-dark;
+    }
   }
-}
 
-.fwh {
-    height: 25rem;
+  .home-four-third {
+    position: relative;
+    border: 1px solid $gray-lightest;
+    border-radius: 0.25rem;
+
+    @include ratio(0.66);
+
+    .fwh {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    }
+  }
 }
