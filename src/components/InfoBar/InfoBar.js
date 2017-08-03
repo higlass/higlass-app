@@ -11,9 +11,10 @@ const InfoBar = props => (
       {props.children}
     </div>
     {props.isClosable &&
-      <div className="flex-c flex-a-c flex-jc-c rel info-bar-close">
+      <div className='flex-c flex-a-c flex-jc-c rel info-bar-close'>
         <ButtonIcon
-          icon={props.isClose ? 'arrow-bottom' : 'cross'}
+          icon='arrow-bottom'
+          iconMirrorH={!props.isClose}
           iconOnly={true}
           onClick={props.onClose} />
       </div>
