@@ -1,13 +1,18 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import Spinner from './Spinner';
 
 import './SpinnerCenter.scss';
 
-const SpinnerCenter = () => (
+const SpinnerCenter = props => (
   <div className='full-dim flex-c flex-a-c flex-jc-c spinner-center'>
-    <Spinner />
+    <Spinner delayed={props.delayed} />
   </div>
 );
+
+SpinnerCenter.propTypes = {
+  delayed: PropTypes.bool,
+};
 
 export default SpinnerCenter;
