@@ -1,0 +1,10 @@
+// Basic style library
+@import '../../node_modules/higlass/build/styles.css';
+
+.higlass-launcher {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  bottom: 0.25rem;
+  left: 0.25rem;
+}

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { setViewConfig } from '../actions';
-import HiGlassLauncher from '../components/HiGlassLauncher/HiGlassLauncher';
+import HiGlassLauncher from '../components/HiGlassLauncher';
 
 const mapStateToProps = state => ({
   viewConfig: state.present.viewConfig,

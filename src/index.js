@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import { history, state } from './services/state';
 
 // Components
-import App from './components/App/App';
-import AppFake from './components/AppFake/AppFake';
+import App from './components/App';
+import AppFake from './components/AppFake';
 
 // Utils
 import Logger from './utils/logger';
@@ -52,8 +52,8 @@ storeRehydrated
   });
 
 if (module.hot) {
-  module.hot.accept('./components/App/App', () => {
-    const NextApp = require('./components/App/App').default;  // eslint-disable-line global-require
+  module.hot.accept('./components/App', () => {
+    const NextApp = require('./components/App').default;  // eslint-disable-line global-require
     render(NextApp, rehydratedStore);
   });
   storeRehydrated.then((store) => { window.store = store; });

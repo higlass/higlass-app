@@ -48,7 +48,7 @@ const jsxRenderer = contents => (`
 import React from 'react';
 
 // Relative to src/wiki
-import Icon from './components/Icon/Icon';
+import Icon from './components/Icon';
 
 export default () => (<div>${contents}</div>);
 `);
