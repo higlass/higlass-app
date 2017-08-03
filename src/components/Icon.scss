@@ -2,6 +2,8 @@
 
 .icon {
   position: relative;
+  width: 1em;
+  height: 1em;
 
   &.is-mirror-h svg {
     transform: scale(1, -1);
