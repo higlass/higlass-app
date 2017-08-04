@@ -6,29 +6,12 @@ import './Hamburger.scss';
 
 
 class Hamburger extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isActive: false,
-    };
-  }
-
-  componentDidUpdate() {
-    this.props.onClick(this.state.isActive);
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextState.isActive === this.state.isActive) { return false; }
-    return true;
-  }
-
   render() {
     return (
       <button
         className='hamburger-wrapper'
         onClick={this.toggle.bind(this)}>
-        <div className={`hamburger hamburger-to-x ${this.state.isActive ? 'is-active' : ''}`}>
+        <div className={`hamburger hamburger-to-x ${this.props.isActive ? 'is-active' : ''}`}>
           <span></span>
         </div>
         <div className='hamburger-bg' />
@@ -39,13 +22,12 @@ class Hamburger extends React.Component {
   /* ------------------------------ Custom Methods -------------------------- */
 
   toggle() {
-    this.setState({
-      isActive: !this.state.isActive,
-    });
+    this.props.onClick(!this.props.isActive);
   }
 }
 
 Hamburger.propTypes = {
+  isActive: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
 };
 

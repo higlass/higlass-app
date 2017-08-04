@@ -19,6 +19,16 @@ class TopBar extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.unlisten = this.props.history.listen(
+      () => this.setState({ menuIsShown: false, })
+    );
+  }
+
+  componentWillUnmount() {
+    this.unlisten();
+  }
+
   render() {
     return (
       <header className='top-bar'>
@@ -50,7 +60,9 @@ class TopBar extends React.Component {
                 </a>
               </li>
             </ul>
-            <Hamburger onClick={this.toggleMenu.bind(this)} />
+            <Hamburger
+              isActive={this.state.menuIsShown}
+              onClick={this.toggleMenu.bind(this)} />
           </nav>
         </div>
       </header>
