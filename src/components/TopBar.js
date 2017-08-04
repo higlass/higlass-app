@@ -39,7 +39,7 @@ class TopBar extends React.Component {
               <span className='higlass'><span className='higlass-hi'>Hi</span>Glass</span>
             </NavLink>
             <NavLink
-              to='/?config=example'
+              to='/?config=default'
               className='btn is-uppercased icon-only'
               title='Launch HiGlass in Full Screen'>
               <Icon iconId='maximize' />
