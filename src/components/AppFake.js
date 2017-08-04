@@ -4,7 +4,7 @@ import React from 'react';
 // Components
 import Content from './Content';
 import ContentWrapper from './ContentWrapper';
-import ErrorMsgCenter from './ErrorMsg';
+import ErrorMsgCenter from './ErrorMsgCenter';
 import Icon from './Icon';
 import SpinnerCenter from './SpinnerCenter';
 
@@ -40,8 +40,8 @@ const AppLoading = props => (
         </nav>
       </div>
     </header>
-    <ContentWrapper name='app-loading'>
-      <Content name='app-loading' rel={true} wrap={true}>
+    <ContentWrapper name='app-fake'>
+      <Content name='app-fake' rel={true} wrap={true}>
         {props.error ?
           <ErrorMsgCenter msg={props.error} /> :
           <SpinnerCenter delayed={true} />
