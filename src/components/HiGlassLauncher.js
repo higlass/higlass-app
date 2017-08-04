@@ -5,14 +5,26 @@ import React from 'react';
 import { createHgComponent } from 'higlass';
 import deepClone from '../utils/deep-clone';
 
+import Logger from '../utils/logger';
+
 // Styles
 import './HiGlassLauncher.scss';
+import '../styles/bootstrap.less';
 
-const launchHgLib = (viewConfig, options) => (element) => {
+const logger = Logger('HiGlassLauncher');
+
+const launchHgLib = (viewConfig, options, onError) => (element) => {
   if (element && viewConfig) {
-    createHgComponent(element, deepClone(viewConfig), options, (api) => {
-      window.higlassApi = api;
-    });
+    logger.debug(element, viewConfig, options);
+
+    try {
+      createHgComponent(element, deepClone(viewConfig), options, (api) => {
+        window.higlassApi = api;
+      });
+    } catch (error) {
+      logger.error(error);
+      onError('HiGlass could not be launched.');
+    }
   }
 };
 
@@ -21,8 +33,8 @@ const HiGlassLauncher = props => (
   <div
     className='full-wh rel'>
     <div
-      className='higlass-launcher'
-      ref={launchHgLib(props.viewConfig, props.options)}>
+      className='higlass-launcher twbs'
+      ref={launchHgLib(props.viewConfig, props.options, props.onError)}>
     </div>
   </div>
 );
@@ -35,6 +47,7 @@ HiGlassLauncher.defaultProps = {
 
 HiGlassLauncher.propTypes = {
   viewConfig: PropTypes.object,
+  onError: PropTypes.func.isRequired,
   options: PropTypes.object,
 };
 

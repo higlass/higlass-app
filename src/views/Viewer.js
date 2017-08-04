@@ -51,12 +51,12 @@ class Viewer extends React.Component {
   render() {
     return (
       <ContentWrapper name='viewer' bottomBar={true}>
-        <Content name='viewer'>
-          <div className='full-wh'>
+        <Content name='viewer' rel={true}>
+          <div className='full-dim'>
             {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
             {!this.state.error && (
               this.state.isLoading ?
-                <SpinnerCenter /> : <HiGlassLoader />
+                <SpinnerCenter /> : <HiGlassLoader onError={this.onError.bind(this)} />
               )
             }
           </div>
@@ -68,12 +68,11 @@ class Viewer extends React.Component {
 
   /* ---------------------------- Custom Methods ---------------------------- */
 
-  setViewConfig(viewConfig) {
+  onError(error) {
     this.setState({
-      error: '',
+      error,
       isLoading: false,
     });
-    this.props.setViewConfig(viewConfig);
   }
 
   loadViewConfig(viewConfigId = this.props.viewConfigId) {
@@ -86,6 +85,8 @@ class Viewer extends React.Component {
       .then(this.setViewConfig.bind(this))
       .catch(() => {
         logger.warning('View config is not available locally!');
+
+        // Try loading config from HiGlass.io
         return fetchViewConfig(viewConfigId, 'http://higlass.io');
       })
       .then(this.setViewConfig.bind(this))
@@ -96,6 +97,21 @@ class Viewer extends React.Component {
           isLoading: false,
         });
       });
+  }
+
+  setViewConfig(viewConfig) {
+    if (!viewConfig || viewConfig.error) {
+      this.setState({
+        error: viewConfig.error || 'View config broken.',
+        isLoading: false,
+      });
+    } else {
+      this.setState({
+        error: '',
+        isLoading: false,
+      });
+      this.props.setViewConfig(viewConfig);
+    }
   }
 }
 
