@@ -16,7 +16,7 @@ const eventHandler = {
 const registeredEls = {};
 
 const unregister = (event, element) => {
-  if (registeredEls[event] && registeredEls[event] !== element) { return; }
+  if (!registeredEls[event] && registeredEls[event] !== element) { return; }
 
   registeredEls[event].removeEventListener(event, eventHandler[event]);
 
