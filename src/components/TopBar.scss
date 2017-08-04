@@ -15,6 +15,9 @@
   box-shadow: 0 2px 0 0 transparentize($black, 0.95);
   line-height: 3rem;
 
+  // Avoid odd 1px move when a NavLink is active and one hovers over another link
+  transform: translateZ(0);
+
   .top-bar-wrapper {
     transition: margin $normal-transition $easing;
   }
