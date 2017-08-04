@@ -1,9 +1,5 @@
 language: node_js
 
-# Handle git submodules ourselves
-git:
-  submodules: false
-
 node_js:
   - "6"
 
@@ -20,7 +16,6 @@ before_install:
   - gem install sass
 
 before_script:
-  - npm install --quiet -g gulp
   - npm install
 
 before_deploy:
