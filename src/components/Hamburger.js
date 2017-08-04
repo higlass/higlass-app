@@ -38,14 +38,10 @@ class Hamburger extends React.Component {
 
   /* ------------------------------ Custom Methods -------------------------- */
 
-  toggle(event) {
-    event.preventDefault();
-
+  toggle() {
     this.setState({
       isActive: !this.state.isActive,
     });
-
-    return false;
   }
 }
 

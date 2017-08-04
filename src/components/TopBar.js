@@ -60,12 +60,9 @@ class TopBar extends React.Component {
   /* ------------------------------ Custom Methods -------------------------- */
 
   toggleMenu(isOpen) {
-    console.log('ASS', isOpen);
     this.setState({
       menuIsShown: isOpen,
     });
-
-    return false;
   }
 }
 
