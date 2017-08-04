@@ -147,8 +147,7 @@
   nav li {
     line-height: inherit;
 
-    &.separated-left::before,
-    &.menu-toggler::before {
+    &.separated-left::before {
       content: '';
       width: 2px;
     }
@@ -156,11 +155,6 @@
     &.separated-left::before {
       margin: 0.25rem 0.25rem;
       background: $gray-lightest;
-    }
-
-    &.disable-dark-theme::before,
-    &.menu-toggler::before {
-      margin: 0 0.125rem;
     }
 
     a {
@@ -174,7 +168,7 @@
       @include underline($black, -2px, 2px);
 
       &.icon-only {
-        &::before {
+        &::after {
           display: none;
         }
 
@@ -200,43 +194,78 @@
     }
   }
 
-  .disable-dark-theme {
-    display: none;
-  }
-
-  .menu-toggler.c-hamburger {
+  .hamburger-wrapper {
     position: absolute;
     top: 0;
-    right: 1rem;
-    background: none;
+    right: 0;
+    padding: 0 1rem;
 
-    span,
-    span::before,
-    span::after {
-      background: $gray-dark;
+    .hamburger {
+      span,
+      span::before,
+      span::after {
+        background: $gray-dark;
+      }
+
+      &.hamburger-to-x.is-active span {
+        background: none;
+
+        &::before,
+        &::after {
+          animation-delay: $normal-transition;
+          animation-duration: $normal-transition;
+          animation-fill-mode: forwards;
+          animation-name: fade-bg;
+          animation-timing-function: $easing;
+        }
+      }
     }
 
-    &.c-hamburger--htx.is-active span {
-      background: none;
-    }
-
-    &.c-hamburger--htx.is-active span::before,
-    &.c-hamburger--htx.is-active span::after {
+    .hamburger-bg {
       background: $primary;
     }
+
+    .hamburger.is-active + .hamburger-bg {
+      animation-delay: $normal-transition;
+      animation-duration: $normal-transition;
+      animation-fill-mode: forwards;
+      animation-name: fade-in;
+      animation-timing-function: $easing;
+    }
   }
-}
 
+  /*
+   * -----------------------------------------------------------------------------
+   * Animations
+   * -----------------------------------------------------------------------------
+   */
 
-/*
- * -----------------------------------------------------------------------------
- * Media Queries
- * -----------------------------------------------------------------------------
- */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
-/* 400px */
-@media screen and (max-width: 30em) {
-  #topbar {
+  @keyframes fade-bg {
+    from {
+      background: $primary;
+    }
+    to {
+      background: $white;
+    }
+  }
+
+  /*
+   * -----------------------------------------------------------------------------
+   * Media Queries
+   * -----------------------------------------------------------------------------
+   */
+
+  /* 400px */
+  @media screen and (max-width: 30em) {
     .branding-launch {
       position: relative;
       z-index: 1;
@@ -245,12 +274,12 @@
     nav {
       display: block;
       position: absolute;
-      top: 2.5rem;
+      top: 3rem;
       right: 0;
       left: 0;
 
-      .menu-toggler.c-hamburger {
-        top: -2.5rem;
+      .hamburger-wrapper {
+        top: -3rem;
       }
 
       ul {
@@ -271,25 +300,27 @@
         text-align: center;
 
         a {
+          height: 2em;
           margin: 0 1rem;
           font-size: 1em;
+          line-height: 2em;
+
+          &.icon-only {
+            width: 100%;
+
+            &::after {
+              display: block;
+            }
+          }
         }
 
-        &.separated-left {
-          &::before {
-            display: none;
-          }
-
-          a.icon-only {
-            display: block;
-            width: 100%;
-            margin: 0 1rem;
-          }
+        &.separated-left::before {
+          display: none;
         }
       }
     }
 
-    nav.is-active {
+    nav.is-shown {
       ul {
         height: auto;
         opacity: 1;
@@ -297,45 +328,11 @@
       }
     }
   }
-}
 
-/* 480px */
-@media screen and (min-width: 30em) {
-  .top-bar {
-    .menu-toggler {
+  /* 480px */
+  @media screen and (min-width: 30em) {
+    .hamburger {
       display: none;
-    }
-  }
-}
-
-/* 568px (Pure.css Grid: SM) */
-@media screen and (min-width: 35.5em) {
-  .top-bar {
-    .btn {
-      margin-left: 1rem;
-    }
-
-    nav li a {
-      margin: 0 0.175rem;
-      padding: 0 0.125rem;
-
-      &.separated-left::before {
-        margin: 0.25rem 0.5rem;
-      }
-    }
-  }
-}
-
-/* 640px */
-@media screen and (min-width: 40em) {
-  .top-bar {
-    .menu-toggler.flex-c {
-      display: none !important;
-      background: red;
-
-      button {
-        background: red;
-      }
     }
   }
 }

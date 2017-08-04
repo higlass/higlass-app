@@ -1,7 +1,7 @@
 @mixin underline($color, $bottom, $height) {
   position: relative;
 
-  &::before {
+  &::after {
     position: absolute;
     display: block;
     content: '';
@@ -15,7 +15,7 @@
     transition: transform $normal-transition $easing, opacity $fast-transition $easing;
   }
 
-  &:hover::before {
+  &:hover::after {
     opacity: 1;
     transform: scale(1, 1);
   }
