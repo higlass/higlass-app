@@ -14,10 +14,11 @@ class ContentWrapper extends React.Component {
     this.state = {
       error: '',
     };
+
+    this.pubSubs = [];
   }
 
   componentDidMount() {
-    this.pubSubs = [];
     this.pubSubs.push({
       event: 'globalError',
       id: pubSub.subscribe('globalError', this.errorHandler.bind(this)),
@@ -50,7 +51,6 @@ class ContentWrapper extends React.Component {
   /* ------------------------------ Custom Methods -------------------------- */
 
   errorHandler(error) {
-    console.log('handle error', error);
     this.setState({
       error,
     });
