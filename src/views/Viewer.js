@@ -1,14 +1,23 @@
+// import * as higlass from 'higlass';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 // Components
+import AppInfo from '../components/AppInfo';
 import BottomBar from '../components/BottomBar';
+import ButtonIcon from '../components/ButtonIcon';
 import Content from '../components/Content';
 import ContentWrapper from '../components/ContentWrapper';
 import ErrorMsgCenter from '../components/ErrorMsgCenter';
 import SpinnerCenter from '../components/SpinnerCenter';
+
+// Services
+import pubSub from '../services/pub-sub';
+
+// Utils
+import Deferred from '../utils/deferred';
 
 // Actions
 import { setViewConfig } from '../actions';
@@ -61,19 +70,22 @@ class Viewer extends React.Component {
             }
           </div>
         </Content>
-        <BottomBar />
+        <BottomBar>
+          <ul className='flex-c flex-a-c no-list-style' />
+          <ul className='flex-c flex-a-c flex-jc-e no-list-style'>
+            <li>
+              <ButtonIcon
+                icon='info'
+                iconOnly={true}
+                onClick={this.showInfo.bind(this)} />
+            </li>
+          </ul>
+        </BottomBar>
       </ContentWrapper>
     );
   }
 
   /* ---------------------------- Custom Methods ---------------------------- */
-
-  onError(error) {
-    this.setState({
-      error,
-      isLoading: false,
-    });
-  }
 
   loadViewConfig(viewConfigId = this.props.viewConfigId) {
     this.setState({
@@ -99,6 +111,13 @@ class Viewer extends React.Component {
       });
   }
 
+  onError(error) {
+    this.setState({
+      error,
+      isLoading: false,
+    });
+  }
+
   setViewConfig(viewConfig) {
     if (!viewConfig || viewConfig.error) {
       this.setState({
@@ -112,6 +131,21 @@ class Viewer extends React.Component {
       });
       this.props.setViewConfig(viewConfig);
     }
+  }
+
+  showInfo() {
+    const dialog = new Deferred();
+    pubSub.publish(
+      'globalDialog',
+      {
+        message: <AppInfo />,
+        request: dialog,
+        resolveOnly: true,
+        resolveText: 'Close',
+        icon: 'logo',
+        headline: 'HiGlass',
+      }
+    );
   }
 }
 
