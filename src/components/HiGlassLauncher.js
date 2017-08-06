@@ -1,8 +1,8 @@
+import { createHgComponent } from 'higlass';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 // Components
-import { createHgComponent } from 'higlass';
 import deepClone from '../utils/deep-clone';
 
 import Logger from '../utils/logger';
@@ -15,7 +15,7 @@ const logger = Logger('HiGlassLauncher');
 
 const launchHgLib = (viewConfig, options, onError) => (element) => {
   if (element && viewConfig) {
-    logger.debug(element, viewConfig, options);
+    logger.debug(viewConfig, options);
 
     try {
       createHgComponent(element, deepClone(viewConfig), options, (api) => {
