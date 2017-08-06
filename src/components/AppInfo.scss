@@ -1,5 +1,8 @@
+@import '../styles/colors';
+
 .app-info {
   .copyright {
-    font-size: 0.85rem;
+    color: $gray-medium;
+    font-size: 0.8rem;
   }
 }
