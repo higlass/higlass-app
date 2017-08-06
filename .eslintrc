@@ -17,6 +17,10 @@
   "plugins": [
     "react"
   ],
+  "globals": {
+    "VERSION_HIGLASS_APP": false,
+    "VERSION_HIGLASS_VIEWER": false
+  },
   "rules": {
     "class-methods-use-this": [
       "warn",
