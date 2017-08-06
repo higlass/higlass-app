@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 // Components
+import Dialog from './Dialog';
 import DropNotifier from './DropNotifier';
 import Main from './Main';
 import TopBar from './TopBar';
@@ -36,16 +37,34 @@ const dropHandler = (event) => {
 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.pubSubs = [];
+
+    this.state = {
+      dialog: undefined,
+    };
+  }
+
   componentDidMount() {
     domEvent.register('orientationchange', window);
     domEvent.register('resize', window);
     domEvent.register('scroll', document);
+
+    this.pubSubs.push(
+      pubSub.subscribe('globalDialog', this.dialogHandler.bind(this))
+    );
   }
 
   componentWillUnmount() {
     domEvent.unregister('orientationchange', window);
     domEvent.unregister('resize', window);
     domEvent.unregister('scroll', document);
+
+    this.pubSubs.forEach((subscription) => {
+      pubSub.unsubscribe(subscription.event, undefined, subscription.id);
+    });
   }
 
   render() {
@@ -53,10 +72,37 @@ class App extends React.Component {
       <div className='app full-mdim'>
         <DropNotifier
           drop={dropHandler} />
+        {this.state.dialog &&
+          <Dialog
+            headline={this.state.dialog.headline}
+            icon={this.state.dialog.icon}
+            message={this.state.dialog.message}
+            reject={this.state.dialog.request.reject}
+            rejectText={this.state.dialog.rejectText}
+            resolve={this.state.dialog.request.resolve}
+            resolveOnly={this.state.dialog.resolveOnly}
+            resolveText={this.state.dialog.resolveText} />
+        }
         <TopBar />
         <Main />
       </div>
     );
+  }
+
+  /* ------------------------------ Custom Methods -------------------------- */
+
+  dialogHandler(dialog) {
+    if (!dialog) { return; }
+
+    this.setState({
+      dialog,
+    });
+
+    dialog.request.finally(() => {
+      this.setState({
+        dialog: undefined,
+      });
+    });
   }
 }
 
