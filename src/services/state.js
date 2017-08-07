@@ -1,23 +1,29 @@
 import createHistory from 'history/createBrowserHistory';
-
 import localforage from 'localforage';
-
 import { routerMiddleware } from 'react-router-redux';
-
 import { applyMiddleware, compose, createStore } from 'redux';
 import { enableBatching } from 'redux-batched-actions';
 import freeze from 'redux-freeze';
 import { createLogger } from 'redux-logger';
 import { autoRehydrate, persistStore, purgeStoredState } from 'redux-persist';
+import { asyncSessionStorage } from 'redux-persist/storages';
 import thunk from 'redux-thunk';
 import undoable, { ActionCreators } from 'redux-undo';
 
 import rootReducer from '../reducers';
 
+import MultiStorage from '../utils/multi-storage';
+
+const prefix = 'HiGlassApp.';
+
+const prepareStore = MultiStorage([
+  asyncSessionStorage,
+  localforage,
+], prefix);
+
 const config = {
-  storage: localforage,
   debounce: 25,
-  keyPrefix: 'HiGlassApp.',
+  keyPrefix: prefix,
 };
 
 const history = createHistory();
@@ -55,13 +61,19 @@ const configure = (initialState) => {
     });
   }
 
-  return new Promise((resolve, reject) => {
-    persistStore(store, config, (error) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(store);
-      }
+  return prepareStore.then((storage) => {
+    config.storage = storage;
+
+    console.log('Done preparing stoage', storage);
+
+    return new Promise((resolve, reject) => {
+      persistStore(store, config, (error) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(store);
+        }
+      });
     });
   });
 };
