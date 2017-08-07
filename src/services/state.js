@@ -64,8 +64,6 @@ const configure = (initialState) => {
   return prepareStore.then((storage) => {
     config.storage = storage;
 
-    console.log('Done preparing stoage', storage);
-
     return new Promise((resolve, reject) => {
       persistStore(store, config, (error) => {
         if (error) {
