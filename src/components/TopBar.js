@@ -10,6 +10,8 @@ import Icon from './Icon';
 // Styles
 import './TopBar.scss';
 
+const isApp = pathname => pathname && pathname.match(/\/app(?:(?=.)(\?|\/)|$)/);
+
 class TopBar extends React.Component {
   constructor(props) {
     super(props);
@@ -32,14 +34,14 @@ class TopBar extends React.Component {
   render() {
     return (
       <header className='top-bar'>
-        <div className={`flex-c flex-jc-sb top-bar-wrapper ${!new URLSearchParams(this.props.location.search).get('config') ? 'wrap' : 'wrap-basic'}`}>
+        <div className={`flex-c flex-jc-sb top-bar-wrapper ${isApp(this.props.location.pathname) ? 'wrap-basic' : 'wrap'}`}>
           <div className='flex-c branding-launch'>
             <NavLink to='/' className='flex-c flex-a-c branding'>
               <Icon iconId='logo-two-tone' />
               <span className='higlass'><span className='higlass-hi'>Hi</span>Glass</span>
             </NavLink>
             <NavLink
-              to='/?config=default'
+              to='/app'
               className='btn is-uppercased icon-only'
               title='Launch HiGlass in Full Screen'>
               <Icon iconId='maximize' />
