@@ -10,6 +10,7 @@ import Content from '../components/Content';
 import ContentWrapper from '../components/ContentWrapper';
 import DropArea from '../components/DropArea';
 import Footer from '../components/Footer';
+import HiGlassViewer from '../components/HiGlassViewer';
 import Icon from '../components/Icon';
 import InfoBar from '../components/InfoBar';
 
@@ -65,7 +66,7 @@ const Home = props => (
       </div>
     </InfoBar>
     <Content name='home' rel={true} wrap={true}>
-      <div id='higlass' className='full-dim'></div>
+      <HiGlassViewer />
     </Content>
     <Footer />
   </ContentWrapper>
