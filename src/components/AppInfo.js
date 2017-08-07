@@ -1,11 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 // Utils
 import Logger from '../utils/logger';
-
-// Styles
-import './AppInfo.scss';
 
 const URL = '/version.txt';
 
@@ -49,9 +44,6 @@ class AppInfo extends React.Component {
         <p>
           Please report bugs at <a href='https://github.com/hms-dbmi/higlass/issues' target='_blank' rel='noopener noreferrer'>GitHub</a>.
           For questions how to use or integrate please use <a href='https://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>Stackoverflow</a>.
-        </p>
-        <p className='copyright'>
-          &copy; 2017 <Link to='/about#copyright'>Harvard College</Link>.
         </p>
       </div>
     );
