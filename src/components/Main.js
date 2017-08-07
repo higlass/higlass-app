@@ -22,16 +22,7 @@ const Main = () => (
     }} />
     <Route exact path='/examples' component={Examples} />
     <Route exact path='/docs' component={Docs} />
-    <Route exact path='/' render={({ location, }) => {
-      const query = new URLSearchParams(location.search);
-      const viewConfigId = query.get('config');
-
-      if (viewConfigId) {
-        return <Viewer viewConfigId={viewConfigId} />;
-      }
-
-      return <Home />;
-    }} />
+    <Route exact path='/' component={Home} />
     <Route component={NotFound}/>
   </Switch>
 );
