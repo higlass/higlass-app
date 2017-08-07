@@ -34,7 +34,7 @@ class HiGlassViewer extends React.Component {
 
     this.state = {
       error: '',
-      isLoading: false,
+      isLoading: true,
     };
   }
 
@@ -77,7 +77,13 @@ class HiGlassViewer extends React.Component {
   }
 
   loadViewConfig(viewConfigId = this.props.viewConfigId) {
-    if (!viewConfigId && this.props.viewConfig) { return; }
+    if (!viewConfigId && this.props.viewConfig) {
+      this.setState({
+        error: '',
+        isLoading: false,
+      });
+      return;
+    }
 
     this.setState({
       error: '',
