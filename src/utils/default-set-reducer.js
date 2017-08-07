@@ -1,10 +1,17 @@
+import deepEqual from 'deep-equal';
+
 import camelToConst from './camel-to-const';
 import deepClone from './deep-clone';
 
-const clone = (value) => {
+const clone = (value, state) => {
   switch (typeof value) {
-    case 'object':
-      return deepClone(value);
+    case 'object': {
+      if (!deepEqual(value, state)) {
+        return deepClone(value);
+      }
+
+      return state;
+    }
     default:
       return value;
   }
@@ -15,7 +22,7 @@ const defaultSetReducer =
     (state = defaultValue, action) => {
       switch (action.type) {
         case `SET_${camelToConst(key)}`:
-          return clone(action.payload[key]);
+          return clone(action.payload[key], state);
         default:
           return state;
       }

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "bootstrap": "3.3.7",
+    "deep-equal": "1.0.1",
     "higlass": "0.8.27",
     "history": "4.6.3",
     "localforage": "1.5.0",
