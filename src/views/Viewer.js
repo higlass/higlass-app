@@ -20,6 +20,23 @@ import downloadAsJson from '../utils/download-as-json';
 
 
 class Viewer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.pubSubs = [];
+  }
+
+  componentWillMount() {
+    this.pubSubs.push(
+      pubSub.subscribe('keydown', this.keyDownHandler.bind(this))
+    );
+  }
+
+  componentWillUnmount() {
+    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs = [];
+  }
+
   render() {
     return (
       <ContentWrapper name='viewer' bottomBar={true}>
@@ -51,6 +68,13 @@ class Viewer extends React.Component {
 
   downloadViewConfig() {
     downloadAsJson('viewConfig.json', this.props.viewConfig);
+  }
+
+  keyDownHandler(event) {
+    if (event.keyCode === 83 && (event.ctrlKey || event.metaKey)) {  // CMD + S
+      event.preventDefault();
+      this.downloadViewConfig();
+    }
   }
 
   showInfo() {
