@@ -10,7 +10,7 @@ import Main from './Main';
 import TopBar from './TopBar';
 
 // Actions
-import { setViewConfig } from '../actions';
+import { redo, setViewConfig, undo } from '../actions';
 
 // Services
 import domEvent from '../services/dom-event';
@@ -35,7 +35,6 @@ const dropHandler = (event) => {
     });
 };
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -56,6 +55,10 @@ class App extends React.Component {
 
     this.pubSubs.push(
       pubSub.subscribe('globalDialog', this.dialogHandler.bind(this))
+    );
+
+    this.pubSubs.push(
+      pubSub.subscribe('keydown', this.keyDownHandler.bind(this))
     );
   }
 
@@ -107,18 +110,34 @@ class App extends React.Component {
       });
     });
   }
+
+  keyDownHandler(event) {
+    if (event.keyCode === 89 && (event.ctrlKey || event.metaKey)) {  // CMD + Y
+      event.preventDefault();
+      this.props.redo();
+    }
+
+    if (event.keyCode === 90 && (event.ctrlKey || event.metaKey)) {  // CMD + Z
+      event.preventDefault();
+      this.props.undo();
+    }
+  }
 }
 
 App.propTypes = {
+  redo: PropTypes.func.isRequired,
   setViewConfig: PropTypes.func.isRequired,
+  undo: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
+  redo: () => dispatch(redo),
   setViewConfig: (viewConfig) => {
     dispatch(setViewConfig(viewConfig));
   },
+  undo: () => dispatch(undo),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
