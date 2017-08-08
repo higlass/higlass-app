@@ -51,6 +51,7 @@ class App extends React.Component {
     domEvent.register('orientationchange', window);
     domEvent.register('resize', window);
     domEvent.register('scroll', document);
+    domEvent.register('keydown', document);
     domEvent.register('keyup', document);
 
     this.pubSubs.push(
@@ -62,6 +63,7 @@ class App extends React.Component {
     domEvent.unregister('orientationchange', window);
     domEvent.unregister('resize', window);
     domEvent.unregister('scroll', document);
+    domEvent.unregister('keydown', document);
     domEvent.unregister('keyup', document);
 
     this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));

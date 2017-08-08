@@ -1,6 +1,8 @@
 import pubSub from './pub-sub';
 
-const keyup = event => pubSub.publish('keyup', event.keyCode);
+const keydown = event => pubSub.publish('keydown', event);
+
+const keyup = event => pubSub.publish('keyup', event);
 
 const resize = event => pubSub.publish('resize', event);
 
@@ -10,6 +12,7 @@ const scroll = event => pubSub.publish(
 );
 
 const eventHandler = {
+  keydown,
   keyup,
   orientationchange: resize,
   resize,
