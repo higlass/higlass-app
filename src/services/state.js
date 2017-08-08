@@ -83,18 +83,6 @@ class State {
     return this;
   }
 
-  undo() {
-    this.store.dispatch(ActionCreators.undo());
-
-    return this;
-  }
-
-  redo() {
-    this.store.dispatch(ActionCreators.redo());
-
-    return this;
-  }
-
   reset() {
     // Clear history
     this.store.dispatch(ActionCreators.clearHistory());
