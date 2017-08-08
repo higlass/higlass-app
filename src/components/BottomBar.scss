@@ -23,4 +23,27 @@
       margin-right: 0;
     }
   }
+
+  button {
+    &:hover {
+      color: $gray-darker;
+      border-color: $gray-lighter;
+      background: $gray-lighter;
+    }
+
+    &:focus {
+      color: $gray-darker;
+      border-color: $gray-lighter;
+      background: $gray-lighter;
+      outline: none;
+      box-shadow: 0 0 3px 1px transparentize($primary, 0.33);
+    }
+
+    &:active {
+      color: $white;
+      border-color: $black;
+      background: $black;
+      outline: none;
+    }
+  }
 }
