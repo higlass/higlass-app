@@ -18,34 +18,45 @@ const publish = (event, news) => {
  * @param {string} event - Event name to subscribe to.
  * @param {function} callback - Function to be called when event of type `event`
  *   is published.
- * @return {int} Index of the callback function on the event stack. The index
- *   can be used to unsubscribe.
+ * @return {object} Object with the event name and index of the callback
+ *   function on the event stack. The object can be used to unsubscribe.
  */
 const subscribe = (event, callback) => {
   if (!stack[event]) {
     stack[event] = [];
   }
 
-  return stack[event].push(callback) - 1;
+  return {
+    event,
+    id: stack[event].push(callback) - 1,
+  };
 };
 
 /**
  * Unsubscribe from event.
  *
- * @param {string} event - Event from which to unsubscribe.
+ * @param {string|object} event - Event from which to unsubscribe or the return
+ *   object provided by `subscribe()`.
  * @param {function} callback - Callback function to be unsubscribed. It is
  *   ignored if `id` is provided.
  * @param {int} id - Index of the callback function to be removed from the
  *   event stack. The index is returned by `subscribe()`.
  */
 const unsubscribe = (event, callback, id) => {
-  if (!stack[event]) { return; }
+  let eventName = event;
+  let listenerId = id;
 
-  const idx = typeof id !== 'undefined' ? id : stack[event].indexOf(callback);
+  if (typeof event === 'object') {
+    eventName = event.event;
+    listenerId = event.id;
+  } else {
+    listenerId = typeof id !== 'undefined' ? id : stack[eventName].indexOf(callback);
+  }
 
-  if (idx === -1 || idx >= stack[event].length) { return; }
+  if (!stack[eventName]) { return; }
+  if (listenerId === -1 || listenerId >= stack[eventName].length) { return; }
 
-  stack[event].splice(idx, 1);
+  stack[eventName].splice(listenerId, 1);
 };
 
 const pubSub = {
