@@ -4,46 +4,78 @@ import React from 'react';
 // Components
 import Icon from './Icon';
 
+// Services
+import pubSub from '../services/pub-sub';
+
 // Styles
 import './Dialog.scss';
 
-const Dialog = props => (
-  <div className='flex-c flex-a-c flex-jc-c full-dim dialog'>
-    <div className='dialog-window'>
-      <div className='flex-c flex-v flex-a-c dialog-content'>
-        {(props.headline || props.icon) &&
-          <header className='flex-c flex-a-c'>
-          {props.icon &&
-            <Icon iconId={props.icon} />
-          }
-          {props.headline &&
-            <h2>{props.headline}</h2>
-          }
-          </header>
-        }
-        {typeof props.message === 'string' ? (
-          <p className='dialog-message'>{props.message}</p>
-        ) : (
-          <div className='dialog-message'>{props.message}</div>
-        )}
+class Dialog extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.pubSubs = [];
+  }
+
+  componentWillMount() {
+    this.pubSubs.push(
+      pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
+    );
+  }
+
+  componentWillUnmount() {
+    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs = [];
+  }
+
+  render() {
+    return (
+      <div className='flex-c flex-a-c flex-jc-c full-dim dialog'>
+        <div className='dialog-window'>
+          <div className='flex-c flex-v flex-a-c dialog-content'>
+            {(this.props.headline || this.props.icon) &&
+              <header className='flex-c flex-a-c'>
+              {this.props.icon &&
+                <Icon iconId={this.props.icon} />
+              }
+              {this.props.headline &&
+                <h2>{this.props.headline}</h2>
+              }
+              </header>
+            }
+            {typeof this.props.message === 'string' ? (
+              <p className='dialog-message'>{this.props.message}</p>
+            ) : (
+              <div className='dialog-message'>{this.props.message}</div>
+            )}
+          </div>
+          <div className='flex-c dialog-buttons'>
+            {!this.props.resolveOnly &&
+              <button
+                className='column-1-2'
+                onClick={this.props.reject}>
+                {this.props.rejectText}
+              </button>
+            }
+            <button
+              className={this.props.resolveOnly ? 'column-1' : 'column-1-2'}
+              onClick={this.props.resolve}>
+              {this.props.resolveText}
+            </button>
+          </div>
+        </div>
       </div>
-      <div className='flex-c dialog-buttons'>
-        {!props.resolveOnly &&
-          <button
-            className='column-1-2'
-            onClick={props.reject}>
-            {props.rejectText}
-          </button>
-        }
-        <button
-          className={props.resolveOnly ? 'column-1' : 'column-1-2'}
-          onClick={props.resolve}>
-          {props.resolveText}
-        </button>
-      </div>
-    </div>
-  </div>
-);
+    );
+  }
+
+  /* ------------------------------ Custom Methods -------------------------- */
+
+  keyUpHandler(keyCode) {
+    if (keyCode === 27) {  // ESC
+      this.props.reject();
+    }
+  }
+}
 
 Dialog.defaultProps = {
   rejectText: 'Cancel',
