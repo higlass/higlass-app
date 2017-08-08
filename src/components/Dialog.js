@@ -70,9 +70,18 @@ class Dialog extends React.Component {
 
   /* ------------------------------ Custom Methods -------------------------- */
 
-  keyUpHandler(keyCode) {
-    if (keyCode === 27) {  // ESC
-      this.props.reject('Closed dialog on ESC');
+  keyUpHandler(event) {
+    switch (event.keyCode) {
+      case 13:  // ENTER
+        this.props.resolve('Accept dialog on ENTER');
+        break;
+
+      case 27:  // ESC
+        this.props.reject('Closed dialog on ESC');
+        break;
+
+      default:
+        // nothing
     }
   }
 }
