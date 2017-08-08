@@ -163,7 +163,7 @@ const About = () => (
           <a href='#copyright' className='hidden-anchor'>
             <Icon iconId='link' />
           </a>
-          <Icon iconId='info' />
+          <Icon iconId='info-circle' />
           Icons
         </h3>
 

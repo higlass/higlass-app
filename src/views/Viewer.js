@@ -1,6 +1,6 @@
-// import * as higlass from 'higlass';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 // Components
@@ -16,6 +16,7 @@ import pubSub from '../services/pub-sub';
 
 // Utils
 import Deferred from '../utils/deferred';
+import downloadAsJson from '../utils/download-as-json';
 
 
 class Viewer extends React.Component {
@@ -26,8 +27,14 @@ class Viewer extends React.Component {
           <HiGlassViewer viewConfigId={this.props.viewConfigId} />
         </Content>
         <BottomBar>
-          <ul className='flex-c flex-a-c no-list-style' />
-          <ul className='flex-c flex-a-c flex-jc-e no-list-style'>
+          <ul className='flex-c flex-a-c no-list-style bottom-bar-buttons' />
+          <ul className='flex-c flex-a-c flex-jc-e no-list-style bottom-bar-buttons'>
+            <li>
+              <ButtonIcon
+                icon='download'
+                iconOnly={true}
+                onClick={this.downloadViewConfig.bind(this)} />
+            </li>
             <li>
               <ButtonIcon
                 icon='info'
@@ -41,6 +48,10 @@ class Viewer extends React.Component {
   }
 
   /* ---------------------------- Custom Methods ---------------------------- */
+
+  downloadViewConfig() {
+    downloadAsJson('viewConfig.json', this.props.viewConfig);
+  }
 
   showInfo() {
     const dialog = new Deferred();
@@ -63,7 +74,17 @@ Viewer.defaultProps = {
 };
 
 Viewer.propTypes = {
+  viewConfig: PropTypes.object,
   viewConfigId: PropTypes.string,
 };
 
-export default withRouter(Viewer);
+const mapStateToProps = state => ({
+  viewConfig: state.present.viewConfig,
+});
+
+const mapDispatchToProps = () => ({});
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Viewer));
