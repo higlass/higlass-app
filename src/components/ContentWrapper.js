@@ -19,16 +19,13 @@ class ContentWrapper extends React.Component {
   }
 
   componentDidMount() {
-    this.pubSubs.push({
-      event: 'globalError',
-      id: pubSub.subscribe('globalError', this.errorHandler.bind(this)),
-    });
+    this.pubSubs.push(
+      pubSub.subscribe('globalError', this.errorHandler.bind(this))
+    );
   }
 
   componentWillUnmount() {
-    this.pubSubs.forEach((subscription) => {
-      pubSub.unsubscribe(subscription.event, undefined, subscription.id);
-    });
+    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
   }
 
   render() {
