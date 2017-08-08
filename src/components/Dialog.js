@@ -72,7 +72,7 @@ class Dialog extends React.Component {
 
   keyUpHandler(keyCode) {
     if (keyCode === 27) {  // ESC
-      this.props.reject();
+      this.props.reject('Closed dialog on ESC');
     }
   }
 }
