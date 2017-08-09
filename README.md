@@ -46,6 +46,12 @@ $ git submodule update --recursive --remote
 **Update wiki**: `npm run update-wiki`
 
 
+### Configuration
+
+HiGlass App can be configured at build time using [`config.json`](config.json).
+[`config.json`](config.json) contains the default configuration. To adjust it copy it to `config.dev.json`, `config.prod.json`, or `config.local.json`. `dev` is used in developmental mode, `prod` is picked up in production, and `local` can be used for local testing. The config is overwritten in the following order: _default_, dev, prod, local.
+
+
 ### Folder Structure
 
 HiGlass App is based on [react-create-app](https://github.com/facebookincubator/create-react-app) and implements the following folder structure:
