@@ -1,0 +1,98 @@
+@import '../styles/colors';
+@import '../styles/transitions';
+
+.top-bar-drop-down {
+  .drop-down-content {
+    display: none;
+    z-index: 20;
+    width: 12.5rem;
+    font-size: 0.75em;
+    line-height: 1.5rem;
+    border-radius: 0 0 0.25rem 0.25rem;
+    background: transparentize($gray-lightest, 0.05);
+
+    button,
+    input {
+      border: 0;
+      transition: color $fast-transition $easing,
+                  background $fast-transition $easing,
+                  box-shadow $fast-transition $easing;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 3px 1px $blue-highlight;
+      }
+    }
+  }
+
+  &.drop-down-is-open > .drop-down-content {
+    display: flex;
+  }
+
+  .drop-down-form {
+    input,
+    button {
+      margin: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+
+      &:first-child {
+        margin-top: 0.5rem;
+      }
+
+      &:last-child {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    button {
+      color: $gray-darker;
+      background: $gray-light;
+
+      &:focus,
+      &:hover {
+        color: $white;
+        background: $primary;
+      }
+    }
+  }
+
+  .menu-field {
+    padding: 0 0.5rem;
+
+    &:first-child {
+      margin-top: 0.25rem;
+    }
+
+    &:last-child {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  .menu-button {
+    text-align: left;
+    border-radius: 0;
+    background: transparent;
+
+    &:hover {
+      color: $white;
+      background: $primary;
+    }
+  }
+
+  .menu-separator {
+    height: 1px;
+    margin: 0.25rem 0;
+    background: $gray-lighter;
+  }
+
+  .menu-text {
+
+  }
+
+  .menu-text-label {
+    color: $gray-medium;
+    font-size: 0.8em;
+    line-height: 1.25em;
+    text-transform: uppercase;
+  }
+}
