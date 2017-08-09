@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import { Switch, Route } from 'react-router-dom';
@@ -11,20 +12,34 @@ import Home from '../views/Home';
 import NotFound from '../views/NotFound';
 import Viewer from '../views/Viewer';
 
-const Main = () => (
-  <Switch>
-    <Route exact path='/about' component={About} />
-    <Route exact path='/app' render={({ location }) => {
-      const query = new URLSearchParams(location.search);
-      const viewConfigId = query.get('config');
+class Main extends React.Component {
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      window.scrollTo(0, 0);
+    }
+  }
 
-      return <Viewer viewConfigId={viewConfigId} />;
-    }} />
-    <Route exact path='/examples' component={Examples} />
-    <Route exact path='/docs' component={Docs} />
-    <Route exact path='/' component={Home} />
-    <Route component={NotFound}/>
-  </Switch>
-);
+  render() {
+    return (
+      <Switch>
+        <Route exact path='/about' component={About} />
+        <Route exact path='/app' render={({ location }) => {
+          const query = new URLSearchParams(location.search);
+          const viewConfigId = query.get('config');
+
+          return <Viewer viewConfigId={viewConfigId} />;
+        }} />
+        <Route exact path='/examples' component={Examples} />
+        <Route exact path='/docs' component={Docs} />
+        <Route exact path='/' component={Home} />
+        <Route component={NotFound}/>
+      </Switch>
+    );
+  }
+}
+
+Main.propTypes = {
+  location: PropTypes.object.isRequired,
+};
 
 export default withRouter(Main);
