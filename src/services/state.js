@@ -8,10 +8,15 @@ import { createLogger } from 'redux-logger';
 import { autoRehydrate, persistStore, purgeStoredState } from 'redux-persist';
 import { asyncSessionStorage } from 'redux-persist/storages';
 import thunk from 'redux-thunk';
-import undoable, { ActionCreators } from 'redux-undo';
+import undoable, { ActionCreators, groupByActionTypes } from 'redux-undo';
 
+// Reducer
 import rootReducer from '../reducers';
 
+// Actions
+import { setViewConfig } from '../actions';
+
+// Utils
 import MultiStorage from '../utils/multi-storage';
 
 const prefix = 'HiGlassApp.';
@@ -48,6 +53,7 @@ if (process.env.NODE_ENV === 'development') {
 const configure = (initialState) => {
   const store = createStore(
     undoable(enableBatching(rootReducer), {
+      groupBy: groupByActionTypes([setViewConfig().type]),
       limit: 20,
     }),
     initialState,
