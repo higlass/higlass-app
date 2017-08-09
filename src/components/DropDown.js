@@ -20,6 +20,7 @@ class DropDown extends React.Component {
 
     let className = 'rel drop-down';
 
+    className += this.props.className ? ` ${this.props.className}` : '';
     className += this.state.isOpen ? ' drop-down-is-open' : '';
     className += this.props.alignRight ? ' drop-down-align-right' : '';
     className += this.props.alignTop ? ' drop-down-align-top' : '';
@@ -56,6 +57,7 @@ class DropDown extends React.Component {
 
 DropDown.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
   alignRight: PropTypes.bool,
   alignTop: PropTypes.bool,
 };
