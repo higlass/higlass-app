@@ -1,4 +1,4 @@
-'use strict';
+/* eslint global-require: 0 */
 
 const autoprefixer = require('autoprefixer');
 const path = require('path');
@@ -13,6 +13,31 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const mdJsx = require('./md-jsx');
+const packageJson = require('../package.json');
+const packageJsonHg = require('../node_modules/higlass/package.json');
+const configBase = require('../config.json');
+
+const config = {};
+Object.assign(config, configBase);
+
+try {
+  const configLocal = require('../config.prod.json');
+  Object.assign(config, configLocal);
+} catch (ex) {
+  // Nothing
+}
+
+try {
+  const configLocal = require('../config.local.json');
+  Object.assign(config, configLocal);
+} catch (ex) {
+  // Nothing
+}
+
+const configConst = {};
+Object.keys(config).forEach((key) => {
+  configConst[`HGAC_${key.toUpperCase()}`] = JSON.stringify(config[key]);
+});
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -65,7 +90,7 @@ module.exports = {
     filename: 'static/js/[name].[chunkhash:8].js',
     chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
-    publicPath: publicPath,
+    publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
       path
@@ -373,7 +398,7 @@ module.exports = {
       },
       minify: true,
       // For unknown URLs, fallback to the index page
-      navigateFallback: publicUrl + '/index.html',
+      navigateFallback: `${publicUrl}/index.html`,
       // Ignores URLs starting from /__ (useful for Firebase):
       // https://github.com/facebookincubator/create-react-app/issues/2237#issuecomment-302693219
       navigateFallbackWhitelist: [/^(?!\/__).*/],
@@ -393,6 +418,7 @@ module.exports = {
     new webpack.DefinePlugin({
       VERSION_HIGLASS_VIEWER: JSON.stringify(packageJsonHg.version),
     }),
+    new webpack.DefinePlugin(configConst),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
