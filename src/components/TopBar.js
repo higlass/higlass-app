@@ -6,6 +6,11 @@ import { NavLink } from 'react-router-dom';
 // Components
 import Hamburger from './Hamburger';
 import Icon from './Icon';
+import TopBarDropDownLogin from './TopBarDropDownLogin';
+import TopBarDropDownUser from './TopBarDropDownUser';
+
+// Services
+import auth from '../services/auth';
 
 // Styles
 import './TopBar.scss';
@@ -18,13 +23,31 @@ class TopBar extends React.Component {
 
     this.state = {
       menuIsShown: false,
+      loginPassword: '',
+      loginUserId: '',
+      userEmail: auth.get('email'),
+      userId: auth.get('username'),
     };
+
+    this.loginPasswordHandler = this.loginPasswordHandler.bind(this);
+    this.loginUserIdHandler = this.loginUserIdHandler.bind(this);
+    this.login = this.login.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
   }
 
   componentWillMount() {
     this.unlisten = this.props.history.listen(
-      () => this.setState({ menuIsShown: false, })
+      () => this.setState({ menuIsShown: false })
     );
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.isAuthenticated !== this.props.isAuthenticated) {
+      this.setState({
+        userEmail: auth.get('email'),
+        userId: auth.get('username'),
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -48,23 +71,31 @@ class TopBar extends React.Component {
             </NavLink>
           </div>
           <nav className={`flex-c flex-jc-e flex-a-s is-toggable ${this.state.menuIsShown ? 'is-shown' : ''}`}>
-            <ul className='flex-c flex-jc-e flex-a-s no-list-style'>
+            <ul className='flex-c flex-jc-e flex-a-s no-list-style primary-nav-list'>
               <li><NavLink to='/about' activeClassName='is-active'>About</NavLink></li>
               <li><NavLink to='/examples' activeClassName='is-active'>Examples</NavLink></li>
               <li><NavLink to='/docs' activeClassName='is-active'>Docs</NavLink></li>
               <li className='separated-left flex-c flex-jc-c'>
-                <a
-                  href='https://github.com/hms-dbmi?&q=higlass'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='icon-only flex-c flex-a-c flex-jc-c'>
-                  <Icon iconId='github' />
-                </a>
+                {this.props.isAuthenticated ?
+                  (
+                    <TopBarDropDownUser
+                      logout={auth.logout}
+                      userEmail={this.state.userEmail}
+                      userId={this.state.userId} />
+                  ) : (
+                    <TopBarDropDownLogin
+                      login={this.login}
+                      loginPassword={this.state.loginPassword}
+                      loginPasswordHandler={this.loginPasswordHandler}
+                      loginUserId={this.state.loginUserId}
+                      loginUserIdHandler={this.loginUserIdHandler} />
+                  )
+                }
               </li>
             </ul>
             <Hamburger
               isActive={this.state.menuIsShown}
-              onClick={this.toggleMenu.bind(this)} />
+              onClick={this.toggleMenu} />
           </nav>
         </div>
       </header>
@@ -72,6 +103,31 @@ class TopBar extends React.Component {
   }
 
   /* ------------------------------ Custom Methods -------------------------- */
+
+  login(event) {
+    event.preventDefault();
+
+    this.setState({
+      isLoggingIn: true,
+    });
+
+    auth
+      .login(this.state.loginUserId, this.state.loginPassword)
+      .then((token) => {
+        console.log('GEIL! Logged in.', token);
+      })
+      .catch((error) => {
+        console.warn('SCHISS! Log in failed.', error);
+      });
+  }
+
+  loginUserIdHandler(event) {
+    this.setState({ loginUserId: event.target.value });
+  }
+
+  loginPasswordHandler(event) {
+    this.setState({ loginPassword: event.target.value });
+  }
 
   toggleMenu(isOpen) {
     this.setState({
@@ -84,6 +140,7 @@ TopBar.propTypes = {
   match: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
 export default withRouter(TopBar);

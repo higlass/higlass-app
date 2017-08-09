@@ -160,15 +160,28 @@
       background: $gray-lightest;
     }
 
-    a {
-      position: relative;
-      display: block;
+    > a,
+    > button,
+    button.is-primary-nav {
       margin: 0 0.125rem;
       padding: 0 0.125rem;
-      box-shadow: none;
       font-size: 0.85em;
 
       @include underline($black, -2px, 2px);
+
+      &.is-active {
+        font-weight: bold;
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+
+    > a {
+      position: relative;
+      display: block;
+      box-shadow: none;
 
       &.icon-only {
         &::after {
@@ -181,13 +194,29 @@
       }
 
       &.is-active {
-        font-weight: bold;
         color: $primary;
         box-shadow: 0 2px 0 0 $primary;
+      }
+    }
 
-        &::before {
-          display: none;
-        }
+    > button,
+    button.is-primary-nav {
+      height: 3rem;
+      border: 0;
+      border-radius: 0;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.is-active {
+        color: $black;
+        box-shadow: 0 2px 0 0 $black;
+        background: $gray-lightest-rgba;
       }
     }
 
