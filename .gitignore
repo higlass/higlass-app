@@ -25,5 +25,6 @@
 .idea/
 
 # app specific
+config.*.json
 src/sidebar.md
 src/wiki.md
