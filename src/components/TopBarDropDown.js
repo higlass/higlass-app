@@ -13,7 +13,8 @@ const TopBarDropDowUser = props => (
   <DropDown
     alignRight={props.alignRight}
     alignTop={props.alignTop}
-    className={className(props.className)}>
+    className={className(props.className)}
+    closeOnOuterClick={props.closeOnOuterClick}>
     {props.children}
   </DropDown>
 );
@@ -21,6 +22,7 @@ const TopBarDropDowUser = props => (
 TopBarDropDowUser.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  closeOnOuterClick: PropTypes.bool,
   alignRight: PropTypes.bool,
   alignTop: PropTypes.bool,
 };

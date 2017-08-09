@@ -12,7 +12,10 @@ import './TopBarDropDownUser.scss';
 
 
 const TopBarDropDowUser = props => (
-  <TopBarDropDown alignRight={true} className='top-bar-drop-down-user'>
+  <TopBarDropDown
+    alignRight={true}
+    className='top-bar-drop-down-user'
+    closeOnOuterClick={props.closeOnOuterClick}>
     <DropDownTrigger>
       <ButtonIcon className='is-primary-nav' icon='person' iconOnly={true} />
     </DropDownTrigger>
@@ -32,6 +35,7 @@ const TopBarDropDowUser = props => (
 );
 
 TopBarDropDowUser.propTypes = {
+  closeOnOuterClick: PropTypes.bool,
   logout: PropTypes.func.isRequired,
   userEmail: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,

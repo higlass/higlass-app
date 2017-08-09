@@ -81,11 +81,13 @@ class TopBar extends React.Component {
                 {this.props.isAuthenticated ?
                   (
                     <TopBarDropDownUser
+                      closeOnOuterClick={true}
                       logout={auth.logout}
                       userEmail={this.state.userEmail}
                       userId={this.state.userId} />
                   ) : (
                     <TopBarDropDownLogin
+                      closeOnOuterClick={true}
                       isLoggingIn={this.isLoggingIn}
                       login={this.login}
                       loginPassword={this.state.loginPassword}

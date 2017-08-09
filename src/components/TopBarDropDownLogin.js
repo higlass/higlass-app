@@ -9,7 +9,10 @@ import TopBarDropDown from './TopBarDropDown';
 
 
 const TopBarDropDowLogin = props => (
-  <TopBarDropDown alignRight={true} className='top-bar-drop-down-login'>
+  <TopBarDropDown
+    alignRight={true}
+    className='top-bar-drop-down-login'
+    closeOnOuterClick={props.closeOnOuterClick}>
     <DropDownTrigger>
       <ButtonIcon className='is-primary-nav' icon='login'>
         Log In
@@ -36,6 +39,8 @@ const TopBarDropDowLogin = props => (
 );
 
 TopBarDropDowLogin.propTypes = {
+  closeOnOuterClick: PropTypes.bool,
+  isLoggingIn: PropTypes.bool,
   login: PropTypes.func.isRequired,
   loginPasswordHandler: PropTypes.func.isRequired,
   loginPassword: PropTypes.string.isRequired,

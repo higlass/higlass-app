@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// Services
+import pubSub from '../services/pub-sub';
+
+// Utils
+import hasParent from '../utils/has-parent';
+
 class DropDown extends React.Component {
   constructor(props) {
     super(props);
@@ -8,6 +14,21 @@ class DropDown extends React.Component {
     this.state = {
       isOpen: false,
     };
+
+    this.pubSubs = [];
+  }
+
+  componentDidMount() {
+    if (this.props.closeOnOuterClick) {
+      this.pubSubs.push(
+        pubSub.subscribe('click', this.clickHandler.bind(this))
+      );
+    }
+  }
+
+  componentWillUnmount() {
+    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs = [];
   }
 
   render() {
@@ -26,13 +47,21 @@ class DropDown extends React.Component {
     className += this.props.alignTop ? ' drop-down-align-top' : '';
 
     return (
-      <div className={className}>
+      <div
+        className={className}
+        ref={(el) => { this.el = el; }}>
         {childrenWithProps}
       </div>
     );
   }
 
   /* ------------------------------ Custom Methods -------------------------- */
+
+  clickHandler(event) {
+    if (!hasParent(event.target, this.el)) {
+      this.close();
+    }
+  }
 
   close() {
     this.setState({
@@ -56,6 +85,7 @@ class DropDown extends React.Component {
 }
 
 DropDown.propTypes = {
+  closeOnOuterClick: PropTypes.bool,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   alignRight: PropTypes.bool,
