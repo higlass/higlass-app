@@ -23,6 +23,7 @@ $blue: #0F5D92;
 $blue-darker: adjust-color($blue, $saturation: -66%, $lightness: -15%);
 $blue-dark: adjust-color($blue, $saturation: -25%, $lightness: -10%);
 $blue-light: adjust-color($blue, $saturation: -20%, $lightness: 60%);
+$blue-highlight: adjust-color($blue, $saturation: 100%, $lightness: 25%);
 $red-dark: #a1112d;
 $red-light: #ffccd6;
 
