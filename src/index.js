@@ -8,6 +8,9 @@ import { history, state } from './services/state';
 import App from './components/App';
 import AppFake from './components/AppFake';
 
+// Services
+import auth from './services/auth';
+
 // Utils
 import Logger from './utils/logger';
 import registerServiceWorker from './registerServiceWorker';
@@ -41,7 +44,9 @@ const render = (Component, store, error) => {
 
 render(AppFake);
 
-storeRehydrated
+auth
+  .checkAuthentication()
+  .then(() => storeRehydrated)
   .then((store) => {
     rehydratedStore = store;
     render(App, store);

@@ -13,6 +13,7 @@ import TopBar from './TopBar';
 import { redo, setViewConfig, undo } from '../actions';
 
 // Services
+import auth from '../services/auth';
 import domEvent from '../services/dom-event';
 import pubSub from '../services/pub-sub';
 
@@ -43,6 +44,7 @@ class App extends React.Component {
 
     this.state = {
       dialog: undefined,
+      isAuthenticated: auth.isAuthenticated(),
     };
   }
 
@@ -59,6 +61,14 @@ class App extends React.Component {
 
     this.pubSubs.push(
       pubSub.subscribe('keydown', this.keyDownHandler.bind(this))
+    );
+
+    this.pubSubs.push(
+      pubSub.subscribe('login', this.loginHandler.bind(this))
+    );
+
+    this.pubSubs.push(
+      pubSub.subscribe('logout', this.logoutHandler.bind(this))
     );
   }
 
@@ -89,8 +99,10 @@ class App extends React.Component {
             resolveOnly={this.state.dialog.resolveOnly}
             resolveText={this.state.dialog.resolveText} />
         }
-        <TopBar />
-        <Main />
+        <TopBar
+          isAuthenticated={this.state.isAuthenticated} />
+        <Main
+          isAuthenticated={this.state.isAuthenticated} />
       </div>
     );
   }
@@ -121,6 +133,14 @@ class App extends React.Component {
       event.preventDefault();
       this.props.undo();
     }
+  }
+
+  loginHandler() {
+    this.setState({ isAuthenticated: true });
+  }
+
+  logoutHandler() {
+    this.setState({ isAuthenticated: false });
   }
 }
 
