@@ -117,20 +117,20 @@ const login = (username, password) => {
       .then((data) => {
         cookie.set('higlasstoken', data.token);
 
-        state.email = true;
-        state.isAuthenticated = true;
-        state.username = true;
-
+        return checkAuthentication();
+      })
+      .then(() => {
         pubSub.publish('login');
-
-        return data.token;
       });
 };
 
 const logout = () => {
   // Remove existing cookie before logging in.
   cookie.remove('higlasstoken');
+
+  state.email = '';
   state.isAuthenticated = false;
+  state.username = '';
 
   pubSub.publish('logout');
 };
