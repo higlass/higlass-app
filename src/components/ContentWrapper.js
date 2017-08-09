@@ -37,7 +37,7 @@ class ContentWrapper extends React.Component {
             autoClose={true}
             isClosable={true}
             msg={this.state.error}
-            onClose={() => this.setState({ error: '', })}
+            onClose={() => this.setState({ error: '' })}
             wrap={true} />
         }
         {this.props.children}

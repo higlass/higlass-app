@@ -15,6 +15,6 @@ Object.keys(LEVELS).forEach((level) => {
   };
 });
 
-const Logger = name => Object.create(logger, { name: { value: name, }, });
+const Logger = name => Object.create(logger, { name: { value: name } });
 
 export default Logger;

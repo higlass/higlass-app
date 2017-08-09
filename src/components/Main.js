@@ -14,7 +14,7 @@ import Viewer from '../views/Viewer';
 const Main = () => (
   <Switch>
     <Route exact path='/about' component={About} />
-    <Route exact path='/app' render={({ location, }) => {
+    <Route exact path='/app' render={({ location }) => {
       const query = new URLSearchParams(location.search);
       const viewConfigId = query.get('config');
 

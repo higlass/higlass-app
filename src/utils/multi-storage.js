@@ -6,7 +6,7 @@ const multiStorage = function multiStorage(storages, prefix) {
   const safeStorages = storages.map((storage) => {
     if (storage.keys && !storage.getAllKeys) {
       // Fallback for localForage
-      return { ...storage, getAllKeys: storage.keys, };
+      return { ...storage, getAllKeys: storage.keys };
     }
 
     return storage;
