@@ -22,9 +22,10 @@ class TopBar extends React.Component {
     super(props);
 
     this.state = {
-      menuIsShown: false,
+      isLoggingIn: false,
       loginPassword: '',
       loginUserId: '',
+      menuIsShown: false,
       userEmail: auth.get('email'),
       userId: auth.get('username'),
     };
@@ -44,6 +45,7 @@ class TopBar extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.isAuthenticated !== this.props.isAuthenticated) {
       this.setState({
+        isLoggingIn: false,
         userEmail: auth.get('email'),
         userId: auth.get('username'),
       });
@@ -84,6 +86,7 @@ class TopBar extends React.Component {
                       userId={this.state.userId} />
                   ) : (
                     <TopBarDropDownLogin
+                      isLoggingIn={this.isLoggingIn}
                       login={this.login}
                       loginPassword={this.state.loginPassword}
                       loginPasswordHandler={this.loginPasswordHandler}
@@ -111,14 +114,7 @@ class TopBar extends React.Component {
       isLoggingIn: true,
     });
 
-    auth
-      .login(this.state.loginUserId, this.state.loginPassword)
-      .then((token) => {
-        console.log('GEIL! Logged in.', token);
-      })
-      .catch((error) => {
-        console.warn('SCHISS! Log in failed.', error);
-      });
+    auth.login(this.state.loginUserId, this.state.loginPassword);
   }
 
   loginUserIdHandler(event) {

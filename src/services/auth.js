@@ -36,14 +36,10 @@ const checkAuthentication = () => {
       }))
     )
     .then((response) => {
-      console.log('resp', response);
-
       if (response.status !== 200) return false;
 
       try {
         const data = JSON.parse(response.data);
-
-        console.log('resp data', data);
 
         state.email = data.email;
         state.isAuthenticated = true;
@@ -62,8 +58,6 @@ const checkAuthentication = () => {
 
 const get = (key) => {
   if (key === 'token') return cookie.get('higlasstoken');
-
-  console.log('auth state', state);
 
   return state[key];
 };
