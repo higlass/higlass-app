@@ -9,7 +9,7 @@
 const hasParent = (source, target) => {
   let currentEl = source;
 
-  while (currentEl !== target && currentEl.tagname !== 'HTML') {
+  while (currentEl !== target && currentEl.tagName !== 'HTML') {
     currentEl = currentEl.parentNode;
   }
 
