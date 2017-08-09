@@ -49,11 +49,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    domEvent.register('click', document);
+    domEvent.register('keydown', document);
+    domEvent.register('keyup', document);
     domEvent.register('orientationchange', window);
     domEvent.register('resize', window);
     domEvent.register('scroll', document);
-    domEvent.register('keydown', document);
-    domEvent.register('keyup', document);
 
     this.pubSubs.push(
       pubSub.subscribe('globalDialog', this.dialogHandler.bind(this))
@@ -73,11 +74,12 @@ class App extends React.Component {
   }
 
   componentWillUnmount() {
+    domEvent.unregister('click', document);
+    domEvent.unregister('keydown', document);
+    domEvent.unregister('keyup', document);
     domEvent.unregister('orientationchange', window);
     domEvent.unregister('resize', window);
     domEvent.unregister('scroll', document);
-    domEvent.unregister('keydown', document);
-    domEvent.unregister('keyup', document);
 
     this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
     this.pubSubs = [];
