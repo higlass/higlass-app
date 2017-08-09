@@ -2,7 +2,6 @@
 @import '../styles/transitions';
 
 .button-icon {
-  width: 1.5em;
   height: 1.5em;
   margin: 0;
   padding: 0;
@@ -12,6 +11,7 @@
   transition: color $normal-transition $easing,
               border-color $normal-transition $easing,
               background $normal-transition $easing;
+  white-space: nowrap;
 
   .icon {
     width: 1em;
@@ -19,7 +19,11 @@
     margin-right: 0.25em;
   }
 
-  &.button-icon-only .icon {
-    margin-right: 0;
+  &.button-icon-only {
+    width: 1.5em;
+
+    .icon {
+      margin-right: 0;
+    }
   }
 }
