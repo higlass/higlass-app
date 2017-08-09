@@ -16,7 +16,7 @@ const checkAuthentication = () => {
   // Get the cookie with the token
   const token = cookie.get('higlasstoken');
 
-  if (!token) { return Promise.reject('Token not available.'); }
+  if (!token) { return Promise.resolve(false); }
 
   // Verify token
   return fetch(
