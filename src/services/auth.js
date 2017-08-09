@@ -1,0 +1,146 @@
+/* global HGAC_SERVER:false */
+
+// Services
+import pubSub from '../services/pub-sub';
+
+// Utils
+import cookie from '../utils/cookie';
+
+const state = {
+  email: '',
+  isAuthenticated: false,
+  username: '',
+};
+
+const checkAuthentication = () => {
+  // Get the cookie with the token
+  const token = cookie.get('higlasstoken');
+
+  if (!token) { return Promise.reject('Token not available.'); }
+
+  // Verify token
+  return fetch(
+    `${HGAC_SERVER}/api/v1/current/`,
+    {
+      // credentials: HGAC_SERVER === '' ? 'same-origin' : 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'GET',
+    })
+    .then(response => response.text()
+      .then(data => ({
+        data,
+        status: response.status,
+      }))
+    )
+    .then((response) => {
+      console.log('resp', response);
+
+      if (response.status !== 200) return false;
+
+      try {
+        const data = JSON.parse(response.data);
+
+        console.log('resp data', data);
+
+        state.email = data.email;
+        state.isAuthenticated = true;
+        state.username = data.username;
+
+        return true;
+      } catch (e) {
+        // Authentication failed or webserver is broken
+        return false;
+      }
+    })
+    .catch(() => {
+      state.isAuthenticated = false;
+    });
+};
+
+const get = (key) => {
+  if (key === 'token') return cookie.get('higlasstoken');
+
+  console.log('auth state', state);
+
+  return state[key];
+};
+
+const isAuthenticated = () => state.isAuthenticated;
+
+const login = (username, password) => {
+  // Remove existing cookie before logging in.
+  cookie.remove('higlasstoken');
+  state.isAuthenticated = false;
+
+  return fetch(
+    `${HGAC_SERVER}/api-token-auth/`,
+    {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    })
+      .then((response) => {
+        const contentType = response.headers.get('content-type');
+
+        if (contentType && contentType.indexOf('application/json') !== -1) {
+          return response.json().then(body => ({
+            isJson: true,
+            body,
+            response,
+          }));
+        }
+
+        return response.text().then(body => ({
+          isJson: false,
+          body,
+          response,
+        }));
+      })
+      .then((data) => {
+        if (!data.response.ok) {
+          throw Error(data.response.statusText);
+        }
+
+        state.isAuthenticated = false;
+
+        return data.body;
+      })
+      .then((data) => {
+        cookie.set('higlasstoken', data.token);
+
+        state.email = true;
+        state.isAuthenticated = true;
+        state.username = true;
+
+        pubSub.publish('login');
+
+        return data.token;
+      });
+};
+
+const logout = () => {
+  // Remove existing cookie before logging in.
+  cookie.remove('higlasstoken');
+  state.isAuthenticated = false;
+
+  pubSub.publish('logout');
+};
+
+const auth = {
+  checkAuthentication,
+  get,
+  isAuthenticated,
+  login,
+  logout,
+};
+
+export default auth;
