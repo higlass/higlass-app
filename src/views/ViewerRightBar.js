@@ -25,7 +25,8 @@ const ViewerRightBar = props => (
   <RightBar
     show={props.viewerRightBarShow}
     toggle={rightBarWidthToggler(props)}
-    width={props.viewerRightBarWidth}>
+    width={props.viewerRightBarWidth}
+    widthSetter={props.setViewerRightBarWidth}>
     <RightBarSubTopBar>
       <TabTrigger
         for='info'
