@@ -6,6 +6,8 @@ const keydown = event => pubSub.publish('keydown', event);
 
 const keyup = event => pubSub.publish('keyup', event);
 
+const mousemove = event => pubSub.publish('mousemove', event);
+
 const resize = event => pubSub.publish('resize', event);
 
 const scroll = event => pubSub.publish(
@@ -17,6 +19,7 @@ const eventHandler = {
   click,
   keydown,
   keyup,
+  mousemove,
   orientationchange: resize,
   resize,
   scroll,

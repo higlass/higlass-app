@@ -52,6 +52,7 @@ class App extends React.Component {
     domEvent.register('click', document);
     domEvent.register('keydown', document);
     domEvent.register('keyup', document);
+    domEvent.register('mousemove', document);
     domEvent.register('orientationchange', window);
     domEvent.register('resize', window);
     domEvent.register('scroll', document);
@@ -77,6 +78,7 @@ class App extends React.Component {
     domEvent.unregister('click', document);
     domEvent.unregister('keydown', document);
     domEvent.unregister('keyup', document);
+    domEvent.unregister('mousemove', document);
     domEvent.unregister('orientationchange', window);
     domEvent.unregister('resize', window);
     domEvent.unregister('scroll', document);
