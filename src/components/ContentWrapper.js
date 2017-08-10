@@ -29,9 +29,14 @@ class ContentWrapper extends React.Component {
   }
 
   render() {
+    let className = `flex-c flex-v full-mdim content-wrapper ${this.props.name}`;
+
+    className += this.props.isFullDimOnly ? ' oh' : '';
+    className += this.props.bottomBar ? ' content-wrapper-bottom-bar' : '';
+
     return (
       <div
-        className={`flex-c flex-v full-mdim content-wrapper ${this.props.name} ${this.props.bottomBar ? 'content-wrapper-bottom-bar' : ''}`}>
+        className={className}>
         {this.state.error &&
           <ErrorBar
             autoClose={true}
@@ -61,6 +66,7 @@ ContentWrapper.defaultProps = {
 ContentWrapper.propTypes = {
   bottomBar: PropTypes.bool,
   children: PropTypes.node,
+  isFullDimOnly: PropTypes.bool,
   name: PropTypes.string.isRequired,
 };
 
