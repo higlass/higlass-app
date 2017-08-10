@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
-import { Switch, Route } from 'react-router-dom';
-import { withRouter } from 'react-router';
+import { Route, Switch, withRouter } from 'react-router';
 
 // Views
 import About from '../views/About';
@@ -27,7 +25,9 @@ class Main extends React.Component {
           const query = new URLSearchParams(location.search);
           const viewConfigId = query.get('config');
 
-          return <Viewer viewConfigId={viewConfigId} />;
+          return <Viewer
+            isAuthenticated={this.props.isAuthenticated}
+            viewConfigId={viewConfigId} />;
         }} />
         <Route exact path='/examples' component={Examples} />
         <Route exact path='/docs' component={Docs} />
@@ -39,6 +39,7 @@ class Main extends React.Component {
 }
 
 Main.propTypes = {
+  isAuthenticated: PropTypes.bool,
   location: PropTypes.object.isRequired,
 };
 
