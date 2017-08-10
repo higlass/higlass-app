@@ -6,6 +6,25 @@
   right: 0;
   left: 0;
   height: 2rem;
-  padding: 0.25rem;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
   background: $gray-lighter;
+  box-shadow: inset 0 -1px 0 0 $gray-lightest-rgba;
+
+  button {
+    height: 2rem;
+    border: 0;
+    background: transparent;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.is-active {
+      color: black;
+      background: $gray-lightest;
+      box-shadow: 1px 0 0 0 $gray-lightest-rgba,
+                  -1px 0 0 0 $gray-lightest-rgba;
+    }
+  }
 }

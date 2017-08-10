@@ -5,7 +5,7 @@ import React from 'react';
 import './RightBarSubTopBar.scss';
 
 const classNames = () => {
-  const className = 'right-bar-sub-top-bar';
+  const className = 'flex-c right-bar-sub-top-bar';
 
   return className;
 };
