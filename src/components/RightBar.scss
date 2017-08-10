@@ -14,16 +14,17 @@
     left: -1rem;
     width: 1rem;
     height: 2rem;
+    color: $gray-medium;
     border: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     background: $gray-lighter;
-    box-shadow: -2px 0 0 0 $gray-lighter-rgba;
+    box-shadow: -1px 0 0 0 $gray-lighter-rgba;
 
     &:hover {
       color: $gray-darker;
-      border-color: $gray-lighter;
-      background: $gray-lighter;
+      background: $gray-light;
+      box-shadow: -1px 0 0 0 $gray-light-rgba;
     }
 
     &:focus {
