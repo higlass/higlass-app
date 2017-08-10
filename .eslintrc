@@ -18,6 +18,8 @@
     "react"
   ],
   "globals": {
+    "expect": false,
+    "it": false,
     "VERSION_HIGLASS_APP": false,
     "VERSION_HIGLASS_VIEWER": false
   },
