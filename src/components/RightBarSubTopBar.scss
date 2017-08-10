@@ -1,0 +1,11 @@
+@import '../styles/colors';
+
+.right-bar-sub-top-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2rem;
+  padding: 0.25rem;
+  background: $gray-lighter;
+}

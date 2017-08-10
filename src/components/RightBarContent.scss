@@ -1,0 +1,23 @@
+@import '../styles/colors';
+@import '../styles/transitions';
+
+.right-bar-content {
+  margin-top: 2rem;
+  padding: 0;
+  background: $gray-lightest;
+  border-bottom: 0;
+
+  > * {
+    opacity: 0;
+    transition: opacity $fast-transition $easing;
+  }
+}
+
+.right-bar.is-shown > .right-bar-content {
+  padding: 0.5rem;
+  border-bottom: 2px solid $gray-lighter;
+
+  > * {
+    opacity: 1;
+  }
+}
