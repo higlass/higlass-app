@@ -159,9 +159,7 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
   redo: () => dispatch(redo),
-  setViewConfig: (viewConfig) => {
-    dispatch(setViewConfig(viewConfig));
-  },
+  setViewConfig: viewConfig => dispatch(setViewConfig(viewConfig)),
   undo: () => dispatch(undo),
 });
 
