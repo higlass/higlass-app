@@ -26,5 +26,6 @@
 
 # app specific
 config.*.json
+package-lock.json
 src/sidebar.md
 src/wiki.md
