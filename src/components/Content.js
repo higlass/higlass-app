@@ -15,9 +15,15 @@ const classNames = (props) => {
   return className;
 };
 
-const styles = props => ({
-  marginRight: `${props.rightBarShow ? props.rightBarWidth : 0}px`,
-});
+const styles = (props) => {
+  if (props.hasRightBar) {
+    return {
+      marginRight: `${props.rightBarShow ? props.rightBarWidth : 0}px`,
+    };
+  }
+
+  return {};
+};
 
 const Content = props => (
   <main
