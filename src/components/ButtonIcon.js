@@ -21,7 +21,9 @@ const ButtonIcon = props => (
   <button
     className={classNames(props)}
     title={props.title}
-    onClick={props.onClick}>
+    onClick={props.onClick}
+    onMouseDown={props.onMouseDown}
+    onMouseUp={props.onMouseUp}>
     <Icon
       iconId={props.icon}
       mirrorH={props.iconMirrorH}
@@ -39,6 +41,8 @@ ButtonIcon.propTypes = {
   iconOnly: PropTypes.bool,
   isActive: PropTypes.bool,
   onClick: PropTypes.func,
+  onMouseDown: PropTypes.func,
+  onMouseUp: PropTypes.func,
   title: PropTypes.string,
 };
 
