@@ -12,14 +12,19 @@ export const setViewConfig = viewConfig => ({
   payload: { viewConfig },
 });
 
-export const setViewerRightBarWidth = viewerRightBarWidth => ({
-  type: 'SET_VIEWER_RIGHT_BAR_WIDTH',
-  payload: { viewerRightBarWidth },
-});
-
 export const setViewerRightBarShow = viewerRightBarShow => ({
   type: 'SET_VIEWER_RIGHT_BAR_SHOW',
   payload: { viewerRightBarShow },
+});
+
+export const setViewerRightBarTab = viewerRightBarTab => ({
+  type: 'SET_VIEWER_RIGHT_BAR_TAB',
+  payload: { viewerRightBarTab },
+});
+
+export const setViewerRightBarWidth = viewerRightBarWidth => ({
+  type: 'SET_VIEWER_RIGHT_BAR_WIDTH',
+  payload: { viewerRightBarWidth },
 });
 
 export const undo = ActionCreators.undo();

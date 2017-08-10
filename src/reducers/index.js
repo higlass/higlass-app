@@ -10,6 +10,8 @@ export const viewConfig = defaultSetReducer('viewConfig', null);
 
 export const viewerRightBarShow = defaultSetReducer('viewerRightBarShow', false);
 
+export const viewerRightBarTab = defaultSetReducer('viewerRightBarTab', 'info');
+
 export const viewerRightBarWidth = defaultSetReducer('viewerRightBarWidth', 200);
 
 
@@ -18,5 +20,6 @@ export default combineReducers({
   homeInfoBarClose,
   viewConfig,
   viewerRightBarShow,
+  viewerRightBarTab,
   viewerRightBarWidth,
 });
