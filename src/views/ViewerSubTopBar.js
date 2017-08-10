@@ -22,8 +22,8 @@ const ViewerSubTopBar = props => (
       className='flex-c flex-a-c flex-jc-e no-list-style'>
       <li>
         <ToolTip
-          delayIn='1000'
-          delayOut='500'
+          delayIn={1000}
+          delayOut={500}
           title='Download view config as JSON'>
           <ButtonIcon
             icon='download'
