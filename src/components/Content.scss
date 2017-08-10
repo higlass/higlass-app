@@ -1,6 +1,17 @@
+@import '../styles/transitions';
+
 .content {
   margin-top: 3rem;
   margin-bottom: 1rem;
+  transition: margin $fast-transition $easing;
+
+  &.has-sub-top-bar {
+    margin-top: 5rem;
+  }
+
+  &.is-full-screen {
+    overflow: hidden;
+  }
 }
 
 .info-bar + .content {
