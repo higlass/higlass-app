@@ -1,3 +1,10 @@
+v0.5.0
+
+- Add sub-top bar
+- Add right bar
+- Add tool tip
+- Add tabs
+
 v0.4.0
 
 - Add support for user authentication
