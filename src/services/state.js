@@ -14,7 +14,11 @@ import undoable, { ActionCreators, groupByActionTypes } from 'redux-undo';
 import rootReducer from '../reducers';
 
 // Actions
-import { setViewConfig } from '../actions';
+import {
+  setViewConfig,
+  setViewerRightBarShow,
+  setViewerRightBarWidth,
+ } from '../actions';
 
 // Utils
 import MultiStorage from '../utils/multi-storage';
@@ -53,7 +57,11 @@ if (process.env.NODE_ENV === 'development') {
 const configure = (initialState) => {
   const store = createStore(
     undoable(enableBatching(rootReducer), {
-      groupBy: groupByActionTypes([setViewConfig().type]),
+      groupBy: groupByActionTypes([
+        setViewConfig().type,
+        setViewerRightBarShow().type,
+        setViewerRightBarWidth().type,
+      ]),
       limit: 20,
     }),
     initialState,
