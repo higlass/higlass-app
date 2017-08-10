@@ -1,0 +1,17 @@
+@import '../styles/colors';
+@import '../styles/transitions';
+
+.sub-top-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2rem;
+  padding: 0 0.5rem;
+  overflow: hidden;
+  background: $gray-lightest;
+}
+
+.content.has-right-bar > .sub-top-bar {
+  padding-right: 1.5rem;
+}
