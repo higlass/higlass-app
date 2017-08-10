@@ -3,6 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+// Actions
+import { setViewerRightBarShow, setViewerRightBarWidth } from '../actions';
+
 // Components
 import AppInfo from '../components/AppInfo';
 import BottomBar from '../components/BottomBar';
@@ -10,6 +13,11 @@ import ButtonIcon from '../components/ButtonIcon';
 import Content from '../components/Content';
 import ContentWrapper from '../components/ContentWrapper';
 import HiGlassViewer from '../components/HiGlassViewer';
+import RightBar from '../components/RightBar';
+import RightBarSubTopBar from '../components/RightBarSubTopBar';
+import RightBarContent from '../components/RightBarContent';
+import SubTopBar from '../components/SubTopBar';
+import SubTopBottomBarButtons from '../components/SubTopBottomBarButtons';
 
 // Services
 import pubSub from '../services/pub-sub';
@@ -39,13 +47,52 @@ class Viewer extends React.Component {
 
   render() {
     return (
-      <ContentWrapper name='viewer' bottomBar={true}>
-        <Content name='viewer' rel={true}>
-          <HiGlassViewer viewConfigId={this.props.viewConfigId} />
+      <ContentWrapper name='viewer' bottomBar={true} isFullDimOnly={true}>
+        <Content
+          name='viewer'
+          rel={true}
+          hasRightBar={true}
+          rightBarShow={this.props.viewerRightBarShow}
+          rightBarWidth={this.props.viewerRightBarWidth}>
+          <SubTopBar>
+            <SubTopBottomBarButtons
+              className='flex-c flex-a-c no-list-style' />
+            <SubTopBottomBarButtons
+              className='flex-c flex-a-c flex-jc-e no-list-style'>
+              <li>
+                <ButtonIcon
+                  icon='download'
+                  iconOnly={true}
+                  onClick={this.downloadViewConfig.bind(this)} />
+              </li>
+              <li>
+                <ButtonIcon
+                  icon='info'
+                  iconOnly={true}
+                  onClick={this.showInfo.bind(this)} />
+              </li>
+            </SubTopBottomBarButtons>
+          </SubTopBar>
+          <HiGlassViewer
+            viewConfigId={this.props.viewConfigId}
+            hasSubTopBar={true} />
         </Content>
+        <RightBar
+          show={this.props.viewerRightBarShow}
+          toggle={this.rightBarWidthToggler.bind(this)}
+          width={this.props.viewerRightBarWidth}>
+          <RightBarSubTopBar>
+            <span>Cool</span>
+          </RightBarSubTopBar>
+          <RightBarContent>
+            <span>Wooord</span>
+          </RightBarContent>
+        </RightBar>
         <BottomBar>
-          <ul className='flex-c flex-a-c no-list-style bottom-bar-buttons' />
-          <ul className='flex-c flex-a-c flex-jc-e no-list-style bottom-bar-buttons'>
+          <SubTopBottomBarButtons
+            className='flex-c flex-a-c no-list-style' />
+          <SubTopBottomBarButtons
+            className='flex-c flex-a-c flex-jc-e no-list-style'>
             <li>
               <ButtonIcon
                 icon='download'
@@ -58,7 +105,7 @@ class Viewer extends React.Component {
                 iconOnly={true}
                 onClick={this.showInfo.bind(this)} />
             </li>
-          </ul>
+          </SubTopBottomBarButtons>
         </BottomBar>
       </ContentWrapper>
     );
@@ -75,6 +122,10 @@ class Viewer extends React.Component {
       event.preventDefault();
       this.downloadViewConfig();
     }
+  }
+
+  rightBarWidthToggler() {
+    this.props.setViewerRightBarShow(!this.props.viewerRightBarShow);
   }
 
   showInfo() {
@@ -100,13 +151,24 @@ Viewer.defaultProps = {
 Viewer.propTypes = {
   viewConfig: PropTypes.object,
   viewConfigId: PropTypes.string,
+  viewerRightBarShow: PropTypes.bool,
+  viewerRightBarWidth: PropTypes.number,
+  setViewerRightBarShow: PropTypes.func,
+  setViewerRightBarWidth: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   viewConfig: state.present.viewConfig,
+  viewerRightBarShow: state.present.viewerRightBarShow,
+  viewerRightBarWidth: state.present.viewerRightBarWidth,
 });
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = dispatch => ({
+  setViewerRightBarShow: viewerRightBarShow =>
+    dispatch(setViewerRightBarShow(viewerRightBarShow)),
+  setViewerRightBarWidth: viewerRightBarWidth =>
+    dispatch(setViewerRightBarWidth(viewerRightBarWidth)),
+});
 
 export default withRouter(connect(
   mapStateToProps,
