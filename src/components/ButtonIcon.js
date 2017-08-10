@@ -7,9 +7,19 @@ import Icon from './Icon';
 // Styles
 import './ButtonIcon.scss';
 
+const classNames = (props) => {
+  let className = 'flex-c flex-a-c flex-jc-c button-icon';
+
+  className += ` ${props.className}`;
+  className += props.iconOnly ? ' button-icon-only' : '';
+  className += props.isActive ? ' is-active' : '';
+
+  return className;
+};
+
 const ButtonIcon = props => (
   <button
-    className={`flex-c flex-a-c flex-jc-c button-icon ${props.iconOnly ? 'button-icon-only' : ''} ${props.isActive ? 'is-active' : ''} ${props.className}`}
+    className={classNames(props)}
     title={props.title}
     onClick={props.onClick}>
     <Icon
