@@ -27,15 +27,6 @@ const AppLoading = props => (
             <li><a href='/about'>About</a></li>
             <li><a href='/examples'>Examples</a></li>
             <li><a href='/docs'>Docs</a></li>
-            <li className='separated-left flex-c flex-jc-c'>
-              <a
-                href='https://github.com/hms-dbmi?&q=higlass'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='icon-only flex-c flex-a-c'>
-                <Icon iconId='github' />
-              </a>
-            </li>
           </ul>
         </nav>
       </div>
