@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import ButtonIcon from '../components/ButtonIcon';
 import SubTopBar from '../components/SubTopBar';
 import SubTopBottomBarButtons from '../components/SubTopBottomBarButtons';
+import ToolTip from '../components/ToolTip';
 
 // Utils
 import downloadAsJson from '../utils/download-as-json';
@@ -20,10 +21,15 @@ const ViewerSubTopBar = props => (
     <SubTopBottomBarButtons
       className='flex-c flex-a-c flex-jc-e no-list-style'>
       <li>
-        <ButtonIcon
-          icon='download'
-          iconOnly={true}
-          onClick={() => downloadViewConfig(props)} />
+        <ToolTip
+          delayIn='1000'
+          delayOut='500'
+          title='Download view config as JSON'>
+          <ButtonIcon
+            icon='download'
+            iconOnly={true}
+            onClick={() => downloadViewConfig(props)} />
+        </ToolTip>
       </li>
     </SubTopBottomBarButtons>
   </SubTopBar>
