@@ -178,8 +178,8 @@ svg.centered {
 
 .wrap,
 .wrap-basic {
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .wrap.smaller {
@@ -467,6 +467,10 @@ ul.iconized {
 .date {
   display: block;
   color: $gray-medium;
+}
+
+.oh {
+  overflow: hidden;
 }
 
 .two-authors li:first-child:after {
