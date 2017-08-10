@@ -19,6 +19,9 @@ import pubSub from '../services/pub-sub';
 import Deferred from '../utils/deferred';
 import Logger from '../utils/logger';
 
+// Styles
+import './HiGlassViewer.scss';
+
 const logger = Logger('HiGlassViewer');
 
 const fetchViewConfig = (configId, base = '') => fetch(
@@ -49,8 +52,12 @@ class HiGlassViewer extends React.Component {
   }
 
   render() {
+    let className = 'full-dim higlass-viewer';
+
+    className += this.props.hasSubTopBar ? ' has-sub-top-bar' : '';
+
     return (
-      <div className='full-dim'>
+      <div className={className}>
         {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
         {!this.state.error && (
           this.state.isLoading ?
@@ -134,6 +141,7 @@ class HiGlassViewer extends React.Component {
 }
 
 HiGlassViewer.propTypes = {
+  hasSubTopBar: PropTypes.bool,
   setViewConfig: PropTypes.func.isRequired,
   viewConfig: PropTypes.object,
   viewConfigId: PropTypes.string,
