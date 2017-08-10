@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { Redirect, withRouter } from 'react-router';
 
 // Components
 import Dialog from './Dialog';
@@ -88,6 +88,9 @@ class App extends React.Component {
   render() {
     return (
       <div className='app full-mdim'>
+        {this.state.isAuthenticated &&
+          <Redirect to='/app'/>
+        }
         <DropNotifier
           drop={dropHandler} />
         {this.state.dialog &&
