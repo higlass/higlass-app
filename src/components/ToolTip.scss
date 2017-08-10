@@ -1,0 +1,53 @@
+@import '../styles/colors';
+@import '../styles/transitions';
+
+.tool-tip-wrapper {
+  .tool-tip-anchor {
+    position: relative;
+    top: 0;
+    left: 50%;
+  }
+
+  .tool-tip {
+    position: fixed;
+    display: none;
+    z-index: 10;
+    padding: 0 0.5rem;
+    color: $white;
+    font-size: 0.85rem;
+    line-height: 1.25rem;
+    white-space: nowrap;
+    border-radius: 0.25rem;
+    background: $black;
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0);
+
+    &.is-shown {
+      display: block;
+      animation-duration: $fast-transition;
+      animation-fill-mode: forwards;
+      animation-name: ass;
+      animation-timing-function: $easing;
+    }
+
+    .arrow {
+      position: absolute;
+      bottom: -0.25rem;
+      left: 50%;
+      margin-left: -0.25rem;
+    }
+  }
+
+  @keyframes ass {
+    from {
+      visibility: hidden;
+      opacity: 0;
+      transform: translate(-50%, 0) scale(0);
+    }
+    to {
+      visibility: visible;
+      opacity: 1;
+      transform: translate(-50%, -1.5rem) scale(1);
+    }
+  }
+}
