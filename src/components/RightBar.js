@@ -73,8 +73,6 @@ class RightBar extends React.Component {
     const deltaTime = performance.now() - this.mouseDownTime;
     const deltaX = this.mouseDownX - event.clientX;
 
-    console.log(deltaX, deltaTime);
-
     if (Math.abs(deltaX) < 2 && deltaTime < 150) {
       this.props.toggle();
     } else {
