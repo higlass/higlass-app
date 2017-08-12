@@ -17,13 +17,30 @@ class ToolTip extends React.Component {
   }
 
   render() {
+    let classNames = 'tool-tip';
+
+    classNames += this.state.isShown ? ' is-shown' : '';
+
+    switch (this.props.align) {
+      case 'left':
+        classNames += ' tool-tip-align-left';
+        break;
+
+      case 'right':
+        classNames += ' tool-tip-align-right';
+        break;
+
+      default:
+        // Nothing
+    }
+
     return (
       <div
         className='rel tool-tip-wrapper'
         onMouseEnter={this.show.bind(this)}
         onMouseLeave={this.hide.bind(this)}>
         <div className='tool-tip-anchor'>
-          <div className={`tool-tip ${this.state.isShown ? 'is-shown' : ''}`}>
+          <div className={classNames}>
             <Arrow
               direction='down'
               size={4} />
@@ -54,20 +71,22 @@ class ToolTip extends React.Component {
       this.setState({
         isShown: true,
       });
-    }, this.props.delayOut);
+    }, this.props.delayIn);
   }
 }
 
 ToolTip.defaultProps = {
+  align: 'center',
   delayIn: 0,
   delayOut: 0,
 };
 
 ToolTip.propTypes = {
+  align: PropTypes.oneOf(['center', 'left', 'right']),
   children: PropTypes.node,
+  closeOnClick: PropTypes.bool,
   delayIn: PropTypes.number,
   delayOut: PropTypes.number,
-  closeOnClick: PropTypes.bool,
   title: PropTypes.string,
 };
 
