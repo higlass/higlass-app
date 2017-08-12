@@ -10,6 +10,24 @@
   padding: 0 0.5rem;
   overflow: hidden;
   background: $gray-lightest;
+
+  .tool-tip-wrapper {
+    .tool-tip.tool-tip-align-left {
+      margin-left: -0.75rem;
+
+      .arrow {
+        left: 0.75rem;
+      }
+    }
+
+    .tool-tip.tool-tip-align-right {
+      margin-left: 0.75rem;
+
+      .arrow {
+        right: 0.5rem;
+      }
+    }
+  }
 }
 
 .content.has-right-bar > .sub-top-bar {
