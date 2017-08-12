@@ -23,10 +23,12 @@ const rightBarWidthToggler = props => () => {
 
 const ViewerRightBar = props => (
   <RightBar
-    show={props.viewerRightBarShow}
+    isShown={props.viewerRightBarShow}
+    show={props.setViewerRightBarShow}
     toggle={rightBarWidthToggler(props)}
     width={props.viewerRightBarWidth}
-    widthSetter={props.setViewerRightBarWidth}>
+    widthSetter={props.setViewerRightBarWidth}
+    widthSetterFinal={props.widthSetterFinal}>
     <RightBarSubTopBar>
       <TabTrigger
         for='info'
@@ -59,12 +61,13 @@ const ViewerRightBar = props => (
 );
 
 ViewerRightBar.propTypes = {
-  viewerRightBarShow: PropTypes.bool,
-  viewerRightBarTab: PropTypes.string,
-  viewerRightBarWidth: PropTypes.number,
   setViewerRightBarShow: PropTypes.func,
   setViewerRightBarTab: PropTypes.func,
   setViewerRightBarWidth: PropTypes.func,
+  viewerRightBarShow: PropTypes.bool,
+  viewerRightBarTab: PropTypes.string,
+  viewerRightBarWidth: PropTypes.number,
+  widthSetterFinal: PropTypes.func,
 };
 
 const mapStateToProps = state => ({

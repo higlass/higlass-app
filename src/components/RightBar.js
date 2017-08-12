@@ -22,6 +22,9 @@ class RightBar extends React.Component {
     this.pubSubs.push(
       pubSub.subscribe('mousemove', this.mouseMoveHandler.bind(this))
     );
+    this.pubSubs.push(
+      pubSub.subscribe('mouseup', this.mouseUpHandler.bind(this))
+    );
   }
 
   componentWillUnmount() {
@@ -31,23 +34,23 @@ class RightBar extends React.Component {
 
   render() {
     let classNames = 'right-bar';
-    classNames += this.props.show ? ' is-shown' : '';
+    classNames += this.props.isShown ? ' is-shown' : '';
 
     const styles = {
-      width: `${this.props.show ? this.props.width : 4}px`,
+      width: `${this.props.isShown ? this.props.width : 4}px`,
     };
 
     return (
       <aside
         className={classNames}
-        style={styles}>
+        style={styles}
+        onTransitionEnd={this.transitionListener.bind(this)}>
         <ButtonIcon
           className='right-bar-toggler'
           icon='arrow-right-double'
-          iconMirrorV={!this.props.show}
+          iconMirrorV={!this.props.isShown}
           iconOnly={true}
-          onMouseDown={this.mouseDownHandler.bind(this)}
-          onMouseUp={this.mouseUpHandler.bind(this)} />
+          onMouseDown={this.mouseDownHandler.bind(this)} />
         {this.props.children}
       </aside>
     );
@@ -59,36 +62,57 @@ class RightBar extends React.Component {
     this.mouseDown = true;
     this.mouseDownTime = performance.now();
     this.mouseDownX = event.clientX;
-    this.mouseDownWidth = this.props.width;
+
+    if (this.props.isShown) {
+      this.mouseDownWidth = this.props.width;
+    } else {
+      this.mouseDownWidth = 0;
+    }
   }
 
   mouseMoveHandler(event) {
     if (this.mouseDown) {
       const deltaX = this.mouseDownX - event.clientX;
       this.props.widthSetter(this.mouseDownWidth + deltaX);
+      if (!this.props.isShown) {
+        this.props.show(true);
+      }
     }
   }
 
   mouseUpHandler(event) {
-    const deltaTime = performance.now() - this.mouseDownTime;
-    const deltaX = this.mouseDownX - event.clientX;
+    if (this.mouseDown) {
+      const deltaTime = performance.now() - this.mouseDownTime;
+      const deltaX = this.mouseDownX - event.clientX;
 
-    if (Math.abs(deltaX) < 2 && deltaTime < 150) {
-      this.props.toggle();
-    } else {
-      this.props.widthSetter(this.mouseDownWidth + deltaX);
+      if (Math.abs(deltaX) < 2 && deltaTime < 150) {
+        this.callWidthSetterFinal = true;
+        this.props.toggle();
+      } else {
+        this.props.widthSetter(this.mouseDownWidth + deltaX);
+        this.props.widthSetterFinal();
+      }
+
+      this.mouseDown = false;
     }
+  }
 
-    this.mouseDown = false;
+  transitionListener() {
+    if (this.callWidthSetterFinal) {
+      this.props.widthSetterFinal();
+      this.callWidthSetterFinal = false;
+    }
   }
 }
 
 RightBar.propTypes = {
   children: PropTypes.node.isRequired,
-  show: PropTypes.bool,
+  isShown: PropTypes.bool,
+  show: PropTypes.func,
   toggle: PropTypes.func,
   width: PropTypes.number,
   widthSetter: PropTypes.func,
+  widthSetterFinal: PropTypes.func,
 };
 
 export default RightBar;
