@@ -91,6 +91,7 @@ class HiGlassLauncher extends React.Component {
     }
     this.api = api;
     this.addHiGlassEventListeners();
+    this.props.api(this.api);
   }
 
   removeHiGlassEventListeners() {
@@ -108,6 +109,7 @@ HiGlassLauncher.defaultProps = {
 };
 
 HiGlassLauncher.propTypes = {
+  api: PropTypes.func,
   onError: PropTypes.func.isRequired,
   options: PropTypes.object,
   setViewConfig: PropTypes.func,

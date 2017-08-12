@@ -60,8 +60,13 @@ class HiGlassViewer extends React.Component {
       <div className={className}>
         {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
         {!this.state.error && (
-          this.state.isLoading ?
-            <SpinnerCenter /> : <HiGlassLoader onError={this.onError.bind(this)} />
+          this.state.isLoading ? (
+              <SpinnerCenter />
+            ) : (
+              <HiGlassLoader
+                api={this.props.api}
+                onError={this.onError.bind(this)} />
+            )
           )
         }
       </div>
@@ -140,7 +145,12 @@ class HiGlassViewer extends React.Component {
   }
 }
 
+HiGlassViewer.defaultProps = {
+  api: () => {},
+};
+
 HiGlassViewer.propTypes = {
+  api: PropTypes.func,
   hasSubTopBar: PropTypes.bool,
   setViewConfig: PropTypes.func.isRequired,
   viewConfig: PropTypes.object,
