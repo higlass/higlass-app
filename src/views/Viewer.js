@@ -18,6 +18,11 @@ import pubSub from '../services/pub-sub';
 
 // Utils
 import downloadAsJson from '../utils/download-as-json';
+import { requestNextAnimationFrame } from '../utils/request-animation-frame';
+
+const resizeTrigger = () => requestNextAnimationFrame(() => {
+  window.dispatchEvent(new Event('resize'));
+});
 
 
 class Viewer extends React.Component {
@@ -44,16 +49,22 @@ class Viewer extends React.Component {
         <Content
           name='viewer'
           rel={true}
-          hasRightBar={true}
+          hasRightBar={this.props.isAuthenticated}
           rightBarShow={this.props.viewerRightBarShow}
           rightBarWidth={this.props.viewerRightBarWidth}>
-          <ViewerSubTopBar />
+          {this.props.isAuthenticated &&
+            <ViewerSubTopBar />
+          }
           <HiGlassViewer
-            viewConfigId={this.props.viewConfigId}
-            hasSubTopBar={true} />
+            api={(api) => { this.hgApi = api; }}
+            hasSubTopBar={this.props.isAuthenticated}
+            viewConfigId={this.props.viewConfigId} />
         </Content>
-        <ViewerRightBar />
-        <ViewerBottomBar />
+        {this.props.isAuthenticated &&
+          <ViewerRightBar
+            widthSetterFinal={resizeTrigger} />
+        }
+        <ViewerBottomBar isAuthenticated={this.props.isAuthenticated} />
       </ContentWrapper>
     );
   }
@@ -77,6 +88,7 @@ Viewer.defaultProps = {
 };
 
 Viewer.propTypes = {
+  isAuthenticated: PropTypes.bool,
   viewConfig: PropTypes.object,
   viewConfigId: PropTypes.string,
   viewerRightBarShow: PropTypes.bool,
