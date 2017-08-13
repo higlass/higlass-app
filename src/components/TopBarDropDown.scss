@@ -10,6 +10,7 @@
     line-height: 1.5rem;
     border-radius: 0 0 0.25rem 0.25rem;
     background: transparentize($gray-lightest, 0.05);
+    box-shadow: 0 1px 2px 0 $gray-light-rgba;
 
     button,
     input {
