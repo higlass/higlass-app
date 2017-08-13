@@ -16,6 +16,9 @@ import ViewerSubTopBar from './ViewerSubTopBar';
 // Services
 import pubSub from '../services/pub-sub';
 
+// Actions
+import { setViewerMouseTool } from '../actions';
+
 // Utils
 import downloadAsJson from '../utils/download-as-json';
 import { requestNextAnimationFrame } from '../utils/request-animation-frame';
@@ -35,6 +38,9 @@ class Viewer extends React.Component {
   componentWillMount() {
     this.pubSubs.push(
       pubSub.subscribe('keydown', this.keyDownHandler.bind(this))
+    );
+    this.pubSubs.push(
+      pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
     );
   }
 
@@ -76,9 +82,43 @@ class Viewer extends React.Component {
   }
 
   keyDownHandler(event) {
-    if (event.keyCode === 83 && (event.ctrlKey || event.metaKey)) {  // CMD + S
+    if (event.keyCode === 83) {  // S
       event.preventDefault();
-      this.downloadViewConfig();
+
+      if (event.ctrlKey || event.metaKey) {  // CMD + S
+        this.downloadViewConfig();
+      } else if (this.props.viewerMouseTool !== 'select') {  // S
+        this.props.setViewerMouseTool('select');
+        this.keyDownS = performance.now();
+      }
+    }
+
+    if (event.keyCode === 90 && this.props.viewerMouseTool !== 'panZoom') {  // Z
+      event.preventDefault();
+      this.props.setViewerMouseTool('panZoom');
+      this.keyDownZ = performance.now();
+    }
+  }
+
+  keyUpHandler(event) {
+    if (
+      event.keyCode === 83 &&
+      this.keyDownS &&
+      (performance.now() - this.keyDownS) > 200
+    ) {  // S
+      event.preventDefault();
+      this.props.setViewerMouseTool('panZoom');
+      this.keyDownS = undefined;
+    }
+
+    if (
+      event.keyCode === 90 &&
+      this.keyDownZ &&
+      (performance.now() - this.keyDownZ) > 200
+    ) {  // Z
+      event.preventDefault();
+      this.props.setViewerMouseTool('select');
+      this.keyDownZ = undefined;
     }
   }
 }
@@ -89,19 +129,25 @@ Viewer.defaultProps = {
 
 Viewer.propTypes = {
   isAuthenticated: PropTypes.bool,
+  setViewerMouseTool: PropTypes.func,
   viewConfig: PropTypes.object,
   viewConfigId: PropTypes.string,
+  viewerMouseTool: PropTypes.string,
   viewerRightBarShow: PropTypes.bool,
   viewerRightBarWidth: PropTypes.number,
 };
 
 const mapStateToProps = state => ({
   viewConfig: state.present.viewConfig,
+  viewerMouseTool: state.present.viewerMouseTool,
   viewerRightBarShow: state.present.viewerRightBarShow,
   viewerRightBarWidth: state.present.viewerRightBarWidth,
 });
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = dispatch => ({
+  setViewerMouseTool: viewerMouseTool =>
+    dispatch(setViewerMouseTool(viewerMouseTool)),
+});
 
 export default withRouter(connect(
   mapStateToProps,
