@@ -179,6 +179,11 @@ export const SAD = {
   svg: '<g transform="matrix(0.505538,0,0,0.505538,-13.793,-17.5515)"><path d="M37.5,38.5L37.5,46.5" fill="none" stroke="currentColor" stroke-width="3px"/></g><g transform="matrix(0.505538,0,0,0.505538,-13.793,-17.5515)"><path d="M49.5,38.5L49.5,46.5" fill="none" stroke="currentColor" stroke-width="3px"/></g><g transform="matrix(-0.505538,0,0,-0.505538,29.793,39.972)"><path d="M29.262,53.353C29.262,53.353 41.882,69.284 56.955,53.353" fill="none" stroke="currentColor" stroke-width="3px"/></g>',
 };
 
+export const SELECT = {
+  viewBox: '0 0 16 16',
+  svg: '<path d="M2 14h2v1H1v-3h1v2zm8 1H6v-1h4v1zm5 0h-3v-1h2v-2h1v3zm0-5h-1V6h1v4zM2 10H1V6h1v4zm13-6h-1V2h-2V1h3v3zM4 2H2v2H1V1h3v1zm6 0H6V1h4.03L10 2z" fill-rule="nonzero" fill="currentColor"/>',
+};
+
 // export const TAG = {
 //   viewBox: '0 0 16 16',
 //   fillRule: 'evenodd',
@@ -245,6 +250,7 @@ export default {
   PERSON,
   // PRESENTATION,
   SAD,
+  SELECT,
   // TAG,
   TEXT,
   // RESET,
