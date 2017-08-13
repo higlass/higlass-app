@@ -87,7 +87,10 @@ ToolTip.propTypes = {
   closeOnClick: PropTypes.bool,
   delayIn: PropTypes.number,
   delayOut: PropTypes.number,
-  title: PropTypes.string,
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
 };
 
 export default ToolTip;
