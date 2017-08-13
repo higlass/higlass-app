@@ -12,6 +12,11 @@ export const setViewConfig = viewConfig => ({
   payload: { viewConfig },
 });
 
+export const setViewerMouseTool = viewerMouseTool => ({
+  type: 'SET_VIEWER_MOUSE_TOOL',
+  payload: { viewerMouseTool },
+});
+
 export const setViewerRightBarShow = viewerRightBarShow => ({
   type: 'SET_VIEWER_RIGHT_BAR_SHOW',
   payload: { viewerRightBarShow },
