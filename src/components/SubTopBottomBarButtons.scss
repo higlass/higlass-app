@@ -34,5 +34,11 @@
       background: $black;
       outline: none;
     }
+
+    &.is-active {
+      color: $white;
+      border: 0;
+      background: $primary;
+    }
   }
 }
