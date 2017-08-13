@@ -16,6 +16,7 @@ import rootReducer from '../reducers';
 // Actions
 import {
   setViewConfig,
+  setViewerMouseTool,
   setViewerRightBarShow,
   setViewerRightBarWidth,
  } from '../actions';
@@ -59,6 +60,7 @@ const configure = (initialState) => {
     undoable(enableBatching(rootReducer), {
       groupBy: groupByActionTypes([
         setViewConfig().type,
+        setViewerMouseTool().type,
         setViewerRightBarShow().type,
         setViewerRightBarWidth().type,
       ]),
