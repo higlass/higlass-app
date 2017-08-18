@@ -26,11 +26,15 @@ $blue-light: adjust-color($blue, $saturation: -20%, $lightness: 60%);
 $blue-highlight: adjust-color($blue, $saturation: 100%, $lightness: 25%);
 $red-dark: #a1112d;
 $red-light: #ffccd6;
+$yellow-dark: #805d0e;
+$yellow-light: #f2e7ce;
 
 $primary: $blue;
 
 $error-bg: $red-light;
 $error-text: $red-dark;
+$warning-bg: $yellow-light;
+$warning-text: $yellow-dark;
 
 $text: $gray-dark;
 $text-em: $gray-darkest;
