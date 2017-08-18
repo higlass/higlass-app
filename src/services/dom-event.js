@@ -17,6 +17,11 @@ const scroll = event => pubSub.publish(
   event.target.scrollTop || document.body.scrollTop
 );
 
+/**
+ * Supported event handlers.
+ *
+ * @type {object}
+ */
 const eventHandler = {
   click,
   keydown,
@@ -28,8 +33,19 @@ const eventHandler = {
   scroll,
 };
 
+/**
+ * Stack of elements with registered event listeners.
+ *
+ * @type {object}
+ */
 const registeredEls = {};
 
+/**
+ * Unregister an event listener.
+ *
+ * @param {string} event - Name of the event to stop listening from.
+ * @param {object} element - DOM element which we listened to.
+ */
 const unregister = (event, element) => {
   if (!registeredEls[event] && registeredEls[event] !== element) { return; }
 
@@ -39,6 +55,12 @@ const unregister = (event, element) => {
   delete registeredEls[event];
 };
 
+/**
+ * Register an event listener.
+ *
+ * @param {string} event - Name of the event to listen to.
+ * @param {object} newElement - DOM element which to listen to.
+ */
 const register = (event, newElement) => {
   if (!newElement || registeredEls[event] === newElement) { return; }
 
@@ -50,6 +72,11 @@ const register = (event, newElement) => {
   registeredEls[event].addEventListener(event, eventHandler[event]);
 };
 
+/**
+ * Public API.
+ *
+ * @type {object}
+ */
 const domEvent = {
   register,
   unregister,
