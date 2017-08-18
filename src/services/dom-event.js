@@ -1,17 +1,7 @@
 import pubSub from './pub-sub';
 
-const click = event => pubSub.publish('click', event);
-
-const keydown = event => pubSub.publish('keydown', event);
-
-const keyup = event => pubSub.publish('keyup', event);
-
-const mousemove = event => pubSub.publish('mousemove', event);
-
-const mouseup = event => pubSub.publish('mouseup', event);
-
+// Custom event Handlers
 const resize = event => pubSub.publish('resize', event);
-
 const scroll = event => pubSub.publish(
   'scrollTop',
   event.target.scrollTop || document.body.scrollTop
@@ -22,15 +12,22 @@ const scroll = event => pubSub.publish(
  *
  * @type {object}
  */
-const eventHandler = {
-  click,
-  keydown,
-  keyup,
-  mousemove,
-  mouseup,
+const customEventHandlers = {
   orientationchange: resize,
-  resize,
   scroll,
+};
+
+/**
+ * Get event handler.
+ *
+ * @param {string} eventName - Name of the event.
+ * @return {function} Either a custom or generic event handler.
+ */
+const getEventHandler = (eventName) => {
+  if (customEventHandlers[eventName]) {
+    return customEventHandlers[eventName];
+  }
+  return event => pubSub.publish(eventName, event);
 };
 
 /**
@@ -49,7 +46,7 @@ const registeredEls = {};
 const unregister = (event, element) => {
   if (!registeredEls[event] && registeredEls[event] !== element) { return; }
 
-  registeredEls[event].removeEventListener(event, eventHandler[event]);
+  registeredEls[event].removeEventListener(event, getEventHandler(event));
 
   registeredEls[event] = undefined;
   delete registeredEls[event];
@@ -69,7 +66,7 @@ const register = (event, newElement) => {
   }
 
   registeredEls[event] = newElement;
-  registeredEls[event].addEventListener(event, eventHandler[event]);
+  registeredEls[event].addEventListener(event, getEventHandler(event));
 };
 
 /**
