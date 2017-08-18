@@ -88,7 +88,9 @@ class TopBar extends React.Component {
                   ) : (
                     <TopBarDropDownLogin
                       closeOnOuterClick={true}
-                      isLoggingIn={this.isLoggingIn}
+                      isLoggingIn={this.state.isLoggingIn}
+                      isLoginUnsuccessful={this.state.isLoginUnsuccessful}
+                      isServerUnavailable={this.state.isServerUnavailable}
                       login={this.login}
                       loginPassword={this.state.loginPassword}
                       loginPasswordHandler={this.loginPasswordHandler}
@@ -114,9 +116,32 @@ class TopBar extends React.Component {
 
     this.setState({
       isLoggingIn: true,
+      isLoginUnsuccessful: false,
     });
 
-    auth.login(this.state.loginUserId, this.state.loginPassword);
+    auth
+      .login(this.state.loginUserId, this.state.loginPassword)
+      .then((success) => {
+        this.setState({
+          isLoggingIn: false,
+          isLoginUnsuccessful: !success,
+          isServerUnavailable: false,
+        });
+      })
+      .catch((error) => {
+        if (error.message === 'Bad Request') {
+          this.setState({
+            isLoggingIn: false,
+            isLoginUnsuccessful: true,
+            isServerUnavailable: false,
+          });
+        } else {
+          this.setState({
+            isLoggingIn: false,
+            isServerUnavailable: true,
+          });
+        }
+      });
   }
 
   loginUserIdHandler(event) {

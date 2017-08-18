@@ -5,6 +5,7 @@ import React from 'react';
 import ButtonIcon from './ButtonIcon';
 import DropDownContent from './DropDownContent';
 import DropDownTrigger from './DropDownTrigger';
+import Icon from './Icon';
 import TopBarDropDown from './TopBarDropDown';
 
 
@@ -20,19 +21,36 @@ const TopBarDropDowLogin = props => (
     </DropDownTrigger>
     <DropDownContent>
       <form className='flex-c flex-v drop-down-form' onSubmit={props.login}>
+        {props.isLoginUnsuccessful &&
+          <div className='flex-c flex-a-c warning'>
+            <Icon iconId='warning' />
+            <span>Login failed.</span>
+          </div>
+        }
+        {props.isServerUnavailable &&
+          <div className='flex-c flex-a-c error'>
+            <Icon iconId='warning' />
+            <span>Auth server is unavailable.</span>
+          </div>
+        }
         <input
           placeholder='E-mail or username'
           type='text'
+          disabled={props.isLoggingIn}
           onChange={props.loginUserIdHandler}
           value={props.loginUserId} />
         <input
           placeholder='Password'
           type='password'
+          disabled={props.isLoggingIn}
           onChange={props.loginPasswordHandler}
           value={props.loginPassword} />
         <button
-          type="submit"
-          className='is-primary'>Log in</button>
+          type='submit'
+          className={`is-primary ${props.isLoggingIn ? 'is-active' : ''}`}
+          disabled={props.isLoggingIn}>
+          {props.isLoggingIn ? 'Logging in…' : 'Log in'}
+        </button>
       </form>
     </DropDownContent>
   </TopBarDropDown>
@@ -41,6 +59,8 @@ const TopBarDropDowLogin = props => (
 TopBarDropDowLogin.propTypes = {
   closeOnOuterClick: PropTypes.bool,
   isLoggingIn: PropTypes.bool,
+  isLoginUnsuccessful: PropTypes.bool,
+  isServerUnavailable: PropTypes.bool,
   login: PropTypes.func.isRequired,
   loginPasswordHandler: PropTypes.func.isRequired,
   loginPassword: PropTypes.string.isRequired,
