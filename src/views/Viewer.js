@@ -23,6 +23,9 @@ import { setViewerMouseTool } from '../actions';
 import downloadAsJson from '../utils/download-as-json';
 import { requestNextAnimationFrame } from '../utils/request-animation-frame';
 
+// Configs
+import { HOLD_DOWN_DELAY, PAN_ZOOM, SELECT } from '../configs/mouse-tools';
+
 const resizeTrigger = () => requestNextAnimationFrame(() => {
   window.dispatchEvent(new Event('resize'));
 });
@@ -56,8 +59,8 @@ class Viewer extends React.Component {
           name='viewer'
           rel={true}
           hasRightBar={this.props.isAuthenticated}
-          rightBarShow={this.props.viewerRightBarShow}
-          rightBarWidth={this.props.viewerRightBarWidth}>
+          rightBarShow={this.props.rightBarShow}
+          rightBarWidth={this.props.rightBarWidth}>
           {this.props.isAuthenticated &&
             <ViewerSubTopBar />
           }
@@ -87,37 +90,37 @@ class Viewer extends React.Component {
 
       if (event.ctrlKey || event.metaKey) {  // CMD + S
         this.downloadViewConfig();
-      } else if (this.props.viewerMouseTool !== 'select') {  // S
-        this.props.setViewerMouseTool('select');
+      } else if (this.props.mouseTool !== SELECT) {  // S
+        this.props.setViewerMouseTool(SELECT);
         this.keyDownS = performance.now();
       }
     }
 
-    if (event.keyCode === 90 && this.props.viewerMouseTool !== 'panZoom') {  // Z
+    if (event.keyCode === 90 && this.props.mouseTool !== PAN_ZOOM) {  // Z
       event.preventDefault();
-      this.props.setViewerMouseTool('panZoom');
+      this.props.setViewerMouseTool(PAN_ZOOM);
       this.keyDownZ = performance.now();
     }
   }
 
   keyUpHandler(event) {
     if (
-      event.keyCode === 83 &&
+      event.keyCode === 83 &&  // S
       this.keyDownS &&
-      (performance.now() - this.keyDownS) > 200
-    ) {  // S
+      (performance.now() - this.keyDownS) > HOLD_DOWN_DELAY
+    ) {
       event.preventDefault();
-      this.props.setViewerMouseTool('panZoom');
+      this.props.setViewerMouseTool(PAN_ZOOM);
       this.keyDownS = undefined;
     }
 
     if (
-      event.keyCode === 90 &&
+      event.keyCode === 90 &&  // Z
       this.keyDownZ &&
-      (performance.now() - this.keyDownZ) > 200
-    ) {  // Z
+      (performance.now() - this.keyDownZ) > HOLD_DOWN_DELAY
+    ) {
       event.preventDefault();
-      this.props.setViewerMouseTool('select');
+      this.props.setViewerMouseTool(SELECT);
       this.keyDownZ = undefined;
     }
   }
@@ -132,21 +135,21 @@ Viewer.propTypes = {
   setViewerMouseTool: PropTypes.func,
   viewConfig: PropTypes.object,
   viewConfigId: PropTypes.string,
-  viewerMouseTool: PropTypes.string,
-  viewerRightBarShow: PropTypes.bool,
-  viewerRightBarWidth: PropTypes.number,
+  mouseTool: PropTypes.string,
+  rightBarShow: PropTypes.bool,
+  rightBarWidth: PropTypes.number,
 };
 
 const mapStateToProps = state => ({
   viewConfig: state.present.viewConfig,
-  viewerMouseTool: state.present.viewerMouseTool,
-  viewerRightBarShow: state.present.viewerRightBarShow,
-  viewerRightBarWidth: state.present.viewerRightBarWidth,
+  mouseTool: state.present.viewerMouseTool,
+  rightBarShow: state.present.viewerRightBarShow,
+  rightBarWidth: state.present.viewerRightBarWidth,
 });
 
 const mapDispatchToProps = dispatch => ({
-  setViewerMouseTool: viewerMouseTool =>
-    dispatch(setViewerMouseTool(viewerMouseTool)),
+  setViewerMouseTool: mouseTool =>
+    dispatch(setViewerMouseTool(mouseTool)),
 });
 
 export default withRouter(connect(

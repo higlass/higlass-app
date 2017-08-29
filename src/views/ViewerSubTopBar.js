@@ -14,6 +14,9 @@ import { setViewerMouseTool } from '../actions';
 // Utils
 import downloadAsJson from '../utils/download-as-json';
 
+// Configs
+import { PAN_ZOOM, SELECT } from '../configs/mouse-tools';
+
 const downloadViewConfig = props =>
   downloadAsJson('viewConfig.json', props.viewConfig);
 
@@ -35,8 +38,8 @@ const ViewerSubTopBar = props => (
           <ButtonIcon
             icon='drag'
             iconOnly={true}
-            isActive={props.viewerMouseTool === 'panZoom'}
-            onClick={() => props.setViewerMouseTool('panZoom')} />
+            isActive={props.mouseTool === PAN_ZOOM}
+            onClick={() => props.setMouseTool(PAN_ZOOM)} />
         </ToolTip>
       </li>
       <li>
@@ -53,8 +56,8 @@ const ViewerSubTopBar = props => (
           <ButtonIcon
             icon='select'
             iconOnly={true}
-            isActive={props.viewerMouseTool === 'select'}
-            onClick={() => props.setViewerMouseTool('select')} />
+            isActive={props.mouseTool === SELECT}
+            onClick={() => props.setMouseTool(SELECT)} />
         </ToolTip>
       </li>
     </SubTopBottomBarButtons>
@@ -82,19 +85,19 @@ const ViewerSubTopBar = props => (
 );
 
 ViewerSubTopBar.propTypes = {
-  setViewerMouseTool: PropTypes.func,
+  setMouseTool: PropTypes.func,
   viewConfig: PropTypes.object,
-  viewerMouseTool: PropTypes.string,
+  mouseTool: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
   viewConfig: state.present.viewConfig,
-  viewerMouseTool: state.present.viewerMouseTool,
+  mouseTool: state.present.viewerMouseTool,
 });
 
 const mapDispatchToProps = dispatch => ({
-  setViewerMouseTool: viewerMouseTool =>
-    dispatch(setViewerMouseTool(viewerMouseTool)),
+  setMouseTool: mouseTool =>
+    dispatch(setViewerMouseTool(mouseTool)),
 });
 
 export default connect(
