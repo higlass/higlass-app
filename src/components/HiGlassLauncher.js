@@ -3,10 +3,11 @@ import { createHgComponent } from 'higlass';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Components
-import deepClone from '../utils/deep-clone';
+// Utils
+import { deepClone, Logger } from '../utils';
 
-import Logger from '../utils/logger';
+// Utils
+import { PAN_ZOOM, SELECT } from '../configs/mouse-tools';
 
 // Styles
 import './HiGlassLauncher.scss';
@@ -27,6 +28,10 @@ class HiGlassLauncher extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
+    if (nextProps.mouseTool !== this.props.mouseTool) {
+      this.setMouseTool(nextProps.mouseTool);
+    }
+
     if (deepEqual(this.newViewConfig, nextProps.viewConfig)) {
       return false;
     }
@@ -92,6 +97,8 @@ class HiGlassLauncher extends React.Component {
     this.api = api;
     this.addHiGlassEventListeners();
     this.props.api(this.api);
+
+    if (this.props.mouseTool !== PAN_ZOOM) this.setMouseTool(this.props.mouseTool);
   }
 
   removeHiGlassEventListeners() {
@@ -99,6 +106,17 @@ class HiGlassLauncher extends React.Component {
       this.api.off(listener.event, listener.id);
     });
     this.hiGlassEventListeners = [];
+  }
+
+  setMouseTool(mouseTool) {
+    switch (mouseTool) {
+      case SELECT:
+        this.api.activateTool('select');
+        break;
+
+      default:
+        this.api.activateTool('move');
+    }
   }
 }
 
@@ -112,6 +130,7 @@ HiGlassLauncher.propTypes = {
   api: PropTypes.func,
   onError: PropTypes.func.isRequired,
   options: PropTypes.object,
+  mouseTool: PropTypes.string,
   setViewConfig: PropTypes.func,
   viewConfig: PropTypes.object,
 };

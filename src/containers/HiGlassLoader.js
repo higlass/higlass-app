@@ -3,6 +3,7 @@ import { setViewConfig } from '../actions';
 import HiGlassLauncher from '../components/HiGlassLauncher';
 
 const mapStateToProps = state => ({
+  mouseTool: state.present.viewerMouseTool,
   viewConfig: state.present.viewConfig,
 });
 
