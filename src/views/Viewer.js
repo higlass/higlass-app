@@ -17,7 +17,7 @@ import ViewerSubTopBar from './ViewerSubTopBar';
 import pubSub from '../services/pub-sub';
 
 // Actions
-import { setViewerMouseTool } from '../actions';
+import { setViewerMouseTool, setViewerRightBarTab } from '../actions';
 
 // Utils
 import downloadAsJson from '../utils/download-as-json';
@@ -25,6 +25,7 @@ import { requestNextAnimationFrame } from '../utils/request-animation-frame';
 
 // Configs
 import { HOLD_DOWN_DELAY, PAN_ZOOM, SELECT } from '../configs/mouse-tools';
+import { ANNOTATIONS, INFO } from '../configs/viewer-right-bar-panels';
 
 const resizeTrigger = () => requestNextAnimationFrame(() => {
   window.dispatchEvent(new Event('resize'));
@@ -91,26 +92,36 @@ class Viewer extends React.Component {
       if (event.ctrlKey || event.metaKey) {  // CMD + S
         this.downloadViewConfig();
       } else if (this.props.mouseTool !== SELECT) {  // S
-        this.props.setViewerMouseTool(SELECT);
+        this.props.setMouseTool(SELECT);
         this.keyDownS = performance.now();
       }
     }
 
     if (event.keyCode === 90 && this.props.mouseTool !== PAN_ZOOM) {  // Z
       event.preventDefault();
-      this.props.setViewerMouseTool(PAN_ZOOM);
+      this.props.setMouseTool(PAN_ZOOM);
       this.keyDownZ = performance.now();
     }
   }
 
   keyUpHandler(event) {
+    if (event.keyCode === 65) {  // A
+      event.preventDefault();
+      this.props.setRightBarTab(ANNOTATIONS);
+    }
+
+    if (event.keyCode === 73) {  // I
+      event.preventDefault();
+      this.props.setRightBarTab(INFO);
+    }
+
     if (
       event.keyCode === 83 &&  // S
       this.keyDownS &&
       (performance.now() - this.keyDownS) > HOLD_DOWN_DELAY
     ) {
       event.preventDefault();
-      this.props.setViewerMouseTool(PAN_ZOOM);
+      this.props.setMouseTool(PAN_ZOOM);
       this.keyDownS = undefined;
     }
 
@@ -120,7 +131,7 @@ class Viewer extends React.Component {
       (performance.now() - this.keyDownZ) > HOLD_DOWN_DELAY
     ) {
       event.preventDefault();
-      this.props.setViewerMouseTool(SELECT);
+      this.props.setMouseTool(SELECT);
       this.keyDownZ = undefined;
     }
   }
@@ -132,7 +143,8 @@ Viewer.defaultProps = {
 
 Viewer.propTypes = {
   isAuthenticated: PropTypes.bool,
-  setViewerMouseTool: PropTypes.func,
+  setMouseTool: PropTypes.func,
+  setRightBarTab: PropTypes.func,
   viewConfig: PropTypes.object,
   viewConfigId: PropTypes.string,
   mouseTool: PropTypes.string,
@@ -148,8 +160,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setViewerMouseTool: mouseTool =>
+  setMouseTool: mouseTool =>
     dispatch(setViewerMouseTool(mouseTool)),
+  setRightBarTab: viewerRightBarTab =>
+    dispatch(setViewerRightBarTab(viewerRightBarTab)),
 });
 
 export default withRouter(connect(
