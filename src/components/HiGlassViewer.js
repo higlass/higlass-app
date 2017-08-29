@@ -65,6 +65,7 @@ class HiGlassViewer extends React.Component {
             ) : (
               <HiGlassLoader
                 api={this.props.api}
+                enableAltMouseTools={this.props.enableAltMouseTools}
                 onError={this.onError.bind(this)} />
             )
           )
@@ -151,6 +152,7 @@ HiGlassViewer.defaultProps = {
 
 HiGlassViewer.propTypes = {
   api: PropTypes.func,
+  enableAltMouseTools: PropTypes.bool,
   hasSubTopBar: PropTypes.bool,
   setViewConfig: PropTypes.func.isRequired,
   viewConfig: PropTypes.object,

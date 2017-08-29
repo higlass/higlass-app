@@ -7,7 +7,7 @@ import React from 'react';
 import { deepClone, Logger } from '../utils';
 
 // Utils
-import { PAN_ZOOM, SELECT } from '../configs/mouse-tools';
+import { SELECT } from '../configs/mouse-tools';
 
 // Styles
 import './HiGlassLauncher.scss';
@@ -40,6 +40,12 @@ class HiGlassLauncher extends React.Component {
   }
 
   render() {
+    const options = Object.assign({}, this.props.options);
+
+    if (this.props.enableAltMouseTools) {
+      options.mouseTool = this.props.mouseTool;
+    }
+
     return (
       <div
         className='full-wh rel'>
@@ -47,7 +53,7 @@ class HiGlassLauncher extends React.Component {
           className='higlass-launcher twbs'
           ref={this.launchHgLib(
             this.props.viewConfig,
-            this.props.options,
+            options,
             this.props.onError
           )}>
         </div>
@@ -97,8 +103,6 @@ class HiGlassLauncher extends React.Component {
     this.api = api;
     this.addHiGlassEventListeners();
     this.props.api(this.api);
-
-    if (this.props.mouseTool !== PAN_ZOOM) this.setMouseTool(this.props.mouseTool);
   }
 
   removeHiGlassEventListeners() {
@@ -109,6 +113,8 @@ class HiGlassLauncher extends React.Component {
   }
 
   setMouseTool(mouseTool) {
+    if (!this.props.enableAltMouseTools) return;
+
     switch (mouseTool) {
       case SELECT:
         this.api.activateTool('select');
@@ -128,6 +134,7 @@ HiGlassLauncher.defaultProps = {
 
 HiGlassLauncher.propTypes = {
   api: PropTypes.func,
+  enableAltMouseTools: PropTypes.bool,
   onError: PropTypes.func.isRequired,
   options: PropTypes.object,
   mouseTool: PropTypes.string,
