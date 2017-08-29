@@ -16,6 +16,10 @@ import RightBarSubTopBar from '../components/RightBarSubTopBar';
 import RightBarContent from '../components/RightBarContent';
 import TabContent from '../components/TabContent';
 import TabTrigger from '../components/TabTrigger';
+import ToolTip from '../components/ToolTip';
+
+// Configs
+import { ANNOTATIONS, INFO } from '../configs/viewer-right-bar-panels';
 
 const rightBarWidthToggler = props => () => {
   props.setViewerRightBarShow(!props.viewerRightBarShow);
@@ -30,29 +34,51 @@ const ViewerRightBar = props => (
     widthSetter={props.setViewerRightBarWidth}
     widthSetterFinal={props.widthSetterFinal}>
     <RightBarSubTopBar>
-      <TabTrigger
-        for='info'
-        tabChange={props.setViewerRightBarTab}
-        tabOpen={props.viewerRightBarTab}>
-        <Button>Info</Button>
-      </TabTrigger>
-      <TabTrigger
-        for='annotations'
-        tabChange={props.setViewerRightBarTab}
-        tabOpen={props.viewerRightBarTab}>
-        <Button>Annotations</Button>
-      </TabTrigger>
+      <ToolTip
+        align='right'
+        delayIn={1000}
+        delayOut={500}
+        title={
+          <span className='flex-c'>
+            <span>Show Information</span>
+            <span className='short-cut'>I</span>
+          </span>
+        }>
+        <TabTrigger
+          for={INFO}
+          tabChange={props.setViewerRightBarTab}
+          tabOpen={props.viewerRightBarTab}>
+          <Button>Info</Button>
+        </TabTrigger>
+      </ToolTip>
+      <ToolTip
+        align='right'
+        delayIn={1000}
+        delayOut={500}
+        title={
+          <span className='flex-c'>
+            <span>Show Annotations</span>
+            <span className='short-cut'>A</span>
+          </span>
+        }>
+        <TabTrigger
+          for={ANNOTATIONS}
+          tabChange={props.setViewerRightBarTab}
+          tabOpen={props.viewerRightBarTab}>
+          <Button>Annotations</Button>
+        </TabTrigger>
+      </ToolTip>
     </RightBarSubTopBar>
     <RightBarContent>
       <TabContent
         className='full-dim'
-        for='info'
+        for={INFO}
         tabOpen={props.viewerRightBarTab}>
         <span>Info Content</span>
       </TabContent>
       <TabContent
         className='full-dim'
-        for='annotations'
+        for={ANNOTATIONS}
         tabOpen={props.viewerRightBarTab}>
         <span>Annotation Content</span>
       </TabContent>
