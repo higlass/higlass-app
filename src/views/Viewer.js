@@ -67,6 +67,7 @@ class Viewer extends React.Component {
           }
           <HiGlassViewer
             api={(api) => { this.hgApi = api; }}
+            enableAltMouseTools={this.props.isAuthenticated}
             hasSubTopBar={this.props.isAuthenticated}
             viewConfigId={this.props.viewConfigId} />
         </Content>
@@ -91,11 +92,15 @@ class Viewer extends React.Component {
 
       if (event.ctrlKey || event.metaKey) {  // CMD + S
         this.downloadViewConfig();
-      } else if (this.props.mouseTool !== SELECT) {  // S
+      } else if (
+        this.props.isAuthenticated && this.props.mouseTool !== SELECT
+      ) {  // S
         this.props.setMouseTool(SELECT);
         this.keyDownS = performance.now();
       }
     }
+
+    if (!this.props.isAuthenticated) return;
 
     if (event.keyCode === 90 && this.props.mouseTool !== PAN_ZOOM) {  // Z
       event.preventDefault();
@@ -105,6 +110,8 @@ class Viewer extends React.Component {
   }
 
   keyUpHandler(event) {
+    if (!this.props.isAuthenticated) return;
+
     if (event.keyCode === 65) {  // A
       event.preventDefault();
       this.props.setRightBarTab(ANNOTATIONS);
