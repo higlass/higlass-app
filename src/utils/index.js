@@ -22,10 +22,13 @@ export { default as Logger } from './logger';
 
 export { default as multiStorage } from './multi-storage';
 
-export { default as requestAnimationFrame } from './request-animation-frame';
+export {
+  default as removeHiGlassEventListeners
+} from './remove-higlass-event-listeners';
 
-export { default as cancelAnimationFrame } from './request-animation-frame';
-
-export { default as requestNextAnimationFrame } from './request-animation-frame';
-
-export { default as cancelNextAnimationFrame } from './request-animation-frame';
+export {
+  requestAnimationFrame,
+  cancelAnimationFrame,
+  requestNextAnimationFrame,
+  cancelNextAnimationFrame
+} from './request-animation-frame';
