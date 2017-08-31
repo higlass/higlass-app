@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Utils
-import { deepClone, Logger } from '../utils';
+import { deepClone, Logger, removeHiGlassEventListeners } from '../utils';
 
-// Utils
+// Configs
 import { SELECT } from '../configs/mouse-tools';
 
 // Styles
@@ -24,7 +24,8 @@ class HiGlassLauncher extends React.Component {
   }
 
   componentWillUnmount() {
-    this.removeHiGlassEventListeners();
+    removeHiGlassEventListeners(this.hiGlassEventListeners, this.api);
+    this.hiGlassEventListeners = [];
   }
 
   shouldComponentUpdate(nextProps) {
@@ -103,13 +104,6 @@ class HiGlassLauncher extends React.Component {
     this.api = api;
     this.addHiGlassEventListeners();
     this.props.api(this.api);
-  }
-
-  removeHiGlassEventListeners() {
-    this.hiGlassEventListeners.forEach((listener) => {
-      this.api.off(listener.event, listener.id);
-    });
-    this.hiGlassEventListeners = [];
   }
 
   setMouseTool(mouseTool) {
