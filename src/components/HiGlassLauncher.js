@@ -65,8 +65,8 @@ class HiGlassLauncher extends React.Component {
 
   addHiGlassEventListeners() {
     this.hiGlassEventListeners.push({
-      event: 'view',
-      id: this.api.on('view', (newViewConfig) => {
+      event: 'viewConfig',
+      id: this.api.on('viewConfig', (newViewConfig) => {
         this.newViewConfig = JSON.parse(newViewConfig);
 
         if (!deepEqual(this.newViewConfig, this.props.viewConfig)) {
