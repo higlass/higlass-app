@@ -9,6 +9,11 @@ export const ARROW_BOTTOM = {
   svg: '<path d="M1 5l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2"/>',
 };
 
+export const ARROW_BOTTOM_FROM_RIGHT = {
+  viewBox: '0 0 16 16',
+  svg: '<path d="M2 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 15V5c0-2.536 1.455-4 4-4M12 1h2" fill="none" stroke="currentColor" stroke-width="2"/>',
+};
+
 export const ARROW_RIGHT = {
   viewBox: '0 0 16 16',
   svg: '<path d="M4.49 15l7.02-6.978L4.533 1" fill="none" stroke="currentColor" stroke-width="2"/>',
@@ -17,6 +22,11 @@ export const ARROW_RIGHT = {
 export const ARROW_RIGHT_DOUBLE = {
   viewBox: '0 0 16 16',
   svg: '<path d="M7 15l7.022-6.978L7.042 1" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 15l7.022-6.978L2.042 1" fill="none" stroke="currentColor" stroke-width="2"/>',
+};
+
+export const ARROW_RIGHT_WITH_BODY = {
+  viewBox: '0 0 16 16',
+  svg: '<path d="M8.98 14L15 8.015l-5.978-6.02" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 8c0-.552-.448-1-1-1H1c-.552 0-1 .448-1 1s.448 1 1 1h12c.552 0 1-.448 1-1z" fill="currentColor"/>',
 };
 
 // export const BAR_CHART = {
@@ -218,8 +228,10 @@ export const WARNING = {
 export default {
   // ANNOTATION,
   ARROW_BOTTOM,
+  ARROW_BOTTOM_FROM_RIGHT,
   ARROW_RIGHT,
   ARROW_RIGHT_DOUBLE,
+  ARROW_RIGHT_WITH_BODY,
   // BAR_CHART,
   // CALENDAR,
   CODE,
