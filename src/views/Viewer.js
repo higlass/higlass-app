@@ -20,8 +20,11 @@ import pubSub from '../services/pub-sub';
 import { setViewerMouseTool, setViewerRightBarTab } from '../actions';
 
 // Utils
-import downloadAsJson from '../utils/download-as-json';
-import { requestNextAnimationFrame } from '../utils/request-animation-frame';
+import {
+  downloadAsJson,
+  removeHiGlassEventListeners,
+  requestNextAnimationFrame
+} from '../utils';
 
 // Configs
 import { HOLD_DOWN_DELAY, PAN_ZOOM, SELECT } from '../configs/mouse-tools';
@@ -36,7 +39,12 @@ class Viewer extends React.Component {
   constructor(props) {
     super(props);
 
+    this.hiGlassEventListeners = [];
     this.pubSubs = [];
+
+    this.state = {
+      rangeSelection: [null, null],
+    };
   }
 
   componentWillMount() {
@@ -51,9 +59,13 @@ class Viewer extends React.Component {
   componentWillUnmount() {
     this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
     this.pubSubs = [];
+    removeHiGlassEventListeners(this.hiGlassEventListeners, this.api);
+    this.hiGlassEventListeners = [];
   }
 
   render() {
+    this.checkHiGlassEventListeners();
+
     return (
       <ContentWrapper name='viewer' bottomBar={true} isFullDimOnly={true}>
         <Content
@@ -73,6 +85,7 @@ class Viewer extends React.Component {
         </Content>
         {this.props.isAuthenticated &&
           <ViewerRightBar
+            rangeSelection={this.state.rangeSelection}
             widthSetterFinal={resizeTrigger} />
         }
         <ViewerBottomBar isAuthenticated={this.props.isAuthenticated} />
@@ -81,6 +94,31 @@ class Viewer extends React.Component {
   }
 
   /* ---------------------------- Custom Methods ---------------------------- */
+
+  checkHiGlassEventListeners() {
+    if (!this.hgApi) return;
+
+    // Remove all listeners before reassignment to be sure not to pile up any
+    // event listeners, which could be a memory leak
+    removeHiGlassEventListeners(this.hiGlassEventListeners, this.hgApi);
+    this.hiGlassEventListeners = [];
+
+    if (this.props.mouseTool === SELECT) {
+      this.hiGlassEventListeners.push({
+        event: 'rangeSelection',
+        id: this.hgApi.on(
+          'rangeSelection', this.rangeSelectionHandler.bind(this)
+        ),
+      });
+    }
+  }
+
+  removeHiGlassEventListeners() {
+    this.hiGlassEventListeners.forEach((listener) => {
+      this.api.off(listener.event, listener.id);
+    });
+    this.hiGlassEventListeners = [];
+  }
 
   downloadViewConfig() {
     downloadAsJson('viewConfig.json', this.props.viewConfig);
@@ -141,6 +179,12 @@ class Viewer extends React.Component {
       this.props.setMouseTool(SELECT);
       this.keyDownZ = undefined;
     }
+  }
+
+  rangeSelectionHandler(rangeSelection) {
+    this.setState({
+      rangeSelection,
+    });
   }
 }
 
