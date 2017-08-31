@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 // Actions
 import {
-    setViewerRightBarShow,
-    setViewerRightBarTab,
-    setViewerRightBarWidth
+  setViewerRightBarShow,
+  setViewerRightBarTab,
+  setViewerRightBarWidth
 } from '../actions';
 
 // Components
@@ -17,6 +17,7 @@ import RightBarContent from '../components/RightBarContent';
 import TabContent from '../components/TabContent';
 import TabTrigger from '../components/TabTrigger';
 import ToolTip from '../components/ToolTip';
+import ViewerRightBarAnnotations from './ViewerRightBarAnnotations';
 
 // Configs
 import { ANNOTATIONS, INFO } from '../configs/viewer-right-bar-panels';
@@ -71,22 +72,25 @@ const ViewerRightBar = props => (
     </RightBarSubTopBar>
     <RightBarContent>
       <TabContent
-        className='full-dim'
+        className='full-dim flex-c flex-v'
         for={INFO}
         tabOpen={props.viewerRightBarTab}>
         <span>Info Content</span>
       </TabContent>
       <TabContent
-        className='full-dim'
+        className='full-dim flex-c flex-v'
         for={ANNOTATIONS}
         tabOpen={props.viewerRightBarTab}>
-        <span>Annotation Content</span>
+        <ViewerRightBarAnnotations
+          rangeSelection={props.rangeSelection}
+        />
       </TabContent>
     </RightBarContent>
   </RightBar>
 );
 
 ViewerRightBar.propTypes = {
+  rangeSelection: PropTypes.array,
   setViewerRightBarShow: PropTypes.func,
   setViewerRightBarTab: PropTypes.func,
   setViewerRightBarWidth: PropTypes.func,
