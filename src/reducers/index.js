@@ -10,6 +10,15 @@ export const viewConfig = defaultSetReducer('viewConfig', null);
 
 export const viewerMouseTool = defaultSetReducer('viewerMouseTool', 'panZoom');
 
+export const viewerRightBarAnnotationsEntryDetails =
+  defaultSetReducer('viewerRightBarAnnotationsEntryDetails', true);
+
+export const viewerRightBarAnnotationsEntryList =
+  defaultSetReducer('viewerRightBarAnnotationsEntryList', true);
+
+export const viewerRightBarAnnotationsEntrySelection =
+  defaultSetReducer('viewerRightBarAnnotationsEntrySelection', true);
+
 export const viewerRightBarShow = defaultSetReducer('viewerRightBarShow', false);
 
 export const viewerRightBarTab = defaultSetReducer('viewerRightBarTab', 'info');
@@ -22,6 +31,9 @@ export default combineReducers({
   homeInfoBarClose,
   viewConfig,
   viewerMouseTool,
+  viewerRightBarAnnotationsEntryDetails,
+  viewerRightBarAnnotationsEntryList,
+  viewerRightBarAnnotationsEntrySelection,
   viewerRightBarShow,
   viewerRightBarTab,
   viewerRightBarWidth,

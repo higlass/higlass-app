@@ -17,6 +17,24 @@ export const setViewerMouseTool = viewerMouseTool => ({
   payload: { viewerMouseTool },
 });
 
+export const setViewerRightBarAnnotationsEntryDetails =
+  viewerRightBarAnnotationsEntryDetails => ({
+    type: 'SET_VIEWER_RIGHT_BAR_ANNOTATIONS_ENTRY_DETAILS',
+    payload: { viewerRightBarAnnotationsEntryDetails },
+  });
+
+export const setViewerRightBarAnnotationsEntryList =
+  viewerRightBarAnnotationsEntryList => ({
+    type: 'SET_VIEWER_RIGHT_BAR_ANNOTATIONS_ENTRY_LIST',
+    payload: { viewerRightBarAnnotationsEntryList },
+  });
+
+export const setViewerRightBarAnnotationsEntrySelection =
+  viewerRightBarAnnotationsEntrySelection => ({
+    type: 'SET_VIEWER_RIGHT_BAR_ANNOTATIONS_ENTRY_SELECTION',
+    payload: { viewerRightBarAnnotationsEntrySelection },
+  });
+
 export const setViewerRightBarShow = viewerRightBarShow => ({
   type: 'SET_VIEWER_RIGHT_BAR_SHOW',
   payload: { viewerRightBarShow },
