@@ -15,7 +15,7 @@ import TabEntry from '../components/TabEntry';
 
 
 const ViewerRightBarAnnotations = props => (
-  <div className='right-bar-annitations'>
+  <div className='right-bar-annitations flex-c flex-v full-wh'>
     <TabEntry
       isOpen={props.viewerRightBarAnnotationsEntrySelection}
       title='Selection'
@@ -31,6 +31,7 @@ const ViewerRightBarAnnotations = props => (
       <RangeSelectionViewer rangeSelection={props.rangeSelection} />
     </TabEntry>
     <TabEntry
+      isHeightStretching={true}
       isOpen={props.viewerRightBarAnnotationsEntryList}
       title='All Annotations'
       toggle={props.toggleViewerRightBarAnnotationsEntryList}

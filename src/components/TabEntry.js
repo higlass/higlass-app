@@ -20,7 +20,7 @@ class TabEntry extends React.Component {
     let className = 'tab-entry';
 
     className += this.props.className ? ` ${this.props.className}` : '';
-    className += this.props.isHeightStretching ? ' flex-g-1' : '';
+    className += this.isOpen && this.props.isHeightStretching ? ' flex-g-1' : '';
 
     return (
       <div className={className}>
