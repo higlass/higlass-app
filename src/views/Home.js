@@ -14,6 +14,9 @@ import HiGlassViewer from '../components/HiGlassViewer';
 import Icon from '../components/Icon';
 import InfoBar from '../components/InfoBar';
 
+// View Components
+import HomeDemos from './HomeDemos';
+
 // Actions
 import { setHomeInfoBarClose } from '../actions';
 
@@ -66,7 +69,12 @@ const Home = props => (
       </div>
     </InfoBar>
     <Content name='home' rel={true} wrap={true}>
-      <HiGlassViewer />
+      {HGAC_HOMEPAGE_DEMOS ? (
+        <HomeDemos />
+      ) : (
+        <HiGlassViewer />
+      )
+      }
     </Content>
     <Footer />
   </ContentWrapper>
