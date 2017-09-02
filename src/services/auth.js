@@ -1,5 +1,3 @@
-/* global HGAC_SERVER:false */
-
 // Services
 import pubSub from '../services/pub-sub';
 
