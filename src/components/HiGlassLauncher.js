@@ -47,11 +47,18 @@ class HiGlassLauncher extends React.Component {
       options.mouseTool = this.props.mouseTool;
     }
 
+    let className = 'rel';
+    className += !this.props.autoExpand ? ' full-dim' : '';
+
+    let classNameHgLauncher = 'higlass-launcher twbs';
+    classNameHgLauncher += !this.props.autoExpand ? ' higlass-launcher-full' : '';
+    classNameHgLauncher += !this.props.isPadded ? ' higlass-launcher-padded' : '';
+
     return (
       <div
-        className='full-wh rel'>
+        className={className}>
         <div
-          className='higlass-launcher twbs'
+          className={classNameHgLauncher}
           ref={this.launchHgLib(
             this.props.viewConfig,
             options,
@@ -65,6 +72,8 @@ class HiGlassLauncher extends React.Component {
   /* ------------------------------ Custom Methods -------------------------- */
 
   addHiGlassEventListeners() {
+    if (!this.props.setViewConfig) return;
+
     this.hiGlassEventListeners.push({
       event: 'viewConfig',
       id: this.api.on('viewConfig', (newViewConfig) => {
@@ -128,7 +137,9 @@ HiGlassLauncher.defaultProps = {
 
 HiGlassLauncher.propTypes = {
   api: PropTypes.func,
+  autoExpand: PropTypes.bool,
   enableAltMouseTools: PropTypes.bool,
+  isPadded: PropTypes.bool,
   onError: PropTypes.func.isRequired,
   options: PropTypes.object,
   mouseTool: PropTypes.string,

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 // Components
 import ErrorMsgCenter from './ErrorMsgCenter';
+import HiGlassLauncher from './HiGlassLauncher';
 import SpinnerCenter from './SpinnerCenter';
 
 // Containers
@@ -52,21 +53,31 @@ class HiGlassViewer extends React.Component {
   }
 
   render() {
-    let className = 'full-dim higlass-viewer';
+    let className = 'higlass-viewer';
 
+    className += !this.props.autoExpand ? ' full-dim' : '';
     className += this.props.hasSubTopBar ? ' has-sub-top-bar' : '';
 
     return (
       <div className={className}>
         {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
         {!this.state.error && (
-          this.state.isLoading ? (
+          this.state.isLoading ? (  // eslint-disable-line no-nested-ternary
               <SpinnerCenter />
             ) : (
-              <HiGlassLoader
-                api={this.props.api}
-                enableAltMouseTools={this.props.enableAltMouseTools}
-                onError={this.onError.bind(this)} />
+              this.props.isStatic ? (
+                <HiGlassLauncher
+                  api={this.props.api}
+                  autoExpand={this.props.autoExpand}
+                  enableAltMouseTools={this.props.enableAltMouseTools}
+                  onError={this.onError.bind(this)}
+                  viewConfig={this.state.viewConfigStatic} />
+              ) : (
+                <HiGlassLoader
+                  api={this.props.api}
+                  enableAltMouseTools={this.props.enableAltMouseTools}
+                  onError={this.onError.bind(this)} />
+              )
             )
           )
         }
@@ -136,6 +147,12 @@ class HiGlassViewer extends React.Component {
         error: viewConfig.error || 'View config broken.',
         isLoading: false,
       });
+    } else if (this.props.isStatic) {
+      this.setState({
+        error: '',
+        isLoading: false,
+        viewConfigStatic: viewConfig,
+      });
     } else {
       this.setState({
         error: '',
@@ -152,8 +169,10 @@ HiGlassViewer.defaultProps = {
 
 HiGlassViewer.propTypes = {
   api: PropTypes.func,
+  autoExpand: PropTypes.bool,
   enableAltMouseTools: PropTypes.bool,
   hasSubTopBar: PropTypes.bool,
+  isStatic: PropTypes.bool,
   setViewConfig: PropTypes.func.isRequired,
   viewConfig: PropTypes.object,
   viewConfigId: PropTypes.string,
