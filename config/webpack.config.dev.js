@@ -9,6 +9,8 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const changeCase = require('change-case');
+
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const mdJsx = require('./md-jsx');
@@ -35,7 +37,8 @@ try {
 
 const configConst = {};
 Object.keys(config).forEach((key) => {
-  configConst[`HGAC_${key.toUpperCase()}`] = JSON.stringify(config[key]);
+  configConst[`HGAC_${changeCase.constantCase(key)}`] =
+    JSON.stringify(config[key]);
 });
 
 // Webpack uses `publicPath` to determine where the app is being served from.
