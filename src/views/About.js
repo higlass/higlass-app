@@ -43,6 +43,31 @@ const About = () => (
           A preprint of the paper describing HiGlass is <a href='https://doi.org/10.1101/121889' target='_blank' rel='noopener noreferrer'>available on bioRxiv</a>.
         </p>
 
+        <h3 id='presentations' className='iconized underlined anchored'>
+          <a href='#presentations' className='hidden-anchor'>
+            <Icon iconId='link' />
+          </a>
+          <Icon iconId='presentation' />
+          Talks, Presentation, and Tutorials
+        </h3>
+
+        <ul className='no-list-style large-spacing'>
+          <li>
+            <a href='https://vcg.seas.harvard.edu/publications/hipiler-visual-exploration-of-large-genome-interaction-matrices-with-interactive-small-multiples/higlass-hipiler-cabi-2017.pdf' target='_blank' rel='noopener noreferrer'>Poster</a>, Microsoft CADI, Cambridge, Sep 2017
+          </li>
+          <li>
+            <a href='https://4dn-dcic.github.io/2017-annual-meeting-higlass-hipiler-tutorial/' target='_blank' rel='noopener noreferrer'>Tutorial</a>, 4D Nucleome Annual Meeting, Bethesda, Sep 2017
+            <a href='https://github.com/4dn-dcic/2017-annual-meeting-higlass-hipiler-tutorial' target='_blank' rel='noopener noreferrer' className="extra-link">Code</a>
+          </li>
+          <li>
+            <a href='https://hms-dbmi.github.io/3d-genome-processing-tutorial/' target='_blank' rel='noopener noreferrer'>Tutorial</a>, ISMB/ECCB 2017, Prague, Jun 2017
+            <a href='https://github.com/hms-dbmi/3d-genome-processing-tutorial' target='_blank' rel='noopener noreferrer' className="extra-link">Code</a>
+          </li>
+          <li>
+            Poster, IEEE VIS, Baltimore, Oct 2016
+          </li>
+        </ul>
+
         <h3 id='source-code' className='iconized underlined anchored'>
           <a href='#source-code' className='hidden-anchor'>
             <Icon iconId='link' />

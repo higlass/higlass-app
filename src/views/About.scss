@@ -1,3 +1,4 @@
+@import '../styles/colors';
 @import '../styles/ratio';
 
 .about {
@@ -32,5 +33,17 @@
   .iconized p {
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  .extra-link {
+    margin-left: 0.25rem;
+    color: $gray-medium;
+
+    &:after {
+      content: ']';
+    }
+    &:before {
+      content: '[';
+    }
   }
 }
