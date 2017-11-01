@@ -35,12 +35,12 @@ class Dialog extends React.Component {
           <div className='flex-c flex-v flex-a-c dialog-content'>
             {(this.props.headline || this.props.icon) &&
               <header className='flex-c flex-a-c'>
-              {this.props.icon &&
-                <Icon iconId={this.props.icon} />
-              }
-              {this.props.headline &&
-                <h2>{this.props.headline}</h2>
-              }
+                {this.props.icon &&
+                  <Icon iconId={this.props.icon} />
+                }
+                {this.props.headline &&
+                  <h2>{this.props.headline}</h2>
+                }
               </header>
             }
             {typeof this.props.message === 'string' ? (

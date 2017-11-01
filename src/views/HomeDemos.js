@@ -6,11 +6,11 @@ const HomeDemos = () => (
   <section>
     <p className="intro">
       HiGlass is a tool for exploring genomic contact matrices and tracks.
-      Please take a look at the <a href="examples">examples</a> and <a
-      href="https://github.com/hms-dbmi/higlass/wiki">documentation</a> for a
+      Please take a look at the <a href="examples">examples</a> and
+      <a href="https://github.com/hms-dbmi/higlass/wiki">documentation</a> for a
       description of the ways that it can be configured to explore and compare
-      contact matrices. To load private data, HiGlass can be <a
-      href="https://github.com/hms-dbmi/higlass/wiki#running-locally">run locally
+      contact matrices. To load private data, HiGlass can be
+      <a href="https://github.com/hms-dbmi/higlass/wiki#running-locally">run locally
       within a Docker container</a>. The HiC data in the examples below is from Rao
       et al. (2014) <a href="#references">[2]</a>.
       <br />

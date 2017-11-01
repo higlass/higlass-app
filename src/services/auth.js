@@ -80,40 +80,40 @@ const login = (username, password) => {
         password,
       }),
     })
-      .then((response) => {
-        const contentType = response.headers.get('content-type');
+    .then((response) => {
+      const contentType = response.headers.get('content-type');
 
-        if (contentType && contentType.indexOf('application/json') !== -1) {
-          return response.json().then(body => ({
-            isJson: true,
-            body,
-            response,
-          }));
-        }
-
-        return response.text().then(body => ({
-          isJson: false,
+      if (contentType && contentType.indexOf('application/json') !== -1) {
+        return response.json().then(body => ({
+          isJson: true,
           body,
           response,
         }));
-      })
-      .then((data) => {
-        if (!data.response.ok) {
-          throw Error(data.response.statusText);
-        }
+      }
 
-        state.isAuthenticated = false;
+      return response.text().then(body => ({
+        isJson: false,
+        body,
+        response,
+      }));
+    })
+    .then((data) => {
+      if (!data.response.ok) {
+        throw Error(data.response.statusText);
+      }
 
-        return data.body;
-      })
-      .then((data) => {
-        cookie.set('higlasstoken', data.token);
+      state.isAuthenticated = false;
 
-        return checkAuthentication();
-      })
-      .then(() => {
-        pubSub.publish('login');
-      });
+      return data.body;
+    })
+    .then((data) => {
+      cookie.set('higlasstoken', data.token);
+
+      return checkAuthentication();
+    })
+    .then(() => {
+      pubSub.publish('login');
+    });
 };
 
 const logout = () => {

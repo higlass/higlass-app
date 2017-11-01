@@ -10,6 +10,8 @@ import {
 } from '../actions';
 
 // Components
+import AnnotationDetails from '../components/AnnotationDetails';
+import AnnotationList from '../components/AnnotationList';
 import RangeSelectionViewer from '../components/RangeSelectionViewer';
 import TabEntry from '../components/TabEntry';
 
@@ -28,7 +30,9 @@ const ViewerRightBarAnnotations = props => (
       title='Details'
       toggle={props.toggleViewerRightBarAnnotationsEntryDetails}
     >
-      <RangeSelectionViewer rangeSelection={props.rangeSelection} />
+      <AnnotationDetails
+        rangeSelection={props.rangeSelection}
+      />
     </TabEntry>
     <TabEntry
       isHeightStretching={true}
@@ -36,7 +40,9 @@ const ViewerRightBarAnnotations = props => (
       title='All Annotations'
       toggle={props.toggleViewerRightBarAnnotationsEntryList}
     >
-      <RangeSelectionViewer rangeSelection={props.rangeSelection} />
+      <AnnotationList
+        rangeSelection={props.rangeSelection}
+      />
     </TabEntry>
   </div>
 );

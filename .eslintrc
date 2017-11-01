@@ -66,6 +66,12 @@
     ],
     "no-console": "warn",
     "no-continue": "off",
+    "no-multi-spaces": [
+      "error",
+      {
+        "ignoreEOLComments": true
+      }
+    ],
     "no-plusplus": [
       "error",
       {

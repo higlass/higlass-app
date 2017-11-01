@@ -19,7 +19,7 @@ import {
   setViewerMouseTool,
   setViewerRightBarShow,
   setViewerRightBarWidth,
- } from '../actions';
+} from '../actions';
 
 // Utils
 import MultiStorage from '../utils/multi-storage';

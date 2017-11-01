@@ -63,24 +63,23 @@ class HiGlassViewer extends React.Component {
         {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
         {!this.state.error && (
           this.state.isLoading ? (  // eslint-disable-line no-nested-ternary
-              <SpinnerCenter />
+            <SpinnerCenter />
+          ) : (
+            this.props.isStatic ? (
+              <HiGlassLauncher
+                api={this.props.api}
+                autoExpand={this.props.autoExpand}
+                enableAltMouseTools={this.props.enableAltMouseTools}
+                onError={this.onError.bind(this)}
+                viewConfig={this.state.viewConfigStatic} />
             ) : (
-              this.props.isStatic ? (
-                <HiGlassLauncher
-                  api={this.props.api}
-                  autoExpand={this.props.autoExpand}
-                  enableAltMouseTools={this.props.enableAltMouseTools}
-                  onError={this.onError.bind(this)}
-                  viewConfig={this.state.viewConfigStatic} />
-              ) : (
-                <HiGlassLoader
-                  api={this.props.api}
-                  enableAltMouseTools={this.props.enableAltMouseTools}
-                  onError={this.onError.bind(this)} />
-              )
+              <HiGlassLoader
+                api={this.props.api}
+                enableAltMouseTools={this.props.enableAltMouseTools}
+                onError={this.onError.bind(this)} />
             )
           )
-        }
+        )}
       </div>
     );
   }

@@ -60,8 +60,8 @@ class Examples extends React.Component {
 
             <div className='flex-g-1 wrap rel p-t-1 p-b-1'>
               {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
-              {!this.state.error && (
-                this.state.isLoading ?
+              {!this.state.error &&
+                (this.state.isLoading ?
                   <SpinnerCenter /> : <ExampleList examples={this.state.examples} />
                 )
               }
