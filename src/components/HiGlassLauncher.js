@@ -47,8 +47,7 @@ class HiGlassLauncher extends React.Component {
       options.mouseTool = this.props.mouseTool;
     }
 
-    let className = 'rel';
-    className += !this.props.autoExpand ? ' full-dim' : '';
+    const className = !this.props.autoExpand ? 'full-dim' : 'rel';
 
     let classNameHgLauncher = 'higlass-launcher twbs';
     classNameHgLauncher += !this.props.autoExpand ? ' higlass-launcher-full' : '';
@@ -108,7 +107,7 @@ class HiGlassLauncher extends React.Component {
 
   registerHiGlassApi(api) {
     if (this.api) {
-      this.removeHiGlassEventListeners();
+      removeHiGlassEventListeners(this.hiGlassEventListeners, this.api);
     }
     this.api = api;
     this.addHiGlassEventListeners();
