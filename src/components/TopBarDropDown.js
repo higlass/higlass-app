@@ -14,7 +14,9 @@ const TopBarDropDowUser = props => (
     alignRight={props.alignRight}
     alignTop={props.alignTop}
     className={className(props.className)}
-    closeOnOuterClick={props.closeOnOuterClick}>
+    closeOnOuterClick={props.closeOnOuterClick}
+    id='TopBarDropDown'
+  >
     {props.children}
   </DropDown>
 );

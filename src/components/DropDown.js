@@ -31,6 +31,12 @@ class DropDown extends React.Component {
     this.pubSubs = [];
   }
 
+  componentDidUpdate() {
+    if (this.props.id) {
+      pubSub.publish(`DropDown${this.props.id}`, this.state.isOpen);
+    }
+  }
+
   render() {
     const childrenWithProps = React.Children.map(this.props.children,
       child => React.cloneElement(child, {
@@ -90,6 +96,7 @@ DropDown.propTypes = {
   className: PropTypes.string,
   alignRight: PropTypes.bool,
   alignTop: PropTypes.bool,
+  id: PropTypes.string,
 };
 
 export default DropDown;
