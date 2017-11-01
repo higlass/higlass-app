@@ -1,3 +1,13 @@
+v0.7.0
+
+- Update HiGlass to v0.9.x
+- Update tons of third party libs
+
+v0.6.0
+
+- Add range select tool
+- Add annotation form
+
 v0.5.0
 
 - Add sub-top bar
