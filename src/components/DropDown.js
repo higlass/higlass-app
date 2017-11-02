@@ -31,8 +31,12 @@ class DropDown extends React.Component {
     this.pubSubs = [];
   }
 
-  componentDidUpdate() {
-    if (this.props.id) {
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.props.id &&
+      this.state.isOpen &&
+      this.state.isOpen !== prevState.isOpen
+    ) {
       pubSub.publish(`DropDown${this.props.id}`, this.state.isOpen);
     }
   }
