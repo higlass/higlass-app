@@ -26,7 +26,7 @@ const AnnotationDetails = props => (
         delayOut={500}
         title='Share'
       >
-        <ButtonIcon iconId='share' iconOnly={true} />
+        <ButtonIcon icon='share' iconOnly={true} />
       </ToolTip>
     </div>
     <div className='annotation-details-form'>
@@ -42,7 +42,7 @@ const AnnotationDetails = props => (
           delayOut={500}
           title='Remove'
         >
-          <ButtonIcon iconId='cross' iconOnly={true} />
+          <ButtonIcon icon='cross' iconOnly={true} />
         </ToolTip>
       </ol>
       <Button>Add</Button>

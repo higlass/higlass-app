@@ -33,12 +33,13 @@ const AnnotationList = props => (
 );
 
 AnnotationList.defaultProps = {
+  annotations: [],
   className: '',
 };
 
 AnnotationList.propTypes = {
   activeAnnotationId: PropTypes.string,
-  annotations: PropTypes.array.isRequired,
+  annotations: PropTypes.array,
   className: PropTypes.string,
   selectAnnotation: PropTypes.func,
   setActiveAnnotation: PropTypes.func,
