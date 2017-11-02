@@ -11,7 +11,7 @@ const logger = {
 
 Object.keys(LEVELS).forEach((level) => {
   logger[level] = function log(...args) {
-    console[LEVELS[level]](`[${level.toUpperCase()}: ${this.name}]`, ...args);
+    console[LEVELS[level]](`[${level.toUpperCase()}: ${this.name}]`, ...args);  // eslint-disable-line no-console
   };
 });
 

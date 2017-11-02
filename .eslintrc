@@ -28,7 +28,7 @@
   },
   "rules": {
     "class-methods-use-this": [
-      "warn",
+      "off",
       {
         "exceptMethods": [
           "componentWillMount",
