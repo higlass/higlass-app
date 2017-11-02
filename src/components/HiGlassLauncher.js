@@ -47,6 +47,10 @@ class HiGlassLauncher extends React.Component {
       options.mouseTool = this.props.mouseTool;
     }
 
+    options.bounded = this.props.autoExpand
+      ? false
+      : this.props.options.bounded;
+
     const className = !this.props.autoExpand ? 'full-dim' : 'rel';
 
     let classNameHgLauncher = 'higlass-launcher twbs';
