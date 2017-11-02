@@ -3,6 +3,7 @@ v0.7.0
 - Update HiGlass to v0.9.x
 - Update tons of third party libs
 - Add talks, presentations, and tutorials to about
+- Fix nasty unboundedness bug
 
 v0.6.0
 
