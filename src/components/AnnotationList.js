@@ -6,7 +6,7 @@ import ButtonIcon from './ButtonIcon';
 
 const AnnotationList = props => (
   <ol className={`annotation-list ${props.className}`}>
-    {props.annotations.length && props.annotations.map(annotation => (
+    {props.annotations.map(annotation => (
       <li
         className='flex-c'
         key={annotation.id}
