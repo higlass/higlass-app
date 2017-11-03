@@ -1,6 +1,6 @@
 {
   "presets": [
-    "es2015",
+    "env",
 
     // Stage 2: Draft
     // https://tc39.github.io/process-document/
