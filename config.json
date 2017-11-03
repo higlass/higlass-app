@@ -1,4 +1,5 @@
 {
   "homepageDemos": false,
-  "server": ""
+  "server": "",
+  "sourceMaps": false
 }

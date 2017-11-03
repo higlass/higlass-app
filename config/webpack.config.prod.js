@@ -4,6 +4,7 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AutoDllPlugin = require('autodll-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
@@ -81,7 +82,7 @@ module.exports = {
   bail: true,
   // We generate sourcemaps in production. This is slow but gives good results.
   // You can exclude the *.map files from the build during deployment.
-  devtool: 'source-map',
+  // devtool: 'source-map',
   // In production, we only want to load the polyfills and the app code.
   entry: [require.resolve('./polyfills'), paths.appIndexJs],
   output: {
@@ -223,7 +224,7 @@ module.exports = {
                   options: {
                     importLoaders: 1,
                     minimize: true,
-                    sourceMap: true,
+                    sourceMap: config.sourceMaps || false,
                   },
                 },
                 {
@@ -266,7 +267,7 @@ module.exports = {
                   options: {
                     importLoaders: 1,
                     minimize: true,
-                    sourceMap: true,
+                    sourceMap: config.sourceMaps || false,
                   },
                 },
                 {
@@ -345,6 +346,48 @@ module.exports = {
         minifyURLs: true,
       },
     }),
+    new AutoDllPlugin({
+      inject: true,
+      filename: '[name].[hash].js',
+      entry: {
+        vendor: [
+          'bootstrap',
+          'deep-equal',
+          'higlass',
+          'history',
+          'localforage',
+          'pixi.js',
+          'prop-types',
+          'react',
+          'react-bootstrap',
+          'react-dom',
+          'react-redux',
+          'react-router',
+          'react-router-dom',
+          'react-router-redux',
+          'redux',
+          'redux-batched-actions',
+          'redux-freeze',
+          'redux-logger',
+          'redux-persist',
+          'redux-thunk',
+          'redux-undo',
+        ],
+      },
+      plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+          compress: {
+            warnings: false,
+            comparisons: false,
+          },
+          output: {
+            comments: false,
+            ascii_only: true,
+          },
+          sourceMap: false,
+        }),
+      ],
+    }),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.
     // It is absolutely essential that NODE_ENV was set to production here.
@@ -366,7 +409,7 @@ module.exports = {
         // https://github.com/facebookincubator/create-react-app/issues/2488
         ascii_only: true,
       },
-      sourceMap: true,
+      sourceMap: config.sourceMaps || false,
     }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin({
