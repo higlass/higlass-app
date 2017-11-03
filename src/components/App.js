@@ -130,8 +130,10 @@ class App extends React.Component {
 
   dropHandler(event) {
     loadViewConfig(event.dataTransfer.files[0])
-      .then(() => {
-        logger.debug('JSON loaded');
+      .then((viewConfig) => {
+        logger.debug('ViewConfig JSON loaded');
+
+        this.props.setViewConfig(viewConfig);
 
         if (this.props.location.pathname.substr(0, 4) !== '/app') {
           this.props.history.push('/app');

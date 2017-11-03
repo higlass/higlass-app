@@ -1,12 +1,9 @@
-import setViewConfig from '../actions';
-
 const loadViewConfig = file => new Promise((resolve, reject) => {
   const reader = new FileReader();
 
   reader.addEventListener('load', (fileEvent) => {
     try {
-      resolve('Loaded. Check Redux store');
-      setViewConfig(JSON.parse(fileEvent.target.result));
+      resolve(JSON.parse(fileEvent.target.result));
     } catch (e) {
       reject('Only drop valid JSON', e);
     }
