@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 
 // Components
 import Dialog from './Dialog';
@@ -24,17 +24,6 @@ import Logger from '../utils/logger';
 import './App.scss';
 
 const logger = Logger('App');
-
-const dropHandler = (event) => {
-  loadViewConfig(event.dataTransfer.files[0])
-    .then(() => {
-      logger.log('JSON loaded');
-    })
-    .catch((error) => {
-      logger.error(error);
-      pubSub.publish('globalError', 'Only drop valid JSON view configs.');
-    });
-};
 
 class App extends React.Component {
   constructor(props) {
@@ -89,14 +78,21 @@ class App extends React.Component {
     this.pubSubs = [];
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.state.isAuthenticated &&
+      !prevState.isAuthenticated &&
+      this.props.location.pathname.substr(0, 4) !== '/app'
+    ) {
+      this.props.history.push('/app');
+    }
+  }
+
   render() {
     return (
       <div className='app full-mdim'>
-        {this.state.isAuthenticated &&
-          <Redirect to='/app'/>
-        }
         <DropNotifier
-          drop={dropHandler} />
+          drop={this.dropHandler.bind(this)} />
         {this.state.dialog &&
           <Dialog
             headline={this.state.dialog.headline}
@@ -132,6 +128,21 @@ class App extends React.Component {
     });
   }
 
+  dropHandler(event) {
+    loadViewConfig(event.dataTransfer.files[0])
+      .then(() => {
+        logger.debug('JSON loaded');
+
+        if (this.props.location.pathname.substr(0, 4) !== '/app') {
+          this.props.history.push('/app');
+        }
+      })
+      .catch((error) => {
+        logger.error(error);
+        pubSub.publish('globalError', 'Only drop valid JSON view configs.');
+      });
+  }
+
   keyDownHandler(event) {
     if (event.keyCode === 89 && (event.ctrlKey || event.metaKey)) {  // CMD + Y
       event.preventDefault();
@@ -154,6 +165,9 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
   redo: PropTypes.func.isRequired,
   setViewConfig: PropTypes.func.isRequired,
   undo: PropTypes.func.isRequired,
