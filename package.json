@@ -11,7 +11,7 @@
   "dependencies": {
     "bootstrap": "3.3.7",
     "deep-equal": "1.0.1",
-    "higlass": "0.9.8",
+    "higlass": "0.9.10",
     "history": "4.6.3",
     "localforage": "1.5.3",
     "pixi.js": "4.6.0",
