@@ -244,15 +244,14 @@ svg.centered {
     opacity: 1;
   }
 
+  &.iconized:target {
+    height: 6.25rem;
+    margin-top: -1rem;
+    padding-top: 4rem;
+  }
+
   &:target {
     color: $black;
-
-    &:before {
-      content: '';
-      display: block;
-      height: 4rem;
-      margin-top: -4rem;
-    }
 
     &.underlined .anchor-wrapper::after {
       content: '';
@@ -267,6 +266,7 @@ svg.centered {
     }
 
     .hidden-anchor {
+      top: 4rem;
       width: 1.5rem;
       color: $white;
       background: $primary;
