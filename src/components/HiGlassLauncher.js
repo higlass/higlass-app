@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Utils
-import { deepClone, Logger, removeHiGlassEventListeners } from '../utils';
+import {
+  debounce,
+  deepClone,
+  Logger,
+  removeHiGlassEventListeners
+} from '../utils';
 
 // Configs
 import { SELECT } from '../configs/mouse-tools';
@@ -21,6 +26,8 @@ class HiGlassLauncher extends React.Component {
     super(props);
 
     this.hiGlassEventListeners = [];
+
+    this.updateViewConfigDb = debounce(this.updateViewConfig.bind(this), 1000);
   }
 
   componentWillUnmount() {
@@ -79,13 +86,7 @@ class HiGlassLauncher extends React.Component {
 
     this.hiGlassEventListeners.push({
       event: 'viewConfig',
-      id: this.api.on('viewConfig', (newViewConfig) => {
-        this.newViewConfig = JSON.parse(newViewConfig);
-
-        if (!deepEqual(this.newViewConfig, this.props.viewConfig)) {
-          this.props.setViewConfig(this.newViewConfig);
-        }
-      }),
+      id: this.api.on('viewConfig', this.updateViewConfigDb),
     });
   }
 
@@ -128,6 +129,14 @@ class HiGlassLauncher extends React.Component {
 
       default:
         this.api.activateTool('move');
+    }
+  }
+
+  updateViewConfig(newViewConfig) {
+    this.newViewConfig = JSON.parse(newViewConfig);
+
+    if (!deepEqual(this.newViewConfig, this.props.viewConfig)) {
+      this.props.setViewConfig(this.newViewConfig);
     }
   }
 }
