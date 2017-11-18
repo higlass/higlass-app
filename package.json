@@ -1,7 +1,7 @@
 {
   "name": "higlass-app",
   "description": "A fully-featured app for viewing, exploring, and annotating 1D and 2D genomic data",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "private": true,
   "license": "MIT",
   "repository": {
@@ -85,7 +85,7 @@
   "scripts": {
     "start": "npm run build-wiki && node scripts/start.js",
     "build": "npm run build-wiki && node scripts/build.js",
-    "build-travis": "npm run build-wiki && node scripts/build.js && zip -r build.zip build",
+    "build-travis": "npm run build-wiki && node scripts/build.js && cd build && zip -r ../build.zip ./*",
     "test": "npm run build-wiki",
     "build-wiki": "npm run update-wiki && node scripts/wiki.js",
     "update-wiki": "git submodule update --init --recursive --remote --merge"
