@@ -1,7 +1,7 @@
 {
   "name": "higlass-app",
   "description": "A fully-featured app for viewing, exploring, and annotating 1D and 2D genomic data",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "private": true,
   "license": "MIT",
   "repository": {

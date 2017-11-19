@@ -1,3 +1,14 @@
+v0.8.0
+
+- Add /help
+- Update /about
+- Updated HiGlass to 0.9.14 and other third-party libraries
+- Fix smaller visual bugs
+
+v0.7.1
+
+- Optimize Travis CI builds
+
 v0.7.0
 
 - Update HiGlass to v0.9.x
