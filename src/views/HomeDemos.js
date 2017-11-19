@@ -55,8 +55,8 @@ const HomeDemos = () => (
         viewConfigId='browserwithdetails' />
     </div>
 
-    <footer className='foot-notes' name='references'>
-      <ol>
+    <footer className='foot-notes p-t-2' name='references'>
+      <ol className='no-list-style smaller'>
         <li>
           <span
             className='reference-number'
@@ -65,13 +65,13 @@ const HomeDemos = () => (
             [1]
           </span>
           <span className='reference-author'>
-            Kerpedjiev, Peter, <em>et al.</em>
+            Kerpedjiev et al.
           </span>
           <span className='reference-title'>
             HiGlass: Web-based visual comparison and exploration of genome interaction maps.
           </span>
           <span className='reference-journal'>
-            bioRxiv (2017): 121889.
+            <em>bioRxiv</em> (2017): 121889.
           </span>
         </li>
         <li>
@@ -82,14 +82,14 @@ const HomeDemos = () => (
             [2]
           </span>
           <span className='reference-author'>
-            Rao, Suhas SP, <em>et al.</em>
+            Rao et al.
           </span>
           <span className='reference-title'>
             A 3D map of the human genome at kilobase resolution reveals principles
             of chromatin looping.
           </span>
           <span className='reference-journal'>
-            Cell 159.7 (2014): 1665-1680.
+            <em>Cell</em> 159.7 (2014): 1665-1680.
           </span>
         </li>
         <li>
@@ -100,7 +100,7 @@ const HomeDemos = () => (
             [3]
           </span>
           <span className='reference-author'>
-            Busslinger, Georg A, <em>et al.</em>
+            Busslinger et al.
           </span>
           <span className='reference-title'>
             Cohesin is positioned in mammalian genomes by transcription, CTCF and Wapl.
