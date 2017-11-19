@@ -83,12 +83,10 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "npm run build-wiki && node scripts/start.js",
-    "build": "npm run build-wiki && node scripts/build.js",
-    "build-travis": "npm run build-wiki && node scripts/build.js && cd build && zip -r ../build.zip ./*",
-    "test": "npm run build-wiki",
-    "build-wiki": "npm run update-wiki && node scripts/wiki.js",
-    "update-wiki": "git submodule update --init --recursive --remote --merge"
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "build-travis": "node scripts/build.js && cd build && zip -r ../build.zip ./*",
+    "test": "echo \"Warning: no test specified\" && exit 0"
   },
   "jest": {
     "collectCoverageFrom": [
