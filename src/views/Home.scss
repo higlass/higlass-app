@@ -49,4 +49,8 @@
   .example-2 {
     @include ratio(0.55);
   }
+
+  [class^='reference-'] {
+    margin-right: 0.25rem;
+  }
 }
