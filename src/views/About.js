@@ -197,8 +197,8 @@ const About = () => (
 
         <p>
           The following sets of beautiful icons have been slightly adjusted by
-          Fritz Lekschas and are used across the application and the paper.
-          Thanks so much for the fantastic work.
+          Fritz Lekschas and are used across the application.
+          Hugs thanks to the authors for their fantastic work!
         </p>
 
         <ul className='no-list-style large-spacing iconized'>
