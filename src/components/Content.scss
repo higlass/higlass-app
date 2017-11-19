@@ -12,6 +12,10 @@
   &.is-full-screen {
     overflow: hidden;
   }
+
+  &.no-bottom-margin {
+    margin-bottom: 0;
+  }
 }
 
 .info-bar + .content {

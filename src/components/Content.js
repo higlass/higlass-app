@@ -11,6 +11,7 @@ const classNames = (props) => {
   className += props.hasRightBar ? ' has-right-bar' : '';
   className += props.rel ? ' rel' : '';
   className += props.wrap ? ' wrap' : '';
+  className += !props.bottomMargin ? ' no-bottom-margin' : '';
 
   return className;
 };
@@ -33,7 +34,12 @@ const Content = props => (
   </main>
 );
 
+Content.defaultProps = {
+  bottomMargin: true,
+};
+
 Content.propTypes = {
+  bottomMargin: PropTypes.bool,
   children: PropTypes.node,
   hasRightBar: PropTypes.bool,
   name: PropTypes.string.isRequired,
