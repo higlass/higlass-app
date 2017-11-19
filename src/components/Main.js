@@ -6,6 +6,7 @@ import { Route, Switch, withRouter } from 'react-router';
 import About from '../views/About';
 import Docs from '../views/Docs';
 import Examples from '../views/Examples';
+import Help from '../views/Help';
 import Home from '../views/Home';
 import NotFound from '../views/NotFound';
 import Viewer from '../views/Viewer';
@@ -30,6 +31,7 @@ class Main extends React.Component {
             viewConfigId={viewConfigId} />;
         }} />
         <Route exact path='/examples' component={Examples} />
+        <Route exact path='/help' component={Help} />
         <Route exact path='/docs' component={Docs} />
         <Route exact path='/' component={Home} />
         <Route component={NotFound}/>

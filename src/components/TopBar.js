@@ -77,6 +77,7 @@ class TopBar extends React.Component {
               <li><NavLink to='/about' activeClassName='is-active'>About</NavLink></li>
               <li><NavLink to='/examples' activeClassName='is-active'>Examples</NavLink></li>
               <li><NavLink to='/docs' activeClassName='is-active'>Docs</NavLink></li>
+              <li><NavLink to='/help' activeClassName='is-active'>Help</NavLink></li>
               <li className='separated-left flex-c flex-jc-c'>
                 {this.props.isAuthenticated ?
                   (
