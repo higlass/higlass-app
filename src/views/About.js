@@ -26,45 +26,48 @@ const About = () => (
         </h3>
 
         <p className='abstract'>
-          HiGlass is a tool for exploring large genomic data sets. It was created
+          HiGlass is a fast visualization tool for large Hi-C and other genomic data sets.
+          It was created
           at the Gehlenborg Lab at Harvard Medical School as part of the 4D
           Nucleome Project&apos;s Data Coordination and Integration Center.
         </p>
 
         <h3 id='preprint' className='iconized underlined anchored'>
-          <a href='#preprint' className='hidden-anchor'>
-            <Icon iconId='link' />
-          </a>
+          <a href='#preprint' className='hidden-anchor'><Icon iconId='link' /></a>
           <Icon iconId='document' />
           <span>Preprint</span>
         </h3>
 
         <p>
-          A preprint of the paper describing HiGlass is <a href='https://doi.org/10.1101/121889' target='_blank' rel='noopener noreferrer'>available on bioRxiv</a>.
+          Kerpedjiev et al., <a href='https://doi.org/10.1101/121889' target='_blank' rel='noopener noreferrer'>HiGlass: Web-based Visual Exploration and Analysis of Genome Interaction Maps</a>. <em>bioRxiv</em>, 2017.
         </p>
 
         <h3 id='presentations' className='iconized underlined anchored'>
-          <a href='#presentations' className='hidden-anchor'>
-            <Icon iconId='link' />
-          </a>
+          <a href='#presentations' className='hidden-anchor'><Icon iconId='link' /></a>
           <Icon iconId='presentation' />
-          Talks, Presentation, and Tutorials
+          Presentations, News, and Tutorials
         </h3>
 
         <ul className='no-list-style large-spacing'>
           <li>
-            <a href='https://vcg.seas.harvard.edu/publications/hipiler-visual-exploration-of-large-genome-interaction-matrices-with-interactive-small-multiples/higlass-hipiler-cabi-2017.pdf' target='_blank' rel='noopener noreferrer'>Poster</a>, Microsoft CADI, Cambridge, Sep 2017
+            <a href='https://www.slideshare.net/ngehlenborg/higlass-hipiler-making-sense-of-chromosome-interaction-data-with-multiscale-data-visualization-tools-81568229' target='_blank' rel='noopener noreferrer'>Talk</a> by <em>Gehlenborg</em>, Harvard <abbr title="Program in Quantitative Genomics">PQG</abbr> Conference, Boston, Nov 2017
           </li>
           <li>
-            <a href='https://4dn-dcic.github.io/2017-annual-meeting-higlass-hipiler-tutorial/' target='_blank' rel='noopener noreferrer'>Tutorial</a>, 4D Nucleome Annual Meeting, Bethesda, Sep 2017
+            <a href='https://vcg.seas.harvard.edu/publications/hipiler-visual-exploration-of-large-genome-interaction-matrices-with-interactive-small-multiples/higlass-hipiler-cabi-2017.pdf' target='_blank' rel='noopener noreferrer'>Poster</a> by <em>Lekschas</em>, Microsoft CADI, Cambridge, Sep 2017
+          </li>
+          <li>
+            <a href='https://4dn-dcic.github.io/2017-annual-meeting-higlass-hipiler-tutorial/' target='_blank' rel='noopener noreferrer'>Tutorial</a> by <em>Kerpedjiev</em>, 4D Nucleome Annual Meeting, Bethesda, Sep 2017
             <a href='https://github.com/4dn-dcic/2017-annual-meeting-higlass-hipiler-tutorial' target='_blank' rel='noopener noreferrer' className="extra-link">Code</a>
           </li>
           <li>
-            <a href='https://hms-dbmi.github.io/3d-genome-processing-tutorial/' target='_blank' rel='noopener noreferrer'>Tutorial</a>, ISMB/ECCB 2017, Prague, Jun 2017
+            <a href='https://www.nature.com/news/plot-a-course-through-the-genome-1.22553' target='_blank' rel='noopener noreferrer'>Plot a course through the genome</a> by <em>Perkel</em>, Nature, 549, 117–118, Sep 2017
+          </li>
+          <li>
+            <a href='https://hms-dbmi.github.io/3d-genome-processing-tutorial/' target='_blank' rel='noopener noreferrer'>Tutorial</a> by <em>Kerpedjiev</em>, ISMB/ECCB 2017, Prague, Jun 2017
             <a href='https://github.com/hms-dbmi/3d-genome-processing-tutorial' target='_blank' rel='noopener noreferrer' className="extra-link">Code</a>
           </li>
           <li>
-            Poster, IEEE VIS, Baltimore, Oct 2016
+            Poster by <em>Kerpedjiev</em>, IEEE VIS, Baltimore, Oct 2016
           </li>
         </ul>
 
@@ -202,6 +205,10 @@ const About = () => (
           <li className='flex-c iconized'>
             <Icon iconId='code' />
             <p className='nm'><a href='https://thenounproject.com/term/code/821469/' target='_blank' rel='noopener noreferrer'>Code</a> by Bernar Novalyi</p>
+          </li>
+          <li className='flex-c iconized'>
+            <Icon iconId='launch' />
+            <p className='nm'><a href='https://thenounproject.com/icon/1372884/' target='_blank' rel='noopener noreferrer'>Launch</a> by Bhuvan</p>
           </li>
         </ul>
 
