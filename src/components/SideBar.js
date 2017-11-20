@@ -24,6 +24,8 @@ class SideBar extends React.Component {
         marginTop: 0,
       },
     };
+
+    this.pubSubs = [];
   }
 
   componentDidMount() {
@@ -33,15 +35,14 @@ class SideBar extends React.Component {
       this.sidebarOffsetTop = this.sideBarEl.getBoundingClientRect().top -
         document.body.getBoundingClientRect().top;
 
-      pubSub.subscribe('resize', this.checkStickAbilityDb);
-      pubSub.subscribe('scrollTop', this.scrollHandlerDb);
+      this.pubSubs.push(pubSub.subscribe('resize', this.checkStickAbilityDb));
+      this.pubSubs.push(pubSub.subscribe('scrollTop', this.scrollHandlerDb));
     }
   }
 
   componentWillUnmount() {
-    if (this.props.isSticky) {
-      pubSub.unsubscribe('scrollTop', this.scrollHandlerDb);
-    }
+    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs = [];
   }
 
   render() {
