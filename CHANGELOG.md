@@ -1,3 +1,8 @@
+v0.9.0
+
+- Replace outdated docs with live version
+- Fix severe subSub bug
+
 v0.8.0
 
 - Add /help
