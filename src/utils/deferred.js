@@ -7,14 +7,17 @@ const Deferred = function Deferred() {
 
 Deferred.prototype.catch = function deferredCatch(callback) {
   this.promise.catch(callback);
+  return this;
 };
 
 Deferred.prototype.finally = function deferredFinally(callback) {
-  return this.promise.then(() => {}).catch(() => {}).then(callback);
+  this.promise.then(() => {}).catch(() => {}).then(callback);
+  return this;
 };
 
 Deferred.prototype.then = function deferredThen(callback) {
   this.promise.then(callback);
+  return this;
 };
 
 export default Deferred;
