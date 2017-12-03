@@ -39,8 +39,8 @@ const subscribe = (event, callback) => {
  */
 const unsubscribe = (event, callback) => {
   if (typeof event === 'object') {
-    event = event.event;  // eslint-disable-line no-param-reassign
     callback = event.callback;  // eslint-disable-line no-param-reassign
+    event = event.event;  // eslint-disable-line no-param-reassign
   }
 
   const id = stack[event].indexOf(callback);
@@ -55,6 +55,7 @@ const pubSub = {
   publish,
   subscribe,
   unsubscribe,
+  stack,
 };
 
 export default pubSub;
