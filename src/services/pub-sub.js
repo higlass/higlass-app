@@ -55,7 +55,6 @@ const pubSub = {
   publish,
   subscribe,
   unsubscribe,
-  stack,
 };
 
 export default pubSub;
