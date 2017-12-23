@@ -96,8 +96,8 @@ class Help extends React.Component {
             <div className='wrap'>
               <p>
               You need help getting started with HiGlass or ran into a tricky issue?
-              Fear not! Below is a list of excellent resources that help can help
-              you out in any situation!
+              Fear not! Below is a list of excellent resources that can hopefully help
+              you out!
               </p>
             </div>
           </div>
