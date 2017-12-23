@@ -323,6 +323,7 @@ module.exports = {
     ],
   },
   externals: {
+    'higlass': 'hglib',
     'pixi.js': 'PIXI',
     'react': 'React',
     'react-dom': 'ReactDOM',
@@ -359,7 +360,6 @@ module.exports = {
         vendor: [
           'bootstrap',
           'deep-equal',
-          'higlass',
           'history',
           'localforage',
           'prop-types',
