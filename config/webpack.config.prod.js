@@ -322,6 +322,12 @@ module.exports = {
       // Remember to add the new extension(s) to the "file" loader exclusion list.
     ],
   },
+  externals: {
+    'pixi.js': 'PIXI',
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'react-bootstrap': 'ReactBootstrap',
+  },
   plugins: [
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
@@ -332,7 +338,7 @@ module.exports = {
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       inject: true,
-      template: paths.appHtml,
+      template: paths.appProdHtml,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -356,11 +362,7 @@ module.exports = {
           'higlass',
           'history',
           'localforage',
-          'pixi.js',
           'prop-types',
-          'react',
-          'react-bootstrap',
-          'react-dom',
           'react-redux',
           'react-router',
           'react-router-dom',
@@ -375,17 +377,17 @@ module.exports = {
         ],
       },
       plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-          compress: {
-            warnings: false,
-            comparisons: false,
-          },
-          output: {
-            comments: false,
-            ascii_only: true,
-          },
-          sourceMap: false,
-        }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //   compress: {
+        //     warnings: false,
+        //     comparisons: false,
+        //   },
+        //   output: {
+        //     comments: false,
+        //     ascii_only: true,
+        //   },
+        //   sourceMap: false,
+        // }),
       ],
     }),
     // Makes some environment variables available to the JS code, for example:
@@ -394,23 +396,23 @@ module.exports = {
     // Otherwise React will be compiled in the very slow development mode.
     new webpack.DefinePlugin(env.stringified),
     // Minify the code.
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        // Disabled because of an issue with Uglify breaking seemingly valid code:
-        // https://github.com/facebookincubator/create-react-app/issues/2376
-        // Pending further investigation:
-        // https://github.com/mishoo/UglifyJS2/issues/2011
-        comparisons: false,
-      },
-      output: {
-        comments: false,
-        // Turned on because emoji and regex is not minified properly using default
-        // https://github.com/facebookincubator/create-react-app/issues/2488
-        ascii_only: true,
-      },
-      sourceMap: config.sourceMaps || false,
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false,
+    //     // Disabled because of an issue with Uglify breaking seemingly valid code:
+    //     // https://github.com/facebookincubator/create-react-app/issues/2376
+    //     // Pending further investigation:
+    //     // https://github.com/mishoo/UglifyJS2/issues/2011
+    //     comparisons: false,
+    //   },
+    //   output: {
+    //     comments: false,
+    //     // Turned on because emoji and regex is not minified properly using default
+    //     // https://github.com/facebookincubator/create-react-app/issues/2488
+    //     ascii_only: true,
+    //   },
+    //   sourceMap: config.sourceMaps || false,
+    // }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin({
       filename: cssFilename,
