@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AutoDllPlugin = require('autodll-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const StringReplacePlugin = require('string-replace-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
@@ -248,6 +249,17 @@ module.exports = {
                   },
                 },
                 require.resolve('sass-loader'),  // compiles Sass to CSS
+                // Remove hglib.css import as we load HiGlass's styles externally
+                {
+                  loader: StringReplacePlugin.replace({
+                    replacements: [{
+                      pattern: /@import '\.\.\/\.\.\/node_modules\/higlass\/build\/hglib.css';/ig,
+                      replacement: (match, offset, string) => (
+                        string.slice(0, offset) + string.slice(offset + match.length)
+                      ),
+                    }],
+                  }),
+                },
               ],
             },
             extractTextPluginOptions
@@ -467,6 +479,7 @@ module.exports = {
       VERSION_HIGLASS_VIEWER: JSON.stringify(packageJsonHg.version),
     }),
     new webpack.DefinePlugin(configConst),
+    new StringReplacePlugin(),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
