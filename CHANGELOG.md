@@ -1,7 +1,9 @@
 v0.9.0
 
 - Replace outdated docs with live version
+- Exclude HiGlass, React, ReactDOM, ReactBootstrap, and PIXI.js from production bundle
 - Fix severe subSub bug
+- Updated HiGlass to 0.10.6 and other third-party libraries
 
 v0.8.0
 
