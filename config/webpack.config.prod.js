@@ -16,7 +16,6 @@ const changeCase = require('change-case');
 
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
-const mdJsx = require('./md-jsx');
 const packageJson = require('../package.json');
 const packageJsonHg = require('../node_modules/higlass/package.json');
 const configBase = require('../config.json');
@@ -308,27 +307,6 @@ module.exports = {
             extractTextPluginOptions
           )
         ),
-      },
-      {
-        test: /\.md$/,
-        use: [
-          {
-            loader: require.resolve('babel-loader'),
-            options: {
-              // This is a feature of `babel-loader` for webpack (not Babel itself).
-              // It enables caching results in ./node_modules/.cache/babel-loader/
-              // directory for faster rebuilds.
-              cacheDirectory: true,
-            },
-          },
-          {
-            loader: require.resolve('markdown-jsx-loader'),
-            options: {
-              renderer: mdJsx.mdRenderer,
-              render: mdJsx.jsxRenderer,
-            },
-          },
-        ],
       },
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "file" loader exclusion list.
