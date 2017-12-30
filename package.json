@@ -11,7 +11,7 @@
   "dependencies": {
     "bootstrap": "3.3.7",
     "deep-equal": "1.0.1",
-    "higlass": "0.9.15",
+    "higlass": "0.10.6",
     "history": "4.7.2",
     "localforage": "1.5.5",
     "pixi.js": "4.6.2",
@@ -29,7 +29,7 @@
     "redux-logger": "3.0.6",
     "redux-persist": "4.10.2",
     "redux-thunk": "2.2.0",
-    "redux-undo": "1.0.0-beta9-9-6"
+    "redux-undo": "1.0.0-beta9-9-7"
   },
   "devDependencies": {
     "autodll-webpack-plugin": "0.3.8",
@@ -64,8 +64,6 @@
     "jest": "20.0.4",
     "less": "2.7.3",
     "less-loader": "4.0.5",
-    "markdown-jsx-loader": "jquense/markdown-jsx-loader#v3.0.1",
-    "marked": "0.3.7",
     "node-sass": "4.7.2",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
