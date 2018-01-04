@@ -8,11 +8,16 @@ import Icon from './Icon';
 import './RangeSelectionViewer.scss';
 
 const getValue = (rangeSelection, axis, locus) => {
-  if (!rangeSelection[axis]) return 'None';
+  let val = 'Unknown';
 
-  const idx = 2 * locus;
+  try {
+    const idx = 2 * locus;
+    val = `${rangeSelection[axis][idx]}: ${rangeSelection[axis][idx + 1]}`;
+  } catch (e) {
+    // Nothing
+  }
 
-  return `${rangeSelection[axis][idx]}: ${rangeSelection[axis][idx + 1]}`;
+  return val;
 };
 
 const RangeSelectionViewer = props => (
