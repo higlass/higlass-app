@@ -17,7 +17,7 @@ import TabEntry from '../components/TabEntry';
 
 
 const ViewerRightBarAnnotations = props => (
-  <div className='right-bar-annitations flex-c flex-v full-wh'>
+  <div className='right-bar-annotations flex-c flex-v full-wh'>
     <TabEntry
       isOpen={props.viewerRightBarAnnotationsEntrySelection}
       title='Selection'
