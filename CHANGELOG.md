@@ -1,3 +1,7 @@
+**v0.10.0**
+
+- Add info tab to the right bar of the viewer and display moused over values from HiGlass's heatmap.
+
 **v0.9.0**
 
 - Replace outdated docs with live version; check `/docs`
