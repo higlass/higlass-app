@@ -66,6 +66,7 @@
     ],
     "no-console": "warn",
     "no-continue": "off",
+    "no-mixed-operators": ["error", {"allowSamePrecedence": true}],
     "no-multi-spaces": [
       "error",
       {
