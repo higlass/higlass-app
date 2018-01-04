@@ -1,0 +1,36 @@
+@import '../styles/colors';
+@import '../styles/ratio';
+
+.lens-container {
+  @include ratio(1);
+}
+
+.lens {
+  position: absolute;
+  top: 0;
+  left: 0;
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+  background: $white;
+  box-shadow: 0 0 1px 0 $gray-dark-rgba;
+}
+
+.hair-cross {
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0 0 0 1px $black, 0 0 0 3px $gray-medium-rgba;
+}
+
+.viewer-right-bar-padding {
+  padding: 0.5rem 0.25rem;
+
+  .icon {
+    width: 0.9em;
+    height: 0.9em;
+    margin-right: 0.25rem;
+  }
+}

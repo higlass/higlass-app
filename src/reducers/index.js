@@ -19,6 +19,12 @@ export const viewerRightBarAnnotationsEntryList =
 export const viewerRightBarAnnotationsEntrySelection =
   defaultSetReducer('viewerRightBarAnnotationsEntrySelection', true);
 
+export const viewerRightBarInfoLensLocation =
+  defaultSetReducer('viewerRightBarInfoLensLocation', true);
+
+export const viewerRightBarInfoLensValue =
+  defaultSetReducer('viewerRightBarInfoLensValue', true);
+
 export const viewerRightBarShow = defaultSetReducer('viewerRightBarShow', false);
 
 export const viewerRightBarTab = defaultSetReducer('viewerRightBarTab', 'info');

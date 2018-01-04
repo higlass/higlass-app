@@ -35,6 +35,18 @@ export const setViewerRightBarAnnotationsEntrySelection =
     payload: { viewerRightBarAnnotationsEntrySelection },
   });
 
+export const setViewerRightBarInfoLensLocation =
+  viewerRightBarInfoLensLocation => ({
+    type: 'SET_VIEWER_RIGHT_BAR_INFO_LENS_LOCATION',
+    payload: { viewerRightBarInfoLensLocation },
+  });
+
+export const setViewerRightBarInfoLensValue =
+  viewerRightBarInfoLensValue => ({
+    type: 'SET_VIEWER_RIGHT_BAR_INFO_LENS_VALUE',
+    payload: { viewerRightBarInfoLensValue },
+  });
+
 export const setViewerRightBarShow = viewerRightBarShow => ({
   type: 'SET_VIEWER_RIGHT_BAR_SHOW',
   payload: { viewerRightBarShow },

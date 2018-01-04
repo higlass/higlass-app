@@ -18,21 +18,22 @@ import TabContent from '../components/TabContent';
 import TabTrigger from '../components/TabTrigger';
 import ToolTip from '../components/ToolTip';
 import ViewerRightBarAnnotations from './ViewerRightBarAnnotations';
+import ViewerRightBarInfo from './ViewerRightBarInfo';
 
 // Configs
 import { ANNOTATIONS, INFO } from '../configs/viewer-right-bar-panels';
 
 const rightBarWidthToggler = props => () => {
-  props.setViewerRightBarShow(!props.viewerRightBarShow);
+  props.setRightBarShow(!props.rightBarShow);
 };
 
 const ViewerRightBar = props => (
   <RightBar
-    isShown={props.viewerRightBarShow}
-    show={props.setViewerRightBarShow}
+    isShown={props.rightBarShow}
+    show={props.setRightBarShow}
     toggle={rightBarWidthToggler(props)}
-    width={props.viewerRightBarWidth}
-    widthSetter={props.setViewerRightBarWidth}
+    width={props.rightBarWidth}
+    widthSetter={props.setRightBarWidth}
     widthSetterFinal={props.widthSetterFinal}>
     <RightBarSubTopBar>
       <ToolTip
@@ -47,8 +48,8 @@ const ViewerRightBar = props => (
         }>
         <TabTrigger
           for={INFO}
-          tabChange={props.setViewerRightBarTab}
-          tabOpen={props.viewerRightBarTab}>
+          tabChange={props.setRightBarTab}
+          tabOpen={props.rightBarTab}>
           <Button>Info</Button>
         </TabTrigger>
       </ToolTip>
@@ -64,8 +65,8 @@ const ViewerRightBar = props => (
         }>
         <TabTrigger
           for={ANNOTATIONS}
-          tabChange={props.setViewerRightBarTab}
-          tabOpen={props.viewerRightBarTab}>
+          tabChange={props.setRightBarTab}
+          tabOpen={props.rightBarTab}>
           <Button>Annotations</Button>
         </TabTrigger>
       </ToolTip>
@@ -74,13 +75,13 @@ const ViewerRightBar = props => (
       <TabContent
         className='full-dim flex-c flex-v'
         for={INFO}
-        tabOpen={props.viewerRightBarTab}>
-        <span>Info Content</span>
+        tabOpen={props.rightBarTab}>
+        <ViewerRightBarInfo />
       </TabContent>
       <TabContent
         className='full-dim flex-c flex-v'
         for={ANNOTATIONS}
-        tabOpen={props.viewerRightBarTab}>
+        tabOpen={props.rightBarTab}>
         <ViewerRightBarAnnotations
           rangeSelection={props.rangeSelection}
         />
@@ -91,29 +92,29 @@ const ViewerRightBar = props => (
 
 ViewerRightBar.propTypes = {
   rangeSelection: PropTypes.array,
-  setViewerRightBarShow: PropTypes.func,
-  setViewerRightBarTab: PropTypes.func,
-  setViewerRightBarWidth: PropTypes.func,
-  viewerRightBarShow: PropTypes.bool,
-  viewerRightBarTab: PropTypes.string,
-  viewerRightBarWidth: PropTypes.number,
+  setRightBarShow: PropTypes.func,
+  setRightBarTab: PropTypes.func,
+  setRightBarWidth: PropTypes.func,
+  rightBarShow: PropTypes.bool,
+  rightBarTab: PropTypes.string,
+  rightBarWidth: PropTypes.number,
   widthSetterFinal: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   viewConfig: state.present.viewConfig,
-  viewerRightBarShow: state.present.viewerRightBarShow,
-  viewerRightBarTab: state.present.viewerRightBarTab,
-  viewerRightBarWidth: state.present.viewerRightBarWidth,
+  rightBarShow: state.present.viewerRightBarShow,
+  rightBarTab: state.present.viewerRightBarTab,
+  rightBarWidth: state.present.viewerRightBarWidth,
 });
 
 const mapDispatchToProps = dispatch => ({
-  setViewerRightBarShow: viewerRightBarShow =>
-    dispatch(setViewerRightBarShow(viewerRightBarShow)),
-  setViewerRightBarTab: viewerRightBarTab =>
-    dispatch(setViewerRightBarTab(viewerRightBarTab)),
-  setViewerRightBarWidth: viewerRightBarWidth =>
-    dispatch(setViewerRightBarWidth(viewerRightBarWidth)),
+  setRightBarShow: rightBarShow =>
+    dispatch(setViewerRightBarShow(rightBarShow)),
+  setRightBarTab: rightBarTab =>
+    dispatch(setViewerRightBarTab(rightBarTab)),
+  setRightBarWidth: rightBarWidth =>
+    dispatch(setViewerRightBarWidth(rightBarWidth)),
 });
 
 export default connect(

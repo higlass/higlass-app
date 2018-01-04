@@ -59,7 +59,7 @@ class Viewer extends React.Component {
   componentWillUnmount() {
     this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
     this.pubSubs = [];
-    removeHiGlassEventListeners(this.hiGlassEventListeners, this.api);
+    removeHiGlassEventListeners(this.hiGlassEventListeners, this.hgApi);
     this.hiGlassEventListeners = [];
   }
 
@@ -86,7 +86,8 @@ class Viewer extends React.Component {
         {this.props.isAuthenticated &&
           <ViewerRightBar
             rangeSelection={this.state.rangeSelection}
-            widthSetterFinal={resizeTrigger} />
+            widthSetterFinal={resizeTrigger}
+          />
         }
         <ViewerBottomBar isAuthenticated={this.props.isAuthenticated} />
       </ContentWrapper>
@@ -105,17 +106,28 @@ class Viewer extends React.Component {
 
     if (this.props.mouseTool === SELECT) {
       this.hiGlassEventListeners.push({
-        event: 'rangeSelection',
+        name: 'rangeSelection',
         id: this.hgApi.on(
           'rangeSelection', this.rangeSelectionHandler.bind(this)
         ),
       });
     }
+    if (this.props.rightBarTab === INFO) {
+      this.hgApi.on('mouseMoveZoom', this.mouseMoveZoomHandler.bind(this));
+      this.hiGlassEventListeners.push({
+        name: 'mouseMoveZoom',
+        id: this.mouseMoveZoomHandler,
+      });
+    }
+  }
+
+  mouseMoveZoomHandler(data) {
+    pubSub.publish('viewer.mouseMoveZoom', data);
   }
 
   removeHiGlassEventListeners() {
-    this.hiGlassEventListeners.forEach((listener) => {
-      this.api.off(listener.event, listener.id);
+    this.hiGlassEventListeners.forEach((event) => {
+      this.hgApi.off(event.name, event.id);
     });
     this.hiGlassEventListeners = [];
   }
@@ -200,6 +212,7 @@ Viewer.propTypes = {
   viewConfigId: PropTypes.string,
   mouseTool: PropTypes.string,
   rightBarShow: PropTypes.bool,
+  rightBarTab: PropTypes.string,
   rightBarWidth: PropTypes.number,
 };
 
@@ -207,6 +220,7 @@ const mapStateToProps = state => ({
   viewConfig: state.present.viewConfig,
   mouseTool: state.present.viewerMouseTool,
   rightBarShow: state.present.viewerRightBarShow,
+  rightBarTab: state.present.viewerRightBarTab,
   rightBarWidth: state.present.viewerRightBarWidth,
 });
 
