@@ -20,6 +20,22 @@ const RangeSelectionViewer = props => (
     {props.isHeadingShown &&
       <h4 className='range-selection-headline'>Range Selection</h4>
     }
+    {props.center && (
+      <div className='flex-c range-selection-viewer-center'>
+        <Icon iconId='center' />
+        <div className='flex-c flex-g-1'>
+          <strong className='axis'>X</strong>
+          <div className='flex-g-1'>
+            {getValue(props.center, 0, 0)}
+          </div>
+          <div className='range-selection-separator'>&mdash;</div>
+          <strong className='axis'>Y</strong>
+          <div className='flex-g-1'>
+            {getValue(props.center, 1, 0)}
+          </div>
+        </div>
+      </div>
+    )}
     <div className='flex-c range-selection-viewer-x'>
       <Icon iconId='arrow-bottom-from-right' />
       <div className='flex-c flex-g-1'>
@@ -54,6 +70,7 @@ const RangeSelectionViewer = props => (
 RangeSelectionViewer.propTypes = {
   isHeadingShown: PropTypes.bool,
   rangeSelection: PropTypes.array,
+  center: PropTypes.array,
 };
 
 export default RangeSelectionViewer;
