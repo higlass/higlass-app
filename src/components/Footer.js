@@ -26,6 +26,7 @@ const Footer = () => (
           <li><NavLink exact to='/about' activeClassName='is-active'>About</NavLink></li>
           <li><NavLink exact to='/examples' activeClassName='is-active'>Examples</NavLink></li>
           <li><NavLink exact to='/docs' activeClassName='is-active'>Docs</NavLink></li>
+          <li><NavLink exact to='/help' activeClassName='is-active'>Help</NavLink></li>
         </ul>
       </nav>
     </div>
