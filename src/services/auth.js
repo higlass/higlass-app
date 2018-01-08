@@ -10,7 +10,7 @@ const state = {
   username: '',
 };
 
-const server = HGAC_SERVER || window.HGAC_HOMEPAGE_DEMOS;
+const server = HGAC_SERVER || window.HGAC_SERVER;
 
 const checkAuthentication = () => {
   // Get the cookie with the token
