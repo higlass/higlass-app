@@ -85,10 +85,10 @@ export const EDIT = {
   svg: '<path d="M16 15v1H3l3-1h10zM10.16 2.84l3 3L4.5 14.5 0 16l1.5-4.5 8.66-8.66zm.706-.706L11.5 1.5c2.477-2.477 5.477.523 3 3l-.634.634-3-3z" fill="currentColor"/>',
 };
 
-// export const EXTERNAL = {
-//   viewBox: '0 0 16 16',
-//   svg: '<path d="M12 11.76l1.6-1.316v2.996c0 .442-.357.8-.8.8H.8c-.44 0-.8-.357-.8-.8v-8.8c0-.44.358-.8.8-.8h4.612c-1.185.883-1.736 1.6-1.736 1.6H1.6v7.2H12v-.88zm-1.31-4.68c-3.5 0-4.625.56-6.45 3.56 0 0 0-6.375 6.45-6.376V1.76l5.31 4-5.31 4.16V7.08z" fill="currentColor"/>',
-// };
+export const EXTERNAL = {
+  viewBox: '0 0 16 16',
+  svg: '<path d="M12 11.76l1.6-1.316v2.996c0 .442-.357.8-.8.8H.8c-.44 0-.8-.357-.8-.8v-8.8c0-.44.358-.8.8-.8h4.612c-1.185.883-1.736 1.6-1.736 1.6H1.6v7.2H12v-.88zm-1.31-4.68c-3.5 0-4.625.56-6.45 3.56 0 0 0-6.375 6.45-6.376V1.76l5.31 4-5.31 4.16V7.08z" fill="currentColor"/>',
+};
 
 // export const GEZWITSCHER = {
 //   viewBox: '0 0 16 16',
@@ -274,7 +274,7 @@ export default {
   DOWNLOAD,
   DRAG,
   EDIT,
-  // EXTERNAL,
+  EXTERNAL,
   // GEZWITSCHER,
   GITHUB,
   // GLOBE,
