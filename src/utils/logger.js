@@ -1,7 +1,7 @@
 const LEVELS = {
   debug: 'log',
   info: 'info',
-  warning: 'warn',
+  warn: 'warn',
   error: 'error',
 };
 

@@ -17,8 +17,7 @@ import { setViewConfig } from '../actions';
 import pubSub from '../services/pub-sub';
 
 // Utils
-import Deferred from '../utils/deferred';
-import Logger from '../utils/logger';
+import { Deferred, Logger } from '../utils';
 
 // Styles
 import './HiGlassViewer.scss';
@@ -116,7 +115,7 @@ class HiGlassViewer extends React.Component {
     fetchViewConfig(viewConfigId || defaultViewConfigId)
       .then(this.setViewConfig.bind(this))
       .catch(() => {
-        logger.warning('View config is not available locally!');
+        logger.warn('View config is not available locally!');
 
         // Try loading config from HiGlass.io
         return fetchViewConfig(

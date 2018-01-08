@@ -26,7 +26,7 @@ class AppInfo extends React.Component {
         });
       })
       .catch((error) => {
-        logger.warning('Could not retrieve or parse server version.', error);
+        logger.warn('Could not retrieve or parse server version.', error);
         this.setState({
           serverVersion: <em>(unknown)</em>,
         });
