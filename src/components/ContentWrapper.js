@@ -33,17 +33,18 @@ class ContentWrapper extends React.Component {
 
     className += this.props.isFullDimOnly ? ' oh' : '';
     className += this.props.bottomBar ? ' content-wrapper-bottom-bar' : '';
+    className += this.state.error ? ' content-wrapper-has-error' : '';
 
     return (
-      <div
-        className={className}>
+      <div className={className}>
         {this.state.error &&
           <ErrorBar
             autoClose={true}
             isClosable={true}
             msg={this.state.error}
             onClose={() => this.setState({ error: '' })}
-            wrap={true} />
+            wrap={!this.props.isFullDimOnly}
+          />
         }
         {this.props.children}
       </div>

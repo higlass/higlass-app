@@ -32,7 +32,7 @@ class ErrorBar extends React.Component {
   render() {
     return (
       <header className='error-bar rel'>
-        <div className={`flex-c flex-a-c flex-jc-sb ${this.props.wrap ? 'wrap' : ''}`}>
+        <div className={`error-bar-content flex-c flex-a-c flex-jc-sb ${this.props.wrap ? 'wrap' : 'no-wrap'}`}>
           <div className='flex-c flex-a-c error-bar-content'>
             <Icon iconId='warning' />
             <p className='error-bar-msg'>{this.props.msg}</p>

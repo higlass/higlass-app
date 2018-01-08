@@ -4,15 +4,20 @@
 .error-bar {
   z-index: 1;
   margin-top: 3rem;
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
   color: $red-dark;
   background: $red-light;
   transition: padding $fast-transition $easing;
 
+  .error-bar-content.no-wrap {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
   .error-bar-msg {
     display: inline-block;
     margin: 0;
-    max-height: 3em;
+    max-height: 2em;
     overflow: auto;
   }
 

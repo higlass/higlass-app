@@ -3,7 +3,8 @@
 .content {
   margin-top: 3rem;
   margin-bottom: 1rem;
-  transition: margin $fast-transition $easing;
+  transition: margin-left $fast-transition $easing,
+              margin-right $fast-transition $easing;
 
   &.has-sub-top-bar {
     margin-top: 5rem;
@@ -24,4 +25,12 @@
 
 .content-wrapper-bottom-bar .content {
   margin-bottom: 1.5rem;
+}
+
+.content-wrapper-has-error .content {
+  margin-top: 0;
+}
+
+.content-wrapper-has-error .right-bar {
+  top: 5rem;
 }
