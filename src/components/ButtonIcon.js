@@ -17,24 +17,33 @@ const classNames = (props) => {
   return className;
 };
 
-const ButtonIcon = props => (
-  <button
-    className={classNames(props)}
-    title={props.title}
-    onClick={props.onClick}
-    onMouseDown={props.onMouseDown}
-    onMouseUp={props.onMouseUp}>
-    <Icon
-      iconId={props.icon}
-      mirrorH={props.iconMirrorH}
-      mirrorV={props.iconMirrorV} />
-    <span>{props.children}</span>
-  </button>
-);
+const getTag = href => (href && href.length ? 'a' : 'button');
+
+const ButtonIcon = (props) => {
+  const Tag = getTag(props.href);
+  return (
+    <Tag
+      className={classNames(props)}
+      href={props.href}
+      target={props.external ? '_blank' : ''}
+      title={props.title}
+      onClick={props.onClick}
+      onMouseDown={props.onMouseDown}
+      onMouseUp={props.onMouseUp}>
+      <Icon
+        iconId={props.icon}
+        mirrorH={props.iconMirrorH}
+        mirrorV={props.iconMirrorV} />
+      <span>{props.children}</span>
+    </Tag>
+  );
+};
 
 ButtonIcon.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  external: PropTypes.bool,
+  href: PropTypes.string,
   icon: PropTypes.string.isRequired,
   iconMirrorH: PropTypes.bool,
   iconMirrorV: PropTypes.bool,
