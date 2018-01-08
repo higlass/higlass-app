@@ -10,6 +10,8 @@ const state = {
   username: '',
 };
 
+const server = HGAC_SERVER || window.HGAC_HOMEPAGE_DEMOS;
+
 const checkAuthentication = () => {
   // Get the cookie with the token
   const token = cookie.get('higlasstoken');
@@ -18,9 +20,9 @@ const checkAuthentication = () => {
 
   // Verify token
   return fetch(
-    `${HGAC_SERVER}/api/v1/current/`,
+    `${server}/api/v1/current/`,
     {
-      // credentials: HGAC_SERVER === '' ? 'same-origin' : 'include',
+      // credentials: server === '' ? 'same-origin' : 'include',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,

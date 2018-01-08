@@ -69,7 +69,7 @@ const Home = props => (
       </div>
     </InfoBar>
     <Content name='home' rel={true} wrap={true}>
-      {HGAC_HOMEPAGE_DEMOS ? (
+      {HGAC_HOMEPAGE_DEMOS || window.HGAC_HOMEPAGE_DEMOS ? (
         <HomeDemos />
       ) : (
         <HiGlassViewer />

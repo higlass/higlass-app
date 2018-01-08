@@ -39,8 +39,7 @@ try {
 
 const configConst = {};
 Object.keys(config).forEach((key) => {
-  configConst[`HGAC_${changeCase.constantCase(key)}`] =
-    JSON.stringify(config[key]);
+  configConst[`HGAC_${changeCase.constantCase(key)}`] = JSON.stringify(config[key]);
 });
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -70,8 +69,8 @@ const cssFilename = 'static/css/[name].[contenthash:8].css';
 // However, our output is structured with css, js and media folders.
 // To have this structure working with relative paths, we have to use custom options.
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
-  ? // Making sure that the publicPath goes back to to build folder.
-    { publicPath: Array(cssFilename.split('/').length).join('../') }
+  // Making sure that the publicPath goes back to to build folder.
+  ? { publicPath: Array(cssFilename.split('/').length).join('../') }
   : {};
 
 // This is the production configuration.
@@ -452,8 +451,6 @@ module.exports = {
     // Expose version numbers.
     new webpack.DefinePlugin({
       VERSION_HIGLASS_APP: JSON.stringify(packageJson.version),
-    }),
-    new webpack.DefinePlugin({
       VERSION_HIGLASS_VIEWER: JSON.stringify(packageJsonHg.version),
     }),
     new webpack.DefinePlugin(configConst),
