@@ -3,7 +3,7 @@ export { default as cookie } from './cookie';
 export { default as debounce } from './debounce';
 export { default as deepClone } from './deep-clone';
 export { default as defaultSetReducer } from './default-set-reducer';
-export { default as deferred } from './deferred';
+export { default as Deferred } from './deferred';
 export { default as downloadAsFile } from './download-as-file';
 export { default as downloadAsJson } from './download-as-json';
 export { default as flatten } from './flatten';
