@@ -22,6 +22,7 @@ import { setViewerMouseTool, setViewerRightBarTab } from '../actions';
 // Utils
 import {
   downloadAsJson,
+  Logger,
   removeHiGlassEventListeners,
   requestNextAnimationFrame
 } from '../utils';
@@ -29,6 +30,8 @@ import {
 // Configs
 import { HOLD_DOWN_DELAY, PAN_ZOOM, SELECT } from '../configs/mouse-tools';
 import { ANNOTATIONS, INFO } from '../configs/viewer-right-bar-panels';
+
+const logger = Logger('Viewer');
 
 const resizeTrigger = () => requestNextAnimationFrame(() => {
   window.dispatchEvent(new Event('resize'));
@@ -75,7 +78,9 @@ class Viewer extends React.Component {
           rightBarShow={this.props.rightBarShow}
           rightBarWidth={this.props.rightBarWidth}>
           {this.props.isAuthenticated &&
-            <ViewerSubTopBar />
+            <ViewerSubTopBar
+              shareViewAsLink={this.callHgApi('shareViewConfigAsLink')}
+            />
           }
           <HiGlassViewer
             api={(api) => { this.hgApi = api; }}
@@ -95,6 +100,30 @@ class Viewer extends React.Component {
   }
 
   /* ---------------------------- Custom Methods ---------------------------- */
+
+  /**
+   * Wrapper for triggering a public function of HiGlass
+   *
+   * @description
+   * We need an extra wrapper because the HiGlass's might not be available by
+   * the time we pass props to a component.
+   *
+   * @param  {String}  method  Function name to be triggered.
+   * @return  {Function}  Curried function calling the HiGlass API.
+   */
+  callHgApi(method) {
+    return (...args) => {
+      if (!this.hgApi) {
+        logger.warn('HiGlass not available yet.');
+        return undefined;
+      }
+      if (!this.hgApi[method]) {
+        logger.warn(`Method (${method}) not available. Incompatible version of HiGlass?`);
+        return undefined;
+      }
+      return this.hgApi[method](...args);
+    };
+  }
 
   checkHiGlassEventListeners() {
     if (!this.hgApi) return;
