@@ -223,9 +223,18 @@ class Viewer extends React.Component {
   }
 
   rangeSelectionHandler(rangeSelection) {
-    this.setState({
-      rangeSelection,
-    });
+    if (rangeSelection.genomicRange) {
+      this.setState({
+        rangeSelection.genomicRange,
+      });
+    } else {
+      pubSub.publish(
+        'globalError',
+        'Range selection could not been translated from data location into ' +
+        'genomic locations. Check your view config and the cooler file of ' +
+        'the main heatmap.'
+      );
+    }
   }
 }
 
