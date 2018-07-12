@@ -67,12 +67,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleViewerRightBarAnnotationsEntryDetails: isOpen =>
-    dispatch(setViewerRightBarAnnotationsEntryDetails(!isOpen)),
-  toggleViewerRightBarAnnotationsEntryList: isOpen =>
-    dispatch(setViewerRightBarAnnotationsEntryList(!isOpen)),
-  toggleViewerRightBarAnnotationsEntrySelection: isOpen =>
-    dispatch(setViewerRightBarAnnotationsEntrySelection(!isOpen)),
+  toggleViewerRightBarAnnotationsEntryDetails:
+    isOpen => dispatch(setViewerRightBarAnnotationsEntryDetails(!isOpen)),
+  toggleViewerRightBarAnnotationsEntryList:
+    isOpen => dispatch(setViewerRightBarAnnotationsEntryList(!isOpen)),
+  toggleViewerRightBarAnnotationsEntrySelection:
+    isOpen => dispatch(setViewerRightBarAnnotationsEntrySelection(!isOpen)),
 });
 
 export default connect(

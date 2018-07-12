@@ -15,9 +15,7 @@ class Dialog extends React.Component {
     super(props);
 
     this.pubSubs = [];
-  }
 
-  componentWillMount() {
     this.pubSubs.push(
       pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
     );

@@ -48,9 +48,7 @@ class Viewer extends React.Component {
     this.state = {
       rangeSelection: [null, null],
     };
-  }
 
-  componentWillMount() {
     this.pubSubs.push(
       pubSub.subscribe('keydown', this.keyDownHandler.bind(this))
     );
@@ -254,10 +252,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setMouseTool: mouseTool =>
-    dispatch(setViewerMouseTool(mouseTool)),
-  setRightBarTab: viewerRightBarTab =>
-    dispatch(setViewerRightBarTab(viewerRightBarTab)),
+  setMouseTool:
+    mouseTool => dispatch(setViewerMouseTool(mouseTool)),
+  setRightBarTab:
+    viewerRightBarTab => dispatch(setViewerRightBarTab(viewerRightBarTab)),
 });
 
 export default withRouter(connect(

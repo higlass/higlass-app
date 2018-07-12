@@ -67,8 +67,8 @@ const shareViewConfig = (share) => {
     });
 };
 
-const downloadViewConfig = viewConfig =>
-  downloadAsJson('viewConfig.json', viewConfig);
+const downloadViewConfig =
+  viewConfig => downloadAsJson('viewConfig.json', viewConfig);
 
 const ViewerSubTopBar = props => (
   <SubTopBar>
@@ -164,8 +164,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setMouseTool: mouseTool =>
-    dispatch(setViewerMouseTool(mouseTool)),
+  setMouseTool:
+    mouseTool => dispatch(setViewerMouseTool(mouseTool)),
 });
 
 export default connect(
