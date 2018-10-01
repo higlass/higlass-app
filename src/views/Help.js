@@ -97,7 +97,7 @@ class Help extends React.Component {
               <p>
               You need help getting started with HiGlass or ran into a tricky issue?
               Fear not! Below is a list of excellent resources that can hopefully help
-              you out!
+              you out! For quick help join our <strong><a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack channel</a></strong>.
               </p>
             </div>
           </div>
@@ -115,7 +115,7 @@ class Help extends React.Component {
               If you want to get familiar with HiGlass and public Hi-C data we recommend you check
               out <a href='#tutorial-2017-4dn-annual-meeting'>4D Nucleome Annual Meeting Tutorial</a>.
               If you want to know more about data processing and analysis have a look at our
-              tutorial from <a href='#tutorial-2017-4dn-annual-meeting'>ISMB / ECCB 2017</a>.
+              tutorial from the <a href='#tutorial-2018-4dn-hic-bootcamp'>4DN Hi-C Data Analysis Bootcamp</a>.
               For more any other issues please make use of the <a href='#resources'>resources</a> below.
             </p>
 
@@ -126,16 +126,44 @@ class Help extends React.Component {
             </h3>
 
             <ul className='no-list-style large-spacing'>
+              <li id='tutorial-2018-4dn-hic-bootcamp'>
+                <a
+                  href='https://github.com/hms-dbmi/hic-data-analysis-bootcamp'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Tutorial from the Hi-C Data Analysis Bootcamp organized by Harvard Medical School
+                </a>
+                (May 2018)
+                <p>
+                  After this tutorial you will be familiar with the visualization of 3D genome data
+                  in HiGlass and how to get HiGlass up an running.
+                </p>
+              </li>
               <li id='tutorial-2017-4dn-annual-meeting'>
-                <a href='https://github.com/4dn-dcic/2017-annual-meeting-higlass-hipiler-tutorial' target='_blank' rel='noopener noreferrer'>Tutorial from 4D Nucleome Annual Meeting</a> (Sep 2017)
+                <a
+                  href='https://github.com/4dn-dcic/2017-annual-meeting-higlass-hipiler-tutorial'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Tutorial from 4D Nucleome Annual Meeting
+                </a>
+                (Sep 2017)
                 <p>
                   After this tutorial you know about the functionality of HiGlass and HiPiler to
                   visually explore sequencing-based 3D genome data as well as how to get started
                   using the tools on their own.
                 </p>
               </li>
-              <li id='tutorial-2017-'>
-                <a href='https://github.com/hms-dbmi/3d-genome-processing-tutorial' target='_blank' rel='noopener noreferrer'>Tutorial from ISMB/ECCB 2017</a> (Jun 2017)
+              <li id='tutorial-2017-ismb'>
+                <a
+                  href='https://github.com/hms-dbmi/3d-genome-processing-tutorial'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Tutorial from ISMB/ECCB 2017
+                </a>
+                (Jun 2017)
                 <p>
                   After this tutorial you are able to obtain, process, analyze, and visualize 3D
                   genome data on their own as well as to understand some of the logic, motivation
@@ -162,8 +190,8 @@ class Help extends React.Component {
                 <strong>Docs: </strong>
                 <a href='http://higlass.io/docs' target='_blank' rel='noopener noreferrer'>higlass.io/docs</a>
                 <p>
-                  For developer questions regarding APIs etc. please refer to our extensive
-                  documention.
+                  For developer questions regarding APIs etc. please refer to
+                  our extensive documention.
                 </p>
               </li>
               <li>
@@ -173,6 +201,8 @@ class Help extends React.Component {
               </li>
               <li>
                 <strong>Questions / Help with Implementation: </strong>
+                <a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack</a>
+                <span> &amp; </span>
                 <a href='http://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>stackoverflow.com</a>
                 <span> &amp; </span>
                 <a href='http://bioinformatics.stackoverflow.com/questions/ask?tags=higlass&genomics&hi-c&visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackoverflow.com</a>
@@ -211,6 +241,10 @@ class Help extends React.Component {
               <li>
                 <strong>Docker: </strong>
                 <a href='https://github.com/hms-dbmi/higlass-docker' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-docker</a>
+              </li>
+              <li>
+                <strong>Manager: </strong>
+                <a href='https://github.com/hms-dbmi/higlass-manage' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-manage</a>
               </li>
             </ul>
 
