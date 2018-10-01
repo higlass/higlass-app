@@ -11,7 +11,7 @@ import SpinnerCenter from '../components/Spinner';
 // Services
 import Logger from '../utils/logger';
 
-const URL = 'https://rawgit.com/hms-dbmi/higlass-app/master/content/plugins.json';
+const URL = 'https://cdn.rawgit.com/hms-dbmi/higlass-app/33631483/content/plugins.json';
 
 const logger = Logger('Plugins');
 
