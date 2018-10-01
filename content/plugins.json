@@ -1,0 +1,62 @@
+[
+  {
+    "url": "https://github.com/hms-dbmi/higlass-multivec#readme",
+    "title": "Multivec Track",
+    "description": "A track for displaying multiple tracks as stacked bar in one track.",
+    "image": "https://user-images.githubusercontent.com/2143629/42416058-b698b002-8232-11e8-9952-b43108cfdbd2.png",
+    "liveDemo": "http://higlass.io/app/?config=L4nKi6eGSzWOpi-rU2DAMA",
+    "sourceCode": "https://github.com/hms-dbmi/higlass-multivec",
+    "npmPackageName": "higlass-multivec"
+  },
+  {
+    "url": "https://github.com/flekschas/higlass-scalable-insets#readme",
+    "title": "Scalable Insets Track",
+    "description": "A track that displays insets for annotation too small to be identifiable.",
+    "image": "https://camo.githubusercontent.com/a56e33426c672c56b2fc2a8f6195470226da928f/687474703a2f2f7363616c61626c652d696e736574732e6c656b73636861732e64652f696d616765732f7465617365722e6a7067",
+    "sourceCode": "https://github.com/flekschas/higlass-scalable-insets",
+    "npmPackageName": "higlass-scalable-insets"
+  },
+  {
+    "url": "https://github.com/flekschas/higlass-geojson#readme",
+    "title": "GeoJSON Track",
+    "description": "A track for displaying GeoJSON annotation in HiGlass.",
+    "image": "https://user-images.githubusercontent.com/932103/46308375-76409180-c587-11e8-9f75-77ef21962405.png",
+    "liveDemo": "http://higlass-geojson.lekschas.de/",
+    "sourceCode": "https://github.com/flekschas/higlass-geojson",
+    "npmPackageName": "higlass-geojson"
+  },
+  {
+    "url": "https://github.com/flekschas/higlass-image#readme",
+    "title": "Image Track",
+    "description": "A track for viewing tiled image data in HiGlass",
+    "image": "https://user-images.githubusercontent.com/932103/46308354-67f27580-c587-11e8-9da1-07a05e719a9f.png",
+    "liveDemo": "http://higlass-image.lekschas.de/",
+    "sourceCode": "https://github.com/flekschas/higlass-image",
+    "npmPackageName": "higlass-image"
+  },
+  {
+    "url": "https://github.com/flekschas/higlass-labeled-annotation#readme",
+    "title": "Labeled Annotation Track",
+    "description": "A track for displaying annotations with a beautiful white outline and a carefully crafted text label that will make your gorgeous annotations shine!",
+    "image": "https://user-images.githubusercontent.com/932103/46308339-5d37e080-c587-11e8-8642-9746140b2424.png",
+    "liveDemo": "http://higlass-labeled-annotation.lekschas.de/",
+    "sourceCode": "https://github.com/flekschas/higlass-labeled-annotation",
+    "npmPackageName": "higlass-labeled-annotation"
+  },
+  {
+    "url": "https://github.com/manzt/higlass-unix-time-track#readme",
+    "title": "Unix Time Track",
+    "description": "A track for displaying human readable unix epoch time.",
+    "image": "https://user-images.githubusercontent.com/932103/46308324-501af180-c587-11e8-9d6b-61b15de8e0fc.png",
+    "sourceCode": "https://github.com/manzt/higlass-unix-time-track",
+    "npmPackageName": "higlass-unix-time-track"
+  },
+  {
+    "url": "https://github.com/pkerpedjiev/higlass-time-interval-track#readme",
+    "title": "Time Interval Track",
+    "description": "Display time intervals in the format HH:MM:ss in HiGlass.",
+    "image": "https://user-images.githubusercontent.com/932103/46308298-40031200-c587-11e8-9dad-677ea3d51695.png",
+    "sourceCode": "https://github.com/pkerpedjiev/higlass-time-interval-track",
+    "npmPackageName": "higlass-unix-time-track"
+  },
+]
