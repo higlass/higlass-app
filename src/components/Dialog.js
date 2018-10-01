@@ -30,7 +30,7 @@ class Dialog extends React.Component {
 
   render() {
     return (
-      <div className='flex-c flex-a-c flex-jc-c full-dim dialog'>
+      <div className='flex-c flex-a-c flex-jc-c dialog'>
         <div className='dialog-window'>
           <div className='flex-c flex-v flex-a-c dialog-content'>
             {(this.props.headline || this.props.icon)
