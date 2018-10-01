@@ -15,7 +15,6 @@ class Dialog extends React.Component {
     super(props);
 
     this.pubSubs = [];
-  }
 
   componentDidMount() {
     this.pubSubs.push(

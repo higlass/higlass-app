@@ -42,7 +42,8 @@ class DropDown extends React.Component {
   }
 
   render() {
-    const childrenWithProps = React.Children.map(this.props.children,
+    const childrenWithProps = React.Children.map(
+      this.props.children,
       child => React.cloneElement(child, {
         dropDownIsOpen: this.state.isOpen,
         dropDownToggle: this.toggle.bind(this),
