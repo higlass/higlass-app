@@ -19,7 +19,7 @@ const ExampleList = props => (
           </figure>
         </a>
         {example.title
-          && <a href={example.url && example.url}>{example.title}</a>
+          && <a href={example.url && example.url} target='_blank' rel='noopener noreferrer'>{example.title}</a>
         }
         {example.description
           && <p className='smaller'>{example.description}</p>
