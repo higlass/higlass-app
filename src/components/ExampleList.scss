@@ -13,6 +13,16 @@
     }
   }
 
+  .example-title {
+    display: block;
+    margin-bottom: -1px;
+    padding: 0.25rem 0.5rem;
+    font-weight: bold;
+    background: $gray-lightest;
+    border-radius: 0.25rem 0.25rem 0 0;
+    box-shadow: none;
+  }
+
   .example-figure {
     @include ratio(1);
 

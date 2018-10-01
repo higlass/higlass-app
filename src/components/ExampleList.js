@@ -9,7 +9,20 @@ const ExampleList = props => (
     {props.examples.map((example, index) => (
       <li
         className={example.columns === 2 && 'two-columns'}
-        key={index}>
+        key={index}
+      >
+        {example.title
+          && (
+            <a
+              href={example.url && example.url}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='example-title'
+            >
+              {example.title}
+            </a>
+          )
+        }
         <a href={example.url && example.url}>
           <figure
             className='example-figure'
@@ -18,9 +31,6 @@ const ExampleList = props => (
             }}>
           </figure>
         </a>
-        {example.title
-          && <a href={example.url && example.url} target='_blank' rel='noopener noreferrer'>{example.title}</a>
-        }
         {example.description
           && <p className='smaller'>{example.description}</p>
         }
