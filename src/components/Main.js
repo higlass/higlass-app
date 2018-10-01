@@ -9,6 +9,7 @@ import Examples from '../views/Examples';
 import Help from '../views/Help';
 import Home from '../views/Home';
 import NotFound from '../views/NotFound';
+import Plugins from '../views/Plugins';
 import Viewer from '../views/Viewer';
 
 class Main extends React.Component {
@@ -33,6 +34,7 @@ class Main extends React.Component {
         <Route exact path='/examples' component={Examples} />
         <Route exact path='/help' component={Help} />
         <Route exact path='/docs' component={Docs} />
+        <Route exact path='/plugins' component={Plugins} />
         <Route exact path='/' component={Home} />
         <Route component={NotFound}/>
       </Switch>
