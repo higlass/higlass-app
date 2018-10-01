@@ -36,7 +36,7 @@ class TopBar extends React.Component {
     this.toggleMenu = this.toggleMenu.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.unlisten = this.props.history.listen(
       () => this.setState({ menuIsShown: false })
     );
@@ -79,8 +79,8 @@ class TopBar extends React.Component {
               <li><NavLink to='/docs' activeClassName='is-active'>Docs</NavLink></li>
               <li><NavLink to='/help' activeClassName='is-active'>Help</NavLink></li>
               <li className='separated-left flex-c flex-jc-c'>
-                {this.props.isAuthenticated ?
-                  (
+                {this.props.isAuthenticated
+                  ? (
                     <TopBarDropDownUser
                       closeOnOuterClick={true}
                       logout={auth.logout}

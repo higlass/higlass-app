@@ -11,11 +11,11 @@ const wrapHtml = html => ({ __html: html });
 
 const getSvg = id => wrapHtml(icons[id] ? icons[id].svg : WARNING.svg);
 
-const getFillRule = id => (icons[id] && icons[id].fillRule ?
-  icons[id].fillRule : '');
+const getFillRule = id => (icons[id] && icons[id].fillRule
+  ? icons[id].fillRule : '');
 
-const getViewBox = id => (icons[id] && icons[id].viewBox ?
-  icons[id].viewBox : '0 0 16 16');
+const getViewBox = id => (icons[id] && icons[id].viewBox
+  ? icons[id].viewBox : '0 0 16 16');
 
 const convertId = id => (id ? id.replace(/-/g, '_').toUpperCase() : '');
 

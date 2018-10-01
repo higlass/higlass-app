@@ -17,15 +17,13 @@ const clone = (value, state) => {
   }
 };
 
-const defaultSetReducer =
-  (key, defaultValue) =>
-    (state = defaultValue, action) => {
-      switch (action.type) {
-        case `SET_${camelToConst(key)}`:
-          return clone(action.payload[key], state);
-        default:
-          return state;
-      }
-    };
+const defaultSetReducer = (key, defaultValue) => (state = defaultValue, action) => {
+  switch (action.type) {
+    case `SET_${camelToConst(key)}`:
+      return clone(action.payload[key], state);
+    default:
+      return state;
+  }
+};
 
 export default defaultSetReducer;

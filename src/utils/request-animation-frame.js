@@ -11,12 +11,12 @@
 export const requestAnimationFrame = (function requestAnimationFrame() {
   let lastTime = 0;
 
-  return window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    function requestAnimationFrameTimeout(callback) {
+  return window.requestAnimationFrame
+    || window.webkitRequestAnimationFrame
+    || window.mozRequestAnimationFrame
+    || window.oRequestAnimationFrame
+    || window.msRequestAnimationFrame
+    || function requestAnimationFrameTimeout(callback) {
       const currTime = new Date().getTime();
       const timeToCall = Math.max(0, 16 - (currTime - lastTime));
       const id = window.setTimeout(() => {
@@ -36,17 +36,17 @@ export const requestAnimationFrame = (function requestAnimationFrame() {
  * @param   {Integer}  id  ID of the animation frame request to be canceled.
  */
 export const cancelAnimationFrame = (function cancelAnimationFrame() {
-  return window.cancelAnimationFrame ||
-    window.webkitCancelAnimationFrame ||
-    window.mozCancelAnimationFrame ||
-    window.oCancelAnimationFrame ||
-    window.msCancelAnimationFrame ||
-    window.cancelAnimationFrame ||
-    window.webkitCancelAnimationFrame ||
-    window.mozCancelAnimationFrame ||
-    window.oCancelAnimationFrame ||
-    window.msCancelAnimationFrame ||
-    function cancelAnimationFrameTimeout(id) { window.clearTimeout(id); };
+  return window.cancelAnimationFrame
+    || window.webkitCancelAnimationFrame
+    || window.mozCancelAnimationFrame
+    || window.oCancelAnimationFrame
+    || window.msCancelAnimationFrame
+    || window.cancelAnimationFrame
+    || window.webkitCancelAnimationFrame
+    || window.mozCancelAnimationFrame
+    || window.oCancelAnimationFrame
+    || window.msCancelAnimationFrame
+    || function cancelAnimationFrameTimeout(id) { window.clearTimeout(id); };
 }());
 
 /**
@@ -71,8 +71,8 @@ const nextAnimationFrame = (function nextAnimationFrame() {
 
   return {
     request:
-      window.requestNextAnimationFrame ||
-      function requestNextAnimationFrame(callback, element) {
+      window.requestNextAnimationFrame
+      || function requestNextAnimationFrame(callback, element) {
         const id = requestId();
 
         ids[id] = requestAnimationFrame(() => {
@@ -85,8 +85,8 @@ const nextAnimationFrame = (function nextAnimationFrame() {
         return id;
       },
     cancel:
-      window.cancelNextAnimationFrame ||
-      function cancelNextAnimationFrame(id) {
+      window.cancelNextAnimationFrame
+      || function cancelNextAnimationFrame(id) {
         if (ids[id]) {
           cancelAnimationFrame(ids[id]);
           delete ids[id];

@@ -1,3 +1,4 @@
+/* eslint max-len: 0 */
 import { ActionCreators } from 'redux-undo';
 
 export const redo = ActionCreators.redo();
@@ -17,35 +18,30 @@ export const setViewerMouseTool = viewerMouseTool => ({
   payload: { viewerMouseTool },
 });
 
-export const setViewerRightBarAnnotationsEntryDetails =
-  viewerRightBarAnnotationsEntryDetails => ({
-    type: 'SET_VIEWER_RIGHT_BAR_ANNOTATIONS_ENTRY_DETAILS',
-    payload: { viewerRightBarAnnotationsEntryDetails },
-  });
+export const setViewerRightBarAnnotationsEntryDetails = viewerRightBarAnnotationsEntryDetails => ({
+  type: 'SET_VIEWER_RIGHT_BAR_ANNOTATIONS_ENTRY_DETAILS',
+  payload: { viewerRightBarAnnotationsEntryDetails },
+});
 
-export const setViewerRightBarAnnotationsEntryList =
-  viewerRightBarAnnotationsEntryList => ({
-    type: 'SET_VIEWER_RIGHT_BAR_ANNOTATIONS_ENTRY_LIST',
-    payload: { viewerRightBarAnnotationsEntryList },
-  });
+export const setViewerRightBarAnnotationsEntryList = viewerRightBarAnnotationsEntryList => ({
+  type: 'SET_VIEWER_RIGHT_BAR_ANNOTATIONS_ENTRY_LIST',
+  payload: { viewerRightBarAnnotationsEntryList },
+});
 
-export const setViewerRightBarAnnotationsEntrySelection =
-  viewerRightBarAnnotationsEntrySelection => ({
-    type: 'SET_VIEWER_RIGHT_BAR_ANNOTATIONS_ENTRY_SELECTION',
-    payload: { viewerRightBarAnnotationsEntrySelection },
-  });
+export const setViewerRightBarAnnotationsEntrySelection = viewerRightBarAnnotationsEntrySelection => ({
+  type: 'SET_VIEWER_RIGHT_BAR_ANNOTATIONS_ENTRY_SELECTION',
+  payload: { viewerRightBarAnnotationsEntrySelection },
+});
 
-export const setViewerRightBarInfoLensLocation =
-  viewerRightBarInfoLensLocation => ({
-    type: 'SET_VIEWER_RIGHT_BAR_INFO_LENS_LOCATION',
-    payload: { viewerRightBarInfoLensLocation },
-  });
+export const setViewerRightBarInfoLensLocation = viewerRightBarInfoLensLocation => ({
+  type: 'SET_VIEWER_RIGHT_BAR_INFO_LENS_LOCATION',
+  payload: { viewerRightBarInfoLensLocation },
+});
 
-export const setViewerRightBarInfoLensValue =
-  viewerRightBarInfoLensValue => ({
-    type: 'SET_VIEWER_RIGHT_BAR_INFO_LENS_VALUE',
-    payload: { viewerRightBarInfoLensValue },
-  });
+export const setViewerRightBarInfoLensValue = viewerRightBarInfoLensValue => ({
+  type: 'SET_VIEWER_RIGHT_BAR_INFO_LENS_VALUE',
+  payload: { viewerRightBarInfoLensValue },
+});
 
 export const setViewerRightBarShow = viewerRightBarShow => ({
   type: 'SET_VIEWER_RIGHT_BAR_SHOW',

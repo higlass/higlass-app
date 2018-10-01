@@ -16,12 +16,12 @@ const extend = (target, source) => {
   }
 
   if (
-    source.constructor === Date ||
-    source.constructor === RegExp ||
-    source.constructor === Function ||
-    source.constructor === String ||
-    source.constructor === Number ||
-    source.constructor === Boolean
+    source.constructor === Date
+    || source.constructor === RegExp
+    || source.constructor === Function
+    || source.constructor === String
+    || source.constructor === Number
+    || source.constructor === Boolean
   ) {
     return new source.constructor(source);
   }
@@ -29,8 +29,8 @@ const extend = (target, source) => {
   const out = target || new source.constructor();
 
   Object.keys(source).forEach((attr) => {
-    out[attr] = typeof out[attr] === 'undefined' ?
-      extend(undefined, source[attr]) : out[attr];
+    out[attr] = typeof out[attr] === 'undefined'
+      ? extend(undefined, source[attr]) : out[attr];
   });
 
   return out;

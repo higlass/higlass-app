@@ -33,9 +33,9 @@ const AppLoading = props => (
     </header>
     <ContentWrapper name='app-fake'>
       <Content name='app-fake' rel={true} wrap={true}>
-        {props.error ?
-          <ErrorMsgCenter msg={props.error} /> :
-          <SpinnerCenter delayed={true} />
+        {props.error
+          ? <ErrorMsgCenter msg={props.error} />
+          : <SpinnerCenter delayed={true} />
         }
       </Content>
       <footer className="footer">

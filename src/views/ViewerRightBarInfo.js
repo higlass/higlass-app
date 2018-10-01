@@ -38,7 +38,7 @@ class ViewerRightBarInfo extends React.Component {
     this.pubSubs = [];
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.pubSubs.push(
       pubSub.subscribe(
         'viewer.mouseMoveZoom', this.mouseMoveZoomHandler.bind(this)
@@ -164,10 +164,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleViewerRightBarInfoLensLocation: isOpen =>
-    dispatch(setViewerRightBarInfoLensLocation(!isOpen)),
-  toggleViewerRightBarInfoLensValue: isOpen =>
-    dispatch(setViewerRightBarInfoLensValue(!isOpen)),
+  toggleViewerRightBarInfoLensLocation:
+    isOpen => dispatch(setViewerRightBarInfoLensLocation(!isOpen)),
+  toggleViewerRightBarInfoLensValue:
+    isOpen => dispatch(setViewerRightBarInfoLensValue(!isOpen)),
 });
 
 export default connect(

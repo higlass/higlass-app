@@ -50,7 +50,7 @@ class Viewer extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.pubSubs.push(
       pubSub.subscribe('keydown', this.keyDownHandler.bind(this))
     );
@@ -77,8 +77,8 @@ class Viewer extends React.Component {
           hasRightBar={this.props.isAuthenticated}
           rightBarShow={this.props.rightBarShow}
           rightBarWidth={this.props.rightBarWidth}>
-          {this.props.isAuthenticated &&
-            <ViewerSubTopBar
+          {this.props.isAuthenticated
+            && <ViewerSubTopBar
               shareViewAsLink={this.callHgApi('shareViewConfigAsLink')}
             />
           }
@@ -88,8 +88,8 @@ class Viewer extends React.Component {
             hasSubTopBar={this.props.isAuthenticated}
             viewConfigId={this.props.viewConfigId} />
         </Content>
-        {this.props.isAuthenticated &&
-          <ViewerRightBar
+        {this.props.isAuthenticated
+          && <ViewerRightBar
             rangeSelection={this.state.rangeSelection}
             widthSetterFinal={resizeTrigger}
           />
@@ -151,6 +151,7 @@ class Viewer extends React.Component {
   }
 
   mouseMoveZoomHandler(data) {
+    console.log('WOOOOOOOOOOOOOOOOt?');
     pubSub.publish('viewer.mouseMoveZoom', data);
   }
 
@@ -202,9 +203,9 @@ class Viewer extends React.Component {
     }
 
     if (
-      event.keyCode === 83 &&  // S
-      this.keyDownS &&
-      (performance.now() - this.keyDownS) > HOLD_DOWN_DELAY
+      event.keyCode === 83  // S
+      && this.keyDownS
+      && (performance.now() - this.keyDownS) > HOLD_DOWN_DELAY
     ) {
       event.preventDefault();
       this.props.setMouseTool(PAN_ZOOM);
@@ -212,9 +213,9 @@ class Viewer extends React.Component {
     }
 
     if (
-      event.keyCode === 90 &&  // Z
-      this.keyDownZ &&
-      (performance.now() - this.keyDownZ) > HOLD_DOWN_DELAY
+      event.keyCode === 90  // Z
+      && this.keyDownZ
+      && (performance.now() - this.keyDownZ) > HOLD_DOWN_DELAY
     ) {
       event.preventDefault();
       this.props.setMouseTool(SELECT);
@@ -224,15 +225,15 @@ class Viewer extends React.Component {
 
   rangeSelectionHandler(rangeSelection) {
     if (rangeSelection.genomicRange) {
-      this.setState({
-        rangeSelection.genomicRange,
-      });
+      // this.setState({
+      //   rangeSelection: rangeSelection.genomicRange,
+      // });
     } else {
       pubSub.publish(
         'globalError',
-        'Range selection could not been translated from data location into ' +
-        'genomic locations. Check your view config and the cooler file of ' +
-        'the main heatmap.'
+        'Range selection could not been translated from data location into '
+        + 'genomic locations. Check your view config and the cooler file of '
+        + 'the main heatmap.'
       );
     }
   }
@@ -263,10 +264,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setMouseTool: mouseTool =>
-    dispatch(setViewerMouseTool(mouseTool)),
-  setRightBarTab: viewerRightBarTab =>
-    dispatch(setViewerRightBarTab(viewerRightBarTab)),
+  setMouseTool: mouseTool => dispatch(setViewerMouseTool(mouseTool)),
+  setRightBarTab: viewerRightBarTab => dispatch(setViewerRightBarTab(viewerRightBarTab)),
 });
 
 export default withRouter(connect(

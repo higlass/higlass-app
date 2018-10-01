@@ -30,9 +30,7 @@ const ViewerRightBarAnnotations = props => (
       title='Details'
       toggle={props.toggleViewerRightBarAnnotationsEntryDetails}
     >
-      <AnnotationDetails
-        rangeSelection={props.rangeSelection}
-      />
+      <AnnotationDetails rangeSelection={props.rangeSelection} />
     </TabEntry>
     <TabEntry
       isHeightStretching={true}
@@ -40,9 +38,7 @@ const ViewerRightBarAnnotations = props => (
       title='All Annotations'
       toggle={props.toggleViewerRightBarAnnotationsEntryList}
     >
-      <AnnotationList
-        rangeSelection={props.rangeSelection}
-      />
+      <AnnotationList rangeSelection={props.rangeSelection} />
     </TabEntry>
   </div>
 );
@@ -67,12 +63,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleViewerRightBarAnnotationsEntryDetails: isOpen =>
-    dispatch(setViewerRightBarAnnotationsEntryDetails(!isOpen)),
-  toggleViewerRightBarAnnotationsEntryList: isOpen =>
-    dispatch(setViewerRightBarAnnotationsEntryList(!isOpen)),
-  toggleViewerRightBarAnnotationsEntrySelection: isOpen =>
-    dispatch(setViewerRightBarAnnotationsEntrySelection(!isOpen)),
+  toggleViewerRightBarAnnotationsEntryDetails:
+    isOpen => dispatch(setViewerRightBarAnnotationsEntryDetails(!isOpen)),
+  toggleViewerRightBarAnnotationsEntryList:
+    isOpen => dispatch(setViewerRightBarAnnotationsEntryList(!isOpen)),
+  toggleViewerRightBarAnnotationsEntrySelection:
+    isOpen => dispatch(setViewerRightBarAnnotationsEntrySelection(!isOpen)),
 });
 
 export default connect(

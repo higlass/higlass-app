@@ -37,8 +37,8 @@ class ContentWrapper extends React.Component {
 
     return (
       <div className={className}>
-        {this.state.error &&
-          <ErrorBar
+        {this.state.error
+          && <ErrorBar
             autoClose={true}
             isClosable={true}
             msg={this.state.error}

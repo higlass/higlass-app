@@ -9,9 +9,9 @@
 const get = key => decodeURIComponent(
   document.cookie.replace(
     new RegExp(
-      '(?:(?:^|.*;)\\s*' +
-      encodeURIComponent(key).replace(/[-.+*]/g, '\\$&') +
-      '\\s*\\=\\s*([^;]*).*$)|^.*$'
+      '(?:(?:^|.*;)\\s*'
+      + encodeURIComponent(key).replace(/[-.+*]/g, '\\$&')
+      + '\\s*\\=\\s*([^;]*).*$)|^.*$'
     ),
     '$1'
   )
@@ -25,9 +25,9 @@ const get = key => decodeURIComponent(
  */
 const has = key => (
   new RegExp(
-    '(?:^|;\\s*)' +
-    encodeURIComponent(key).replace(/[-.+*]/g, '\\$&') +
-    '\\s*\\='
+    '(?:^|;\\s*)'
+    + encodeURIComponent(key).replace(/[-.+*]/g, '\\$&')
+    + '\\s*\\='
   )
 ).test(document.cookie);
 
@@ -42,10 +42,10 @@ const has = key => (
 const remove = (key, path, domain) => {
   if (!key || !has(key)) { return false; }
   document.cookie = (
-    encodeURIComponent(key) +
-    '=; expires=Thu, 01 Jan 1970 00:00:00 GMT' +
-    (domain ? '; domain=' + domain : '') +
-    (path ? '; path=' + path : '')
+    encodeURIComponent(key)
+    + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+    + (domain ? '; domain=' + domain : '')
+    + (path ? '; path=' + path : '')
   );
   return true;
 };
@@ -60,9 +60,9 @@ const set = (key, value, end, path, domain, secure) => {
   if (end) {
     switch (end.constructor) {
       case Number:
-        sExpires = end === Infinity ?
-          '; expires=Fri, 31 Dec 9999 23:59:59 GMT' :
-          '; max-age=' + end;
+        sExpires = end === Infinity
+          ? '; expires=Fri, 31 Dec 9999 23:59:59 GMT'
+          : '; max-age=' + end;
         break;
       case String:
         sExpires = '; expires=' + end;
@@ -75,13 +75,13 @@ const set = (key, value, end, path, domain, secure) => {
     }
   }
   document.cookie = (
-    encodeURIComponent(key) +
-    '=' +
-    encodeURIComponent(value) +
-    sExpires +
-    (domain ? '; domain=' + domain : '') +
-    (path ? '; path=' + path : '') +
-    (secure ? '; secure' : '')
+    encodeURIComponent(key)
+    + '='
+    + encodeURIComponent(value)
+    + sExpires
+    + (domain ? '; domain=' + domain : '')
+    + (path ? '; path=' + path : '')
+    + (secure ? '; secure' : '')
   );
   return true;
 };

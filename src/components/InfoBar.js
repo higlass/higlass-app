@@ -12,8 +12,8 @@ const InfoBar = props => (
     <div className={`info-bar-content ${props.wrap ? 'wrap' : ''}`}>
       {props.children}
     </div>
-    {props.isClosable &&
-      <div className='flex-c flex-a-c flex-jc-c rel info-bar-close'>
+    {props.isClosable
+      && <div className='flex-c flex-a-c flex-jc-c rel info-bar-close'>
         <ButtonIcon
           icon='arrow-bottom'
           iconMirrorH={!props.isClose}

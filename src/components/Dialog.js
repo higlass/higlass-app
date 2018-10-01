@@ -17,7 +17,7 @@ class Dialog extends React.Component {
     this.pubSubs = [];
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.pubSubs.push(
       pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
     );
@@ -33,13 +33,13 @@ class Dialog extends React.Component {
       <div className='flex-c flex-a-c flex-jc-c full-dim dialog'>
         <div className='dialog-window'>
           <div className='flex-c flex-v flex-a-c dialog-content'>
-            {(this.props.headline || this.props.icon) &&
-              <header className='flex-c flex-a-c'>
-                {this.props.icon &&
-                  <Icon iconId={this.props.icon} />
+            {(this.props.headline || this.props.icon)
+              && <header className='flex-c flex-a-c'>
+                {this.props.icon
+                  && <Icon iconId={this.props.icon} />
                 }
-                {this.props.headline &&
-                  <h2>{this.props.headline}</h2>
+                {this.props.headline
+                  && <h2>{this.props.headline}</h2>
                 }
               </header>
             }
@@ -50,8 +50,8 @@ class Dialog extends React.Component {
             )}
           </div>
           <div className='flex-c dialog-buttons'>
-            {!this.props.resolveOnly &&
-              <button
+            {!this.props.resolveOnly
+              && <button
                 className='column-1-2'
                 onClick={this.props.reject}>
                 {this.props.rejectText}

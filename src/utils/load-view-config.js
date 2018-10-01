@@ -5,14 +5,14 @@ const loadViewConfig = file => new Promise((resolve, reject) => {
     try {
       resolve(JSON.parse(fileEvent.target.result));
     } catch (e) {
-      reject('Only drop valid JSON', e);
+      reject(new Error('Only drop valid JSON'));
     }
   });
 
   try {
     reader.readAsText(file);
   } catch (e) {
-    reject('Only drop actual files');
+    reject(new Error('Only drop actual files'));
   }
 });
 

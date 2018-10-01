@@ -22,8 +22,8 @@ const getValue = (rangeSelection, axis, locus) => {
 
 const RangeSelectionViewer = props => (
   <div className='range-selection-viewer'>
-    {props.isHeadingShown &&
-      <h4 className='range-selection-headline'>Range Selection</h4>
+    {props.isHeadingShown
+      && <h4 className='range-selection-headline'>Range Selection</h4>
     }
     {props.center && (
       <div className='flex-c range-selection-viewer-center'>

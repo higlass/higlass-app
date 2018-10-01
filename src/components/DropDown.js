@@ -33,9 +33,9 @@ class DropDown extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (
-      this.props.id &&
-      this.state.isOpen &&
-      this.state.isOpen !== prevState.isOpen
+      this.props.id
+      && this.state.isOpen
+      && this.state.isOpen !== prevState.isOpen
     ) {
       pubSub.publish(`DropDown${this.props.id}`, this.state.isOpen);
     }
@@ -46,8 +46,7 @@ class DropDown extends React.Component {
       child => React.cloneElement(child, {
         dropDownIsOpen: this.state.isOpen,
         dropDownToggle: this.toggle.bind(this),
-      })
-    );
+      }));
 
     let className = 'rel drop-down';
 

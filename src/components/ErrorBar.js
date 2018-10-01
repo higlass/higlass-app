@@ -18,7 +18,7 @@ class ErrorBar extends React.Component {
     this.pubSubs = [];
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.pubSubs.push(
       pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
     );
@@ -37,8 +37,8 @@ class ErrorBar extends React.Component {
             <Icon iconId='warning' />
             <p className='error-bar-msg'>{this.props.msg}</p>
           </div>
-          {this.props.isClosable &&
-            <div className='flex-c flex-a-c flex-jc-c rel error-bar-close'>
+          {this.props.isClosable
+            && <div className='flex-c flex-a-c flex-jc-c rel error-bar-close'>
               <ButtonIcon
                 icon='cross'
                 iconOnly={true}

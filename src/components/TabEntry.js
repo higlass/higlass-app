@@ -24,8 +24,8 @@ class TabEntry extends React.Component {
 
     return (
       <div className={className}>
-        {this.props.title &&
-          <div
+        {this.props.title
+          && <div
             className='tab-entry-header flex-c'
             onClick={this.toggle.bind(this)}
           >
@@ -41,8 +41,8 @@ class TabEntry extends React.Component {
   /* ----------------------------- Getter / Setter -------------------------- */
 
   get isOpen() {
-    return typeof this.props.isOpen !== 'undefined' ?
-      this.props.isOpen : this.state.isOpen;
+    return typeof this.props.isOpen !== 'undefined'
+      ? this.props.isOpen : this.state.isOpen;
   }
 
   /* ------------------------------ Custom Methods -------------------------- */

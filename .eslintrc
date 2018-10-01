@@ -78,6 +78,7 @@
       {
         "allowForLoopAfterthoughts": true
       }
-    ]
+    ],
+    "prefer-destructuring": "off"
   }
 }

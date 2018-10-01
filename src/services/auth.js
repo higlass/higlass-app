@@ -1,5 +1,5 @@
 // Services
-import pubSub from '../services/pub-sub';
+import pubSub from './pub-sub';
 
 // Utils
 import cookie from '../utils/cookie';
@@ -28,13 +28,13 @@ const checkAuthentication = () => {
         Authorization: `Bearer ${token}`,
       },
       method: 'GET',
-    })
+    }
+  )
     .then(response => response.text()
       .then(data => ({
         data,
         status: response.status,
-      }))
-    )
+      })))
     .then((response) => {
       if (response.status !== 200) return false;
 
@@ -81,7 +81,8 @@ const login = (username, password) => {
         username,
         password,
       }),
-    })
+    }
+  )
     .then((response) => {
       const contentType = response.headers.get('content-type');
 

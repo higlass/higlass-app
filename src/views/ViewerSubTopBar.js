@@ -47,8 +47,8 @@ const shareViewConfig = (share) => {
   if (!req) {
     pubSub.publish(
       'globalError',
-      'Sharing view config as link not available. Ask your admin! ' +
-      'Try saving the view config with CMD+S instead.'
+      'Sharing view config as link not available. Ask your admin! '
+      + 'Try saving the view config with CMD+S instead.'
     );
     return;
   }
@@ -61,14 +61,13 @@ const shareViewConfig = (share) => {
       logger.warn('Sharing view config as link failed.', e);
       pubSub.publish(
         'globalError',
-        'Sharing view config as link failed. Maybe the server is down? ' +
-        'Try saving the view config with CMD+S instead.'
+        'Sharing view config as link failed. Maybe the server is down? '
+        + 'Try saving the view config with CMD+S instead.'
       );
     });
 };
 
-const downloadViewConfig = viewConfig =>
-  downloadAsJson('viewConfig.json', viewConfig);
+const downloadViewConfig = viewConfig => downloadAsJson('viewConfig.json', viewConfig);
 
 const ViewerSubTopBar = props => (
   <SubTopBar>
@@ -164,8 +163,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setMouseTool: mouseTool =>
-    dispatch(setViewerMouseTool(mouseTool)),
+  setMouseTool: mouseTool => dispatch(setViewerMouseTool(mouseTool)),
 });
 
 export default connect(

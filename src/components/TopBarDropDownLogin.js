@@ -50,14 +50,14 @@ class TopBarDropDowLogin extends React.Component {
           <form
             className='flex-c flex-v drop-down-form'
             onSubmit={this.props.login}>
-            {this.props.isLoginUnsuccessful &&
-              <div className='flex-c flex-a-c warning'>
+            {this.props.isLoginUnsuccessful
+              && <div className='flex-c flex-a-c warning'>
                 <Icon iconId='warning' />
                 <span>Login failed.</span>
               </div>
             }
-            {this.props.isServerUnavailable &&
-              <div className='flex-c flex-a-c error'>
+            {this.props.isServerUnavailable
+              && <div className='flex-c flex-a-c error'>
                 <Icon iconId='warning' />
                 <span>Auth server is unavailable.</span>
               </div>

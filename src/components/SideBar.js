@@ -32,8 +32,8 @@ class SideBar extends React.Component {
     if (this.props.isSticky) {
       this.checkStickAbility();
 
-      this.sidebarOffsetTop = this.sideBarEl.getBoundingClientRect().top -
-        document.body.getBoundingClientRect().top;
+      this.sidebarOffsetTop = this.sideBarEl.getBoundingClientRect().top
+        - document.body.getBoundingClientRect().top;
 
       this.pubSubs.push(pubSub.subscribe('resize', this.checkStickAbilityDb));
       this.pubSubs.push(pubSub.subscribe('scrollTop', this.scrollHandlerDb));
@@ -78,8 +78,8 @@ class SideBar extends React.Component {
         },
       });
     } else if (
-      this.state.style.marginTop !== 0 ||
-      this.state.style.marginTop !== '0px'
+      this.state.style.marginTop !== 0
+      || this.state.style.marginTop !== '0px'
     ) {
       this.setState({
         style: {

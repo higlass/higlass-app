@@ -109,12 +109,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setRightBarShow: rightBarShow =>
-    dispatch(setViewerRightBarShow(rightBarShow)),
-  setRightBarTab: rightBarTab =>
-    dispatch(setViewerRightBarTab(rightBarTab)),
-  setRightBarWidth: rightBarWidth =>
-    dispatch(setViewerRightBarWidth(rightBarWidth)),
+  setRightBarShow:
+    rightBarShow => dispatch(setViewerRightBarShow(rightBarShow)),
+  setRightBarTab:
+    rightBarTab => dispatch(setViewerRightBarTab(rightBarTab)),
+  setRightBarWidth:
+    rightBarWidth => dispatch(setViewerRightBarWidth(rightBarWidth)),
 });
 
 export default connect(

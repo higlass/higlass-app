@@ -18,14 +18,14 @@ const ExampleList = props => (
             }}>
           </figure>
         </a>
-        {example.title &&
-          <a href={example.url && example.url}>{example.title}</a>
+        {example.title
+          && <a href={example.url && example.url}>{example.title}</a>
         }
-        {example.description &&
-          <p className='smaller'>{example.description}</p>
+        {example.description
+          && <p className='smaller'>{example.description}</p>
         }
-        {example.location &&
-          <div className='smaller one-line location'>
+        {example.location
+          && <div className='smaller one-line location'>
             <input onClick='this.select();' value={example.location} />
           </div>
         }

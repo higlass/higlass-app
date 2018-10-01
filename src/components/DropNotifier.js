@@ -13,11 +13,8 @@ class DropNotifier extends React.Component {
     };
   }
 
-  componentWillMount() {
-    this.listeners = [];
-  }
-
   componentDidMount() {
+    this.listeners = [];
     this.addEventListeners();
   }
 

@@ -80,9 +80,9 @@ class App extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (
-      this.state.isAuthenticated &&
-      !prevState.isAuthenticated &&
-      this.props.location.pathname.substr(0, 4) !== '/app'
+      this.state.isAuthenticated
+      && !prevState.isAuthenticated
+      && this.props.location.pathname.substr(0, 4) !== '/app'
     ) {
       this.props.history.push('/app');
     }
@@ -93,8 +93,8 @@ class App extends React.Component {
       <div className='app full-mdim'>
         <DropNotifier
           drop={this.dropHandler.bind(this)} />
-        {this.state.dialog &&
-          <Dialog
+        {this.state.dialog
+          && <Dialog
             headline={this.state.dialog.headline}
             icon={this.state.dialog.icon}
             message={this.state.dialog.message}
