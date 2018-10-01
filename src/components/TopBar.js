@@ -6,8 +6,8 @@ import { NavLink } from 'react-router-dom';
 // Components
 import Hamburger from './Hamburger';
 import Icon from './Icon';
-import TopBarDropDownLogin from './TopBarDropDownLogin';
-import TopBarDropDownUser from './TopBarDropDownUser';
+// import TopBarDropDownLogin from './TopBarDropDownLogin';
+// import TopBarDropDownUser from './TopBarDropDownUser';
 
 // Services
 import auth from '../services/auth';
@@ -78,27 +78,41 @@ class TopBar extends React.Component {
               <li><NavLink to='/examples' activeClassName='is-active'>Examples</NavLink></li>
               <li><NavLink to='/docs' activeClassName='is-active'>Docs</NavLink></li>
               <li><NavLink to='/help' activeClassName='is-active'>Help</NavLink></li>
-              <li className='separated-left flex-c flex-jc-c'>
-                {this.props.isAuthenticated
-                  ? (
-                    <TopBarDropDownUser
-                      closeOnOuterClick={true}
-                      logout={auth.logout}
-                      userEmail={this.state.userEmail}
-                      userId={this.state.userId} />
-                  ) : (
-                    <TopBarDropDownLogin
-                      closeOnOuterClick={true}
-                      isLoggingIn={this.state.isLoggingIn}
-                      isLoginUnsuccessful={this.state.isLoginUnsuccessful}
-                      isServerUnavailable={this.state.isServerUnavailable}
-                      login={this.login}
-                      loginPassword={this.state.loginPassword}
-                      loginPasswordHandler={this.loginPasswordHandler}
-                      loginUserId={this.state.loginUserId}
-                      loginUserIdHandler={this.loginUserIdHandler} />
-                  )
-                }
+              <li><NavLink to='/plugins' activeClassName='is-active'>Plugins</NavLink></li>
+              {
+                // <li className='separated-left flex-c flex-jc-c'>
+                //   {this.props.isAuthenticated
+                //     ? (
+                //       <TopBarDropDownUser
+                //         closeOnOuterClick={true}
+                //         logout={auth.logout}
+                //         userEmail={this.state.userEmail}
+                //         userId={this.state.userId} />
+                //     ) : (
+                //       <TopBarDropDownLogin
+                //         closeOnOuterClick={true}
+                //         isLoggingIn={this.state.isLoggingIn}
+                //         isLoginUnsuccessful={this.state.isLoginUnsuccessful}
+                //         isServerUnavailable={this.state.isServerUnavailable}
+                //         login={this.login}
+                //         loginPassword={this.state.loginPassword}
+                //         loginPasswordHandler={this.loginPasswordHandler}
+                //         loginUserId={this.state.loginUserId}
+                //         loginUserIdHandler={this.loginUserIdHandler} />
+                //     )
+                //   }
+                // </li>
+              }
+              <li className='separated-left flex-c'>
+                <a
+                  href='https://github.com/hms-dbmi?&q=higlass'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <div className='full-wh flex-c flex-a-c'>
+                    <Icon iconId='github'/>
+                  </div>
+                </a>
               </li>
             </ul>
             <Hamburger
