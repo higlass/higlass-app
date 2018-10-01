@@ -20,7 +20,8 @@
     "url": "https://github.com/flekschas/higlass-geojson#readme",
     "title": "GeoJSON Track",
     "description": "A track for displaying GeoJSON annotation in HiGlass.",
-    "image": "https://user-images.githubusercontent.com/932103/46308375-76409180-c587-11e8-9f75-77ef21962405.png",
+    "image": "https://user-images.githubusercontent.com/932103/46310988-e1419680-c58e-11e8-9075-9d85b8ce348c.png",
+    "imageFullScreen": true,
     "liveDemo": "http://higlass-geojson.lekschas.de/",
     "sourceCode": "https://github.com/flekschas/higlass-geojson",
     "npmPackageName": "higlass-geojson"
@@ -29,7 +30,8 @@
     "url": "https://github.com/flekschas/higlass-image#readme",
     "title": "Image Track",
     "description": "A track for viewing tiled image data in HiGlass",
-    "image": "https://user-images.githubusercontent.com/932103/46308354-67f27580-c587-11e8-9da1-07a05e719a9f.png",
+    "image": "https://user-images.githubusercontent.com/932103/46310949-c707b880-c58e-11e8-8543-54e1870b6d2c.png",
+    "imageFullScreen": true,
     "liveDemo": "http://higlass-image.lekschas.de/",
     "sourceCode": "https://github.com/flekschas/higlass-image",
     "npmPackageName": "higlass-image"
@@ -38,7 +40,8 @@
     "url": "https://github.com/flekschas/higlass-labeled-annotation#readme",
     "title": "Labeled Annotation Track",
     "description": "A track for displaying annotations with a beautiful white outline and a carefully crafted text label that will make your gorgeous annotations shine!",
-    "image": "https://user-images.githubusercontent.com/932103/46308339-5d37e080-c587-11e8-8642-9746140b2424.png",
+    "image": "https://user-images.githubusercontent.com/932103/46312209-67131100-c592-11e8-9fb8-71df83f82862.png",
+    "imageFullScreen": true,
     "liveDemo": "http://higlass-labeled-annotation.lekschas.de/",
     "sourceCode": "https://github.com/flekschas/higlass-labeled-annotation",
     "npmPackageName": "higlass-labeled-annotation"
