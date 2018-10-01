@@ -82,13 +82,6 @@
     ]
   },
   {
-    "url": "http://higlass.io/app/?config=M39Opmf5TFSpzi3odFGbYQ",
-    "title": "Chromosome grid",
-    "category": "Track expose",
-    "description": "The chromosome grid shows where the boundaries of the individual chromosomes lie. The boundaries are specified in a chomosome sizes file in the higlass config.",
-    "image": "https://cloud.githubusercontent.com/assets/2143629/22596635/54cddd92-e9fa-11e6-8994-3aa35f2a0481.png"
-  },
-  {
     "url": "http://higlass.io/app/?config=YTNBiN7gTU-z-Z0RU24-2g",
     "title": "Six linked views",
     "description": "Linking six views allows for easy comparison and demonstration of variation between different cell lines.",
@@ -98,6 +91,13 @@
     "locations": [
       "chr8:133,095,195-135,202,496 & chr8:133,488,056-134,738,650 [offset 0,0:0,0]"
     ]
+  },
+  {
+    "url": "http://higlass.io/app/?config=M39Opmf5TFSpzi3odFGbYQ",
+    "title": "Chromosome grid",
+    "category": "Track expose",
+    "description": "The chromosome grid shows where the boundaries of the individual chromosomes lie. The boundaries are specified in a chomosome sizes file in the higlass config.",
+    "image": "https://cloud.githubusercontent.com/assets/2143629/22596635/54cddd92-e9fa-11e6-8994-3aa35f2a0481.png"
   },
   {
     "url": "http://higlass.io/app/?config=VCIcCD3AQSivEdZajrW5GA",
@@ -111,17 +111,6 @@
     ]
   },
   {
-    "url": "http://higlass.io/app/?config=AgHaxkDFRWu3xR7WGJ8ONA",
-    "title": "A potential structural variant in K562",
-    "description": "This location shows a potential structural rearrangement in the K562 cell line. It is not present in any of the other Rao et al datasets.",
-    "category": "Interesting locations",
-    "image": "https://cloud.githubusercontent.com/assets/2143629/22829794/3dc32e4a-ef72-11e6-8156-c3448ba32594.png",
-    "columns": 1,
-    "locations": [
-      "chr13:58,887,886-chr14:18,540,291 & chr13:75,681,552-chr14:4,915,553 [offset 0,0:0,0]"
-    ]
-  },
-  {
     "url": "http://higlass.io/app/?config=CafCfq2wQtyD_BbBj6HbpA",
     "title": "Zoom limited view",
     "description": "Maintaining a minimum zoom level can be useful to show features which are harder to see at higher resolution.",
@@ -130,6 +119,17 @@
     "columns": 2,
     "locations": [
       "chr2:70,024,841-71,598,135 & chr2:70,075,417-71,426,951 [offset 0,0:0,0]"
+    ]
+  },
+  {
+    "url": "http://higlass.io/app/?config=AgHaxkDFRWu3xR7WGJ8ONA",
+    "title": "A potential structural variant in K562",
+    "description": "This location shows a potential structural rearrangement in the K562 cell line. It is not present in any of the other Rao et al datasets.",
+    "category": "Interesting locations",
+    "image": "https://cloud.githubusercontent.com/assets/2143629/22829794/3dc32e4a-ef72-11e6-8156-c3448ba32594.png",
+    "columns": 1,
+    "locations": [
+      "chr13:58,887,886-chr14:18,540,291 & chr13:75,681,552-chr14:4,915,553 [offset 0,0:0,0]"
     ]
   },
   {
@@ -164,17 +164,6 @@
     ]
   },
   {
-    "url": "http://higlass.io/app/?config=czoXK8QJSvGw36t6-NlKxg",
-    "title": "Variable region",
-    "description": "This region appears to have different structures in different cell lines.",
-    "category": "Interesting locations",
-    "image": "https://cloud.githubusercontent.com/assets/2143629/23413110/bd465ade-fda5-11e6-84de-3be2e430f94a.png",
-    "columns": 2,
-    "locations": [
-      "chr14:81,197,287-89,791,682 & chr14:81,641,819-88,989,359 [offset 0,0:0,0]"
-    ]
-  },
-  {
     "url": "http://higlass.io/app/?config=S1WIolKxQQGtUUo0RteSWw",
     "title": "Stronger contacts between chr17 and chr19 than between chr17 and chr18",
     "description": "The inter-chromosome contacts between the ends of chr17 and chr19 are nearly as numerous as those between the two ends of chr18",
@@ -183,6 +172,17 @@
     "columns": 1,
     "locations": [
       "chr18:65,467,009-chr19:12,497,366 & chr17:75,120,822-chr18:7,012,166 [offset 0,0:0,0]"
+    ]
+  },
+  {
+    "url": "http://higlass.io/app/?config=czoXK8QJSvGw36t6-NlKxg",
+    "title": "Variable region",
+    "description": "This region appears to have different structures in different cell lines.",
+    "category": "Interesting locations",
+    "image": "https://cloud.githubusercontent.com/assets/2143629/23413110/bd465ade-fda5-11e6-84de-3be2e430f94a.png",
+    "columns": 2,
+    "locations": [
+      "chr14:81,197,287-89,791,682 & chr14:81,641,819-88,989,359 [offset 0,0:0,0]"
     ]
   },
   {
