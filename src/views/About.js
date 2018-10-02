@@ -76,6 +76,14 @@ const About = () => (
             <Icon iconId='github' />
             <a href='https://github.com/hms-dbmi/higlass-docker' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-docker</a>
           </li>
+          <li className='iconized'>
+            <Icon iconId='github' />
+            <a href='https://github.com/hms-dbmi/higlass-manage' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-manage</a>
+          </li>
+          <li className='iconized'>
+            <Icon iconId='github' />
+            <a href='https://github.com/hms-dbmi/higlass-register' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-register</a>
+          </li>
         </ul>
 
         <h3 id='authors' className='iconized underlined anchored'>
@@ -87,13 +95,13 @@ const About = () => (
         </h3>
         <ol className='flex-c flex-w-w no-list-style about-author-list'>
           <li>
-            <a href='http://emptypipes.org/about' target='_blank' rel='noopener noreferrer'>Peter Kerpedjiev</a>
+            <a href='http://emptypipes.org' target='_blank' rel='noopener noreferrer'>Peter Kerpedjiev</a>
           </li>
           <li>
             <span target='_blank' rel='noopener noreferrer'>Nezar Abdennur</span>
           </li>
           <li>
-            <a href='http://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a>
+            <a href='https://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a>
           </li>
           <li>
             <a href='https://mccalluc.github.io' target='_blank' rel='noopener noreferrer'>Chuck McCallum</a>
