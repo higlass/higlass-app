@@ -2,8 +2,9 @@
 
 > The web application for viewing, exploring, and annotating 1D and 2D genomic data.
 
-[![HiGlass](https://img.shields.io/badge/higlass-👍-red.svg?colorB=0f5d92)](http://higlass.io)
-[![Build Status](https://img.shields.io/travis/hms-dbmi/higlass-app/master.svg?colorB=0f5d92)](https://travis-ci.org/hms-dbmi/higlass-app)
+[![HiGlass](https://img.shields.io/badge/higlass-👍-red.svg?colorB=3676b4)](http://higlass.io)
+[![npm version](https://img.shields.io/npm/v/higlass-app.svg)](https://www.npmjs.com/package/higlass-app)
+[![Build Status](https://travis-ci.org/hms-dbmi/higlass-app.svg?branch=master)](https://travis-ci.org/hms-dbmi/higlass-app)
 
 **URL**: http://higlass.io
 
@@ -12,28 +13,20 @@
 - HiGlass viewer: https://github.com/hms-dbmi/higlass
 - HiGlass server: https://github.com/hms-dbmi/higlass-server
 - HiGlass docker: https://github.com/hms-dbmi/higlass-docker
+- HiGlass manage: https://github.com/hms-dbmi/higlass-manage
+
+## Install
+
+```bash
+npm install --save higlass-app
+```
 
 ## Development
 
-### Installation
-
 ```bash
-$ git clone --recursive https://github.com/hms-dbmi/higlass-app && higlass-app
-$ npm install
+git clone https://github.com/hms-dbmi/higlass-app && higlass-app
+npm install
 ```
-
-**Note**: If you forgot to add `--recursive` do the following to pull the submodules
-
-```
-$ git submodule update --init --recursive --remote
-```
-
-In order to update the wiki run:
-
-```
-$ git submodule update --recursive --remote
-```
-
 
 ### Commands
 
@@ -41,9 +34,7 @@ $ git submodule update --recursive --remote
 
 **Production build**: `npm run build`
 
-**Run tests**: `npm test`
-
-**Update wiki**: `npm run update-wiki`
+**Autoformat JS code**: `npm run fix`
 
 
 ### Configuration
@@ -96,17 +87,22 @@ HiGlass App is based on [react-create-app](https://github.com/facebookincubator/
 
     Flat folder containing _container_ components. See [Dan's article](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) for a comparison between presentational and container components.
 
+  - **[`/factories`](factories)**
+
+    Flat folder containing factory functions. See [Eric's article](https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1) for an introduction to factory functions.
+
+
+  - **[`/hocs`](hocs)**
+
+    Flat folder containing _higher-order_ components. See the [React docs](https://reactjs.org/docs/higher-order-components.html) for an introduction.
+
   - **[`/images`](images)**
 
     Flat folder containing images.
 
   - **[`/reducers`](reducers)**
 
-    Flat folder containing Redux reducers.
-
-  - **[`/services`](services)**
-
-    Flat folder containing services. (A service is considered to be an object or function with a app-wide state, not managed by the Redux store. E.g., the Redux store itself is a service to provide convinient helper functions for _undo_ etc.)
+    Flat folder containing [Redux](https://github.com/reduxjs/redux) reducers.
 
   - **[`/styles`](styles)**
 
