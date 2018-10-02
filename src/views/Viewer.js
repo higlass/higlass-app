@@ -151,7 +151,6 @@ class Viewer extends React.Component {
   }
 
   mouseMoveZoomHandler(data) {
-    console.log('WOOOOOOOOOOOOOOOOt?');
     pubSub.publish('viewer.mouseMoveZoom', data);
   }
 
