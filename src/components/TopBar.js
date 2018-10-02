@@ -39,7 +39,7 @@ const hasDemos = HGAC_HOMEPAGE_DEMOS || window.HGAC_HOMEPAGE_DEMOS;
 const homeUrl = hasDemos ? '/' : '/app';
 
 const isApp = pathname => pathname && pathname.match(/\/app(?:(?=.)(\?|\/)|$)/);
-const isHome = pathname => pathname && pathname.match(/\//);
+const isHome = pathname => pathname && pathname.match(/\/$/);
 
 class TopBar extends React.Component {
   constructor(props) {
