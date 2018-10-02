@@ -9,7 +9,6 @@ import ContentWrapper from '../components/ContentWrapper';
 import HiGlassViewer from '../components/HiGlassViewer';
 
 // View components
-import ViewerBottomBar from './ViewerBottomBar';
 import ViewerRightBar from './ViewerRightBar';
 import ViewerSubTopBar from './ViewerSubTopBar';
 
@@ -64,39 +63,6 @@ class Viewer extends React.Component {
     this.pubSubs = [];
     removeHiGlassEventListeners(this.hiGlassEventListeners, this.hgApi);
     this.hiGlassEventListeners = [];
-  }
-
-  render() {
-    this.checkHiGlassEventListeners();
-
-    return (
-      <ContentWrapper name='viewer' bottomBar={true} isFullDimOnly={true}>
-        <Content
-          name='viewer'
-          rel={true}
-          hasRightBar={this.props.isAuthenticated}
-          rightBarShow={this.props.rightBarShow}
-          rightBarWidth={this.props.rightBarWidth}>
-          {this.props.isAuthenticated
-            && <ViewerSubTopBar
-              shareViewAsLink={this.callHgApi('shareViewConfigAsLink')}
-            />
-          }
-          <HiGlassViewer
-            api={(api) => { this.hgApi = api; }}
-            enableAltMouseTools={this.props.isAuthenticated}
-            hasSubTopBar={this.props.isAuthenticated}
-            viewConfigId={this.props.viewConfigId} />
-        </Content>
-        {this.props.isAuthenticated
-          && <ViewerRightBar
-            rangeSelection={this.state.rangeSelection}
-            widthSetterFinal={resizeTrigger}
-          />
-        }
-        <ViewerBottomBar isAuthenticated={this.props.isAuthenticated} />
-      </ContentWrapper>
-    );
   }
 
   /* ---------------------------- Custom Methods ---------------------------- */
@@ -235,6 +201,40 @@ class Viewer extends React.Component {
         + 'the main heatmap.'
       );
     }
+  }
+
+  /* -------------------------------- Render -------------------------------- */
+
+  render() {
+    this.checkHiGlassEventListeners();
+
+    return (
+      <ContentWrapper name='viewer' bottomBar={true} isFullDimOnly={true}>
+        <Content
+          name='viewer'
+          rel={true}
+          hasRightBar={this.props.isAuthenticated}
+          rightBarShow={this.props.rightBarShow}
+          rightBarWidth={this.props.rightBarWidth}>
+          {this.props.isAuthenticated
+            && <ViewerSubTopBar
+              shareViewAsLink={this.callHgApi('shareViewConfigAsLink')}
+            />
+          }
+          <HiGlassViewer
+            api={(api) => { this.hgApi = api; }}
+            enableAltMouseTools={this.props.isAuthenticated}
+            hasSubTopBar={this.props.isAuthenticated}
+            viewConfigId={this.props.viewConfigId} />
+        </Content>
+        {this.props.isAuthenticated
+          && <ViewerRightBar
+            rangeSelection={this.state.rangeSelection}
+            widthSetterFinal={resizeTrigger}
+          />
+        }
+      </ContentWrapper>
+    );
   }
 }
 
