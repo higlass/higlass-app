@@ -43,7 +43,7 @@ class AppInfo extends React.Component {
         </ul>
         <p>
           Please report bugs at <a href='https://github.com/hms-dbmi/higlass/issues' target='_blank' rel='noopener noreferrer'>GitHub</a>.
-          For questions how to use or integrate please use <a href='https://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>Stackoverflow</a>.
+          For quick help join our <a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack channel</a>.
         </p>
       </div>
     );
