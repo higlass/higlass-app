@@ -83,7 +83,9 @@ class HiGlassViewer extends React.Component {
     fetchViewConfig(viewConfigId || defaultViewConfigId)
       .then(this.setViewConfig.bind(this))
       .catch(() => {
-        logger.warn('View config is not available locally!');
+        logger.info(
+          'View config is not available locally! Try loading it from higlass.io.'
+        );
 
         // Try loading config from HiGlass.io
         return fetchViewConfig(
@@ -109,8 +111,11 @@ class HiGlassViewer extends React.Component {
 
   setViewConfig(viewConfig) {
     if (!viewConfig || viewConfig.error) {
+      const errorMsg = viewConfig && viewConfig.error
+        ? viewConfig.error
+        : 'View config broken.';
       this.setState({
-        error: viewConfig.error || 'View config broken.',
+        error: errorMsg,
         isLoading: false,
       });
     } else if (this.props.isStatic) {
@@ -120,11 +125,11 @@ class HiGlassViewer extends React.Component {
         viewConfigStatic: viewConfig,
       });
     } else {
+      this.props.setViewConfig(viewConfig);
       this.setState({
         error: '',
         isLoading: false,
       });
-      this.props.setViewConfig(viewConfig);
     }
   }
 
