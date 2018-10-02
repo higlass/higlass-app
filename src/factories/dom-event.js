@@ -1,8 +1,6 @@
-import pubSub from './pub-sub';
-
 // Custom event Handlers
-const resize = event => pubSub.publish('resize', event);
-const scroll = event => pubSub.publish(
+const resize = pubSub => event => pubSub.publish('resize', event);
+const scroll = pubSub => event => pubSub.publish(
   'scrollTop',
   event.target.scrollTop || document.body.scrollTop
 );
@@ -23,9 +21,9 @@ const customEventHandlers = {
  * @param {string} eventName - Name of the event.
  * @return {function} Either a custom or generic event handler.
  */
-const getEventHandler = (eventName) => {
+const getEventHandler = (eventName, pubSub) => {
   if (customEventHandlers[eventName]) {
-    return customEventHandlers[eventName];
+    return customEventHandlers[eventName](pubSub);
   }
   return event => pubSub.publish(eventName, event);
 };
@@ -46,7 +44,7 @@ const registeredEls = {};
 const unregister = (event, element) => {
   if (!registeredEls[event] && registeredEls[event] !== element) { return; }
 
-  registeredEls[event].removeEventListener(event, getEventHandler(event));
+  registeredEls[event].removeEventListener(event, registeredEls[event].handler);
 
   registeredEls[event] = undefined;
   delete registeredEls[event];
@@ -58,7 +56,7 @@ const unregister = (event, element) => {
  * @param {string} event - Name of the event to listen to.
  * @param {object} newElement - DOM element which to listen to.
  */
-const register = (event, newElement) => {
+const register = pubSub => (event, newElement) => {
   if (!newElement || registeredEls[event] === newElement) { return; }
 
   if (registeredEls[event]) {
@@ -66,7 +64,8 @@ const register = (event, newElement) => {
   }
 
   registeredEls[event] = newElement;
-  registeredEls[event].addEventListener(event, getEventHandler(event));
+  registeredEls[event].handler = getEventHandler(event, pubSub);
+  registeredEls[event].addEventListener(event, registeredEls[event].handler);
 };
 
 /**
@@ -74,9 +73,9 @@ const register = (event, newElement) => {
  *
  * @type {object}
  */
-const domEvent = {
-  register,
+const createDomEvent = pubSub => ({
+  register: register(pubSub),
   unregister,
-};
+});
 
-export default domEvent;
+export default createDomEvent;

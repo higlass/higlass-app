@@ -12,9 +12,11 @@ import TopBar from './TopBar';
 // Actions
 import { redo, setViewConfig, undo } from '../actions';
 
+// Factories
+import createDomEvent from '../factories/dom-event';
+
 // Services
 import auth from '../services/auth';
-import domEvent from '../services/dom-event';
 import pubSub from '../services/pub-sub';
 
 // Utils
@@ -35,17 +37,19 @@ class App extends React.Component {
       dialog: undefined,
       isAuthenticated: auth.isAuthenticated(),
     };
+
+    this.domEvent = createDomEvent(pubSub);
   }
 
   componentDidMount() {
-    domEvent.register('click', document);
-    domEvent.register('keydown', document);
-    domEvent.register('keyup', document);
-    domEvent.register('mousemove', document);
-    domEvent.register('mouseup', document);
-    domEvent.register('orientationchange', window);
-    domEvent.register('resize', window);
-    domEvent.register('scroll', document);
+    this.domEvent.register('click', document);
+    this.domEvent.register('keydown', document);
+    this.domEvent.register('keyup', document);
+    this.domEvent.register('mousemove', document);
+    this.domEvent.register('mouseup', document);
+    this.domEvent.register('orientationchange', window);
+    this.domEvent.register('resize', window);
+    this.domEvent.register('scroll', document);
 
     this.pubSubs.push(
       pubSub.subscribe('globalDialog', this.dialogHandler.bind(this))
@@ -65,14 +69,14 @@ class App extends React.Component {
   }
 
   componentWillUnmount() {
-    domEvent.unregister('click', document);
-    domEvent.unregister('keydown', document);
-    domEvent.unregister('keyup', document);
-    domEvent.unregister('mousemove', document);
-    domEvent.unregister('mouseup', document);
-    domEvent.unregister('orientationchange', window);
-    domEvent.unregister('resize', window);
-    domEvent.unregister('scroll', document);
+    this.domEvent.unregister('click', document);
+    this.domEvent.unregister('keydown', document);
+    this.domEvent.unregister('keyup', document);
+    this.domEvent.unregister('mousemove', document);
+    this.domEvent.unregister('mouseup', document);
+    this.domEvent.unregister('orientationchange', window);
+    this.domEvent.unregister('resize', window);
+    this.domEvent.unregister('scroll', document);
 
     this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
     this.pubSubs = [];
