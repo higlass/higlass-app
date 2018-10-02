@@ -3,3 +3,16 @@
     top: 2rem;
   }
 }
+
+.higlass-viewer-abs-height {
+  position: relative;
+  overflow: hidden;
+}
+
+.higlass-viewer-abs-height .higlass-viewer-padded-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: -5px;
+  left: 0;
+}

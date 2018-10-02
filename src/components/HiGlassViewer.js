@@ -51,38 +51,6 @@ class HiGlassViewer extends React.Component {
     }
   }
 
-  render() {
-    let className = 'higlass-viewer';
-
-    className += !this.props.autoExpand ? ' full-dim' : '';
-    className += this.props.hasSubTopBar ? ' has-sub-top-bar' : '';
-
-    return (
-      <div className={className}>
-        {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
-        {!this.state.error && (
-          this.state.isLoading ? (  // eslint-disable-line no-nested-ternary
-            <SpinnerCenter />
-          ) : (
-            this.props.isStatic ? (
-              <HiGlassLauncher
-                api={this.props.api}
-                autoExpand={this.props.autoExpand}
-                enableAltMouseTools={this.props.enableAltMouseTools}
-                onError={this.onError.bind(this)}
-                viewConfig={this.state.viewConfigStatic} />
-            ) : (
-              <HiGlassLoader
-                api={this.props.api}
-                enableAltMouseTools={this.props.enableAltMouseTools}
-                onError={this.onError.bind(this)} />
-            )
-          )
-        )}
-      </div>
-    );
-  }
-
   /* ---------------------------- Custom Methods ---------------------------- */
 
   confirmViewConfigChange() {
@@ -159,6 +127,56 @@ class HiGlassViewer extends React.Component {
       this.props.setViewConfig(viewConfig);
     }
   }
+
+  /* -------------------------------- Render -------------------------------- */
+
+  render() {
+    let className = 'higlass-viewer';
+
+    className += this.props.hasSubTopBar ? ' has-sub-top-bar' : '';
+    className += this.props.height ? ' higlass-viewer-abs-height' : ' full-dim';
+    className += this.props.hasSubTopBar ? ' has-sub-top-bar' : '';
+
+    const style = {
+      height: this.props.height ? `${this.props.height}px` : 'auto',
+    };
+
+    return (
+      <div
+        className={className}
+        style={style}
+      >
+        <div className='higlass-viewer-padded-container'>
+        {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
+        {!this.state.error && (
+          this.state.isLoading ? (  // eslint-disable-line no-nested-ternary
+            <SpinnerCenter />
+          ) : (
+            this.props.isStatic ? (
+              <HiGlassLauncher
+                api={this.props.api}
+                autoExpand={this.props.autoExpand}
+                enableAltMouseTools={this.props.enableAltMouseTools}
+                onError={this.onError.bind(this)}
+                viewConfig={this.state.viewConfigStatic}
+                isPadded={this.props.isPadded}
+                isZoomFixed={this.props.isZoomFixed}
+              />
+            ) : (
+              <HiGlassLoader
+                api={this.props.api}
+                enableAltMouseTools={this.props.enableAltMouseTools}
+                onError={this.onError.bind(this)}
+                isPadded={this.props.isPadded}
+                isZoomFixed={this.props.isZoomFixed}
+              />
+            )
+          )
+        )}
+        </div>
+      </div>
+    );
+  }
 }
 
 HiGlassViewer.defaultProps = {
@@ -168,9 +186,13 @@ HiGlassViewer.defaultProps = {
 HiGlassViewer.propTypes = {
   api: PropTypes.func,
   autoExpand: PropTypes.bool,
+  className: PropTypes.string,
   enableAltMouseTools: PropTypes.bool,
   hasSubTopBar: PropTypes.bool,
+  height: PropTypes.number,
+  isPadded: PropTypes.bool,
   isStatic: PropTypes.bool,
+  isZoomFixed: PropTypes.bool,
   setViewConfig: PropTypes.func.isRequired,
   viewConfig: PropTypes.object,
   viewConfigId: PropTypes.string,
