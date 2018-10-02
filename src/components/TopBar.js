@@ -36,6 +36,7 @@ const showInfo = () => {
 };
 
 const isApp = pathname => pathname && pathname.match(/\/app(?:(?=.)(\?|\/)|$)/);
+const isHome = pathname => pathname && pathname.match(/\//);
 
 class TopBar extends React.Component {
   constructor(props) {
@@ -87,10 +88,15 @@ class TopBar extends React.Component {
             </NavLink>
             <NavLink
               to='/app'
-              className={`btn icon-only ${isApp(this.props.location.pathname) ? 'is-active' : ''}`}
+              className={`btn icon-only ${isApp(this.props.location.pathname) ? 'is-active' : ''} ${isHome(this.props.location.pathname) ? 'is-shaking' : ''}`}
               title='Launch HiGlass in Full Screen'>
               <Icon iconId='maximize' />
             </NavLink>
+            {isHome(this.props.location.pathname) && (
+            <div className="text-only is-sliding-right">
+              <div>Launch in full screen!</div>
+            </div>
+            )}
             {isApp(this.props.location.pathname) && (
             <ButtonIcon icon='info' iconOnly={true} onClick={showInfo} />
             )}
