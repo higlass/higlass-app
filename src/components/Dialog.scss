@@ -30,6 +30,11 @@
   .dialog-content {
     padding: 1rem;
 
+    header .icon {
+      width: 2em;
+      height: 2em;
+    }
+
     p {
       margin-bottom: 0;
     }
