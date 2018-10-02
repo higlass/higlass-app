@@ -10,7 +10,7 @@
   animation-delay: $normal-transition;
   animation-duration: $normal-transition;
   animation-fill-mode: forwards;
-  animation-name: fade-in;
+  animation-name: fade-in-spinner;
   animation-timing-function: $easing;
 
   &.is-delayed {
@@ -31,7 +31,22 @@
     }
   }
 
-  @keyframes fade-in {
+  &.is-light {
+    background: $white;
+
+    svg {
+      circle {
+        stroke: $gray-light;
+      }
+
+      .one,
+      .two {
+        fill: $white;
+      }
+    }
+  }
+
+  @keyframes fade-in-spinner {
     from {
       opacity: 0;
       transform: scale(0);
