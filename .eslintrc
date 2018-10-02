@@ -24,10 +24,8 @@
     "react"
   ],
   "globals": {
-    "expect": false,
     "HGAC_HOMEPAGE_DEMOS": false,
     "HGAC_SERVER": false,
-    "it": false,
     "VERSION_HIGLASS_APP": false,
     "VERSION_HIGLASS_VIEWER": false
   },
