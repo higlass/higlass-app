@@ -1,6 +1,28 @@
-**v0.10.0**
+**v1.0.0**
 
-- Add info tab to the right bar of the viewer and display moused over values from HiGlass's heatmap.
+- Add list of plugins
+- Add news from Twitter
+- Add permanent full screen mode when started without demos, i.e., `"homepageDemos": false` in the `config.json`
+- Update to session storage only
+- Update to HiGlass `v1.2`
+- Update to React `v16`
+- Update to React Scripts `v2`
+- Update to Webpack `v4`
+- Update to Babel `v7`
+- Update 3rd party packages
+- Updated citation
+- Updated help page with slack channel and 4DN Hi-C Bootcamp
+- Refactor pub-sub service as HOC using an external library
+- Refactor state service as factory
+- Refactor DOM event server as factory
+
+**v0.9.2**
+
+- Add separate file for global settings
+
+**v0.9.1**
+
+- Update version of HiGlass in production build
 
 **v0.9.0**
 

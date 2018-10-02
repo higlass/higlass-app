@@ -1,12 +1,26 @@
 {
   "name": "higlass-app",
+  "version": "1.0.0-rc1",
   "description": "A fully-featured app for viewing, exploring, and annotating 1D and 2D genomic data",
-  "version": "0.9.3",
+  "keywords": [
+    "higlass",
+    "app",
+    "genomics",
+    "3d genome",
+    "hi-c"
+  ],
   "author": "Fritz Lekschas (https://lekschas.de)",
   "license": "MIT",
+  "homepage": "https://github.com/hms-dbmi/higlass-app",
   "repository": {
     "type": "git",
     "url": "https://github.com/hms-dbmi/higlass-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hms-dbmi/higlass-app/issues"
+  },
+  "engines": {
+    "node": ">=8"
   },
   "dependencies": {
     "bootstrap": "3.3.7",
@@ -99,38 +113,6 @@
     "check-dependencies": "node scripts/utils/verifyPackageTree.js",
     "test": "echo \"Warning: no test specified\" && exit 0",
     "fix": "eslint --fix src"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
-    "setupFiles": [
-      "<rootDir>/config/polyfills.js"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.js?(x)",
-      "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
-    ],
-    "testEnvironment": "node",
-    "testURL": "http://localhost",
-    "transform": {
-      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web"
-    },
-    "moduleFileExtensions": [
-      "web.js",
-      "js",
-      "json",
-      "web.jsx",
-      "jsx"
-    ]
   },
   "browserslist": [
     ">0.2%",
