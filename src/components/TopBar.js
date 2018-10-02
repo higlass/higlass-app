@@ -4,16 +4,36 @@ import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
 // Components
+import AppInfo from './AppInfo';
 import Hamburger from './Hamburger';
+import ButtonIcon from './ButtonIcon';
 import Icon from './Icon';
 // import TopBarDropDownLogin from './TopBarDropDownLogin';
 // import TopBarDropDownUser from './TopBarDropDownUser';
 
 // Services
 import auth from '../services/auth';
+import pubSub from '../services/pub-sub';
+
+// Utils
+import Deferred from '../utils/deferred';
 
 // Styles
 import './TopBar.scss';
+
+const showInfo = () => {
+  pubSub.publish(
+    'globalDialog',
+    {
+      message: <AppInfo />,
+      request: new Deferred(),
+      resolveOnly: true,
+      resolveText: 'Close',
+      icon: 'logo',
+      headline: 'HiGlass',
+    }
+  );
+};
 
 const isApp = pathname => pathname && pathname.match(/\/app(?:(?=.)(\?|\/)|$)/);
 
@@ -67,18 +87,21 @@ class TopBar extends React.Component {
             </NavLink>
             <NavLink
               to='/app'
-              className='btn is-uppercased icon-only'
+              className={`btn icon-only ${isApp(this.props.location.pathname) ? 'is-active' : ''}`}
               title='Launch HiGlass in Full Screen'>
               <Icon iconId='maximize' />
             </NavLink>
+            {isApp(this.props.location.pathname) && (
+            <ButtonIcon icon='info' iconOnly={true} onClick={showInfo} />
+            )}
           </div>
           <nav className={`flex-c flex-jc-e flex-a-s is-toggable ${this.state.menuIsShown ? 'is-shown' : ''}`}>
             <ul className='flex-c flex-jc-e flex-a-s no-list-style primary-nav-list'>
               <li><NavLink to='/about' activeClassName='is-active'>About</NavLink></li>
               <li><NavLink to='/examples' activeClassName='is-active'>Examples</NavLink></li>
+              <li><NavLink to='/plugins' activeClassName='is-active'>Plugins</NavLink></li>
               <li><NavLink to='/docs' activeClassName='is-active'>Docs</NavLink></li>
               <li><NavLink to='/help' activeClassName='is-active'>Help</NavLink></li>
-              <li><NavLink to='/plugins' activeClassName='is-active'>Plugins</NavLink></li>
               {
                 // <li className='separated-left flex-c flex-jc-c'>
                 //   {this.props.isAuthenticated
@@ -117,7 +140,8 @@ class TopBar extends React.Component {
             </ul>
             <Hamburger
               isActive={this.state.menuIsShown}
-              onClick={this.toggleMenu} />
+              onClick={this.toggleMenu}
+            />
           </nav>
         </div>
       </header>
