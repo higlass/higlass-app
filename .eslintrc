@@ -79,6 +79,7 @@
         "allowForLoopAfterthoughts": true
       }
     ],
+    "object-curly-newline": "off",
     "prefer-destructuring": "off"
   }
 }

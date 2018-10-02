@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router';
+import { Redirect, Route, Switch, withRouter } from 'react-router';
 
 // Views
 import About from '../views/About';
@@ -11,6 +11,8 @@ import Home from '../views/Home';
 import NotFound from '../views/NotFound';
 import Plugins from '../views/Plugins';
 import Viewer from '../views/Viewer';
+
+const hasDemos = HGAC_HOMEPAGE_DEMOS || window.HGAC_HOMEPAGE_DEMOS;
 
 class Main extends React.Component {
   componentDidUpdate(prevProps) {
@@ -35,7 +37,11 @@ class Main extends React.Component {
         <Route exact path='/help' component={Help} />
         <Route exact path='/docs' component={Docs} />
         <Route exact path='/plugins' component={Plugins} />
-        <Route exact path='/' component={Home} />
+        {hasDemos ? (
+          <Route exact path='/' component={Home} />
+        ) : (
+          <Redirect from="/" to="/app" />
+        )}
         <Route component={NotFound}/>
       </Switch>
     );
