@@ -109,8 +109,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "build-travis": "node scripts/build.js && cd build && zip -r ../build.zip ./*",
-    "check-dependencies": "node scripts/utils/verifyPackageTree.js",
+    "lint": "eslint src",
+    "prepublishOnly": "npm run lint",
+    "prerelease": "rm -rf build/*; node scripts/build.js; zip -r build.zip build",
     "test": "echo \"Warning: no test specified\" && exit 0",
     "fix": "eslint --fix src"
   },

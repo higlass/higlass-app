@@ -1,0 +1,5 @@
+node_modules
+docs
+*.zip
+*.log
+*.DS_cache
