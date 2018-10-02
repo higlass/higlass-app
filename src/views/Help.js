@@ -215,41 +215,6 @@ class Help extends React.Component {
               </li>
             </ul>
 
-            <h3 id='source-code' className='iconized underlined anchored'>
-              <a href='#source-code' className='hidden-anchor'>
-                <Icon iconId='link' />
-              </a>
-              <Icon iconId='code' />
-              Source Code
-            </h3>
-
-            <p>
-              All components of HiGlass are open source and available on GitHub:
-            </p>
-
-            <ul className='no-list-style large-spacing'>
-              <li>
-                <strong>Viewer: </strong>
-                <a href='https://github.com/hms-dbmi/higlass' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass</a>
-              </li>
-              <li>
-                <strong>Web App: </strong>
-                <a href='https://github.com/hms-dbmi/higlass-app' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-app</a>
-              </li>
-              <li>
-                <strong>Server: </strong>
-                <a href='https://github.com/hms-dbmi/higlass-server' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-server</a>
-              </li>
-              <li>
-                <strong>Docker: </strong>
-                <a href='https://github.com/hms-dbmi/higlass-docker' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-docker</a>
-              </li>
-              <li>
-                <strong>Manager: </strong>
-                <a href='https://github.com/hms-dbmi/higlass-manage' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-manage</a>
-              </li>
-            </ul>
-
           </div>
         </Content>
         <Footer />
