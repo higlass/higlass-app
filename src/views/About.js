@@ -32,44 +32,20 @@ const About = () => (
           Nucleome Project&apos;s Data Coordination and Integration Center.
         </p>
 
-        <h3 id='preprint' className='iconized underlined anchored'>
-          <a href='#preprint' className='hidden-anchor'><Icon iconId='link' /></a>
+        <h3 id='citation' className='iconized underlined anchored'>
+          <a href='#citation' className='hidden-anchor'><Icon iconId='link' /></a>
           <Icon iconId='document' />
-          <span>Preprint</span>
+          <span>Citation</span>
         </h3>
 
         <p>
-          Kerpedjiev et al., <a href='https://doi.org/10.1101/121889' target='_blank' rel='noopener noreferrer'>HiGlass: Web-based Visual Exploration and Analysis of Genome Interaction Maps</a>. <em>bioRxiv</em>, 2017.
+          Peter Kerpedjiev, Nezar Abdennur, Fritz Lekschas, Chuck McCallum,
+          Kasper Dinkla, Hendrik Strobelt, Jacob M. Luber, Scott B. Ouellette,
+          Alaleh Azhir, Nikhil Kumar, Jeewon Hwang, Soohyun Lee, Burak H. Alver,
+          Hanspeter Pfister, Leonid A. Mirny, Peter J. Park and Nils Gehlenborg<br/>
+          <strong><a href='https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1486-1' target='_blank' rel='noopener noreferrer'>HiGlass: Web-based visual comparison and exploration of genome interaction maps.</a></strong><br/>
+          <em>Genome Biology,</em> 2018, 19:125.
         </p>
-
-        <h3 id='presentations' className='iconized underlined anchored'>
-          <a href='#presentations' className='hidden-anchor'><Icon iconId='link' /></a>
-          <Icon iconId='presentation' />
-          Presentations, News, and Tutorials
-        </h3>
-
-        <ul className='no-list-style large-spacing'>
-          <li>
-            <a href='https://www.slideshare.net/ngehlenborg/higlass-hipiler-making-sense-of-chromosome-interaction-data-with-multiscale-data-visualization-tools-81568229' target='_blank' rel='noopener noreferrer'>Talk</a> by <em>Gehlenborg</em>, Harvard <abbr title="Program in Quantitative Genomics">PQG</abbr> Conference, Boston, Nov 2017
-          </li>
-          <li>
-            <a href='https://vcg.seas.harvard.edu/publications/hipiler-visual-exploration-of-large-genome-interaction-matrices-with-interactive-small-multiples/higlass-hipiler-cabi-2017.pdf' target='_blank' rel='noopener noreferrer'>Poster</a> by <em>Lekschas</em>, Microsoft CADI, Cambridge, Sep 2017
-          </li>
-          <li>
-            <a href='https://4dn-dcic.github.io/2017-annual-meeting-higlass-hipiler-tutorial/' target='_blank' rel='noopener noreferrer'>Tutorial</a> by <em>Kerpedjiev</em>, 4D Nucleome Annual Meeting, Bethesda, Sep 2017
-            <a href='https://github.com/4dn-dcic/2017-annual-meeting-higlass-hipiler-tutorial' target='_blank' rel='noopener noreferrer' className="extra-link">Code</a>
-          </li>
-          <li>
-            <a href='https://www.nature.com/news/plot-a-course-through-the-genome-1.22553' target='_blank' rel='noopener noreferrer'>Plot a course through the genome</a> by <em>Perkel</em>, Nature, 549, 117–118, Sep 2017
-          </li>
-          <li>
-            <a href='https://hms-dbmi.github.io/3d-genome-processing-tutorial/' target='_blank' rel='noopener noreferrer'>Tutorial</a> by <em>Kerpedjiev</em>, ISMB/ECCB 2017, Prague, Jun 2017
-            <a href='https://github.com/hms-dbmi/3d-genome-processing-tutorial' target='_blank' rel='noopener noreferrer' className="extra-link">Code</a>
-          </li>
-          <li>
-            Poster by <em>Kerpedjiev</em>, IEEE VIS, Baltimore, Oct 2016
-          </li>
-        </ul>
 
         <h3 id='source-code' className='iconized underlined anchored'>
           <a href='#source-code' className='hidden-anchor'>
