@@ -6,7 +6,7 @@ import ContentWrapper from '../components/ContentWrapper';
 import ErrorMsgCenter from '../components/ErrorMsg';
 import Footer from '../components/Footer';
 import PluginList from '../components/PluginList';
-import SpinnerCenter from '../components/Spinner';
+import SpinnerCenter from '../components/SpinnerCenter';
 
 // Services
 import Logger from '../utils/logger';
@@ -60,7 +60,7 @@ class Plugins extends React.Component {
               </div>
             </div>
 
-            <div className='flex-g-1 wrap rel p-t-1 p-b-1'>
+            <div className='flex-g-1 wrap p-t-1 p-b-1 min-content-height'>
               {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
               {!this.state.error
                 && (this.state.isLoading
