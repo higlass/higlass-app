@@ -291,8 +291,8 @@
     div {
       margin-left: -100%;
       font-size: 0.75em;
-      animation: slide-right-out 1s $ease-out-cubic 10s 1 forwards,
-                 slide-right-in  1s $ease-in-cubic  14s 1 forwards;
+      animation: slide-right-out 1s   $ease-out-cubic 10s 1 forwards,
+                 slide-right-in  0.5s $ease-in-cubic  14s 1 forwards;
     }
   }
 
