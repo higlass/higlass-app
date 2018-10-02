@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
+
 // Components
 import ButtonIcon from './ButtonIcon';
-
-// Services
-import pubSub from '../services/pub-sub';
 
 // Styles
 import './RightBar.scss';
@@ -20,15 +20,16 @@ class RightBar extends React.Component {
 
   componentDidMount() {
     this.pubSubs.push(
-      pubSub.subscribe('mousemove', this.mouseMoveHandler.bind(this))
+      this.props.pubSub.subscribe('mousemove', this.mouseMoveHandler.bind(this))
     );
     this.pubSubs.push(
-      pubSub.subscribe('mouseup', this.mouseUpHandler.bind(this))
+      this.props.pubSub.subscribe('mouseup', this.mouseUpHandler.bind(this))
     );
   }
 
   componentWillUnmount() {
-    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs
+      .forEach(subscription => this.props.pubSub.unsubscribe(subscription));
     this.pubSubs = [];
   }
 
@@ -108,6 +109,7 @@ class RightBar extends React.Component {
 RightBar.propTypes = {
   children: PropTypes.node.isRequired,
   isShown: PropTypes.bool,
+  pubSub: PropTypes.object.isRequired,
   show: PropTypes.func,
   toggle: PropTypes.func,
   width: PropTypes.number,
@@ -115,4 +117,4 @@ RightBar.propTypes = {
   widthSetterFinal: PropTypes.func,
 };
 
-export default RightBar;
+export default withPubSub(RightBar);

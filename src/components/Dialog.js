@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
+
 // Components
 import Icon from './Icon';
-
-// Services
-import pubSub from '../services/pub-sub';
 
 // Styles
 import './Dialog.scss';
@@ -19,12 +19,13 @@ class Dialog extends React.Component {
 
   componentDidMount() {
     this.pubSubs.push(
-      pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
+      this.props.pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
     );
   }
 
   componentWillUnmount() {
-    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs
+      .forEach(subscription => this.props.pubSub.unsubscribe(subscription));
     this.pubSubs = [];
   }
 
@@ -98,6 +99,7 @@ Dialog.propTypes = {
     PropTypes.string,
     PropTypes.node,
   ]).isRequired,
+  pubSub: PropTypes.object.isRequired,
   reject: PropTypes.func,
   rejectText: PropTypes.string,
   resolve: PropTypes.func,
@@ -105,4 +107,4 @@ Dialog.propTypes = {
   resolveText: PropTypes.string,
 };
 
-export default Dialog;
+export default withPubSub(Dialog);

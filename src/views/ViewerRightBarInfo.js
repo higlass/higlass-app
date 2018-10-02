@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
+
 // Components
 import Icon from '../components/Icon';
 import RangeSelectionViewer from '../components/RangeSelectionViewer';
 import TabEntry from '../components/TabEntry';
-
-// Services
-import pubSub from '../services/pub-sub';
 
 // Utils
 import { flatten } from '../utils';
@@ -40,7 +40,7 @@ class ViewerRightBarInfo extends React.Component {
 
   componentDidMount() {
     this.pubSubs.push(
-      pubSub.subscribe(
+      this.props.pubSub.subscribe(
         'viewer.mouseMoveZoom', this.mouseMoveZoomHandler.bind(this)
       )
     );
@@ -51,7 +51,8 @@ class ViewerRightBarInfo extends React.Component {
   }
 
   componentWillUnmount() {
-    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs
+      .forEach(subscription => this.props.pubSub.unsubscribe(subscription));
     this.pubSubs = [];
   }
 
@@ -150,6 +151,7 @@ class ViewerRightBarInfo extends React.Component {
 }
 
 ViewerRightBarInfo.propTypes = {
+  pubSub: PropTypes.object.isRequired,
   toggleViewerRightBarInfoLensLocation: PropTypes.func,
   toggleViewerRightBarInfoLensValue: PropTypes.func,
   viewerRightBarInfoLensLocation: PropTypes.bool,
@@ -170,7 +172,7 @@ const mapDispatchToProps = dispatch => ({
     isOpen => dispatch(setViewerRightBarInfoLensValue(!isOpen)),
 });
 
-export default connect(
+export default withPubSub(connect(
   mapStateToProps,
   mapDispatchToProps
-)(ViewerRightBarInfo);
+)(ViewerRightBarInfo));

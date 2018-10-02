@@ -1,4 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
 
 // Components
 import Content from '../components/Content';
@@ -7,17 +11,14 @@ import Footer from '../components/Footer';
 import Icon from '../components/Icon';
 import IconGallery from '../components/IconGallery';
 
-// Services
-import pubSub from '../services/pub-sub';
-
 // Utils
 import Deferred from '../utils/deferred';
 
 // Stylesheets
 import './About.scss';
 
-const showIcons = () => {
-  pubSub.publish(
+const showIcons = (publish) => {
+  publish(
     'globalDialog',
     {
       message: <IconGallery />,
@@ -44,12 +45,13 @@ class Help extends React.Component {
 
   componentDidMount() {
     this.pubSubs.push(
-      pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
+      this.props.pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
     );
   }
 
   componentWillUnmount() {
-    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs
+      .forEach(subscription => this.props.pubSub.unsubscribe(subscription));
     this.pubSubs = [];
   }
 
@@ -80,7 +82,7 @@ class Help extends React.Component {
     if (this.swagJ === this.swag[this.swagI].length) {
       switch (this.swagI) {
         case 0:
-          showIcons();
+          showIcons(this.props.pubSub.publish);
           break;
         default:
           // Nothing
@@ -200,11 +202,11 @@ class Help extends React.Component {
                 <p>Something is not working or broken? Please send us a bug report. Thanks!</p>
               </li>
               <li>
-                <strong>Questions / Help with Implementation: </strong>
+                <strong>Questions &amp; Help: </strong>
                 <a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack</a>
-                <span> &amp; </span>
+                <span>, </span>
                 <a href='http://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>stackoverflow.com</a>
-                <span> &amp; </span>
+                <span>, or </span>
                 <a href='http://bioinformatics.stackoverflow.com/questions/ask?tags=higlass&genomics&hi-c&visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackoverflow.com</a>
                 <p>
                   Utilize the community and ask question on how to get started on Stackoverflow and
@@ -256,4 +258,8 @@ class Help extends React.Component {
   }
 }
 
-export default Help;
+Help.propTypes = {
+  pubSub: PropTypes.object.isRequired,
+};
+
+export default withPubSub(Help);

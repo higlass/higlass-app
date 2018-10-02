@@ -3,6 +3,9 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
+
 // Components
 import AppInfo from './AppInfo';
 import Hamburger from './Hamburger';
@@ -13,7 +16,6 @@ import Icon from './Icon';
 
 // Services
 import auth from '../services/auth';
-import pubSub from '../services/pub-sub';
 
 // Utils
 import Deferred from '../utils/deferred';
@@ -21,8 +23,8 @@ import Deferred from '../utils/deferred';
 // Styles
 import './TopBar.scss';
 
-const showInfo = () => {
-  pubSub.publish(
+const showInfo = publish => () => {
+  publish(
     'globalDialog',
     {
       message: <AppInfo />,
@@ -103,7 +105,11 @@ class TopBar extends React.Component {
             </div>
             )}
             {isApp(this.props.location.pathname) && (
-            <ButtonIcon icon='info' iconOnly={true} onClick={showInfo} />
+            <ButtonIcon
+              icon='info'
+              iconOnly={true}
+              onClick={showInfo(this.props.pubSub.publish)}
+            />
             )}
           </div>
           <nav className={`flex-c flex-jc-e flex-a-s is-toggable ${this.state.menuIsShown ? 'is-shown' : ''}`}>
@@ -119,7 +125,7 @@ class TopBar extends React.Component {
                 //     ? (
                 //       <TopBarDropDownUser
                 //         closeOnOuterClick={true}
-                //         logout={auth.logout}
+                //         logout={auth.logout(this.props.pubSub.publish)}
                 //         userEmail={this.state.userEmail}
                 //         userId={this.state.userId} />
                 //     ) : (
@@ -170,7 +176,10 @@ class TopBar extends React.Component {
     });
 
     auth
-      .login(this.state.loginUserId, this.state.loginPassword)
+      .login(this.props.pubSub.publish)(
+        this.state.loginUserId,
+        this.state.loginPassword
+      )
       .then((success) => {
         this.setState({
           isLoggingIn: false,
@@ -210,10 +219,11 @@ class TopBar extends React.Component {
 }
 
 TopBar.propTypes = {
-  match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool,
+  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  pubSub: PropTypes.object.isRequired,
 };
 
-export default withRouter(TopBar);
+export default withPubSub(withRouter(TopBar));

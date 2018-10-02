@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Services
-import pubSub from '../services/pub-sub';
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
 
 // Utils
 import debounce from '../utils/debounce';
@@ -35,13 +35,18 @@ class SideBar extends React.Component {
       this.sidebarOffsetTop = this.sideBarEl.getBoundingClientRect().top
         - document.body.getBoundingClientRect().top;
 
-      this.pubSubs.push(pubSub.subscribe('resize', this.checkStickAbilityDb));
-      this.pubSubs.push(pubSub.subscribe('scrollTop', this.scrollHandlerDb));
+      this.pubSubs.push(
+        this.props.pubSub.subscribe('resize', this.checkStickAbilityDb)
+      );
+      this.pubSubs.push(
+        this.props.pubSub.subscribe('scrollTop', this.scrollHandlerDb)
+      );
     }
   }
 
   componentWillUnmount() {
-    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs
+      .forEach(subscription => this.props.pubSub.unsubscribe(subscription));
     this.pubSubs = [];
   }
 
@@ -96,7 +101,8 @@ SideBar.defaultProps = {
 
 SideBar.propTypes = {
   children: PropTypes.node.isRequired,
+  pubSub: PropTypes.object.isRequired,
   isSticky: PropTypes.bool,
 };
 
-export default SideBar;
+export default withPubSub(SideBar);

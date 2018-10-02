@@ -2,6 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
+
 // Components
 import ErrorMsgCenter from './ErrorMsgCenter';
 import HiGlassLauncher from './HiGlassLauncher';
@@ -12,9 +15,6 @@ import HiGlassLoader from '../containers/HiGlassLoader';
 
 // Actions
 import { setViewConfig } from '../actions';
-
-// Services
-import pubSub from '../services/pub-sub';
 
 // Utils
 import { Deferred, Logger } from '../utils';
@@ -55,7 +55,7 @@ class HiGlassViewer extends React.Component {
 
   confirmViewConfigChange() {
     const dialog = new Deferred();
-    pubSub.publish(
+    this.props.pubSub.publish(
       'globalDialog',
       {
         message: 'You are about to override the existing view config.',
@@ -197,6 +197,7 @@ HiGlassViewer.propTypes = {
   isPadded: PropTypes.bool,
   isStatic: PropTypes.bool,
   isZoomFixed: PropTypes.bool,
+  pubSub: PropTypes.object.isRequired,
   setViewConfig: PropTypes.func.isRequired,
   viewConfig: PropTypes.object,
   viewConfigId: PropTypes.string,
@@ -212,4 +213,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HiGlassViewer);
+export default withPubSub(
+  connect(mapStateToProps, mapDispatchToProps)(HiGlassViewer)
+);

@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
+
 // Components
 import ErrorBar from './ErrorBar';
-
-// Services
-import pubSub from '../services/pub-sub';
 
 class ContentWrapper extends React.Component {
   constructor(props) {
@@ -20,12 +20,13 @@ class ContentWrapper extends React.Component {
 
   componentDidMount() {
     this.pubSubs.push(
-      pubSub.subscribe('globalError', this.errorHandler.bind(this))
+      this.props.pubSub.subscribe('globalError', this.errorHandler.bind(this))
     );
   }
 
   componentWillUnmount() {
-    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs
+      .forEach(subscription => this.props.pubSub.unsubscribe(subscription));
   }
 
   render() {
@@ -65,10 +66,11 @@ ContentWrapper.defaultProps = {
 };
 
 ContentWrapper.propTypes = {
+  pubSub: PropTypes.object.isRequired,
   bottomBar: PropTypes.bool,
   children: PropTypes.node,
   isFullDimOnly: PropTypes.bool,
   name: PropTypes.string.isRequired,
 };
 
-export default ContentWrapper;
+export default withPubSub(ContentWrapper);

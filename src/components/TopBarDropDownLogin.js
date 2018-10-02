@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
+
 // Components
 import ButtonIcon from './ButtonIcon';
 import DropDownContent from './DropDownContent';
 import DropDownTrigger from './DropDownTrigger';
 import Icon from './Icon';
 import TopBarDropDown from './TopBarDropDown';
-
-// Services
-import pubSub from '../services/pub-sub';
 
 
 class TopBarDropDowLogin extends React.Component {
@@ -20,12 +20,13 @@ class TopBarDropDowLogin extends React.Component {
 
   componentDidMount() {
     this.pubSubs.push(
-      pubSub.subscribe('DropDownTopBarDropDown', this.focusInput.bind(this))
+      this.props.pubSub.subscribe('DropDownTopBarDropDown', this.focusInput.bind(this))
     );
   }
 
   componentWillUnmount() {
-    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs
+      .forEach(subscription => this.props.pubSub.unsubscribe(subscription));
     this.pubSubs = [];
   }
 
@@ -98,6 +99,7 @@ TopBarDropDowLogin.propTypes = {
   loginPassword: PropTypes.string.isRequired,
   loginUserIdHandler: PropTypes.func.isRequired,
   loginUserId: PropTypes.string.isRequired,
+  pubSub: PropTypes.object.isRequired,
 };
 
-export default TopBarDropDowLogin;
+export default withPubSub(TopBarDropDowLogin);

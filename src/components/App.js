@@ -3,6 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
+
 // Components
 import Dialog from './Dialog';
 import DropNotifier from './DropNotifier';
@@ -17,7 +20,6 @@ import createDomEvent from '../factories/dom-event';
 
 // Services
 import auth from '../services/auth';
-import pubSub from '../services/pub-sub';
 
 // Utils
 import loadViewConfig from '../utils/load-view-config';
@@ -38,7 +40,7 @@ class App extends React.Component {
       isAuthenticated: auth.isAuthenticated(),
     };
 
-    this.domEvent = createDomEvent(pubSub);
+    this.domEvent = createDomEvent(props.pubSub);
   }
 
   componentDidMount() {
@@ -52,19 +54,19 @@ class App extends React.Component {
     this.domEvent.register('scroll', document);
 
     this.pubSubs.push(
-      pubSub.subscribe('globalDialog', this.dialogHandler.bind(this))
+      this.props.pubSub.subscribe('globalDialog', this.dialogHandler.bind(this))
     );
 
     this.pubSubs.push(
-      pubSub.subscribe('keydown', this.keyDownHandler.bind(this))
+      this.props.pubSub.subscribe('keydown', this.keyDownHandler.bind(this))
     );
 
     this.pubSubs.push(
-      pubSub.subscribe('login', this.loginHandler.bind(this))
+      this.props.pubSub.subscribe('login', this.loginHandler.bind(this))
     );
 
     this.pubSubs.push(
-      pubSub.subscribe('logout', this.logoutHandler.bind(this))
+      this.props.pubSub.subscribe('logout', this.logoutHandler.bind(this))
     );
   }
 
@@ -78,7 +80,7 @@ class App extends React.Component {
     this.domEvent.unregister('resize', window);
     this.domEvent.unregister('scroll', document);
 
-    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs.forEach(subscription => this.props.pubSub.unsubscribe(subscription));
     this.pubSubs = [];
   }
 
@@ -145,7 +147,7 @@ class App extends React.Component {
       })
       .catch((error) => {
         logger.error(error);
-        pubSub.publish('globalError', 'Only drop valid JSON view configs.');
+        this.props.pubSub.publish('globalError', 'Only drop valid JSON view configs.');
       });
   }
 
@@ -171,9 +173,10 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  pubSub: PropTypes.object.isRequired,
   redo: PropTypes.func.isRequired,
   setViewConfig: PropTypes.func.isRequired,
   undo: PropTypes.func.isRequired,
@@ -187,4 +190,6 @@ const mapDispatchToProps = dispatch => ({
   undo: () => dispatch(undo),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withPubSub(
+  withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+);

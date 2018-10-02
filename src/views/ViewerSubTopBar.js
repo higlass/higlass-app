@@ -2,15 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
+
 // Components
 import ButtonIcon from '../components/ButtonIcon';
 import ShareViewConfigUrl from '../components/ShareViewConfigUrl';
 import SubTopBar from '../components/SubTopBar';
 import SubTopBottomBarButtons from '../components/SubTopBottomBarButtons';
 import ToolTip from '../components/ToolTip';
-
-// Services
-import pubSub from '../services/pub-sub';
 
 // Actions
 import { setViewerMouseTool } from '../actions';
@@ -25,8 +25,8 @@ const logger = Logger('ViewerSubTopBar');
 
 const server = HGAC_SERVER || window.HGAC_SERVER;
 
-const showSharedViewUrl = (sharedView) => {
-  pubSub.publish(
+const showSharedViewUrl = (publish, sharedView) => {
+  publish(
     'globalDialog',
     {
       message: <ShareViewConfigUrl
@@ -41,11 +41,11 @@ const showSharedViewUrl = (sharedView) => {
   );
 };
 
-const shareViewConfig = (share) => {
+const shareViewConfig = (publish, share) => {
   const req = share(`${server}/api/v1/viewconfs/`);
 
   if (!req) {
-    pubSub.publish(
+    publish(
       'globalError',
       'Sharing view config as link not available. Ask your admin! '
       + 'Try saving the view config with CMD+S instead.'
@@ -59,7 +59,7 @@ const shareViewConfig = (share) => {
     })
     .catch((e) => {
       logger.warn('Sharing view config as link failed.', e);
-      pubSub.publish(
+      publish(
         'globalError',
         'Sharing view config as link failed. Maybe the server is down? '
         + 'Try saving the view config with CMD+S instead.'
@@ -126,7 +126,9 @@ const ViewerSubTopBar = props => (
           <ButtonIcon
             icon='share'
             iconOnly={true}
-            onClick={() => shareViewConfig(props.shareViewAsLink)} />
+            onClick={() => shareViewConfig(
+              props.pubSub.publish, props.shareViewAsLink
+            )} />
         </ToolTip>
       </li>
       <li>
@@ -143,7 +145,9 @@ const ViewerSubTopBar = props => (
           <ButtonIcon
             icon='download'
             iconOnly={true}
-            onClick={() => downloadViewConfig(props.viewConfig)} />
+            onClick={() => downloadViewConfig(
+              props.pubSub.publish, props.viewConfig
+            )} />
         </ToolTip>
       </li>
     </SubTopBottomBarButtons>
@@ -151,10 +155,11 @@ const ViewerSubTopBar = props => (
 );
 
 ViewerSubTopBar.propTypes = {
-  setMouseTool: PropTypes.func,
-  viewConfig: PropTypes.object,
   mouseTool: PropTypes.string,
+  pubSub: PropTypes.object.isRequired,
+  setMouseTool: PropTypes.func,
   shareViewAsLink: PropTypes.func,
+  viewConfig: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
@@ -166,7 +171,7 @@ const mapDispatchToProps = dispatch => ({
   setMouseTool: mouseTool => dispatch(setViewerMouseTool(mouseTool)),
 });
 
-export default connect(
+export default withPubSub(connect(
   mapStateToProps,
   mapDispatchToProps
-)(ViewerSubTopBar);
+)(ViewerSubTopBar));

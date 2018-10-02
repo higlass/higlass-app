@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Services
-import pubSub from '../services/pub-sub';
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
 
 // Utils
 import hasParent from '../utils/has-parent';
@@ -21,13 +21,14 @@ class DropDown extends React.Component {
   componentDidMount() {
     if (this.props.closeOnOuterClick) {
       this.pubSubs.push(
-        pubSub.subscribe('click', this.clickHandler.bind(this))
+        this.props.pubSub.subscribe('click', this.clickHandler.bind(this))
       );
     }
   }
 
   componentWillUnmount() {
-    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs
+      .forEach(subscription => this.props.pubSub.unsubscribe(subscription));
     this.pubSubs = [];
   }
 
@@ -37,7 +38,7 @@ class DropDown extends React.Component {
       && this.state.isOpen
       && this.state.isOpen !== prevState.isOpen
     ) {
-      pubSub.publish(`DropDown${this.props.id}`, this.state.isOpen);
+      this.props.pubSub.publish(`DropDown${this.props.id}`, this.state.isOpen);
     }
   }
 
@@ -47,7 +48,8 @@ class DropDown extends React.Component {
       child => React.cloneElement(child, {
         dropDownIsOpen: this.state.isOpen,
         dropDownToggle: this.toggle.bind(this),
-      }));
+      })
+    );
 
     let className = 'rel drop-down';
 
@@ -95,12 +97,13 @@ class DropDown extends React.Component {
 }
 
 DropDown.propTypes = {
-  closeOnOuterClick: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
   alignRight: PropTypes.bool,
   alignTop: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  closeOnOuterClick: PropTypes.bool,
   id: PropTypes.string,
+  pubSub: PropTypes.object.isRequired,
 };
 
-export default DropDown;
+export default withPubSub(DropDown);

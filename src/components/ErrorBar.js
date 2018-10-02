@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
+
 // Components
 import ButtonIcon from './ButtonIcon';
 import Icon from './Icon';
-
-// Services
-import pubSub from '../services/pub-sub';
 
 // Styles
 import './ErrorBar.scss';
@@ -20,12 +20,13 @@ class ErrorBar extends React.Component {
 
   componentDidMount() {
     this.pubSubs.push(
-      pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
+      this.props.pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
     );
   }
 
   componentWillUnmount() {
-    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs
+      .forEach(subscription => this.props.pubSub.unsubscribe(subscription));
     this.pubSubs = [];
   }
 
@@ -60,10 +61,11 @@ class ErrorBar extends React.Component {
 }
 
 ErrorBar.propTypes = {
+  pubSub: PropTypes.object.isRequired,
   isClosable: PropTypes.bool,
   msg: PropTypes.string.isRequired,
   onClose: PropTypes.func,
   wrap: PropTypes.bool,
 };
 
-export default ErrorBar;
+export default withPubSub(ErrorBar);

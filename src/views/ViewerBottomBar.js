@@ -1,21 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
+
 // Components
 import AppInfo from '../components/AppInfo';
 import ButtonIcon from '../components/ButtonIcon';
 import BottomBar from '../components/BottomBar';
 import SubTopBottomBarButtons from '../components/SubTopBottomBarButtons';
 
-// Services
-import pubSub from '../services/pub-sub';
-
 // Utils
 import Deferred from '../utils/deferred';
 
 
-const showInfo = () => {
-  pubSub.publish(
+const showInfo = publish => () => {
+  publish(
     'globalDialog',
     {
       message: <AppInfo />,
@@ -38,7 +38,7 @@ const ViewerBottomBar = () => (
         <ButtonIcon
           icon='info'
           iconOnly={true}
-          onClick={showInfo} />
+          onClick={showInfo(this.props.pubSub.publish)} />
       </li>
     </SubTopBottomBarButtons>
   </BottomBar>
@@ -50,7 +50,7 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = () => ({});
 
-export default connect(
+export default withPubSub(connect(
   mapStateToProps,
   mapDispatchToProps
-)(ViewerBottomBar);
+)(ViewerBottomBar));

@@ -3,6 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+// HOCs
+import withPubSub from '../hocs/with-pub-sub';
+
 // Components
 import Content from '../components/Content';
 import ContentWrapper from '../components/ContentWrapper';
@@ -11,9 +14,6 @@ import HiGlassViewer from '../components/HiGlassViewer';
 // View components
 import ViewerRightBar from './ViewerRightBar';
 import ViewerSubTopBar from './ViewerSubTopBar';
-
-// Services
-import pubSub from '../services/pub-sub';
 
 // Actions
 import { setViewerMouseTool, setViewerRightBarTab } from '../actions';
@@ -51,15 +51,16 @@ class Viewer extends React.Component {
 
   componentDidMount() {
     this.pubSubs.push(
-      pubSub.subscribe('keydown', this.keyDownHandler.bind(this))
+      this.props.pubSub.subscribe('keydown', this.keyDownHandler.bind(this))
     );
     this.pubSubs.push(
-      pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
+      this.props.pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
     );
   }
 
   componentWillUnmount() {
-    this.pubSubs.forEach(subscription => pubSub.unsubscribe(subscription));
+    this.pubSubs
+      .forEach(subscription => this.props.pubSub.unsubscribe(subscription));
     this.pubSubs = [];
     removeHiGlassEventListeners(this.hiGlassEventListeners, this.hgApi);
     this.hiGlassEventListeners = [];
@@ -84,7 +85,9 @@ class Viewer extends React.Component {
         return undefined;
       }
       if (!this.hgApi[method]) {
-        logger.warn(`Method (${method}) not available. Incompatible version of HiGlass?`);
+        logger.warn(
+          `Method (${method}) not available. Incompatible version of HiGlass?`
+        );
         return undefined;
       }
       return this.hgApi[method](...args);
@@ -117,7 +120,7 @@ class Viewer extends React.Component {
   }
 
   mouseMoveZoomHandler(data) {
-    pubSub.publish('viewer.mouseMoveZoom', data);
+    this.props.pubSub.publish('viewer.mouseMoveZoom', data);
   }
 
   removeHiGlassEventListeners() {
@@ -194,7 +197,7 @@ class Viewer extends React.Component {
       //   rangeSelection: rangeSelection.genomicRange,
       // });
     } else {
-      pubSub.publish(
+      this.props.pubSub.publish(
         'globalError',
         'Range selection could not been translated from data location into '
         + 'genomic locations. Check your view config and the cooler file of '
@@ -244,22 +247,23 @@ Viewer.defaultProps = {
 
 Viewer.propTypes = {
   isAuthenticated: PropTypes.bool,
+  mouseTool: PropTypes.string,
+  pubSub: PropTypes.object.isRequired,
+  rightBarShow: PropTypes.bool,
+  rightBarTab: PropTypes.string,
+  rightBarWidth: PropTypes.number,
   setMouseTool: PropTypes.func,
   setRightBarTab: PropTypes.func,
   viewConfig: PropTypes.object,
   viewConfigId: PropTypes.string,
-  mouseTool: PropTypes.string,
-  rightBarShow: PropTypes.bool,
-  rightBarTab: PropTypes.string,
-  rightBarWidth: PropTypes.number,
 };
 
 const mapStateToProps = state => ({
-  viewConfig: state.present.viewConfig,
   mouseTool: state.present.viewerMouseTool,
   rightBarShow: state.present.viewerRightBarShow,
   rightBarTab: state.present.viewerRightBarTab,
   rightBarWidth: state.present.viewerRightBarWidth,
+  viewConfig: state.present.viewConfig,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -267,7 +271,7 @@ const mapDispatchToProps = dispatch => ({
   setRightBarTab: viewerRightBarTab => dispatch(setViewerRightBarTab(viewerRightBarTab)),
 });
 
-export default withRouter(connect(
+export default withPubSub(withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Viewer));
+)(Viewer)));

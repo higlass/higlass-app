@@ -1,6 +1,3 @@
-// Services
-import pubSub from './pub-sub';
-
 // Utils
 import cookie from '../utils/cookie';
 
@@ -64,7 +61,7 @@ const get = (key) => {
 
 const isAuthenticated = () => state.isAuthenticated;
 
-const login = (username, password) => {
+const login = publish => (username, password) => {
   // Remove existing cookie before logging in.
   cookie.remove('higlasstoken');
   state.isAuthenticated = false;
@@ -115,11 +112,11 @@ const login = (username, password) => {
       return checkAuthentication();
     })
     .then(() => {
-      pubSub.publish('login');
+      if (publish) publish('login');
     });
 };
 
-const logout = () => {
+const logout = publish => () => {
   // Remove existing cookie before logging in.
   cookie.remove('higlasstoken');
 
@@ -127,7 +124,7 @@ const logout = () => {
   state.isAuthenticated = false;
   state.username = '';
 
-  pubSub.publish('logout');
+  if (publish) publish('logout');
 };
 
 const auth = {

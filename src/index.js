@@ -1,8 +1,11 @@
+import createPubSub from 'pub-sub-es';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
-import { createState, history } from './factories/state';
+
+// HOCs
+import { Provider as PubSubProvider } from './hocs/with-pub-sub';
 
 // Components
 import App from './components/App';
@@ -10,6 +13,9 @@ import AppFake from './components/AppFake';
 
 // Services
 import auth from './services/auth';
+
+// Factories
+import { createState, history } from './factories/state';
 
 // Utils
 import Logger from './utils/logger';
@@ -25,17 +31,24 @@ const state = createState();
 let rehydratedStore;
 const storeRehydrated = state.configure();
 
+// Init pub-sub service
+const pubSub = createPubSub();
+
 const render = (Component, store, error) => {
   if (!store) {
     ReactDOM.render(
-      <AppFake error={error}/>,
+      <PubSubProvider value={pubSub}>
+        <AppFake error={error}/>
+      </PubSubProvider>,
       document.getElementById('root')
     );
   } else {
     ReactDOM.render(
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <Component />
+          <PubSubProvider value={pubSub}>
+            <Component />
+          </PubSubProvider>
         </ConnectedRouter>
       </Provider>,
       document.getElementById('root')
