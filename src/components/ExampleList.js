@@ -8,7 +8,7 @@ const ExampleList = props => (
   <ul className='example-list flex-c flex-w-w no-list-style'>
     {props.examples.map((example, index) => (
       <li
-        className={example.columns === 2 && 'two-columns'}
+        className={example.columns === 2 ? 'two-columns' : ''}
         key={index}
       >
         {example.title
