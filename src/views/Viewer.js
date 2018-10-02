@@ -209,7 +209,7 @@ class Viewer extends React.Component {
     this.checkHiGlassEventListeners();
 
     return (
-      <ContentWrapper name='viewer' bottomBar={true} isFullDimOnly={true}>
+      <ContentWrapper name='viewer' isFullDimOnly={true}>
         <Content
           name='viewer'
           rel={true}
