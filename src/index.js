@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
-import { history, state } from './services/state';
+import { createState, history } from './factories/state';
 
 // Components
 import App from './components/App';
@@ -21,8 +21,9 @@ import './index.scss';
 const logger = Logger('Index');
 
 // Initialize store
+const state = createState();
 let rehydratedStore;
-const storeRehydrated = state.configure().store;
+const storeRehydrated = state.configure();
 
 const render = (Component, store, error) => {
   if (!store) {

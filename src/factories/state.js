@@ -1,5 +1,4 @@
 import createHistory from 'history/createBrowserHistory';
-import localforage from 'localforage';
 import { routerMiddleware } from 'react-router-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { enableBatching } from 'redux-batched-actions';
@@ -15,24 +14,16 @@ import rootReducer from '../reducers';
 
 // Actions
 import {
+  reset as resetState,
   setViewConfig,
   setViewerMouseTool,
-  setViewerRightBarShow,
-  setViewerRightBarWidth,
 } from '../actions';
-
-// Utils
-import MultiStorage from '../utils/multi-storage';
 
 const prefix = 'HiGlassApp.';
 
-const prepareStore = MultiStorage([
-  asyncSessionStorage,
-  localforage,
-], prefix);
-
 const config = {
-  debounce: 25,
+  storage: asyncSessionStorage,
+  debounce: 1000,
   keyPrefix: prefix,
 };
 
@@ -55,14 +46,12 @@ if (process.env.NODE_ENV === 'development') {
   middleware.push(applyMiddleware(logger));
 }
 
-const configure = (initialState) => {
+const configureStore = (initialState) => {
   const store = createStore(
     undoable(enableBatching(rootReducer), {
       groupBy: groupByActionTypes([
         setViewConfig().type,
         setViewerMouseTool().type,
-        setViewerRightBarShow().type,
-        setViewerRightBarWidth().type,
       ]),
       limit: 20,
     }),
@@ -77,41 +66,46 @@ const configure = (initialState) => {
     });
   }
 
-  return prepareStore.then((storage) => {
-    config.storage = storage;
-
-    return new Promise((resolve, reject) => {
-      persistStore(store, config, (error) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(store);
-        }
-      });
+  return new Promise((resolve, reject) => {
+    persistStore(store, config, (error) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(store);
+      }
     });
   });
 };
 
-class State {
-  configure(initialState) {
-    this.store = configure(initialState);
+const createState = () => {
+  let store;
 
-    return this;
-  }
+  const configure = initialState => configureStore(initialState)
+    .then((configuredStore) => {
+      store = configuredStore;
+      return store;
+    });
 
-  reset() {
+  const reset = () => {
+    // Reset store
+    store.dispatch(resetState());
+
     // Clear history
-    this.store.dispatch(ActionCreators.clearHistory());
+    store.dispatch(ActionCreators.clearHistory());
 
     // Purge persistent store
     return purgeStoredState(config);
-  }
-}
+  };
 
-const state = new State();
+  return {
+    get store() { return store; },
+    configure,
+    reset,
+  };
+};
 
 export {
-  configure,
+  configureStore,
   history,
-  state,
+  createState,
 };

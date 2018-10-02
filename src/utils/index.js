@@ -10,7 +10,6 @@ export { default as flatten } from './flatten';
 export { default as hasParent } from './has-parent';
 export { default as loadViewConfig } from './load-view-config';
 export { default as Logger } from './logger';
-export { default as multiStorage } from './multi-storage';
 
 export {
   default as removeHiGlassEventListeners

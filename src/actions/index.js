@@ -3,6 +3,11 @@ import { ActionCreators } from 'redux-undo';
 
 export const redo = ActionCreators.redo();
 
+export const reset = () => ({
+  type: 'RESET',
+  payload: {},
+});
+
 export const setHomeInfoBarClose = homeInfoBarClose => ({
   type: 'SET_HOME_INFO_BAR_CLOSE',
   payload: { homeInfoBarClose },

@@ -48,7 +48,7 @@ export const viewerRightBarWidth = defaultSetReducer(
   'viewerRightBarWidth', 200
 );
 
-export default combineReducers({
+const appReducer = combineReducers({
   routing,
   homeInfoBarClose,
   viewConfig,
@@ -60,3 +60,13 @@ export default combineReducers({
   viewerRightBarTab,
   viewerRightBarWidth,
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === 'RESET') {
+    state = undefined;  // eslint-disable-line no-param-reassign
+  }
+
+  return appReducer(state, action);
+};
+
+export default rootReducer;
