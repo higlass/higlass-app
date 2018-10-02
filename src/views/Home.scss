@@ -1,31 +1,52 @@
 @import '../styles/colors';
 @import '../styles/columns';
 @import '../styles/ratio';
+@import '../styles/transitions';
 
 .home {
-  .home-info-actions {
-    > * {
-      margin: 0.125rem 0;
-      font-size: 0.9em;
+  .home-info-news {
+    position: relative;
+    margin: 0.5rem 0;
+    overflow: auto;
+  }
 
-      &:first-child {
-        margin-top: 0;
-        margin-bottom: 0.25rem;
-      }
+  .home-info-buttons {
+    position: relative;
+    z-index: 1;
+    margin-top: 0.5rem;
+    margin-bottom: -2.5rem;
+    height: 2rem;
 
-      &:last-child {
-        margin-top: 0.25rem;
-        margin-bottom: 0;
+    .drop-area,
+    .button-like-file-select {
+      width: 16rem;
+      border: 1px solid $gray-lightest;
+      background: white;
+    }
+
+    .drop-area {
+      margin-right: 0.5rem;
+
+      &:after {
+        top: 0.125rem;
+        right: 0.125rem;
+        bottom: 0.125rem;
+        left: 0.125rem;
+        border-width: 1px;
+        border-color: $gray-medium;
       }
     }
 
-    .drop-area:after {
-      top: 0.125rem;
-      right: 0.125rem;
-      bottom: 0.125rem;
-      left: 0.125rem;
-      border-width: 1px;
-      border-color: $blue-dark;
+    .button-like-file-select {
+      margin-right: 0.5rem;
+      transition: color $fast-transition $easing,
+                  border-color $fast-transition $easing,
+                  background $fast-transition $easing;
+
+      &:hover {
+        border-color: darken($blue-light, 5%);
+        background: $blue-light;
+      }
     }
   }
 
