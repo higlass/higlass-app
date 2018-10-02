@@ -134,7 +134,8 @@ class HiGlassViewer extends React.Component {
     let className = 'higlass-viewer';
 
     className += this.props.hasSubTopBar ? ' has-sub-top-bar' : '';
-    className += this.props.height ? ' higlass-viewer-abs-height' : ' full-dim';
+    className += !this.props.autoExpand && !this.props.height ? ' full-dim' : '';
+    className += this.props.height ? ' higlass-viewer-abs-height' : '';
     className += this.props.hasSubTopBar ? ' has-sub-top-bar' : '';
 
     const style = {
@@ -146,7 +147,6 @@ class HiGlassViewer extends React.Component {
         className={className}
         style={style}
       >
-        <div className='higlass-viewer-padded-container'>
         {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
         {!this.state.error && (
           this.state.isLoading ? (  // eslint-disable-line no-nested-ternary
@@ -173,7 +173,6 @@ class HiGlassViewer extends React.Component {
             )
           )
         )}
-        </div>
       </div>
     );
   }

@@ -141,8 +141,6 @@ HiGlassLauncher.defaultProps = {
   isZoomFixed: false,
   options: {
     bounded: true,
-    horizontalMargin: 0,
-    verticalMargin: 0,
   },
 };
 
