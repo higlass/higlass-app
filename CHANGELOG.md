@@ -1,7 +1,7 @@
 **v1.0.0**
 
 - Add list of plugins
-- Add news from Twitter
+- Add news section on the home page
 - Add permanent full screen mode when started without demos, i.e., `"homepageDemos": false` in the `config.json`
 - Update to session storage only
 - Update to HiGlass `v1.2`

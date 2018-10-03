@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Timeline } from 'react-twitter-widgets';
 
 import Content from '../components/Content';
 import ButtonLikeFileSelect from '../components/ButtonLikeFileSelect';
 import DropArea from '../components/DropArea';
 import HiGlassViewer from '../components/HiGlassViewer';
 import Icon from '../components/Icon';
+import NewsList from '../components/NewsList';
 import SpinnerCenter from '../components/SpinnerCenter';
 
 // Utils
 import loadViewConfig from '../utils/load-view-config';
 import Logger from '../utils/logger';
+
+const URL = 'https://cdn.rawgit.com/hms-dbmi/higlass-app/5d943b11/content/news.json';
 
 const logger = Logger('Home');
 
@@ -31,7 +33,25 @@ class HomeDemos extends React.Component {
 
     this.state = {
       isLoadingNews: true,
+      news: [],
     };
+
+    fetch(URL)
+      .then(response => response.json())
+      .then((news) => {
+        this.setState({
+          error: '',
+          isLoadingNews: false,
+          news,
+        });
+      })
+      .catch((error) => {
+        logger.error('Could not retrieve or parse news.', error);
+        this.setState({
+          error: 'Could not load news.',
+          isLoadingNews: false,
+        });
+      });
   }
 
   render() {
@@ -46,19 +66,7 @@ class HomeDemos extends React.Component {
             <div className='column-1-2 m-l-1 home-info-news'>
               {this.state.isLoadingNews && <SpinnerCenter light={true} />}
               <div className={`full-dim ${this.state.isLoadingNews ? 'is-hidden' : ''}`}>
-                <Timeline
-                  dataSource={{
-                    sourceType: 'profile',
-                    screenName: 'pkerpedjiev',
-                  }}
-                  options={{
-                    chrome: 'noheader nofooter noborders noscrollbar transparent',
-                    tweetLimit: '5',
-                  }}
-                  onLoad={() => {
-                    this.setState({ isLoadingNews: false });
-                  }}
-                />
+                <NewsList news={this.state.news} />
               </div>
             </div>
           </div>

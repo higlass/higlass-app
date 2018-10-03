@@ -1,0 +1,45 @@
+@import '../styles/colors';
+@import '../styles/ratio';
+
+.news-list {
+  font-size: 0.9em;
+
+  &> li {
+    display: block;
+    margin: 0.125rem 0 0.5rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .news-text {
+    margin: 0;
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .news-meta {
+    color: $gray-medium;
+    font-size: 0.8em;
+  }
+
+  .news-links {
+    margin-left: 0.25rem;
+
+    .button-icon {
+      border: 0;
+      box-shadow: none;
+    }
+  }
+}
