@@ -98,7 +98,7 @@ const About = () => (
             <a href='http://emptypipes.org' target='_blank' rel='noopener noreferrer'>Peter Kerpedjiev</a>
           </li>
           <li>
-            <span target='_blank' rel='noopener noreferrer'>Nezar Abdennur</span>
+            <span>Nezar Abdennur</span>
           </li>
           <li>
             <a href='https://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a>
@@ -182,7 +182,7 @@ const About = () => (
         <p>
           The following sets of beautiful icons have been slightly adjusted by
           Fritz Lekschas and are used across the application.
-          Hugs thanks to the authors for their fantastic work!
+          Huge thanks to the authors for their fantastic work!
         </p>
 
         <ul className='no-list-style large-spacing iconized'>
