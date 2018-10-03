@@ -15,6 +15,7 @@
 - Refactor pub-sub service as HOC using an external library
 - Refactor state service as factory
 - Refactor DOM event server as factory
+- Remove service worker. HiGlassApp depends on a running HiGlass server so offline support does not make sense
 
 **v0.9.2**
 
