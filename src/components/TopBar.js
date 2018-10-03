@@ -7,9 +7,7 @@ import { NavLink } from 'react-router-dom';
 import withPubSub from '../hocs/with-pub-sub';
 
 // Components
-import AppInfo from './AppInfo';
 import Hamburger from './Hamburger';
-import ButtonIcon from './ButtonIcon';
 import Icon from './Icon';
 // import TopBarDropDownLogin from './TopBarDropDownLogin';
 // import TopBarDropDownUser from './TopBarDropDownUser';
@@ -17,25 +15,8 @@ import Icon from './Icon';
 // Services
 import auth from '../services/auth';
 
-// Utils
-import Deferred from '../utils/deferred';
-
 // Styles
 import './TopBar.scss';
-
-const showInfo = publish => () => {
-  publish(
-    'globalDialog',
-    {
-      message: <AppInfo />,
-      request: new Deferred(),
-      resolveOnly: true,
-      resolveText: 'Close',
-      icon: 'logo',
-      headline: 'HiGlass',
-    }
-  );
-};
 
 const hasDemos = HGAC_HOMEPAGE_DEMOS || window.HGAC_HOMEPAGE_DEMOS;
 const homeUrl = hasDemos ? '/' : '/app';
@@ -104,13 +85,6 @@ class TopBar extends React.Component {
               <div>Launch in full screen!</div>
             </div>
             )}
-            {isApp(this.props.location.pathname) && (
-            <ButtonIcon
-              icon='info'
-              iconOnly={true}
-              onClick={showInfo(this.props.pubSub.publish)}
-            />
-            )}
           </div>
           <nav className={`flex-c flex-jc-e flex-a-s is-toggable ${this.state.menuIsShown ? 'is-shown' : ''}`}>
             <ul className='flex-c flex-jc-e flex-a-s no-list-style primary-nav-list'>
@@ -118,7 +92,6 @@ class TopBar extends React.Component {
               <li><NavLink to='/examples' activeClassName='is-active'>Examples</NavLink></li>
               <li><NavLink to='/plugins' activeClassName='is-active'>Plugins</NavLink></li>
               <li><NavLink to='/docs' activeClassName='is-active'>Docs</NavLink></li>
-              <li><NavLink to='/help' activeClassName='is-active'>Help</NavLink></li>
               {
                 // <li className='separated-left flex-c flex-jc-c'>
                 //   {this.props.isAuthenticated

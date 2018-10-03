@@ -6,7 +6,6 @@ import { Redirect, Route, Switch, withRouter } from 'react-router';
 import About from '../views/About';
 import Docs from '../views/Docs';
 import Examples from '../views/Examples';
-import Help from '../views/Help';
 import Home from '../views/Home';
 import NotFound from '../views/NotFound';
 import Plugins from '../views/Plugins';
@@ -34,7 +33,6 @@ class Main extends React.Component {
             viewConfigId={viewConfigId} />;
         }} />
         <Route exact path='/examples' component={Examples} />
-        <Route exact path='/help' component={Help} />
         <Route exact path='/docs' component={Docs} />
         <Route exact path='/plugins' component={Plugins} />
         {hasDemos ? (
