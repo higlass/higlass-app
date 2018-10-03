@@ -1,0 +1,13 @@
+[
+  {
+    "date": "2018-09-14",
+    "text": "Version v1.2 is out. Take a look at the [changelog](https://github.com/hms-dbmi/higlass/blob/develop/CHANGELOG.md#v120) for a detailed list of updates."
+  },
+  {
+    "date": "2018-08-27",
+    "text": "The HiGlass paper is new out in [Genome Biology](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1486-1)",
+    "moreUrl": "https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1486-1",
+    "twitterUrl": "https://twitter.com/ngehlenborg/status/1034170274403557376",
+    "emphasize": 1
+  },
+]
