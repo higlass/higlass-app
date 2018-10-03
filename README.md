@@ -1,10 +1,12 @@
 # HiGlass App
 
-> The web application for viewing, exploring, and annotating 1D and 2D genomic data.
-
 [![HiGlass](https://img.shields.io/badge/higlass-👍-red.svg?colorB=3676b4)](http://higlass.io)
 [![npm version](https://img.shields.io/npm/v/higlass-app.svg)](https://www.npmjs.com/package/higlass-app)
 [![Build Status](https://travis-ci.org/hms-dbmi/higlass-app.svg?branch=master)](https://travis-ci.org/hms-dbmi/higlass-app)
+
+![Peax's UI](teaser.png)
+
+> The web application for viewing, exploring, and annotating 1D and 2D genomic data.
 
 **URL**: http://higlass.io
 
