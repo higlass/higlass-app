@@ -48,18 +48,17 @@ class Plugins extends React.Component {
     return (
       <ContentWrapper name='plugins'>
         <Content name='plugins'>
-          <div className='flex-c flex-v full-wh'>
-            <div className='border-bottom p-t-1 p-b-1'>
-              <div className='wrap'>
-                <p>
-                  HiGlass can be extended using plugin tracks. Below is list of
-                  supported plugin tracks. If you have developed a new awesome
-                  track <a href="https://github.com/hms-dbmi/higlass-app/blob/master/content/plugins.json" target='_blank' rel='noopener noreferrer'>add your track to this file</a> and
-                  submit a pull request. Thanks!
-                </p>
-              </div>
+          <header className='border-bottom p-t-1 p-b-1'>
+            <div className='wrap'>
+              <p>
+                HiGlass can be extended using plugin tracks. Below is list of
+                supported plugin tracks. If you have developed a new awesome
+                track please <a href="https://github.com/hms-dbmi/higlass-app/blob/master/content/plugins.json" target='_blank' rel='noopener noreferrer'>add your track to this file</a> and
+                submit a pull request.
+              </p>
             </div>
-
+          </header>
+          <div className='flex-c flex-v full-wh'>
             <div className='flex-g-1 wrap p-t-1 p-b-1 min-content-height'>
               {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
               {!this.state.error

@@ -48,16 +48,15 @@ class Examples extends React.Component {
     return (
       <ContentWrapper name='examples'>
         <Content name='examples'>
-          <div className='flex-c flex-v full-wh'>
-            <div className='border-bottom p-t-1 p-b-1'>
-              <div className='wrap'>
-                <p>
-                The examples below are meant to showcase HiGlass&apos;s capabilities as a
-                contact map explorer as well as to point out loci of interest.
-                </p>
-              </div>
+          <header className='border-bottom p-t-1 p-b-1'>
+            <div className='wrap'>
+              <p>
+              The examples below are meant to showcase HiGlass&apos;s capabilities as a
+              contact map explorer as well as to point out loci of interest.
+              </p>
             </div>
-
+          </header>
+          <div className='flex-c flex-v full-wh'>
             <div className='flex-g-1 wrap p-t-1 p-b-1'>
               {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
               {!this.state.error
