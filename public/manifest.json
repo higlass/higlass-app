@@ -1,10 +1,10 @@
 {
   "short_name": "HiGlass App",
-  "name": "A fully-featured app for viewing, exploring, and annotating 1D and 2D genomic and Hi-C data",
+  "name": "Web-based visual exploration and comparison of Hi-C genome interaction maps and other genomic tracks",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "192x192",
+      "src": "touchicon.png",
+      "sizes": "152x152",
       "type": "image/png"
     }
   ],
