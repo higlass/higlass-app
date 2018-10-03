@@ -19,7 +19,6 @@ import { createState, history } from './factories/state';
 
 // Utils
 import Logger from './utils/logger';
-import registerServiceWorker from './registerServiceWorker';
 
 // Styles
 import './index.scss';
@@ -77,5 +76,3 @@ if (module.hot) {
   });
   storeRehydrated.then((store) => { window.store = store; });
 }
-
-registerServiceWorker();
