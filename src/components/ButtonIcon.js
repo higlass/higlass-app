@@ -29,7 +29,8 @@ const ButtonIcon = (props) => {
     <Tag
       className={classNames(props)}
       href={props.href}
-      target={props.external ? '_blank' : ''}
+      target={props.external ? '_blank' : null}
+      rel={props.external ? 'noopener noreferrer' : null}
       title={props.title}
       onClick={props.onClick}
       onMouseDown={props.onMouseDown}
