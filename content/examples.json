@@ -11,6 +11,13 @@
     ]
   },
   {
+    "url": "https://flekschas.github.io/higlass-fancy/",
+    "title": "Dark Theme",
+    "description": "HiGlass' dark theme in action. Useful for making colors pop out.",
+    "image": "https://user-images.githubusercontent.com/932103/46414494-37c6e600-c6f1-11e8-8df3-4c172e99f287.png",
+    "columns": 1
+  },
+  {
     "url": "http://higlass.io/app/?config=MSHhOBbOSW6iIovB5yk6BA",
     "title": "HiC Data vs. Maps",
     "description": "Maps of earth and HiC data have features across a similar range of scales. This view configuration shows them side by side with linked zoom scales.",
