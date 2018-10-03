@@ -80,7 +80,7 @@ class HiGlassViewer extends React.Component {
       isLoading: true,
     });
 
-    fetchViewConfig(viewConfigId || defaultViewConfigId)
+    fetchViewConfig(viewConfigId || defaultViewConfigId, this.props.server)
       .then(this.setViewConfig.bind(this))
       .catch(() => {
         logger.info(
@@ -90,15 +90,15 @@ class HiGlassViewer extends React.Component {
         // Try loading config from HiGlass.io
         return fetchViewConfig(
           viewConfigId || defaultViewConfigId, 'http://higlass.io'
-        );
-      })
-      .then(this.setViewConfig.bind(this))
-      .catch((error) => {
-        logger.error('Could not load or parse config.', error);
-        this.setState({
-          error: 'Could not load config.',
-          isLoading: false,
-        });
+        )
+          .then(this.setViewConfig.bind(this))
+          .catch((error) => {
+            logger.error('Could not load or parse config.', error);
+            this.setState({
+              error: 'Could not load config.',
+              isLoading: false,
+            });
+          });
       });
   }
 
@@ -162,10 +162,10 @@ class HiGlassViewer extends React.Component {
                 api={this.props.api}
                 autoExpand={this.props.autoExpand}
                 enableAltMouseTools={this.props.enableAltMouseTools}
-                onError={this.onError.bind(this)}
-                viewConfig={this.state.viewConfigStatic}
                 isPadded={this.props.isPadded}
                 isZoomFixed={this.props.isZoomFixed}
+                onError={this.onError.bind(this)}
+                viewConfig={this.state.viewConfigStatic}
               />
             ) : (
               <HiGlassLoader
@@ -185,6 +185,7 @@ class HiGlassViewer extends React.Component {
 
 HiGlassViewer.defaultProps = {
   api: () => {},
+  server: '',
 };
 
 HiGlassViewer.propTypes = {
@@ -198,6 +199,7 @@ HiGlassViewer.propTypes = {
   isStatic: PropTypes.bool,
   isZoomFixed: PropTypes.bool,
   pubSub: PropTypes.object.isRequired,
+  server: PropTypes.string,
   setViewConfig: PropTypes.func.isRequired,
   viewConfig: PropTypes.object,
   viewConfigId: PropTypes.string,

@@ -83,7 +83,11 @@ class HomeDemos extends React.Component {
         <section className='wrap'>
           <h3>Single View</h3>
           <div className="example-1">
-            <HiGlassViewer isStatic={true} viewConfigId='default' />
+            <HiGlassViewer
+              isStatic={true}
+              viewConfigId='default'
+              server='http://higlass.io'
+            />
           </div>
 
           <h3>Two Linked Views</h3>
@@ -93,7 +97,11 @@ class HomeDemos extends React.Component {
             please see the documentation about <a href="https://github.com/hms-dbmi/higlass/wiki/Common-Tasks#replacing-tracks">replacing tracks</a>, <a href="https://github.com/hms-dbmi/higlass/wiki/View-Operations#adding-new-views">adding new views</a>, and <a href="https://github.com/hms-dbmi/higlass/wiki/View-Operations#view-synchronization">synchronizing the locations of different views</a>.
           </p>
           <div className="example-2">
-            <HiGlassViewer isStatic={true} viewConfigId='twoviews' />
+            <HiGlassViewer
+              isStatic={true}
+              viewConfigId='twoviews'
+              server='http://higlass.io'
+            />
           </div>
 
           <h3>Genome Browser-Like View</h3>
@@ -110,7 +118,9 @@ class HomeDemos extends React.Component {
             <HiGlassViewer
               autoExpand={true}
               isStatic={true}
-              viewConfigId='browserlike' />
+              viewConfigId='browserlike'
+              server='http://higlass.io'
+            />
           </div>
 
           <h3>Genome Browser-Like View with Details</h3>
@@ -129,7 +139,9 @@ class HomeDemos extends React.Component {
             <HiGlassViewer
               autoExpand={true}
               isStatic={true}
-              viewConfigId='browserwithdetails' />
+              viewConfigId='browserwithdetails'
+              server='http://higlass.io'
+            />
           </div>
 
           <footer className='foot-notes p-t-2' name='references'>
