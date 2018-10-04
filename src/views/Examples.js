@@ -51,8 +51,8 @@ class Examples extends React.Component {
           <header className='border-bottom p-t-1 p-b-1'>
             <div className='wrap'>
               <p>
-              The examples below are meant to showcase HiGlass&apos;s capabilities as a
-              contact map explorer as well as to point out loci of interest.
+                The examples below are meant to show different HiGlass&apos;s configurations,
+                datatypes, and track types.
               </p>
             </div>
           </header>

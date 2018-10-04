@@ -115,7 +115,8 @@ class About extends React.Component {
           <header className='border-bottom p-t-1 p-b-1'>
             <div className='wrap'>
               <p>
-                HiGlass is a fast visualization tool for large Hi-C and other genomic data sets.
+                HiGlass is a fast visualization tool for large datasets, particularly Hi-C and
+                genomic data.
                 It was created at the <a href='http://gehlenborglab.org' target='_blank' rel='noopener noreferrer'>Gehlenborg Lab</a> at <a href='https://hms.harvard.edu' target='_blank' rel='noopener noreferrer'>Harvard Medical School</a> in close collaboration with the <a href='https://vcg.seas.harvard.edu' target='_blank' rel='noopener noreferrer'>Visual Computing Group</a> at <a href='https://seas.harvard.edu' target='_blank' rel='noopener noreferrer'>Harvard John A. Paulson School of Engineering and Applied Sciences</a>, and <a href='http://mirnylab.mit.edu/' target='_blank' rel='noopener noreferrer'>Mirny Lab</a> at <a href='https://mit.edu' target='_blank' rel='noopener noreferrer'>Massachusetts Institute of Technology</a> as part of
                 the <a href='http://dcic.4dnucleome.org' target='_blank' rel='noopener noreferrer'>4D Nucleome Project&apos;s Data Coordination and Integration Center</a>.
               </p>
@@ -123,6 +124,27 @@ class About extends React.Component {
           </header>
 
           <div className='wrap p-b-2'>
+            <h3 id='contact' className='iconized underlined anchored'>
+              <a href='#contact' className='hidden-anchor'>
+                <Icon iconId='link' />
+              </a>
+              <Icon iconId='mail' />
+              <span>Contact</span>
+            </h3>
+
+            <ul className='no-list-style large-spacing'>
+              <li>
+                <strong>Questions &amp; Help: </strong>
+                <a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack</a>
+                <span> or </span>
+                <a href='http://bioinformatics.stackoverflow.com/questions/ask?tags=higlass&genomics&hi-c&visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackoverflow.com</a>
+              </li>
+              <li>
+                <strong>Bugs: </strong>
+                <a href='https://github.com/hms-dbmi/higlass/issues' target='_blank' rel='noopener noreferrer'>github.com/hms-dbmi/higlass/issues</a>
+              </li>
+            </ul>
+
             <h3 id='resources' className='iconized underlined anchored'>
               <a href='#resources' className='hidden-anchor'><Icon iconId='link' /></a>
               <Icon iconId='books' />
@@ -184,32 +206,6 @@ class About extends React.Component {
               </li>
             </ul>
 
-            <h3 id='contact' className='iconized underlined anchored'>
-              <a href='#contact' className='hidden-anchor'>
-                <Icon iconId='link' />
-              </a>
-              <Icon iconId='mail' />
-              <span>Contact</span>
-            </h3>
-
-            <ul className='no-list-style large-spacing'>
-              <li>
-                <strong>General: </strong>
-                <a href='mailto:help@higlass.io'>help@higlass.io</a>
-              </li>
-              <li>
-                <strong>Bugs: </strong>
-                <a href='https://github.com/hms-dbmi/higlass/issues' target='_blank' rel='noopener noreferrer'>github.com/hms-dbmi/higlass/issues</a>
-              </li>
-              <li>
-                <strong>Questions &amp; Help: </strong>
-                <a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack</a>
-                <span>, </span>
-                <a href='http://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>stackoverflow.com</a>
-                <span>, or </span>
-                <a href='http://bioinformatics.stackoverflow.com/questions/ask?tags=higlass&genomics&hi-c&visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackoverflow.com</a>
-              </li>
-            </ul>
 
             <h3 id='citation' className='iconized underlined anchored'>
               <a href='#citation' className='hidden-anchor'><Icon iconId='link' /></a>
