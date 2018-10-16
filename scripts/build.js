@@ -28,6 +28,7 @@ const webpack = require('webpack');
 const bfj = require('bfj');
 const config = require('../config/webpack.config.prod');
 const paths = require('../config/paths');
+const writeConfig = require('./write-config').run;
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const printHostingInstructions = require('react-dev-utils/printHostingInstructions');
@@ -112,6 +113,8 @@ checkBrowsers(paths.appPath, isInteractive)
         buildFolder,
         useYarn
       );
+
+      writeConfig(true);
     },
     err => {
       console.log(chalk.red('Failed to compile.\n'));
