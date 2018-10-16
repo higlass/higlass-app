@@ -2,10 +2,10 @@
 
 - Add list of plugins
 - Add news section on the home page
-- Add permanent full screen mode when started without demos, i.e., `"homepageDemos": false` in the `config.json`
+- Add permanent full screen mode when started without demos, i.e., `"homepageDemos": false` in the `config.json` (or `config.js`)
 - Update to session storage only
 - Update to HiGlass `v1.2`
-- Update to React `v16`
+- Update to React `v16.5`
 - Update to React Scripts `v2`
 - Update to Webpack `v4`
 - Update to Babel `v7`
@@ -15,8 +15,8 @@
 - Refactor pub-sub service as HOC using an external library
 - Refactor state service as factory
 - Refactor DOM event server as factory
-- Remove service worker. HiGlassApp depends on a running HiGlass server so offline support does not make sense
-- Remove `/help`. Content is integrated into `/about`.
+- Remove `/help` (content is integrated into `/about`)
+- Exclude server endpoints from the service worker
 
 **v0.9.2**
 
