@@ -552,6 +552,11 @@ module.exports = {
         // Exclude URLs containing a dot, as they're likely a resource in
         // public/ and not a SPA route
         new RegExp('/[^/]+\\.[^/]+$'),
+        // Exclude HiGlass server URLs
+        new RegExp('^/api'),
+        new RegExp('^/admin'),
+        // Exclude HiPiler
+        new RegExp('^/hipiler'),
       ],
     }),
     // Expose version numbers.
