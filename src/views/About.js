@@ -195,18 +195,16 @@ class About extends React.Component {
             <ul className='no-list-style large-spacing'>
               <li>
                 <strong>General: </strong>
-                <a href='mailto:help@higlass.io'>help@higlass.io</a>
+                <a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack</a>
               </li>
               <li>
                 <strong>Bugs: </strong>
                 <a href='https://github.com/hms-dbmi/higlass/issues' target='_blank' rel='noopener noreferrer'>github.com/hms-dbmi/higlass/issues</a>
               </li>
               <li>
-                <strong>Questions &amp; Help: </strong>
-                <a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack</a>
-                <span>, </span>
+                <strong>Implementation Help: </strong>
                 <a href='http://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>stackoverflow.com</a>
-                <span>, or </span>
+                <span> or </span>
                 <a href='http://bioinformatics.stackoverflow.com/questions/ask?tags=higlass&genomics&hi-c&visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackoverflow.com</a>
               </li>
             </ul>
