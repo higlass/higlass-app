@@ -558,6 +558,41 @@ module.exports = {
         // Exclude HiPiler
         new RegExp('^/hipiler'),
       ],
+      // Cache files not handled by Webpack. E.g., react, hglib, etc.
+      globPatterns: [
+        'analytics.js',
+        'autotrack.custom.js',
+        'hglib.min.js',
+        'react.production.min.js',
+        'react-dom.production.min.js',
+        'react-bootstrap.min.js',
+        'pixi.min.js',
+        'pure-min.css',
+      ],
+      // Cache requests that appear at runtime and are not determined at
+      // compilation
+      runtimeCaching: [
+        // Cache news, examples, and plugins
+        {
+          urlPattern: new RegExp('^https://cdn.rawgit.com'),
+          handler: 'staleWhileRevalidate',
+          options: {
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+        // Cache examples and plugin screenshots
+        {
+          urlPattern: new RegExp('^https://cloud.githubusercontent.com'),
+          handler: 'staleWhileRevalidate',
+          options: {
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+      ],
     }),
     // Expose version numbers.
     new webpack.DefinePlugin({
