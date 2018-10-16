@@ -113,8 +113,6 @@ checkBrowsers(paths.appPath, isInteractive)
         buildFolder,
         useYarn
       );
-
-      writeConfig(true);
     },
     err => {
       console.log(chalk.red('Failed to compile.\n'));
@@ -184,6 +182,9 @@ function build(previousFileSizes) {
           .then(() => resolve(resolveArgs))
           .catch(error => reject(new Error(error)));
       }
+
+      console.log('Create config file...');
+      writeConfig(true);
 
       return resolve(resolveArgs);
     });
