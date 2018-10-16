@@ -18,7 +18,9 @@ import auth from '../services/auth';
 // Styles
 import './TopBar.scss';
 
-const hasDemos = HGAC_HOMEPAGE_DEMOS || window.HGAC_HOMEPAGE_DEMOS;
+const hasDemos = typeof window.HGAC_HOMEPAGE_DEMOS !== 'undefined'
+  ? window.HGAC_HOMEPAGE_DEMOS  // from compiled `config.js`
+  : HGAC_HOMEPAGE_DEMOS;  // from webpack's DefinePlugin
 const homeUrl = hasDemos ? '/' : '/app';
 
 const isApp = pathname => pathname && pathname.match(/\/app(?:(?=.)(\?|\/)|$)/);
