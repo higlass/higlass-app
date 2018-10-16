@@ -1,6 +1,6 @@
 {
   "name": "higlass-app",
-  "version": "1.0.0-rc6",
+  "version": "1.0.0-rc7",
   "description": "A fully-featured app for viewing, exploring, and annotating 1D and 2D genomic data",
   "keywords": [
     "higlass",
@@ -107,13 +107,14 @@
     "workbox-webpack-plugin": "3.6.2"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "node scripts/build.js; npm run download",
+    "download": "wget https://unpkg.com/purecss@1.0.0/build/pure-min.css -O build/pure-min.css; wget https://www.google-analytics.com/analytics.js -O build/analytics.js; wget https://unpkg.com/higlass@1.2.3/dist/scripts/hglib.js -O build/hglib.js; cp node_modules/react/umd/react.production.min.js build/; cp node_modules/react-bootstrap/dist/react-bootstrap.min.js build/; cp node_modules/react-dom/umd/react-dom.production.min.js build/;  cp node_modules/pixi.js/dist/pixi.min.js build/;",
+    "fix": "eslint --fix src",
     "lint": "eslint src",
     "prepublishOnly": "npm run lint",
     "prerelease": "rm -rf build/*; node scripts/build.js; cd build && zip -r ../build.zip ./*",
-    "test": "echo \"Warning: no test specified\" && exit 0",
-    "fix": "eslint --fix src"
+    "start": "node scripts/start.js",
+    "test": "echo \"Warning: no test specified\" && exit 0"
   },
   "browserslist": [
     ">0.2%",
