@@ -107,12 +107,12 @@
     "workbox-webpack-plugin": "3.6.2"
   },
   "scripts": {
-    "build": "node scripts/build.js; npm run download",
+    "build": "CI=false node scripts/build.js; npm run download",
     "download": "wget https://unpkg.com/purecss@1.0.0/build/pure-min.css -O build/pure-min.css; wget https://www.google-analytics.com/analytics.js -O build/analytics.js; cp node_modules/higlass/dist/hglib.min.js build/; cp node_modules/react/umd/react.production.min.js build/; cp node_modules/react-bootstrap/dist/react-bootstrap.min.js build/; cp node_modules/react-dom/umd/react-dom.production.min.js build/;  cp node_modules/pixi.js/dist/pixi.min.js build/;",
     "fix": "eslint --fix src",
     "lint": "eslint src",
     "prepublishOnly": "npm run lint",
-    "prerelease": "rm -rf build/*; CI=false node scripts/build.js; cd build && zip -r ../build.zip ./*",
+    "prerelease": "rm -rf build/*; npm run build; cd build && zip -r ../build.zip ./*",
     "start": "node scripts/start.js",
     "test": "echo \"Warning: no test specified\" && exit 0"
   },
