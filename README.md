@@ -3,6 +3,7 @@
 [![HiGlass](https://img.shields.io/badge/higlass-👍-red.svg?colorB=3676b4)](http://higlass.io)
 [![npm version](https://img.shields.io/npm/v/higlass-app.svg)](https://www.npmjs.com/package/higlass-app)
 [![Build Status](https://travis-ci.org/higlass/higlass-app.svg?branch=master)](https://travis-ci.org/higlass/higlass-app)
+[![code style prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 ![User interface](teaser.png)
 
