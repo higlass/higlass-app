@@ -18,6 +18,7 @@
 - Refactor DOM event server as factory
 - Remove `/help` (content is integrated into `/about`)
 - Exclude server endpoints from the service worker
+- Add husky to run prettier and eslint automatically prior to commits
 
 **v0.9.2**
 
