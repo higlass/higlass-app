@@ -6,7 +6,9 @@
   "extends": [
     "eslint:recommended",
     "airbnb/base",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -21,7 +23,8 @@
     }
   },
   "plugins": [
-    "react"
+    "react",
+    "prettier"
   ],
   "globals": {
     "it": false,
