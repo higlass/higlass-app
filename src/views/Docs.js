@@ -39,7 +39,7 @@ class Docs extends React.Component {
             <iframe
               className='full-wh'
               frameBorder='0'
-              src='https://hms-dbmi.github.io/higlass-docs/'
+              src='https://higlass.github.io/higlass-docs/'
               style={{ height: this.state.height }}
             />
           </div>
