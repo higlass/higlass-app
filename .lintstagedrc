@@ -1,7 +1,7 @@
 {
-  "*.{js,jsx}": [
+  "src/*.{js,jsx}": [
     "pretty-quick --staged",
-    "eslint src/ --fix",
+    "eslint --fix",
     "git add"
   ]
 }
