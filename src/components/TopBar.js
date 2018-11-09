@@ -91,6 +91,7 @@ class TopBar extends React.Component {
           <nav className={`flex-c flex-jc-e flex-a-s is-toggable ${this.state.menuIsShown ? 'is-shown' : ''}`}>
             <ul className='flex-c flex-jc-e flex-a-s no-list-style primary-nav-list'>
               <li><NavLink to='/about' activeClassName='is-active'>About</NavLink></li>
+              <li><NavLink to='/blog' activeClassName='is-active'>Blog</NavLink></li>
               <li><NavLink to='/examples' activeClassName='is-active'>Examples</NavLink></li>
               <li><NavLink to='/plugins' activeClassName='is-active'>Plugins</NavLink></li>
               <li><NavLink to='/docs' activeClassName='is-active'>Docs</NavLink></li>

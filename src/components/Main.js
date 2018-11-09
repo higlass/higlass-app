@@ -4,6 +4,7 @@ import { Redirect, Route, Switch, withRouter } from 'react-router';
 
 // Views
 import About from '../views/About';
+import Blog from '../views/Blog';
 import Docs from '../views/Docs';
 import Examples from '../views/Examples';
 import Home from '../views/Home';
@@ -26,6 +27,7 @@ class Main extends React.Component {
     return (
       <Switch>
         <Route exact path='/about' component={About} />
+        <Route exact path='/blog' component={Blog} />
         <Route exact path='/app' render={({ location }) => {
           const query = new URLSearchParams(location.search);
           const viewConfigId = query.get('config');
