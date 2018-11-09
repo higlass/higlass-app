@@ -1,6 +1,7 @@
 **v1.0.0**
 
 - Add list of plugins
+- Add blog
 - Add news section on the home page
 - Add permanent full screen mode when started without demos, i.e., `"homepageDemos": false` in the `config.json` (or `config.js`)
 - Serve all assets locally and cache them using a service worker. This enables offline support and make it easier to deploy HiGlass within an intranet.
