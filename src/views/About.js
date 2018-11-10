@@ -123,6 +123,88 @@ class About extends React.Component {
           </header>
 
           <div className='wrap p-b-2'>
+            <h3 id='citation' className='iconized underlined anchored'>
+              <a href='#citation' className='hidden-anchor'><Icon iconId='link' /></a>
+              <Icon iconId='document' />
+              <span>Citation</span>
+            </h3>
+
+            <p>
+              Kerpedjiev et al. (2018)<br/>
+              <strong><a href='https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1486-1' target='_blank' rel='noopener noreferrer'>HiGlass: Web-based visual comparison and exploration of genome interaction maps.</a></strong><br/>
+              <em>Genome Biology</em>, 19:125.
+            </p>
+
+            <h3 id='contact' className='iconized underlined anchored'>
+              <a href='#contact' className='hidden-anchor'>
+                <Icon iconId='link' />
+              </a>
+              <Icon iconId='mail' />
+              <span>Contact</span>
+            </h3>
+
+            <ul className='no-list-style large-spacing'>
+              <li>
+                <strong>General: </strong>
+                <a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack</a>
+              </li>
+              <li>
+                <strong>Bugs: </strong>
+                <a href='https://github.com/higlass/higlass/issues' target='_blank' rel='noopener noreferrer'>github.com/higlass/higlass/issues</a>
+              </li>
+              <li>
+                <strong>Implementation Help: </strong>
+                <a href='http://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>stackoverflow.com</a>
+                <span> or </span>
+                <a href='http://bioinformatics.stackoverflow.com/questions/ask?tags=higlass&genomics&hi-c&visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackoverflow.com</a>
+              </li>
+            </ul>
+
+            <h3 id='source-code' className='iconized underlined anchored'>
+              <a href='#source-code' className='hidden-anchor'>
+                <Icon iconId='link' />
+              </a>
+              <Icon iconId='code' />
+              Source Code
+            </h3>
+
+            <p>
+              All the code for HiGlass is open source and available on <a href='https://github.com/higlass' target='_blank' rel='noopener noreferrer'>GitHub</a>. The core packages are:
+            </p>
+
+            <ul className='no-list-style large-spacing iconized'>
+              <li className='iconized'>
+                <Icon iconId='github' />
+                <span className='m-r-0-5'>Viewer:</span>
+                <a href='https://github.com/higlass/higlass' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass</a>
+              </li>
+              <li className='iconized'>
+                <Icon iconId='github' />
+                <span className='m-r-0-5'>Frontend application:</span>
+                <a href='https://github.com/higlass/higlass-app' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-app</a>
+              </li>
+              <li className='iconized'>
+                <Icon iconId='github' />
+                <span className='m-r-0-5'>Backend server:</span>
+                <a href='https://github.com/higlass/higlass-server' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-server</a>
+              </li>
+              <li className='iconized'>
+                <Icon iconId='github' />
+                <span className='m-r-0-5'>Docker contrainer:</span>
+                <a href='https://github.com/higlass/higlass-docker' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-docker</a>
+              </li>
+              <li className='iconized'>
+                <Icon iconId='github' />
+                <span className='m-r-0-5'>Docker management:</span>
+                <a href='https://github.com/higlass/higlass-manage' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-manage</a>
+              </li>
+              <li className='iconized'>
+                <Icon iconId='github' />
+                <span className='m-r-0-5'>Plugin track registration:</span>
+                <a href='https://github.com/higlass/higlass-register' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-register</a>
+              </li>
+            </ul>
+
             <h3 id='resources' className='iconized underlined anchored'>
               <a href='#resources' className='hidden-anchor'><Icon iconId='link' /></a>
               <Icon iconId='books' />
@@ -181,82 +263,6 @@ class About extends React.Component {
                   and pitfalls associated with common operations such as matrix balancing and
                   multi-resolution visualization.
                 </p>
-              </li>
-            </ul>
-
-            <h3 id='contact' className='iconized underlined anchored'>
-              <a href='#contact' className='hidden-anchor'>
-                <Icon iconId='link' />
-              </a>
-              <Icon iconId='mail' />
-              <span>Contact</span>
-            </h3>
-
-            <ul className='no-list-style large-spacing'>
-              <li>
-                <strong>General: </strong>
-                <a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack</a>
-              </li>
-              <li>
-                <strong>Bugs: </strong>
-                <a href='https://github.com/higlass/higlass/issues' target='_blank' rel='noopener noreferrer'>github.com/higlass/higlass/issues</a>
-              </li>
-              <li>
-                <strong>Implementation Help: </strong>
-                <a href='http://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>stackoverflow.com</a>
-                <span> or </span>
-                <a href='http://bioinformatics.stackoverflow.com/questions/ask?tags=higlass&genomics&hi-c&visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackoverflow.com</a>
-              </li>
-            </ul>
-
-            <h3 id='citation' className='iconized underlined anchored'>
-              <a href='#citation' className='hidden-anchor'><Icon iconId='link' /></a>
-              <Icon iconId='document' />
-              <span>Citation</span>
-            </h3>
-
-            <p>
-              Kerpedjiev et al. (2018)<br/>
-              <strong><a href='https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1486-1' target='_blank' rel='noopener noreferrer'>HiGlass: Web-based visual comparison and exploration of genome interaction maps.</a></strong><br/>
-              <em>Genome Biology</em>, 19:125.
-            </p>
-
-            <h3 id='source-code' className='iconized underlined anchored'>
-              <a href='#source-code' className='hidden-anchor'>
-                <Icon iconId='link' />
-              </a>
-              <Icon iconId='code' />
-              Source Code
-            </h3>
-
-            <p>
-              All the code for HiGlass is open source and available on GitHub:
-            </p>
-
-            <ul className='no-list-style large-spacing iconized'>
-              <li className='iconized'>
-                <Icon iconId='github' />
-                <a href='https://github.com/higlass/higlass' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass</a>
-              </li>
-              <li className='iconized'>
-                <Icon iconId='github' />
-                <a href='https://github.com/higlass/higlass-app' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-app</a>
-              </li>
-              <li className='iconized'>
-                <Icon iconId='github' />
-                <a href='https://github.com/higlass/higlass-server' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-server</a>
-              </li>
-              <li className='iconized'>
-                <Icon iconId='github' />
-                <a href='https://github.com/higlass/higlass-docker' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-docker</a>
-              </li>
-              <li className='iconized'>
-                <Icon iconId='github' />
-                <a href='https://github.com/higlass/higlass-manage' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-manage</a>
-              </li>
-              <li className='iconized'>
-                <Icon iconId='github' />
-                <a href='https://github.com/higlass/higlass-register' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-register</a>
               </li>
             </ul>
 
