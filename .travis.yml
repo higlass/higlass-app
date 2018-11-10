@@ -27,7 +27,7 @@ deploy:
     on:
       branch: master
       tags: true
-      repo: hms-dbmi/higlass-app
+      repo: higlass/higlass-app
   - provider: npm
     skip_cleanup: true
     email: service@lekschas.de
@@ -36,4 +36,4 @@ deploy:
     on:
       branch: master
       tags: true
-      repo: hms-dbmi/higlass-app
+      repo: higlass/higlass-app
