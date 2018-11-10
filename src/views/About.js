@@ -199,7 +199,7 @@ class About extends React.Component {
               </li>
               <li>
                 <strong>Bugs: </strong>
-                <a href='https://github.com/hms-dbmi/higlass/issues' target='_blank' rel='noopener noreferrer'>github.com/hms-dbmi/higlass/issues</a>
+                <a href='https://github.com/higlass/higlass/issues' target='_blank' rel='noopener noreferrer'>github.com/higlass/higlass/issues</a>
               </li>
               <li>
                 <strong>Implementation Help: </strong>
@@ -236,27 +236,27 @@ class About extends React.Component {
             <ul className='no-list-style large-spacing iconized'>
               <li className='iconized'>
                 <Icon iconId='github' />
-                <a href='https://github.com/hms-dbmi/higlass' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass</a>
+                <a href='https://github.com/higlass/higlass' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass</a>
               </li>
               <li className='iconized'>
                 <Icon iconId='github' />
-                <a href='https://github.com/hms-dbmi/higlass-app' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-app</a>
+                <a href='https://github.com/higlass/higlass-app' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-app</a>
               </li>
               <li className='iconized'>
                 <Icon iconId='github' />
-                <a href='https://github.com/hms-dbmi/higlass-server' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-server</a>
+                <a href='https://github.com/higlass/higlass-server' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-server</a>
               </li>
               <li className='iconized'>
                 <Icon iconId='github' />
-                <a href='https://github.com/hms-dbmi/higlass-docker' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-docker</a>
+                <a href='https://github.com/higlass/higlass-docker' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-docker</a>
               </li>
               <li className='iconized'>
                 <Icon iconId='github' />
-                <a href='https://github.com/hms-dbmi/higlass-manage' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-manage</a>
+                <a href='https://github.com/higlass/higlass-manage' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-manage</a>
               </li>
               <li className='iconized'>
                 <Icon iconId='github' />
-                <a href='https://github.com/hms-dbmi/higlass-register' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-register</a>
+                <a href='https://github.com/higlass/higlass-register' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-register</a>
               </li>
             </ul>
 
