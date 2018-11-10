@@ -260,61 +260,62 @@ class About extends React.Component {
               </li>
             </ul>
 
-            <h3 id='authors' className='iconized underlined anchored'>
-              <a href='#authors' className='hidden-anchor'>
+            <h3 id='core-contributors' className='iconized underlined anchored'>
+              <a href='#core-contributors' className='hidden-anchor'>
                 <Icon iconId='link' />
               </a>
               <Icon iconId='people' />
-              Contributors
+              Core Contributors
             </h3>
             <ol className='flex-c flex-w-w no-list-style about-author-list'>
               <li>
                 <a href='http://emptypipes.org' target='_blank' rel='noopener noreferrer'>Peter Kerpedjiev</a>
               </li>
               <li>
-                <span>Nezar Abdennur</span>
+                <a href='https://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a>
               </li>
               <li>
-                <a href='https://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a>
+                <a href='https://twitter.com/nv1ctus' target='_blank' rel='noopener noreferrer'>Nezar Abdennur</a>
               </li>
               <li>
                 <a href='https://mccalluc.github.io' target='_blank' rel='noopener noreferrer'>Chuck McCallum</a>
               </li>
+            </ol>
+            <ol className='flex-c flex-w-w no-list-style about-author-list'>
+              <li className='no-comma'>(All contributors:</li>
               <li>
-                <a href='http://www.scott-ouellette.com' target='_blank' rel='noopener noreferrer'>Scott Ouellette</a>
+                <a href='https://github.com/higlass/higlass/graphs/contributors' target='_blank' rel='noopener noreferrer'>viewer</a>
               </li>
               <li>
-                <span>Kasper Dinkla</span>
+                <a href='https://github.com/higlass/higlass-app/graphs/contributors' target='_blank' rel='noopener noreferrer'>app</a>
               </li>
               <li>
-                <a href='http://hendrik.strobelt.com' target='_blank' rel='noopener noreferrer'>Hendrik Strobelt</a>
+                <a href='https://github.com/higlass/higlass-docker/graphs/contributors' target='_blank' rel='noopener noreferrer'>docker</a>
               </li>
               <li>
-                <a href='http://scholar.harvard.edu/jluber/' target='_blank' rel='noopener noreferrer'>Jacob Luber</a>
+                <a href='https://github.com/higlass/higlass-manage/graphs/contributors' target='_blank' rel='noopener noreferrer'>manage</a>)
               </li>
+            </ol>
+
+            <h3 id='advisors' className='iconized underlined anchored'>
+              <a href='#advisors' className='hidden-anchor'>
+                <Icon iconId='link' />
+              </a>
+              <Icon iconId='people' />
+              Advisors
+            </h3>
+            <ol className='flex-c flex-w-w no-list-style about-author-list'>
               <li>
-                <span>Grace Hwang</span>
-              </li>
-              <li>
-                <span>Alaleh Azhir</span>
-              </li>
-              <li>
-                <a href='http://kumarcode.com' target='_blank' rel='noopener noreferrer'>Nikhil Kumar</a>
-              </li>
-              <li>
-                <span>Burak Alver</span>
-              </li>
-              <li>
-                <a href='http://vcg.seas.harvard.edu' target='_blank' rel='noopener noreferrer'>Hanspeter Pfister</a>
-              </li>
-              <li>
-                <a href='http://mirnylab.mit.edu/' target='_blank' rel='noopener noreferrer'>Leonid Mirny</a>
+                <a href='http://gehlenborglab.org' target='_blank' rel='noopener noreferrer'>Nils Gehlenborg</a>
               </li>
               <li>
                 <a href='http://compbio.hms.harvard.edu' target='_blank' rel='noopener noreferrer'>Peter Park</a>
               </li>
               <li>
-                <a href='http://gehlenborglab.org' target='_blank' rel='noopener noreferrer'>Nils Gehlenborg</a>
+                <a href='http://mirnylab.mit.edu/' target='_blank' rel='noopener noreferrer'>Leonid Mirny</a>
+              </li>
+              <li>
+                <a href='http://vcg.seas.harvard.edu' target='_blank' rel='noopener noreferrer'>Hanspeter Pfister</a>
               </li>
             </ol>
 
