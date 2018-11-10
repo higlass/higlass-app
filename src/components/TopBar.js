@@ -121,7 +121,7 @@ class TopBar extends React.Component {
               }
               <li className='separated-left flex-c'>
                 <a
-                  href='https://github.com/hms-dbmi?&q=higlass'
+                  href='https://github.com/higlass'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
