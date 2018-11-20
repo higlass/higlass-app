@@ -13,7 +13,7 @@ import SpinnerCenter from '../components/SpinnerCenter';
 import loadViewConfig from '../utils/load-view-config';
 import Logger from '../utils/logger';
 
-const URL = 'https://cdn.rawgit.com/hms-dbmi/higlass-app/master/content/news.json';
+const URL = 'https://higlass.github.io/higlass-app-content/news.json';
 
 const logger = Logger('Home');
 
