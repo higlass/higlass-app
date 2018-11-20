@@ -19,6 +19,7 @@
 - Refactor DOM event server as factory
 - Remove `/help` (content is integrated into `/about`)
 - Exclude server endpoints from the service worker
+- Load news, examples, and plugins from gh-pages since rawgit shuts down 😢
 - Add stylelint to check for issue with stylesheets
 - Add husky and lintstaged to run eslint, stylelint, and prettier automatically prior to commits
 
