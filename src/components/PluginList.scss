@@ -1,8 +1,8 @@
-@import '../styles/colors';
-@import '../styles/ratio';
+@import "../styles/colors";
+@import "../styles/ratio";
 
 .plugin-list {
-  &> li {
+  & > li {
     position: relative;
     width: 50%;
     margin-bottom: 0.5rem;
@@ -20,7 +20,7 @@
   }
 
   .plugin-figure {
-    @include ratio(1);
+    @include ratio(0.5);
 
     border: 1px solid $gray-lightest;
     border-radius: 0 0 0.25rem 0.25rem;
@@ -30,16 +30,12 @@
     background-size: contain;
   }
 
-  .plugin-figure {
-    @include ratio(0.5);
-  }
-
   .one-line {
     margin: 0.125em 0;
 
     label {
       min-width: 3em;
-      content: 'Demo';
+      content: "Demo";
       font-size: 0.8em;
       font-weight: bold;
       text-transform: uppercase;
@@ -58,13 +54,11 @@
   }
 }
 
-
 /*
  * -----------------------------------------------------------------------------
  * Media Queries
  * -----------------------------------------------------------------------------
  */
-
 
 /* 960px */
 @media screen and (min-width: 60em) {
