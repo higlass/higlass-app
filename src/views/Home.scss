@@ -1,7 +1,7 @@
-@import '../styles/colors';
-@import '../styles/columns';
-@import '../styles/ratio';
-@import '../styles/transitions';
+@import "../styles/colors";
+@import "../styles/columns";
+@import "../styles/ratio";
+@import "../styles/transitions";
 
 .home {
   .home-info-news {
@@ -40,8 +40,8 @@
     .button-like-file-select {
       margin-right: 0.5rem;
       transition: color $fast-transition $easing,
-                  border-color $fast-transition $easing,
-                  background $fast-transition $easing;
+        border-color $fast-transition $easing,
+        background $fast-transition $easing;
 
       &:hover {
         border-color: darken($blue-light, 5%);
@@ -72,7 +72,7 @@
     @include ratio(0.55);
   }
 
-  [class^='reference-'] {
+  [class^="reference-"] {
     margin-right: 0.25rem;
   }
 }

@@ -1,5 +1,5 @@
-@import '../styles/colors';
-@import '../styles/ratio';
+@import "../styles/colors";
+@import "../styles/ratio";
 
 .about {
   .about-resource-list time {
@@ -11,7 +11,7 @@
     // padding-left: 0.25rem;
 
     &:after {
-      content: ',';
+      content: ",";
       margin-left: 0.05rem;
       margin-right: 0.5rem;
     }
@@ -21,7 +21,7 @@
     }
 
     &:nth-last-child(2):after {
-      content: ', and';
+      content: ", and";
       margin-right: 0.33rem;
     }
 
@@ -30,7 +30,7 @@
     }
 
     &.no-comma:after {
-      content: '';
+      content: "";
     }
   }
 
@@ -44,10 +44,10 @@
     color: $gray-medium;
 
     &:after {
-      content: ']';
+      content: "]";
     }
     &:before {
-      content: '[';
+      content: "[";
     }
   }
 }

@@ -1,4 +1,4 @@
-@import '../styles/colors';
+@import "../styles/colors";
 
 .right-bar-sub-top-bar {
   position: absolute;
@@ -24,8 +24,7 @@
     &.is-active {
       color: black;
       background: $gray-lightest;
-      box-shadow: 1px 0 0 0 $gray-lightest-rgba,
-                  -1px 0 0 0 $gray-lightest-rgba;
+      box-shadow: 1px 0 0 0 $gray-lightest-rgba, -1px 0 0 0 $gray-lightest-rgba;
     }
   }
 }

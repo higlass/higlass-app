@@ -1,5 +1,5 @@
-@import '../styles/colors';
-@import '../styles/transitions';
+@import "../styles/colors";
+@import "../styles/transitions";
 
 .button-icon {
   height: 1.5em;
@@ -9,8 +9,8 @@
   border-radius: 0.25rem;
   background: transparent;
   transition: color $normal-transition $easing,
-              border-color $normal-transition $easing,
-              background $normal-transition $easing;
+    border-color $normal-transition $easing,
+    background $normal-transition $easing;
   white-space: nowrap;
 
   .icon {
