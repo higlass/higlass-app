@@ -61,7 +61,7 @@ class HomeDemos extends React.Component {
           <div className='wrap flex-c flex-a-s'>
             <p className='column-1-2 m-r-1 home-info-intro'>
             HiGlass is a tool for exploring and compare genomic contact matrices and tracks.
-            Take a look at some <Link to='/examples'>examples</Link> or head over to the <Link to='/docs'>docs</Link> to learn how HiGlass can be used and configured. To load private data, HiGlass can be <Link to='/docs#home-running-locally'>run locally within a docker container</Link>.
+            Take a look at some <Link to='/examples'>examples</Link> or head over to the <Link to='/docs'>docs</Link> to learn how HiGlass can be used and configured. To load private data, HiGlass can be <Link to='/docs/higlass_docker.html'>run locally within a docker container</Link>.
             </p>
             <div className='column-1-2 m-l-1 home-info-news'>
               {this.state.isLoadingNews && <SpinnerCenter light={true} />}

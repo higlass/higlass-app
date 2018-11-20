@@ -26,7 +26,7 @@ class Main extends React.Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/about' component={About} />
+        <Route exact path='/about' render={About.render} />
         <Route exact path='/blog' component={Blog} />
         <Route exact path='/app' render={({ location }) => {
           const query = new URLSearchParams(location.search);
@@ -38,6 +38,7 @@ class Main extends React.Component {
         }} />
         <Route exact path='/examples' component={Examples} />
         <Route exact path='/docs' component={Docs} />
+        <Route exact path='/docs/*' component={Docs} />
         <Route exact path='/plugins' component={Plugins} />
         {hasDemos ? (
           <Route exact path='/' component={Home} />
