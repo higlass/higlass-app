@@ -1,6 +1,6 @@
 {
   "name": "higlass-app",
-  "version": "1.0.0-rc13",
+  "version": "1.0.0-rc14",
   "description": "A fully-featured app for viewing, exploring, and annotating 1D and 2D genomic data",
   "keywords": [
     "higlass",
@@ -29,7 +29,7 @@
     "history": "4.7.2",
     "pixi.js": "4.8.2",
     "prop-types": "15.6.2",
-    "pub-sub-es": "1.0.0",
+    "pub-sub-es": "1.2.0",
     "react": "16.5.2",
     "react-bootstrap": "0.32.1",
     "react-dom": "16.5.2",
