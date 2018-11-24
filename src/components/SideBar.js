@@ -39,7 +39,7 @@ class SideBar extends React.Component {
         this.props.pubSub.subscribe('resize', this.checkStickAbilityDb)
       );
       this.pubSubs.push(
-        this.props.pubSub.subscribe('scrollTop', this.scrollHandlerDb)
+        this.props.pubSub.subscribe('scroll', this.scrollHandlerDb)
       );
     }
   }
