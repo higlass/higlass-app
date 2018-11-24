@@ -1,0 +1,56 @@
+@import "../styles/colors";
+@import "../styles/transitions";
+
+.higlass-placeholder {
+  padding: 1rem;
+  color: white;
+  border-radius: 0.25rem;
+  transition: color $normal-transition $easing,
+              box-shadow $normal-transition $easing;
+
+  .top-track,
+  .left-track,
+  .center-track {
+    border-radius: 0.25rem;
+    background: $gray-lightest;
+    transition: background $normal-transition $easing;
+  }
+
+  .top-track {
+    height: 2rem;
+    margin: 0 0 0.5rem 2.5rem;
+  }
+
+  .left-track {
+    width: 2rem;
+    margin: 0 0.5rem 0 0;
+  }
+
+  .icon {
+    width: 6em;
+    height: 6em;
+  }
+
+  span {
+    margin-top: 1rem;
+    font-size: 1.5em;
+  }
+
+  &:focus,
+  &:hover {
+    color: $primary;
+    outline: none;
+
+    .top-track,
+    .left-track,
+    .center-track {
+      background: transparentize($primary, 0.9);
+    }
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 1px $blue-highlight,
+                inset 0 0 0 2px $blue-highlight;
+    outline: none;
+  }
+}

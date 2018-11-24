@@ -8,6 +8,7 @@ import withPubSub from '../hocs/with-pub-sub';
 // Components
 import ErrorMsgCenter from './ErrorMsgCenter';
 import HiGlassLauncher from './HiGlassLauncher';
+import HiGlassPlaceholder from './HiGlassPlaceholder';
 import SpinnerCenter from './SpinnerCenter';
 
 // Containers
@@ -38,15 +39,28 @@ class HiGlassViewer extends React.Component {
     this.state = {
       error: '',
       isLoading: true,
+      isInitForced: false,
     };
+
+    this.onClickToLoadBound = this.onClickToLoad.bind(this);
   }
 
   componentDidMount() {
-    this.loadViewConfig();
+    if (!this.props.isDeferred || this.props.isDeferredInit) {
+      this.loadViewConfig();
+    }
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.viewConfigId !== prevProps.viewConfigId) {
+  componentDidUpdate(prevProps, pervState) {
+    const isInit = this.state.isInitForced || this.props.isDeferredInit;
+    const isInitPref = pervState.isInitForced || prevProps.isDeferredInit;
+    if (
+      (!this.props.isDeferred || isInit)
+      && (
+        this.props.viewConfigId !== prevProps.viewConfigId
+        || isInit !== isInitPref
+      )
+    ) {
       this.loadViewConfig();
     }
   }
@@ -109,6 +123,10 @@ class HiGlassViewer extends React.Component {
     });
   }
 
+  onClickToLoad() {
+    this.setState({ isInitForced: true })
+  }
+
   setViewConfig(viewConfig) {
     if (!viewConfig || viewConfig.error) {
       const errorMsg = viewConfig && viewConfig.error
@@ -147,6 +165,8 @@ class HiGlassViewer extends React.Component {
       height: this.props.height ? `${this.props.height}px` : 'auto',
     };
 
+    const isInit = this.state.isInitForced || this.props.isDeferredInit;
+
     return (
       <div
         className={className}
@@ -154,29 +174,27 @@ class HiGlassViewer extends React.Component {
       >
         {this.state.error && <ErrorMsgCenter msg={this.state.error}/>}
         {!this.state.error && (
-          this.state.isLoading ? (  // eslint-disable-line no-nested-ternary
-            <SpinnerCenter />
-          ) : (
-            this.props.isStatic ? (
-              <HiGlassLauncher
-                api={this.props.api}
-                autoExpand={this.props.autoExpand}
-                enableAltMouseTools={this.props.enableAltMouseTools}
-                isPadded={this.props.isPadded}
-                isZoomFixed={this.props.isZoomFixed}
-                onError={this.onError.bind(this)}
-                viewConfig={this.state.viewConfigStatic}
-              />
-            ) : (
-              <HiGlassLoader
-                api={this.props.api}
-                enableAltMouseTools={this.props.enableAltMouseTools}
-                onError={this.onError.bind(this)}
-                isPadded={this.props.isPadded}
-                isZoomFixed={this.props.isZoomFixed}
-              />
-            )
-          )
+          this.props.isDeferred && !isInit // eslint-disable-line no-nested-ternary
+          ? <HiGlassPlaceholder onClickToLoad={this.onClickToLoadBound} />
+          : this.state.isLoading // eslint-disable-line no-nested-ternary
+              ? <SpinnerCenter />
+              : this.props.isStatic
+                  ? <HiGlassLauncher
+                      api={this.props.api}
+                      autoExpand={this.props.autoExpand}
+                      enableAltMouseTools={this.props.enableAltMouseTools}
+                      isPadded={this.props.isPadded}
+                      isZoomFixed={this.props.isZoomFixed}
+                      onError={this.onError.bind(this)}
+                      viewConfig={this.state.viewConfigStatic}
+                    />
+                  : <HiGlassLoader
+                      api={this.props.api}
+                      enableAltMouseTools={this.props.enableAltMouseTools}
+                      onError={this.onError.bind(this)}
+                      isPadded={this.props.isPadded}
+                      isZoomFixed={this.props.isZoomFixed}
+                    />
         )}
       </div>
     );
@@ -195,6 +213,8 @@ HiGlassViewer.propTypes = {
   enableAltMouseTools: PropTypes.bool,
   hasSubTopBar: PropTypes.bool,
   height: PropTypes.number,
+  isDeferred: PropTypes.bool,
+  isDeferredInit: PropTypes.bool,
   isPadded: PropTypes.bool,
   isStatic: PropTypes.bool,
   isZoomFixed: PropTypes.bool,
