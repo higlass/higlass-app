@@ -601,6 +601,26 @@ ol.badges li {
   padding: 0.125rem 0.25rem;
 }
 
+.scrollbar::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border: 0.2rem solid rgba(0, 0, 0, 0);
+  border-radius: 0.85rem;
+  background: $gray-lighter-rgba;
+  background-clip: padding-box;
+}
+
+.scrollbar:hover::-webkit-scrollbar-thumb {
+  background: $gray-medium-rgba;
+  background-clip: padding-box;
+}
+
 /*
  * -----------------------------------------------------------------------------
  * Media Queries
