@@ -1,5 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+// HOC
+import withPubSub from '../hocs/with-pub-sub';
 
 import Content from '../components/Content';
 import ButtonLikeFileSelect from '../components/ButtonLikeFileSelect';
@@ -10,8 +14,7 @@ import NewsList from '../components/NewsList';
 import SpinnerCenter from '../components/SpinnerCenter';
 
 // Utils
-import loadViewConfig from '../utils/load-view-config';
-import Logger from '../utils/logger';
+import { debounce, loadViewConfig, Logger } from '../utils';
 
 const URL = 'https://higlass.github.io/higlass-app-content/news.json';
 
@@ -32,9 +35,15 @@ class HomeDemos extends React.Component {
     super(props);
 
     this.state = {
+      isExample0Init: false,
+      isExample1Init: false,
+      isExample2Init: false,
+      isExample3Init: false,
       isLoadingNews: true,
       news: [],
     };
+
+    this.scrollTop = 0;
 
     fetch(URL)
       .then(response => response.json())
@@ -52,7 +61,68 @@ class HomeDemos extends React.Component {
           isLoadingNews: false,
         });
       });
+
+    this.exampleRefs = [];
+    this.pubSubs = [];
+
+    this.scrollHandlerDb = debounce(this.scrollHandler.bind(this), 50);
   }
+
+  componentDidMount() {
+    this.scrollTop = window.scrollY;
+    this.initHiglassDemo();
+    this.pubSubs.push(
+      this.props.pubSub.subscribe('scroll', this.scrollHandlerDb)
+    );
+  }
+
+  componentWillUnmount() {
+    this.pubSubs
+      .forEach(subscription => this.props.pubSub.unsubscribe(subscription));
+    this.pubSubs = [];
+  }
+
+  /* ---------------------------- Custom Methods ---------------------------- */
+
+  initHiglassDemo() {
+    const windowHeight = window.innerHeight
+      || document.documentElement.clientHeight
+      || document.body.clientHeight;
+
+    const visibleTop = this.scrollTop + windowHeight;
+
+    const offsetTop0 = this.exampleRefs[0] ? this.exampleRefs[0].offsetTop : 0;
+    const offsetTop1 = this.exampleRefs[1] ? this.exampleRefs[1].offsetTop : 0;
+    const offsetTop2 = this.exampleRefs[2] ? this.exampleRefs[2].offsetTop : 0;
+    const offsetTop3 = this.exampleRefs[3] ? this.exampleRefs[3].offsetTop : 0;
+
+    this.setState({
+      isExample0Init: this.state.isExample0Init || (visibleTop >= offsetTop0),
+      isExample1Init: this.state.isExample1Init || (visibleTop >= offsetTop1),
+      isExample2Init: this.state.isExample2Init || (visibleTop >= offsetTop2),
+      isExample3Init: this.state.isExample3Init || (visibleTop >= offsetTop3),
+    });
+  }
+
+  onRefExample(number) {
+    return (ref) => {
+      this.exampleRefs[number] = ref;
+    };
+  }
+
+  scrollHandler() {
+    this.scrollTop = window.scrollY;
+
+    if (!this.isRequestingAnimationFrame) {
+      window.requestAnimationFrame(() => {
+        this.initHiglassDemo();
+        this.isRequestingAnimationFrame = false;
+      });
+      this.isRequestingAnimationFrame = true;
+    }
+  }
+
+  /* -------------------------------- Render -------------------------------- */
 
   render() {
     return (
@@ -63,7 +133,7 @@ class HomeDemos extends React.Component {
             HiGlass is a tool for exploring and compare genomic contact matrices and tracks.
             Take a look at some <Link to='/examples'>examples</Link> or head over to the <Link to='/docs'>docs</Link> to learn how HiGlass can be used and configured. To load private data, HiGlass can be <Link to='/docs/higlass_docker.html'>run locally within a docker container</Link>.
             </p>
-            <div className='column-1-2 m-l-1 home-info-news'>
+            <div className='column-1-2 m-l-1 home-info-news scrollbar'>
               {this.state.isLoadingNews && <SpinnerCenter light={true} />}
               <div className={`full-dim ${this.state.isLoadingNews ? 'is-hidden' : ''}`}>
                 <NewsList news={this.state.news} />
@@ -82,8 +152,10 @@ class HomeDemos extends React.Component {
         </section>
         <section className='wrap'>
           <h3>Single View</h3>
-          <div className="example-1">
+          <div ref={this.onRefExample(0)} className="example-1">
             <HiGlassViewer
+              isDeferred={true}
+              isDeferredInit={this.state.isExample0Init}
               isStatic={true}
               viewConfigId='default'
               server='http://higlass.io'
@@ -96,8 +168,10 @@ class HomeDemos extends React.Component {
             be synchronized to always show the same location. For more information,
             please see the documentation about <a href="https://github.com/hms-dbmi/higlass/wiki/Common-Tasks#replacing-tracks">replacing tracks</a>, <a href="https://github.com/hms-dbmi/higlass/wiki/View-Operations#adding-new-views">adding new views</a>, and <a href="https://github.com/hms-dbmi/higlass/wiki/View-Operations#view-synchronization">synchronizing the locations of different views</a>.
           </p>
-          <div className="example-2">
+          <div ref={this.onRefExample(1)} className="example-2">
             <HiGlassViewer
+              isDeferred={true}
+              isDeferredInit={this.state.isExample1Init}
               isStatic={true}
               viewConfigId='twoviews'
               server='http://higlass.io'
@@ -114,9 +188,11 @@ class HomeDemos extends React.Component {
             as well as four ENOCDE data tracks containing ChIP seq profiles (H3K27ac,
             H3K4me1, H3K4me and H3K27me3).
           </p>
-          <div className="example-3">
+          <div ref={this.onRefExample(2)} className="example-3">
             <HiGlassViewer
               autoExpand={true}
+              isDeferred={true}
+              isDeferredInit={this.state.isExample2Init}
               isStatic={true}
               viewConfigId='browserlike'
               server='http://higlass.io'
@@ -135,9 +211,11 @@ class HomeDemos extends React.Component {
             and shows the accumulation of cohesin at sites of convergent
             transcription in CTCF / Wapl double knock-out mouse embryonic fibroblasts.
           </p>
-          <div className="example-4">
+          <div ref={this.onRefExample(3)} className="example-4">
             <HiGlassViewer
               autoExpand={true}
+              isDeferred={true}
+              isDeferredInit={this.state.isExample3Init}
               isStatic={true}
               viewConfigId='browserwithdetails'
               server='http://higlass.io'
@@ -206,4 +284,8 @@ class HomeDemos extends React.Component {
   }
 }
 
-export default HomeDemos;
+HomeDemos.propTypes = {
+  pubSub: PropTypes.object.isRequired,
+};
+
+export default withPubSub(HomeDemos);
