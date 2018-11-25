@@ -66,6 +66,40 @@
       box-shadow: 0 2px 0 0 $primary;
     }
 
+    .higlass {
+      position: relative;
+      @include underline($black, -2px, 2px);
+      transition: color $fast-transition $easing;
+    }
+
+    .icon {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 0.25em;
+
+      svg {
+        transition: color $slow-transition $easing;
+
+        .lense,
+        .inception {
+          transform-origin: 47% 47%;
+        }
+
+        .lense {
+          fill: currentColor;
+          transition: transform $slow-transition $easing;
+        }
+
+        .inception {
+          opacity: 0;
+          fill: white;
+          transform: scale(.166666667);
+          transition: transform $slow-transition $easing 0s,
+                      opacity $slow-transition $easing $fast-transition;
+        }
+      }
+    }
+
     &:hover,
     &:active,
     &:focus,
@@ -83,28 +117,12 @@
         color: $primary;
 
         .lense {
-          transform: scale(2);
+          transform: scale(6);
         }
-      }
-    }
 
-    .higlass {
-      position: relative;
-      @include underline($black, -2px, 2px);
-      transition: color $fast-transition $easing;
-    }
-
-    .icon {
-      width: 2rem;
-      height: 2rem;
-      margin-right: 0.25em;
-
-      svg {
-        transition: color $slow-transition $easing;
-
-        .lense {
-          transition: transform $slow-transition $easing;
-          transform-origin: 50% 50%;
+        .inception {
+          opacity: 1;
+          transform: scale(1);
         }
       }
     }
