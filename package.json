@@ -118,7 +118,7 @@
   },
   "scripts": {
     "build": "CI=false node scripts/build.js; npm run download",
-    "download": "wget https://unpkg.com/purecss@1.0.0/build/pure-min.css -O build/pure-min.css; wget https://www.google-analytics.com/analytics.js -O build/analytics.js; cp node_modules/higlass/dist/hglib.min.js build/; cp node_modules/react/umd/react.production.min.js build/; cp node_modules/react-bootstrap/dist/react-bootstrap.min.js build/; cp node_modules/react-dom/umd/react-dom.production.min.js build/;  cp node_modules/pixi.js/dist/pixi.min.js build/;",
+    "download": "wget https://unpkg.com/purecss@1.0.0/build/pure-min.css -O build/pure-min.css; wget https://www.google-analytics.com/analytics.js -O build/analytics.js; cp node_modules/higlass/dist/hglib.min.js build/; cp node_modules/higlass/dist/hglib.css build/hglib.min.css; cp node_modules/react/umd/react.production.min.js build/; cp node_modules/react-bootstrap/dist/react-bootstrap.min.js build/; cp node_modules/react-dom/umd/react-dom.production.min.js build/;  cp node_modules/pixi.js/dist/pixi.min.js build/;",
     "fix": "eslint --fix src",
     "lint": "eslint src; stylelint src",
     "precommit": "NODE_ENV=production lint-staged",

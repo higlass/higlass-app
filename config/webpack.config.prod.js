@@ -489,6 +489,13 @@ module.exports = {
       }
     ]
   },
+  externals: {
+    'higlass': 'hglib',
+    'pixi.js': 'PIXI',
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'react-bootstrap': 'ReactBootstrap',
+  },
   plugins: [
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
@@ -567,6 +574,7 @@ module.exports = {
         "analytics.js",
         "autotrack.custom.js",
         "hglib.min.js",
+        "hglib.min.css",
         "react.production.min.js",
         "react-dom.production.min.js",
         "react-bootstrap.min.js",
