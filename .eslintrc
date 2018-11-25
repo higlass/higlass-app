@@ -19,7 +19,7 @@
   },
   "settings": {
     "react": {
-      "version": "16.5"
+      "version": "16.6"
     }
   },
   "plugins": [
@@ -49,16 +49,6 @@
         ]
       }
     ],
-    "comma-dangle": [
-      "error",
-      {
-        "arrays": "always-multiline",
-        "objects": "always-multiline",
-        "imports": "ignore",
-        "exports": "ignore",
-        "functions": "never"
-      }
-    ],
     "import/prefer-default-export": "warn",
     "max-len": [
       "error",
@@ -74,12 +64,6 @@
     "no-console": "warn",
     "no-continue": "off",
     "no-mixed-operators": ["error", {"allowSamePrecedence": true}],
-    "no-multi-spaces": [
-      "error",
-      {
-        "ignoreEOLComments": true
-      }
-    ],
     "no-param-reassign": ["error", { "props": false }],
     "no-plusplus": [
       "error",
