@@ -14,7 +14,7 @@ const ButtonLikeFileSelect = props => (
     className={`flex-c flex-a-c button-like-file-select ${props.className}`}
     onClick={() => inputEl.click()}>
     <span className='flex-g-1 button-like-select-text'>{props.children}</span>
-    <Icon iconId='arrow-bottom' />
+    <Icon iconId='folder' />
     <input
       type='file'
       accept='.json'
