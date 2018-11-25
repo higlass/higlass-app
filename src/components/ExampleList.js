@@ -4,6 +4,10 @@ import React from 'react';
 // Styles
 import './ExampleList.scss';
 
+const getTitleClasses = example => example.beta
+  ? 'example-title example-title-beta'
+  : 'example-title';
+
 const ExampleList = props => (
   <ul className='example-list flex-c flex-w-w no-list-style'>
     {props.examples.map((example, index) => (
@@ -17,7 +21,7 @@ const ExampleList = props => (
               href={example.url && example.url}
               target='_blank'
               rel='noopener noreferrer'
-              className='example-title'
+              className={getTitleClasses(example)}
             >
               {example.title}
             </a>
