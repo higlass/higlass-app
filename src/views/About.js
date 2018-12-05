@@ -47,7 +47,6 @@ const showCool = (publish) => {
 };
 
 const showIcons = (publish) => {
-  console.log('KACKEN');
   publish(
     'globalDialog',
     {
