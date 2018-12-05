@@ -350,6 +350,15 @@ class About extends React.Component {
                   <a href='https://github.com/flekschas/hipiler' target='_blank' rel='noopener noreferrer'>https://github.com/flekschas/hipiler</a>
                 </div>
               </li>
+              <li className='flex-c iconized'>
+                <Icon iconId='peax' />
+                <div className='flex-c flex-v'>
+                  <p>
+                    <strong><a href='https://github.com/novartis/peax' target='_blank' rel='noopener noreferrer'>Peax</a></strong>: Interactive Concept Learning and Exploration of Epigenomic Patterns
+                  </p>
+                  <a href='https://github.com/novartis/peax' target='_blank' rel='noopener noreferrer'>https://github.com/novartis/peax</a>
+                </div>
+              </li>
             </ul>
 
             <h3 id='copyright' className='iconized underlined anchored'>
