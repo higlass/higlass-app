@@ -7,6 +7,7 @@ import withPubSub from '../hocs/with-pub-sub';
 // Components
 import AppInfo from '../components/AppInfo';
 import Content from '../components/Content';
+import CoolInfo from '../components/CoolInfo';
 import ContentWrapper from '../components/ContentWrapper';
 import Footer from '../components/Footer';
 import Icon from '../components/Icon';
@@ -32,7 +33,21 @@ const showInfo = (publish) => {
   );
 };
 
+const showCool = (publish) => {
+  publish(
+    'globalDialog',
+    {
+      message: <CoolInfo />,
+      request: new Deferred(),
+      resolveOnly: true,
+      resolveText: 'Wow! This is amazing!',
+      headline: 'Cool, Cooler, 😎',
+    }
+  );
+};
+
 const showIcons = (publish) => {
+  console.log('KACKEN');
   publish(
     'globalDialog',
     {
@@ -51,7 +66,7 @@ class About extends React.Component {
 
     this.pubSubs = [];
 
-    this.swag = [[73, 67, 79, 78, 83], [73, 78, 70, 79]];
+    this.swag = [[73, 67, 79, 78, 83], [73, 78, 70, 79], [67, 79, 79, 76]];
     this.swagI = 0;
     this.swagJ = 0;
     this.swagInterval = 500;
@@ -84,28 +99,39 @@ class About extends React.Component {
     this.swagTime = now;
 
     if (this.swagJ === 0) {
+      this.swagI = [];
       this.swag.forEach((codeWurst, index) => {
         if (keyCode === codeWurst[0]) {
-          this.swagI = index;
+          this.swagI.push(index);
           this.swagJ = 1;
         }
       });
-    } else if (keyCode === this.swag[this.swagI][this.swagJ]) {
-      this.swagJ += 1;
-    }
-
-    if (this.swagJ === this.swag[this.swagI].length) {
-      switch (this.swagI) {
-        case 0:
-          showIcons(this.props.pubSub.publish);
-          break;
-        case 1:
-          showInfo(this.props.pubSub.publish);
-          break;
-        default:
-          // Nothing
+    } else {
+      for (let i = this.swagI.length; i-- > 0;) {
+        if (keyCode === this.swag[this.swagI[i]][this.swagJ]) this.swagJ += 1;
+        else this.swagI.splice(i, 1);
       }
     }
+
+    console.log(this.swagJ, this.swagI);
+
+    this.swagI.forEach(swagI => {
+      if (this.swagJ === this.swag[swagI].length) {
+        switch (swagI) {
+          case 0:
+            showIcons(this.props.pubSub.publish);
+            break;
+          case 1:
+            showInfo(this.props.pubSub.publish);
+            break;
+          case 2:
+            showCool(this.props.pubSub.publish);
+            break;
+          default:
+            // Nothing
+        }
+      }
+    });
   }
 
   render() {

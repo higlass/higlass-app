@@ -65,12 +65,7 @@
     "no-continue": "off",
     "no-mixed-operators": ["error", {"allowSamePrecedence": true}],
     "no-param-reassign": ["error", { "props": false }],
-    "no-plusplus": [
-      "error",
-      {
-        "allowForLoopAfterthoughts": true
-      }
-    ],
+    "no-plusplus": "off",
     "object-curly-newline": "off",
     "prefer-destructuring": "off",
     "react/display-name": "off"
