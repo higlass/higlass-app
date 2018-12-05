@@ -7,8 +7,8 @@
 - Serve all assets locally and cache them using a service worker. This enables offline support and make it easier to deploy HiGlass within an intranet.
 - Load home page demos on demand (i.e., once the user scrolls to them)
 - Update to session storage only
-- Update to HiGlass `v1.2`
-- Update to React `v16.5`
+- Update to HiGlass `v1.3`
+- Update to React `v16.6`
 - Update to React Scripts `v2`
 - Update to Webpack `v4`
 - Update to Babel `v7`
