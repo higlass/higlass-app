@@ -402,7 +402,7 @@ class About extends React.Component {
               <a href='#copyright' className='hidden-anchor'>
                 <Icon iconId='link' />
               </a>
-              &copy;
+              <Icon iconId='copyright' />
               Copyrights and Licenses
             </h3>
 
