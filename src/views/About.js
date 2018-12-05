@@ -361,6 +361,18 @@ class About extends React.Component {
               </li>
             </ul>
 
+            <h3 id='design' className='iconized underlined anchored'>
+              <a href='#design' className='hidden-anchor'>
+                <Icon iconId='link' />
+              </a>
+              <Icon iconId='pen-ruler' />
+              Design
+            </h3>
+
+            <p>
+              The website and logo (<Icon iconId='logo' isInline={true} />) are designed by <a href='https://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a>.
+            </p>
+
             <h3 id='copyright' className='iconized underlined anchored'>
               <a href='#copyright' className='hidden-anchor'>
                 <Icon iconId='link' />
@@ -371,7 +383,7 @@ class About extends React.Component {
 
             <p>
               The following sets of beautiful icons have been slightly adjusted by
-              Fritz Lekschas and are used across the application.
+              <a href='https://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a> and are used across the application.
               Huge thanks to the authors for their fantastic work!
             </p>
 
