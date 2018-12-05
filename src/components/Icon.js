@@ -30,7 +30,7 @@ const getViewBox = id =>
 const convertId = id => (id ? id.replace(/-/g, "_").toUpperCase() : "");
 
 const Icon = props => (
-  <div
+  <span
     className={getClassName(props)}
     title={props.title}
   >
@@ -41,7 +41,7 @@ const Icon = props => (
       fillRule={getFillRule(convertId(props.iconId))}
       dangerouslySetInnerHTML={getSvg(convertId(props.iconId))}
     />
-  </div>
+  </span>
 );
 
 Icon.defaultProps = {
