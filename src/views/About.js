@@ -382,9 +382,9 @@ class About extends React.Component {
             </h3>
 
             <p>
-              The following sets of beautiful icons have been slightly adjusted by
-              <a href='https://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a> and are used across the application.
-              Huge thanks to the authors for their fantastic work!
+              The following sets of beautiful icons have been slightly adjusted
+              by <a href='https://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a> and
+              are used across the application. Huge thanks to the authors for their fantastic work!
             </p>
 
             <ul className='no-list-style large-spacing iconized'>
