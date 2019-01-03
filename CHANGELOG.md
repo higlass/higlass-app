@@ -6,6 +6,7 @@
 - Add permanent full screen mode when started without demos, i.e., `"homepageDemos": false` in the `config.json` (or `config.js`)
 - Serve all assets locally and cache them using a service worker. This enables offline support and make it easier to deploy HiGlass within an intranet.
 - Load home page demos on demand (i.e., once the user scrolls to them)
+- Allow setting default viewconfs and default track options via `HGAC_DEFAULT_VIEW_CONFIG` and `HGAC_DEFAULT_OPTIONS` in `config.js`.
 - Update to session storage only
 - Update to HiGlass `v1.3`
 - Update to React `v16.6`
