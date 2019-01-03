@@ -112,8 +112,6 @@ class About extends React.Component {
       }
     }
 
-    console.log(this.swagJ, this.swagI);
-
     this.swagI.forEach(swagI => {
       if (this.swagJ === this.swag[swagI].length) {
         switch (swagI) {
