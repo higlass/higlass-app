@@ -1,3 +1,4 @@
+import { boundMethod } from 'autobind-decorator';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -25,11 +26,13 @@ import './HiGlassViewer.scss';
 
 const logger = Logger('HiGlassViewer');
 
-const fetchViewConfig = (configId, base = '') => fetch(
-  `${base}/api/v1/viewconfs/?d=${configId}`
-).then(response => response.json());
+const fetchViewConfig = (config, base = '') => typeof config !== 'string'
+  ? new Promise(resolve => resolve(config))
+  : fetch(
+    `${base}/api/v1/viewconfs/?d=${config}`
+  ).then(response => response.json());
 
-const defaultViewConfigId = 'default';
+const defaultViewConfigId = window.HGAC_DEFAULT_VIEW_CONFIG || 'default';
 
 
 class HiGlassViewer extends React.Component {
@@ -95,7 +98,7 @@ class HiGlassViewer extends React.Component {
     });
 
     fetchViewConfig(viewConfigId || defaultViewConfigId, this.props.server)
-      .then(this.setViewConfig.bind(this))
+      .then(this.setViewConfig)
       .catch(() => {
         logger.info(
           'View config is not available locally! Try loading it from higlass.io.'
@@ -105,7 +108,7 @@ class HiGlassViewer extends React.Component {
         return fetchViewConfig(
           viewConfigId || defaultViewConfigId, 'http://higlass.io'
         )
-          .then(this.setViewConfig.bind(this))
+          .then(this.setViewConfig)
           .catch((error) => {
             logger.error('Could not load or parse config.', error);
             this.setState({
@@ -127,6 +130,7 @@ class HiGlassViewer extends React.Component {
     this.setState({ isInitForced: true })
   }
 
+  @boundMethod
   setViewConfig(viewConfig) {
     if (!viewConfig || viewConfig.error) {
       const errorMsg = viewConfig && viewConfig.error
