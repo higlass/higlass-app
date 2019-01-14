@@ -1,30 +1,31 @@
-import createPubSub from 'pub-sub-es';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { ConnectedRouter } from 'react-router-redux';
-import { Provider } from 'react-redux';
-import * as serviceWorker from './service-worker';
+import createPubSub from "pub-sub-es";
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import * as serviceWorker from "./service-worker";
 
 // HOCs
-import { Provider as PubSubProvider } from './hocs/with-pub-sub';
+import { Provider as PubSubProvider } from "./hocs/with-pub-sub";
 
 // Components
-import App from './components/App';
-import AppFake from './components/AppFake';
+import App from "./components/App";
+import AppFake from "./components/AppFake";
 
 // Services
-import auth from './services/auth';
+import auth from "./services/auth";
 
 // Factories
-import { createState, history } from './factories/state';
+import { createState } from "./factories/state";
 
 // Utils
-import Logger from './utils/logger';
+import Logger from "./utils/logger";
+import pathify from "./utils/pathify";
 
 // Styles
-import './index.scss';
+import "./index.scss";
 
-const logger = Logger('Index');
+const logger = Logger("Index");
 
 // Initialize store
 const state = createState();
@@ -34,24 +35,30 @@ const storeRehydrated = state.configure();
 // Init pub-sub service
 const pubSub = createPubSub();
 
+const basename = pathify(
+  typeof window.HGAC_BASEPATH === "string"
+    ? window.HGAC_BASEPATH // from compiled `config.js`
+    : HGAC_BASEPATH // from webpack's DefinePlugin
+);
+
 const render = (Component, store, error) => {
   if (!store) {
     ReactDOM.render(
       <PubSubProvider value={pubSub}>
-        <AppFake error={error}/>
+        <AppFake error={error} />
       </PubSubProvider>,
-      document.getElementById('root')
+      document.getElementById("root")
     );
   } else {
     ReactDOM.render(
       <Provider store={store}>
-        <ConnectedRouter history={history}>
+        <BrowserRouter basename={basename}>
           <PubSubProvider value={pubSub}>
             <Component />
           </PubSubProvider>
-        </ConnectedRouter>
+        </BrowserRouter>
       </Provider>,
-      document.getElementById('root')
+      document.getElementById("root")
     );
   }
 };
@@ -61,21 +68,27 @@ render(AppFake);
 auth
   .checkAuthentication()
   .then(() => storeRehydrated)
-  .then((store) => {
+  .then(store => {
     rehydratedStore = store;
     render(App, store);
   })
-  .catch((error) => {
-    logger.error('Failed to rehydrate the store! This is fatal!', error);
-    render(undefined, undefined, 'Failed to initialize! This is bad, please contact an admin.');
+  .catch(error => {
+    logger.error("Failed to rehydrate the store! This is fatal!", error);
+    render(
+      undefined,
+      undefined,
+      "Failed to initialize! This is bad, please contact an admin."
+    );
   });
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
-    const NextApp = require('./components/App').default;  // eslint-disable-line global-require
+  module.hot.accept("./components/App", () => {
+    const NextApp = require("./components/App").default; // eslint-disable-line global-require
     render(NextApp, rehydratedStore);
   });
-  storeRehydrated.then((store) => { window.store = store; });
+  storeRehydrated.then(store => {
+    window.store = store;
+  });
 }
 
 serviceWorker.register();

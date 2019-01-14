@@ -43,12 +43,21 @@ npm install
 
 **Autoformat JS code**: `npm run fix`
 
-
 ### Configuration
 
-HiGlass App can be configured at build time using [`config.json`](config.json).
-[`config.json`](config.json) contains the default configuration. To adjust it copy it to `config.dev.json`, `config.prod.json`, or `config.local.json`. `dev` is used in developmental mode, `prod` is picked up in production, and `local` can be used for local testing. The config is overwritten in the following order: _default_, dev, prod, local.
+HiGlass App can be configured at build and run time using [`config.json`](config.json) and [`public/config.js`](public/config.js) respectively.
 
+[`config.json`](config.json) contains the default configuration. For adjustments, copy it to `config.dev.json`, `config.prod.json`, or `config.local.json`. `dev` is used in developmental mode, `prod` is picked up in production, and `local` can be used for local testing. The config is overwritten in the following order: _default_, dev, prod, local.
+
+Additionally some settings can be overwritten at run time using [`public/config.js`](public/config.js). For details please see the table below:
+
+| Name              | Description                                                                                                                                     | Type                 | Default                                   | config.js name           |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------- | ------------------------ |
+| homepageDemos     | If set to `true` the start page will feature some demo views.                                                                                   | `boolean`            | `false`                                   | HGCA_HOMEPAGE_DEMOS      |
+| server            | Define the default higlass server from which view config are loaded by default.                                                                 | `string`             | `''` (same host, same port)               | HGCA_SERVER              |
+| basepath          | The base path under which higlass-app will run, e.g., if you set it to `/cool` higlass-app will be available at `https://your-server.com/cool`. | `string`             | `''` (root)                               | HGCA_BASEPATH            |
+| defaultOptions    | Default options that are being passed to `hglib`.                                                                                               | `object`             | _none_                                    | HGAC_DEFAULT_OPTIONS     |
+| defaultViewConfig | Default view config to load. This can either be a uuid or an actual view config. By default, the default view config has the uuid `default`.    | `object` or `string` | _none_ (internally defaults to `default`) | HGAC_DEFAULT_VIEW_CONFIG |
 
 ### Folder Structure
 
@@ -98,28 +107,26 @@ HiGlass App is based on [react-create-app](https://github.com/facebookincubator/
 
     Flat folder containing factory functions. See [Eric's article](https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1) for an introduction to factory functions.
 
+* **[`/hocs`](hocs)**
 
-  - **[`/hocs`](hocs)**
+  Flat folder containing _higher-order_ components. See the [React docs](https://reactjs.org/docs/higher-order-components.html) for an introduction.
 
-    Flat folder containing _higher-order_ components. See the [React docs](https://reactjs.org/docs/higher-order-components.html) for an introduction.
+* **[`/images`](images)**
 
-  - **[`/images`](images)**
+  Flat folder containing images.
 
-    Flat folder containing images.
+* **[`/reducers`](reducers)**
 
-  - **[`/reducers`](reducers)**
+  Flat folder containing [Redux](https://github.com/reduxjs/redux) reducers.
 
-    Flat folder containing [Redux](https://github.com/reduxjs/redux) reducers.
+* **[`/styles`](styles)**
 
-  - **[`/styles`](styles)**
+  Flat folder containing generic style components. Note: this is kind of arbitrary but I like to separate reusable CSS classes from [`index.scss`](src/index.scss) such that I can quickly drop them into other apps.
 
-    Flat folder containing generic style components. Note: this is kind of arbitrary but I like to separate reusable CSS classes from [`index.scss`](src/index.scss) such that I can quickly drop them into other apps.
+* **[`/utils`](utils)**
 
-  - **[`/utils`](utils)**
+  Flat folder containing utility functions. (Utility function **must** be pure and should not have any state or side effects!)
 
-    Flat folder containing utility functions. (Utility function **must** be pure and should not have any state or side effects!)
+* **[`/views`](views)**
 
-  - **[`/views`](views)**
-
-    Flat folder containing all view components. (View components are just like presentational components with the only difference that they are associated to a specific URL. This separation is again arbitrary but I like having all views separated as I consider them **uncomposable**. Only [`Main`](src/components/Main.js) should import views.)
-
+  Flat folder containing all view components. (View components are just like presentational components with the only difference that they are associated to a specific URL. This separation is again arbitrary but I like having all views separated as I consider them **uncomposable**. Only [`Main`](src/components/Main.js) should import views.)
