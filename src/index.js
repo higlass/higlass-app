@@ -35,7 +35,11 @@ const storeRehydrated = state.configure();
 // Init pub-sub service
 const pubSub = createPubSub();
 
-const basename = pathify(window.HGAC_BASEPATH);
+const basename = pathify(
+  typeof window.HGAC_BASEPATH === "string"
+    ? window.HGAC_BASEPATH // from compiled `config.js`
+    : HGAC_BASEPATH // from webpack's DefinePlugin
+);
 
 const render = (Component, store, error) => {
   if (!store) {
