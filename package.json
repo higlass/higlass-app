@@ -11,7 +11,7 @@
   ],
   "author": "Fritz Lekschas (https://lekschas.de)",
   "license": "MIT",
-  "homepage": "https://higlass.io",
+  "homepage": "http://localhost:3000/hg/",
   "repository": {
     "type": "git",
     "url": "https://github.com/hms-dbmi/higlass-app.git"

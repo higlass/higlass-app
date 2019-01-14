@@ -1,7 +1,7 @@
 import createPubSub from 'pub-sub-es';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ConnectedRouter } from 'react-router-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 // HOCs
@@ -15,7 +15,7 @@ import AppFake from './components/AppFake';
 import auth from './services/auth';
 
 // Factories
-import { createState, history } from './factories/state';
+import { createState } from './factories/state';
 
 // Utils
 import Logger from './utils/logger';
@@ -44,11 +44,11 @@ const render = (Component, store, error) => {
   } else {
     ReactDOM.render(
       <Provider store={store}>
-        <ConnectedRouter history={history}>
+        <BrowserRouter basename='hg'>
           <PubSubProvider value={pubSub}>
             <Component />
           </PubSubProvider>
-        </ConnectedRouter>
+        </BrowserRouter>
       </Provider>,
       document.getElementById('root')
     );
