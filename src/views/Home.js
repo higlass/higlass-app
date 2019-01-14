@@ -17,9 +17,13 @@ import { setHomeInfoBarClose } from '../actions';
 // Stylesheets
 import './Home.scss';
 
+const showDemos = typeof window.HGAC_HOMEPAGE_DEMOS !== 'undefined'
+  ? window.HGAC_HOMEPAGE_DEMOS  // from compiled `config.js`
+  : HGAC_HOMEPAGE_DEMOS;  // from webpack's DefinePlugin
+
 const Home = () => (
   <ContentWrapper name='home'>
-    {HGAC_HOMEPAGE_DEMOS || window.HGAC_HOMEPAGE_DEMOS ? (
+    {showDemos ? (
       <HomeDemos />
     ) : (
       <Content name='home' rel={true} wrap={true}>

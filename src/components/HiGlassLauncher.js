@@ -20,6 +20,10 @@ import '../styles/bootstrap.less';
 
 const logger = Logger('HiGlassLauncher');  // eslint-disable-line
 
+const defaultOptions = Object.assign({
+  bounded: true,
+}, window.HGAC_DEFAULT_OPTIONS);
+
 
 class HiGlassLauncher extends React.Component {
   constructor(props) {
@@ -139,9 +143,7 @@ class HiGlassLauncher extends React.Component {
 
 HiGlassLauncher.defaultProps = {
   isZoomFixed: false,
-  options: {
-    bounded: true,
-  },
+  options: defaultOptions,
 };
 
 HiGlassLauncher.propTypes = {

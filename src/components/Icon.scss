@@ -1,9 +1,14 @@
-@import '../styles/transitions';
+@import "../styles/transitions";
 
 .icon {
   position: relative;
+  display: block;
   width: 1em;
   height: 1em;
+
+  &.is-inline {
+    display: inline-block;
+  }
 
   &.is-mirror-h svg {
     transform: scale(1, -1);

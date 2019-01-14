@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+import { withRouter } from 'react-router';
 
 // Components
 import Content from '../components/Content';
@@ -32,6 +34,8 @@ class Docs extends React.Component {
   }
 
   render() {
+    const subPath = `${this.props.location.pathname.slice(6)}${this.props.location.hash}`;
+
     return (
       <ContentWrapper name='docs'>
         <Content name='docs' rel={true} bottomMargin={false}>
@@ -39,7 +43,7 @@ class Docs extends React.Component {
             <iframe
               className='full-wh'
               frameBorder='0'
-              src='https://hms-dbmi.github.io/higlass-docs/'
+              src={`https://docs.higlass.io/${subPath}`}
               style={{ height: this.state.height }}
             />
           </div>
@@ -50,4 +54,8 @@ class Docs extends React.Component {
   }
 }
 
-export default Docs;
+Docs.propTypes = {
+  location: PropTypes.object.isRequired,
+};
+
+export default withRouter(Docs);

@@ -1,8 +1,8 @@
-@import '../styles/colors';
-@import '../styles/ratio';
+@import "../styles/colors";
+@import "../styles/ratio";
 
 .example-list {
-  &> li {
+  & > li {
     position: relative;
     width: 50%;
     margin-bottom: 0.5rem;
@@ -21,6 +21,18 @@
     background: $gray-lightest;
     border-radius: 0.25rem 0.25rem 0 0;
     box-shadow: none;
+  }
+
+  .example-title-beta:after {
+    content: 'Beta';
+    margin-left: 0.5em;
+    padding: 0.1em 0.3em;
+    font-size: 0.8em;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: $gray-medium;
+    border: 1px solid $gray-lighter;
+    border-radius: 0.25rem;
   }
 
   .example-figure {
@@ -44,7 +56,7 @@
 
   .one-line {
     &.location::before {
-      content: 'Location';
+      content: "Location";
       font-size: 0.8em;
       font-weight: bold;
       text-transform: uppercase;
@@ -60,13 +72,11 @@
   }
 }
 
-
 /*
  * -----------------------------------------------------------------------------
  * Media Queries
  * -----------------------------------------------------------------------------
  */
-
 
 /* 960px */
 @media screen and (min-width: 60em) {

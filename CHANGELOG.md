@@ -1,11 +1,15 @@
 **v1.0.0**
 
 - Add list of plugins
+- Add blog
 - Add news section on the home page
-- Add permanent full screen mode when started without demos, i.e., `"homepageDemos": false` in the `config.json`
+- Add permanent full screen mode when started without demos, i.e., `"homepageDemos": false` in the `config.json` (or `config.js`)
+- Serve all assets locally and cache them using a service worker. This enables offline support and make it easier to deploy HiGlass within an intranet.
+- Load home page demos on demand (i.e., once the user scrolls to them)
+- Allow setting default viewconfs and default track options via `HGAC_DEFAULT_VIEW_CONFIG` and `HGAC_DEFAULT_OPTIONS` in `config.js`.
 - Update to session storage only
-- Update to HiGlass `v1.2`
-- Update to React `v16`
+- Update to HiGlass `v1.3`
+- Update to React `v16.6`
 - Update to React Scripts `v2`
 - Update to Webpack `v4`
 - Update to Babel `v7`
@@ -15,8 +19,11 @@
 - Refactor pub-sub service as HOC using an external library
 - Refactor state service as factory
 - Refactor DOM event server as factory
-- Remove service worker. HiGlassApp depends on a running HiGlass server so offline support does not make sense
-- Remove `/help`. Content is integrated into `/about`.
+- Remove `/help` (content is integrated into `/about`)
+- Exclude server endpoints from the service worker
+- Load news, examples, and plugins from gh-pages since rawgit shuts down 😢
+- Add stylelint to check for issue with stylesheets
+- Add husky and lintstaged to run eslint, stylelint, and prettier automatically prior to commits
 
 **v0.9.2**
 

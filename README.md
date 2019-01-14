@@ -2,20 +2,25 @@
 
 [![HiGlass](https://img.shields.io/badge/higlass-👍-red.svg?colorB=3676b4)](http://higlass.io)
 [![npm version](https://img.shields.io/npm/v/higlass-app.svg)](https://www.npmjs.com/package/higlass-app)
-[![Build Status](https://travis-ci.org/hms-dbmi/higlass-app.svg?branch=master)](https://travis-ci.org/hms-dbmi/higlass-app)
+[![Build Status](https://travis-ci.org/higlass/higlass-app.svg?branch=master)](https://travis-ci.org/higlass/higlass-app)
+[![code style prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-![Peax's UI](teaser.png)
+![User interface](teaser.png)
 
 > The web application for viewing, exploring, and annotating 1D and 2D genomic data.
 
+HiGlass App is used to run http://higlass.io but you can also use it as the starting point for building your own application around HiGlass. For example, it is used in [Novartis' Peax](https://github.com/Novartis/peax) as the frontend application.
+
 **URL**: http://higlass.io
+
+**Help**: http://bit.ly/higlass-slack
 
 **Note**: This is the source code for the web application only! You might want to check out the following repositories as well:
 
-- HiGlass viewer: https://github.com/hms-dbmi/higlass
-- HiGlass server: https://github.com/hms-dbmi/higlass-server
-- HiGlass docker: https://github.com/hms-dbmi/higlass-docker
-- HiGlass manage: https://github.com/hms-dbmi/higlass-manage
+- HiGlass viewer: https://github.com/higlass/higlass
+- HiGlass server: https://github.com/higlass/higlass-server
+- HiGlass docker: https://github.com/higlass/higlass-docker
+- HiGlass manage: https://github.com/higlass/higlass-manage
 
 ## Install
 
@@ -26,7 +31,7 @@ npm install --save higlass-app
 ## Development
 
 ```bash
-git clone https://github.com/hms-dbmi/higlass-app && higlass-app
+git clone https://github.com/higlass/higlass-app && higlass-app
 npm install
 ```
 
@@ -112,7 +117,7 @@ HiGlass App is based on [react-create-app](https://github.com/facebookincubator/
 
   - **[`/utils`](utils)**
 
-    Flat folder containing utility functions. (Utility function **must** be pure and should not have any state.)
+    Flat folder containing utility functions. (Utility function **must** be pure and should not have any state or side effects!)
 
   - **[`/views`](views)**
 

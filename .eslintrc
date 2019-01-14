@@ -6,7 +6,9 @@
   "extends": [
     "eslint:recommended",
     "airbnb/base",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -17,11 +19,12 @@
   },
   "settings": {
     "react": {
-      "version": "16.5"
+      "version": "16.6"
     }
   },
   "plugins": [
-    "react"
+    "react",
+    "prettier"
   ],
   "globals": {
     "it": false,
@@ -46,16 +49,6 @@
         ]
       }
     ],
-    "comma-dangle": [
-      "error",
-      {
-        "arrays": "always-multiline",
-        "objects": "always-multiline",
-        "imports": "ignore",
-        "exports": "ignore",
-        "functions": "never"
-      }
-    ],
     "import/prefer-default-export": "warn",
     "max-len": [
       "error",
@@ -71,18 +64,8 @@
     "no-console": "warn",
     "no-continue": "off",
     "no-mixed-operators": ["error", {"allowSamePrecedence": true}],
-    "no-multi-spaces": [
-      "error",
-      {
-        "ignoreEOLComments": true
-      }
-    ],
-    "no-plusplus": [
-      "error",
-      {
-        "allowForLoopAfterthoughts": true
-      }
-    ],
+    "no-param-reassign": ["error", { "props": false }],
+    "no-plusplus": "off",
     "object-curly-newline": "off",
     "prefer-destructuring": "off",
     "react/display-name": "off"

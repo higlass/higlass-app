@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import * as serviceWorker from './service-worker';
 
 // HOCs
 import { Provider as PubSubProvider } from './hocs/with-pub-sub';
@@ -76,3 +77,5 @@ if (module.hot) {
   });
   storeRehydrated.then((store) => { window.store = store; });
 }
+
+serviceWorker.register();

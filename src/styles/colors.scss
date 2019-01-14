@@ -19,7 +19,7 @@ $gray-light-rgba: transparentize(#000, 0.73);
 $gray-lighter-rgba: transparentize(#000, 0.87);
 $gray-lightest-rgba: transparentize(#000, 0.93);
 
-$blue: #0F5D92;
+$blue: #0f5d92;
 $blue-darker: adjust-color($blue, $saturation: -66%, $lightness: -15%);
 $blue-dark: adjust-color($blue, $saturation: -25%, $lightness: -10%);
 $blue-light: adjust-color($blue, $saturation: -20%, $lightness: 60%);

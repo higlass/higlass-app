@@ -1,5 +1,5 @@
-@import '../styles/colors';
-@import '../styles/transitions';
+@import "../styles/colors";
+@import "../styles/transitions";
 
 .top-bar-drop-down {
   .drop-down-content {
@@ -16,8 +16,7 @@
     input {
       border: 0;
       transition: color $fast-transition $easing,
-                  background $fast-transition $easing,
-                  box-shadow $fast-transition $easing;
+        background $fast-transition $easing, box-shadow $fast-transition $easing;
 
       &:focus {
         outline: none;
@@ -116,10 +115,6 @@
     height: 1px;
     margin: 0.25rem 0;
     background: $gray-lighter;
-  }
-
-  .menu-text {
-
   }
 
   .menu-text-label {

@@ -4,6 +4,7 @@ import { Redirect, Route, Switch, withRouter } from 'react-router';
 
 // Views
 import About from '../views/About';
+import Blog from '../views/Blog';
 import Docs from '../views/Docs';
 import Examples from '../views/Examples';
 import Home from '../views/Home';
@@ -11,7 +12,9 @@ import NotFound from '../views/NotFound';
 import Plugins from '../views/Plugins';
 import Viewer from '../views/Viewer';
 
-const hasDemos = HGAC_HOMEPAGE_DEMOS || window.HGAC_HOMEPAGE_DEMOS;
+const hasDemos = typeof window.HGAC_HOMEPAGE_DEMOS !== 'undefined'
+  ? window.HGAC_HOMEPAGE_DEMOS  // from compiled `config.js`
+  : HGAC_HOMEPAGE_DEMOS;  // from webpack's DefinePlugin
 
 class Main extends React.Component {
   componentDidUpdate(prevProps) {
@@ -23,7 +26,8 @@ class Main extends React.Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/about' component={About} />
+        <Route exact path='/about' render={About.render} />
+        <Route exact path='/blog' component={Blog} />
         <Route exact path='/app' render={({ location }) => {
           const query = new URLSearchParams(location.search);
           const viewConfigId = query.get('config');
@@ -34,6 +38,7 @@ class Main extends React.Component {
         }} />
         <Route exact path='/examples' component={Examples} />
         <Route exact path='/docs' component={Docs} />
+        <Route exact path='/docs/*' component={Docs} />
         <Route exact path='/plugins' component={Plugins} />
         {hasDemos ? (
           <Route exact path='/' component={Home} />

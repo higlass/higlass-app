@@ -54,6 +54,12 @@ export const CODE = {
   svg: '<path d="M5 11.838l-.437.438c-.058.058-.125.087-.2.087s-.144-.03-.202-.087L.088 8.2C.03 8.144 0 8.076 0 8c0-.076.03-.143.087-.2L4.16 3.723c.06-.058.127-.087.203-.087s.143.03.2.087L5 4.162c.06.058.088.125.088.2s-.03.143-.088.2L1.564 8 5 11.437c.058.058.087.125.087.2 0 .076-.028.143-.087.2zm5.168-9.33l-3.262 11.29c-.023.074-.068.13-.135.17-.066.038-.134.045-.204.02l-.542-.147c-.076-.023-.133-.068-.17-.135-.038-.066-.045-.14-.022-.214l3.26-11.288c.024-.076.07-.132.136-.17.067-.038.135-.046.206-.022l.542.15c.075.022.132.067.17.135.04.066.045.137.022.213zM15.912 8.2l-4.074 4.076c-.058.058-.125.087-.2.087-.076 0-.143-.03-.2-.087L11 11.838c-.06-.058-.088-.125-.088-.2 0-.076.03-.144.088-.2L14.436 8 11 4.563c-.06-.058-.088-.125-.088-.2s.03-.143.088-.2l.437-.44c.06-.057.125-.086.2-.086.076 0 .144.03.2.087L15.913 7.8c.06.057.088.124.088.2 0 .075-.03.143-.088.2z" fill="currentColor"/>',
 };
 
+export const COPYRIGHT = {
+  viewBox: '0 0 16 16',
+  fillRule: 'evenodd',
+  svg: '<path d="M8 0c4.415 0 8 3.585 8 8s-3.585 8-8 8-8-3.585-8-8 3.585-8 8-8zm0 .5c4.139 0 7.5 3.361 7.5 7.5 0 4.139-3.361 7.5-7.5 7.5A7.504 7.504 0 0 1 .5 8C.5 3.861 3.861.5 8 .5z" fill="currentColor"/><path d="M8.32 4.939c-.684 0-1.213.257-1.588.771s-.563 1.229-.563 2.147c0 1.911.717 2.866 2.15 2.866.602 0 1.33-.151 2.186-.452v1.524c-.703.293-1.488.439-2.355.439-1.246 0-2.2-.378-2.86-1.133-.66-.756-.99-1.841-.99-3.255 0-.891.162-1.671.487-2.341.324-.67.79-1.184 1.397-1.541.607-.358 1.319-.536 2.136-.536.832 0 1.668.201 2.508.603l-.586 1.477a9.813 9.813 0 0 0-.967-.399 2.892 2.892 0 0 0-.955-.17z" fill="currentColor"/>',
+};
+
 export const CROSS = {
   viewBox: '0 0 16 16',
   svg: '<path d="M16 2l-2-2-6 6-6-6-2 2 6 6-6 6 2 2 6-6 6 6 2-2-6-6" fill="currentColor"/>',
@@ -88,6 +94,12 @@ export const EDIT = {
 export const EXTERNAL = {
   viewBox: '0 0 16 16',
   svg: '<path d="M12 11.76l1.6-1.316v2.996c0 .442-.357.8-.8.8H.8c-.44 0-.8-.357-.8-.8v-8.8c0-.44.358-.8.8-.8h4.612c-1.185.883-1.736 1.6-1.736 1.6H1.6v7.2H12v-.88zm-1.31-4.68c-3.5 0-4.625.56-6.45 3.56 0 0 0-6.375 6.45-6.376V1.76l5.31 4-5.31 4.16V7.08z" fill="currentColor"/>',
+};
+
+export const FOLDER = {
+  viewBox: '0 0 32 32',
+  fillRule: 'evenodd',
+  svg: '<path d="M0 6h2v20H0zM30 15h2v11h-2zM13 6h9v2h-9zM4 2h6v2H4zM10 11h18v2H10zM4 28h24v2H4zM6 15h2v11H6zM2 6H0c0-2.208 1.792-4 4-4v2a2 2 0 0 0-2 2zM8 15H6c0-2.208 1.792-4 4-4v2a2 2 0 0 0-2 2zM32 15h-2a2 2 0 0 0-2-2v-2h.052A4.002 4.002 0 0 1 32 15zM26 10h-2a2 2 0 0 0-2-2V6h.052A4.002 4.002 0 0 1 26 10zM10.026 2A4.002 4.002 0 0 1 14 6h-2a2 2 0 0 0-2-2V2h.026z" fill="currentColor"/><circle cx="13" cy="7" r="1" fill="currentColor"/><path d="M12 6h2v1h-2zM32 26c0 2.208-1.792 4-4 4v-2a2 2 0 0 0 2-2h2zM2 26a2 2 0 0 0 4 0h2c0 2.208-1.792 4-4 4s-4-1.792-4-4h2z" fill="currentColor"/>',
 };
 
 export const TWIETTER = {
@@ -159,7 +171,7 @@ export const LOGO = {
 export const LOGO_TWO_TONE = {
   viewBox: '0 0 32 32',
   fillRule: 'evenodd',
-  svg: '<defs><clipPath id="a"><circle cx="15" cy="15" r="11"/></clipPath><g id="b"><path fill="currentColor" fill-opacity=".25" d="M18 8h4v4h-4z"/><path fill="currentColor" fill-opacity=".5" d="M13 8h4v4h-4z"/><path fill="currentColor" fill-opacity=".7" d="M8 8h4v4H8z"/><path fill="currentColor" fill-opacity=".125" d="M18 3h4v4h-4z"/><path fill="currentColor" fill-opacity=".25" d="M13 3h4v4h-4z"/><path fill="currentColor" fill-opacity=".5" d="M8 3h4v4H8zM18 23h4v4h-4z"/><path fill="currentColor" fill-opacity=".25" d="M13 23h4v4h-4z"/><path fill="currentColor" fill-opacity=".13" d="M8 23h4v4H8z"/><path fill="currentColor" fill-opacity=".5" d="M18 13h4v4h-4z"/><path fill="currentColor" fill-opacity=".8" d="M13 13h4v4h-4z"/><path fill="currentColor" fill-opacity=".5" d="M8 13h4v4H8z"/><path fill="currentColor" fill-opacity=".7" d="M18 18h4v4h-4z"/><path fill="currentColor" fill-opacity=".125" d="M23 8h4v4h-4z"/><path fill="currentColor" fill-opacity=".25" d="M23 13h4v4h-4z"/><path fill="currentColor" fill-opacity=".5" d="M23 18h4v4h-4zM3 8h4v4H3z"/><path fill="currentColor" fill-opacity=".25" d="M3 13h4v4H3z"/><path fill="currentColor" fill-opacity=".13" d="M3 18h4v4H3z"/><path fill="currentColor" fill-opacity=".5" d="M13 18h4v4h-4z"/><path fill="currentColor" fill-opacity=".25" d="M8 18h4v4H8z"/></g></defs><path d="M23.415 27.415C21.015 29.047 18.118 30 15 30 6.72 30 0 23.28 0 15 0 6.72 6.72 0 15 0c8.28 0 15 6.72 15 15 0 3.118-.953 6.015-2.585 8.415L32 28l-4 4-4.585-4.585zM15 3c6.623 0 12 5.377 12 12s-5.377 12-12 12S3 21.623 3 15 8.377 3 15 3z"/><g clip-path="url(#a)"><use xlink:href="#b" class="lense"/></g>',
+  svg: '<defs><clipPath id="a"><circle cx="15" cy="15" r="11"/></clipPath><g id="b"><path fill-opacity=".25" d="M18 8h4v4h-4z"/><path fill-opacity=".5" d="M13 8h4v4h-4z"/><path fill-opacity=".7" d="M8 8h4v4H8z"/><path fill-opacity=".125" d="M18 3h4v4h-4z"/><path fill-opacity=".25" d="M13 3h4v4h-4z"/><path fill-opacity=".5" d="M8 3h4v4H8zM18 23h4v4h-4z"/><path fill-opacity=".25" d="M13 23h4v4h-4z"/><path fill-opacity=".125" d="M8 23h4v4H8z"/><path fill-opacity=".5" d="M18 13h4v4h-4z"/><path fill-opacity=".85" d="M13 13h4v4h-4z"/><path fill-opacity=".5" d="M8 13h4v4H8z"/><path fill-opacity=".7" d="M18 18h4v4h-4z"/><path fill-opacity=".125" d="M23 8h4v4h-4z"/><path fill-opacity=".25" d="M23 13h4v4h-4z"/><path fill-opacity=".5" d="M23 18h4v4h-4zM3 8h4v4H3z"/><path fill-opacity=".25" d="M3 13h4v4H3z"/><path fill-opacity=".125" d="M3 18h4v4H3z"/><path fill-opacity=".5" d="M13 18h4v4h-4z"/><path fill-opacity=".25" d="M8 18h4v4H8z"/></g><g id="c"><path fill-opacity=".75" d="M18 8h4v4h-4z"/><path fill-opacity=".5" d="M13 8h4v4h-4z"/><path fill-opacity=".3" d="M8 8h4v4H8z"/><path fill-opacity=".875" d="M18 3h4v4h-4z"/><path fill-opacity=".75" d="M13 3h4v4h-4z"/><path fill-opacity=".5" d="M8 3h4v4H8zM18 23h4v4h-4z"/><path fill-opacity=".75" d="M13 23h4v4h-4z"/><path fill-opacity=".875" d="M8 23h4v4H8z"/><path fill-opacity=".5" d="M18 13h4v4h-4z"/><path fill-opacity=".5" d="M13 13h4v4h-4z"/><path fill-opacity=".5" d="M8 13h4v4H8z"/><path fill-opacity=".3" d="M18 18h4v4h-4z"/><path fill-opacity=".875" d="M23 8h4v4h-4z"/><path fill-opacity=".75" d="M23 13h4v4h-4z"/><path fill-opacity=".5" d="M23 18h4v4h-4zM3 8h4v4H3z"/><path fill-opacity=".75" d="M3 13h4v4H3z"/><path fill-opacity=".875" d="M3 18h4v4H3z"/><path fill-opacity=".5" d="M13 18h4v4h-4z"/><path fill-opacity=".75" d="M8 18h4v4H8z"/></g></defs><path d="M23.415 27.415C21.015 29.047 18.118 30 15 30 6.72 30 0 23.28 0 15 0 6.72 6.72 0 15 0c8.28 0 15 6.72 15 15 0 3.118-.953 6.015-2.585 8.415L32 28l-4 4-4.585-4.585zM15 3c6.623 0 12 5.377 12 12s-5.377 12-12 12S3 21.623 3 15 8.377 3 15 3z"/><g clip-path="url(#a)"><use xlink:href="#b" class="lense"/><use xlink:href="#c" class="inception"/></g>',
 };
 
 export const LOGO_HMS = {
@@ -194,6 +206,17 @@ export const MAXIMIZE = {
   viewBox: '0 0 16 16',
   fillRule: 'evenodd',
   svg: '<path d="M14.484 12.83l-3.536-3.536-1.654 1.655 3.534 3.536L11.315 16H16v-4.684M6.704 5.054L3.18 1.534 4.668 0H0v4.667l1.53-1.484 3.524 3.52M6.703 10.946l-1.65-1.65-3.545 3.546L0 11.332V16h4.667l-1.51-1.51M11.333 0l1.51 1.508-3.547 3.546 1.65 1.65 3.545-3.546L16 4.668V0" fill="currentColor"/>',
+};
+
+export const PEAX = {
+  viewBox: '0 0 32 32',
+  fillRule: 'evenodd',
+  svg: '<defs><clipPath id="a"><circle cx="15" cy="15" r="11"/></clipPath></defs><path d="M23.415,27.415C21.015,29.047 18.118,30 15,30C6.721,30 0,23.279 0,15C0,6.721 6.721,0 15,0C23.279,0 30,6.721 30,15C30,18.118 29.047,21.015 27.415,23.415L32,28L28,32L23.415,27.415ZM15,3C21.623,3 27,8.377 27,15C27,21.623 21.623,27 15,27C8.377,27 3,21.623 3,15C3,8.377 8.377,3 15,3Z" fill="currentColor"/><g clip-path="url(#a)" fill="currentColor" fill-opacity="0.5"><rect x="6" y="20" width="3" height="7"/><rect x="9" y="14" width="3" height="13"/><rect x="12" y="17" width="3" height="10"/><rect x="15" y="20" width="3" height="7"/><rect x="18" y="10" width="3" height="17"/><rect x="21" y="22" width="3" height="5"/></g>',
+};
+
+export const PEN_RULER = {
+  viewBox: '0 0 16 16',
+  svg: '<path d="M15.707 11.504l-3.84-3.838 1.545-1.544 2.145-2.145c.586-.587.586-1.537 0-2.123L14.143.44C13.85.147 13.466 0 13.083 0c-.385 0-.77.147-1.063.44L9.875 2.585 8.33 4.128 4.494.29C4.3.097 4.046 0 3.793 0c-.255 0-.508.097-.702.29L.29 3.094C-.1 3.48-.1 4.108.288 4.496l3.837 3.837-3.53 3.53-.587 3.36c-.085.487.35.84.768.767l3.358-.59 3.53-3.53 3.837 3.84c.187.185.44.29.702.29.254 0 .507-.097.7-.29l2.805-2.804c.387-.387.387-1.015 0-1.402zm-2.98-10.357c.128-.128.58-.128.71 0L14.85 2.56c.195.196.195.514 0 .71l-1.438 1.437-2.124-2.123 1.44-1.437zM.995 3.8l2.797-2.797.748.747-1.22 1.22c-.097.097-.097.256 0 .353l.354.354c.098.097.256.097.354 0l1.22-1.22 2.378 2.376L4.83 7.63.994 3.8zM3.65 14.47l-2.575.452.45-2.574 9.056-9.056 2.124 2.123L3.65 14.47zm8.558.532l-3.84-3.837 2.797-2.796 2.38 2.376-1.225 1.224c-.097.097-.097.256 0 .353l.354.353c.097.098.256.098.353 0l1.224-1.224.75.747L12.207 15z" fill="currentColor"/><path d="M12.945 9.006l-.965.176-1.224 1.224c-.097.097-.097.256 0 .353l.354.352c.097.098.256.098.353 0l1.224-1.224.258-.882zM6.733 3.273l-.694-.025-1.22 1.22c-.1.097-.1.256 0 .353l.352.355c.098.097.256.097.354 0l1.22-1.22-.013-.682z" fill="currentColor"/>',
 };
 
 export const PEOPLE = {
@@ -274,6 +297,7 @@ export default {
   CALENDAR,
   CENTER,
   CODE,
+  COPYRIGHT,
   CROSS,
   // DATA,
   DOCUMENT,
@@ -281,6 +305,7 @@ export default {
   DRAG,
   EDIT,
   EXTERNAL,
+  FOLDER,
   GITHUB,
   // GLOBE,
   // HELP,
@@ -299,6 +324,8 @@ export default {
   LOGO_MIT,
   MAIL,
   MAXIMIZE,
+  PEAX,
+  PEN_RULER,
   PEOPLE,
   PERSON,
   // PRESENTATION,

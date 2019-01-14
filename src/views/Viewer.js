@@ -1,3 +1,4 @@
+import { boundMethod } from 'autobind-decorator';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -27,6 +28,7 @@ import {
 } from '../utils';
 
 // Configs
+import { IGNORED_FOCUS_ELEMENTS } from '../configs';
 import { HOLD_DOWN_DELAY, PAN_ZOOM, SELECT } from '../configs/mouse-tools';
 import { ANNOTATIONS, INFO } from '../configs/viewer-right-bar-panels';
 
@@ -51,10 +53,10 @@ class Viewer extends React.Component {
 
   componentDidMount() {
     this.pubSubs.push(
-      this.props.pubSub.subscribe('keydown', this.keyDownHandler.bind(this))
+      this.props.pubSub.subscribe('keydown', this.keyDownHandler)
     );
     this.pubSubs.push(
-      this.props.pubSub.subscribe('keyup', this.keyUpHandler.bind(this))
+      this.props.pubSub.subscribe('keyup', this.keyUpHandler)
     );
   }
 
@@ -106,12 +108,12 @@ class Viewer extends React.Component {
       this.hiGlassEventListeners.push({
         name: 'rangeSelection',
         id: this.hgApi.on(
-          'rangeSelection', this.rangeSelectionHandler.bind(this)
+          'rangeSelection', this.rangeSelectionHandler
         ),
       });
     }
     if (this.props.rightBarTab === INFO) {
-      this.hgApi.on('mouseMoveZoom', this.mouseMoveZoomHandler.bind(this));
+      this.hgApi.on('mouseMoveZoom', this.mouseMoveZoomHandler);
       this.hiGlassEventListeners.push({
         name: 'mouseMoveZoom',
         id: this.mouseMoveZoomHandler,
@@ -119,6 +121,7 @@ class Viewer extends React.Component {
     }
   }
 
+  @boundMethod
   mouseMoveZoomHandler(data) {
     this.props.pubSub.publish('viewer.mouseMoveZoom', data);
   }
@@ -134,7 +137,15 @@ class Viewer extends React.Component {
     downloadAsJson('viewConfig.json', this.props.viewConfig);
   }
 
+  @boundMethod
   keyDownHandler(event) {
+    if (
+      IGNORED_FOCUS_ELEMENTS.indexOf(
+        document.activeElement.tagName.toLowerCase()
+      ) >= 0
+    )
+      return;
+
     if (event.keyCode === 83) {  // S
       event.preventDefault();
 
@@ -157,7 +168,15 @@ class Viewer extends React.Component {
     }
   }
 
+  @boundMethod
   keyUpHandler(event) {
+    if (
+      IGNORED_FOCUS_ELEMENTS.indexOf(
+        document.activeElement.tagName.toLowerCase()
+      ) >= 0
+    )
+      return;
+
     if (!this.props.isAuthenticated) return;
 
     if (event.keyCode === 65) {  // A
@@ -191,6 +210,7 @@ class Viewer extends React.Component {
     }
   }
 
+  @boundMethod
   rangeSelectionHandler(rangeSelection) {
     if (rangeSelection.genomicRange) {
       // this.setState({

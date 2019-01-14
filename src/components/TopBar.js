@@ -18,7 +18,9 @@ import auth from '../services/auth';
 // Styles
 import './TopBar.scss';
 
-const hasDemos = HGAC_HOMEPAGE_DEMOS || window.HGAC_HOMEPAGE_DEMOS;
+const hasDemos = typeof window.HGAC_HOMEPAGE_DEMOS !== 'undefined'
+  ? window.HGAC_HOMEPAGE_DEMOS  // from compiled `config.js`
+  : HGAC_HOMEPAGE_DEMOS;  // from webpack's DefinePlugin
 const homeUrl = hasDemos ? '/' : '/app';
 
 const isApp = pathname => pathname && pathname.match(/\/app(?:(?=.)(\?|\/)|$)/);
@@ -89,6 +91,7 @@ class TopBar extends React.Component {
           <nav className={`flex-c flex-jc-e flex-a-s is-toggable ${this.state.menuIsShown ? 'is-shown' : ''}`}>
             <ul className='flex-c flex-jc-e flex-a-s no-list-style primary-nav-list'>
               <li><NavLink to='/about' activeClassName='is-active'>About</NavLink></li>
+              <li><NavLink to='/blog' activeClassName='is-active'>Blog</NavLink></li>
               <li><NavLink to='/examples' activeClassName='is-active'>Examples</NavLink></li>
               <li><NavLink to='/plugins' activeClassName='is-active'>Plugins</NavLink></li>
               <li><NavLink to='/docs' activeClassName='is-active'>Docs</NavLink></li>
@@ -118,7 +121,7 @@ class TopBar extends React.Component {
               }
               <li className='separated-left flex-c'>
                 <a
-                  href='https://github.com/hms-dbmi?&q=higlass'
+                  href='https://github.com/higlass'
                   target='_blank'
                   rel='noopener noreferrer'
                 >

@@ -23,7 +23,9 @@ import { PAN_ZOOM, SELECT } from '../configs/mouse-tools';
 
 const logger = Logger('ViewerSubTopBar');
 
-const server = HGAC_SERVER || window.HGAC_SERVER;
+const server = typeof window.HGAC_SERVER !== 'undefined'
+  ? window.HGAC_SERVER  // from compiled `config.js`
+  : HGAC_SERVER;  // from webpack's DefinePlugin
 
 const showSharedViewUrl = (publish, sharedView) => {
   publish(

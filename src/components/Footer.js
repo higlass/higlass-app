@@ -24,6 +24,7 @@ const Footer = () => (
         <ul className='flex-c flex-jc-e flex-a-s no-list-style'>
           <li><NavLink exact to='/' activeClassName='is-active'>Home</NavLink></li>
           <li><NavLink exact to='/about' activeClassName='is-active'>About</NavLink></li>
+          <li><NavLink exact to='/blog' activeClassName='is-active'>Blog</NavLink></li>
           <li><NavLink exact to='/examples' activeClassName='is-active'>Examples</NavLink></li>
           <li><NavLink exact to='/plugins' activeClassName='is-active'>Plugins</NavLink></li>
           <li><NavLink exact to='/docs' activeClassName='is-active'>Docs</NavLink></li>

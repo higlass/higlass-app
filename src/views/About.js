@@ -7,6 +7,7 @@ import withPubSub from '../hocs/with-pub-sub';
 // Components
 import AppInfo from '../components/AppInfo';
 import Content from '../components/Content';
+import CoolInfo from '../components/CoolInfo';
 import ContentWrapper from '../components/ContentWrapper';
 import Footer from '../components/Footer';
 import Icon from '../components/Icon';
@@ -32,6 +33,19 @@ const showInfo = (publish) => {
   );
 };
 
+const showCool = (publish) => {
+  publish(
+    'globalDialog',
+    {
+      message: <CoolInfo />,
+      request: new Deferred(),
+      resolveOnly: true,
+      resolveText: 'Wow! This is amazing!',
+      headline: 'Cool, Cooler, 😎',
+    }
+  );
+};
+
 const showIcons = (publish) => {
   publish(
     'globalDialog',
@@ -51,7 +65,7 @@ class About extends React.Component {
 
     this.pubSubs = [];
 
-    this.swag = [[73, 67, 79, 78, 83], [73, 78, 70, 79]];
+    this.swag = [[73, 67, 79, 78, 83], [73, 78, 70, 79], [67, 79, 79, 76]];
     this.swagI = 0;
     this.swagJ = 0;
     this.swagInterval = 500;
@@ -84,28 +98,37 @@ class About extends React.Component {
     this.swagTime = now;
 
     if (this.swagJ === 0) {
+      this.swagI = [];
       this.swag.forEach((codeWurst, index) => {
         if (keyCode === codeWurst[0]) {
-          this.swagI = index;
+          this.swagI.push(index);
           this.swagJ = 1;
         }
       });
-    } else if (keyCode === this.swag[this.swagI][this.swagJ]) {
-      this.swagJ += 1;
-    }
-
-    if (this.swagJ === this.swag[this.swagI].length) {
-      switch (this.swagI) {
-        case 0:
-          showIcons(this.props.pubSub.publish);
-          break;
-        case 1:
-          showInfo(this.props.pubSub.publish);
-          break;
-        default:
-          // Nothing
+    } else {
+      for (let i = this.swagI.length; i-- > 0;) {
+        if (keyCode === this.swag[this.swagI[i]][this.swagJ]) this.swagJ += 1;
+        else this.swagI.splice(i, 1);
       }
     }
+
+    this.swagI.forEach(swagI => {
+      if (this.swagJ === this.swag[swagI].length) {
+        switch (swagI) {
+          case 0:
+            showIcons(this.props.pubSub.publish);
+            break;
+          case 1:
+            showInfo(this.props.pubSub.publish);
+            break;
+          case 2:
+            showCool(this.props.pubSub.publish);
+            break;
+          default:
+            // Nothing
+        }
+      }
+    });
   }
 
   render() {
@@ -123,6 +146,88 @@ class About extends React.Component {
           </header>
 
           <div className='wrap p-b-2'>
+            <h3 id='citation' className='iconized underlined anchored'>
+              <a href='#citation' className='hidden-anchor'><Icon iconId='link' /></a>
+              <Icon iconId='document' />
+              <span>Citation</span>
+            </h3>
+
+            <p>
+              Kerpedjiev et al. (2018)<br/>
+              <strong><a href='https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1486-1' target='_blank' rel='noopener noreferrer'>HiGlass: Web-based visual comparison and exploration of genome interaction maps.</a></strong><br/>
+              <em>Genome Biology</em>, 19:125.
+            </p>
+
+            <h3 id='contact' className='iconized underlined anchored'>
+              <a href='#contact' className='hidden-anchor'>
+                <Icon iconId='link' />
+              </a>
+              <Icon iconId='mail' />
+              <span>Contact</span>
+            </h3>
+
+            <ul className='no-list-style large-spacing'>
+              <li>
+                <strong>General: </strong>
+                <a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack</a>
+              </li>
+              <li>
+                <strong>Bugs: </strong>
+                <a href='https://github.com/higlass/higlass/issues' target='_blank' rel='noopener noreferrer'>github.com/higlass/higlass/issues</a>
+              </li>
+              <li>
+                <strong>Implementation Help: </strong>
+                <a href='http://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>stackoverflow.com</a>
+                <span> or </span>
+                <a href='http://bioinformatics.stackoverflow.com/questions/ask?tags=higlass&genomics&hi-c&visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackoverflow.com</a>
+              </li>
+            </ul>
+
+            <h3 id='source-code' className='iconized underlined anchored'>
+              <a href='#source-code' className='hidden-anchor'>
+                <Icon iconId='link' />
+              </a>
+              <Icon iconId='code' />
+              Source Code
+            </h3>
+
+            <p>
+              All the code for HiGlass is open source and available on <a href='https://github.com/higlass' target='_blank' rel='noopener noreferrer'>GitHub</a>. The core packages are:
+            </p>
+
+            <ul className='no-list-style large-spacing iconized'>
+              <li className='iconized'>
+                <Icon iconId='github' />
+                <span className='m-r-0-5'>Viewer:</span>
+                <a href='https://github.com/higlass/higlass' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass</a>
+              </li>
+              <li className='iconized'>
+                <Icon iconId='github' />
+                <span className='m-r-0-5'>Frontend application:</span>
+                <a href='https://github.com/higlass/higlass-app' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-app</a>
+              </li>
+              <li className='iconized'>
+                <Icon iconId='github' />
+                <span className='m-r-0-5'>Backend server:</span>
+                <a href='https://github.com/higlass/higlass-server' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-server</a>
+              </li>
+              <li className='iconized'>
+                <Icon iconId='github' />
+                <span className='m-r-0-5'>Docker contrainer:</span>
+                <a href='https://github.com/higlass/higlass-docker' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-docker</a>
+              </li>
+              <li className='iconized'>
+                <Icon iconId='github' />
+                <span className='m-r-0-5'>Docker management:</span>
+                <a href='https://github.com/higlass/higlass-manage' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-manage</a>
+              </li>
+              <li className='iconized'>
+                <Icon iconId='github' />
+                <span className='m-r-0-5'>Plugin track registration:</span>
+                <a href='https://github.com/higlass/higlass-register' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-register</a>
+              </li>
+            </ul>
+
             <h3 id='resources' className='iconized underlined anchored'>
               <a href='#resources' className='hidden-anchor'><Icon iconId='link' /></a>
               <Icon iconId='books' />
@@ -184,139 +289,62 @@ class About extends React.Component {
               </li>
             </ul>
 
-            <h3 id='contact' className='iconized underlined anchored'>
-              <a href='#contact' className='hidden-anchor'>
-                <Icon iconId='link' />
-              </a>
-              <Icon iconId='mail' />
-              <span>Contact</span>
-            </h3>
-
-            <ul className='no-list-style large-spacing'>
-              <li>
-                <strong>General: </strong>
-                <a href='mailto:help@higlass.io'>help@higlass.io</a>
-              </li>
-              <li>
-                <strong>Bugs: </strong>
-                <a href='https://github.com/hms-dbmi/higlass/issues' target='_blank' rel='noopener noreferrer'>github.com/hms-dbmi/higlass/issues</a>
-              </li>
-              <li>
-                <strong>Questions &amp; Help: </strong>
-                <a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack</a>
-                <span>, </span>
-                <a href='http://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>stackoverflow.com</a>
-                <span>, or </span>
-                <a href='http://bioinformatics.stackoverflow.com/questions/ask?tags=higlass&genomics&hi-c&visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackoverflow.com</a>
-              </li>
-            </ul>
-
-            <h3 id='citation' className='iconized underlined anchored'>
-              <a href='#citation' className='hidden-anchor'><Icon iconId='link' /></a>
-              <Icon iconId='document' />
-              <span>Citation</span>
-            </h3>
-
-            <p>
-              Kerpedjiev et al. (2018)<br/>
-              <strong><a href='https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1486-1' target='_blank' rel='noopener noreferrer'>HiGlass: Web-based visual comparison and exploration of genome interaction maps.</a></strong><br/>
-              <em>Genome Biology</em>, 19:125.
-            </p>
-
-            <h3 id='source-code' className='iconized underlined anchored'>
-              <a href='#source-code' className='hidden-anchor'>
-                <Icon iconId='link' />
-              </a>
-              <Icon iconId='code' />
-              Source Code
-            </h3>
-
-            <p>
-              All the code for HiGlass is open source and available on GitHub:
-            </p>
-
-            <ul className='no-list-style large-spacing iconized'>
-              <li className='iconized'>
-                <Icon iconId='github' />
-                <a href='https://github.com/hms-dbmi/higlass' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass</a>
-              </li>
-              <li className='iconized'>
-                <Icon iconId='github' />
-                <a href='https://github.com/hms-dbmi/higlass-app' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-app</a>
-              </li>
-              <li className='iconized'>
-                <Icon iconId='github' />
-                <a href='https://github.com/hms-dbmi/higlass-server' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-server</a>
-              </li>
-              <li className='iconized'>
-                <Icon iconId='github' />
-                <a href='https://github.com/hms-dbmi/higlass-docker' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-docker</a>
-              </li>
-              <li className='iconized'>
-                <Icon iconId='github' />
-                <a href='https://github.com/hms-dbmi/higlass-manage' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-manage</a>
-              </li>
-              <li className='iconized'>
-                <Icon iconId='github' />
-                <a href='https://github.com/hms-dbmi/higlass-register' target='_blank' rel='noopener noreferrer'>https://github.com/hms-dbmi/higlass-register</a>
-              </li>
-            </ul>
-
-            <h3 id='authors' className='iconized underlined anchored'>
-              <a href='#authors' className='hidden-anchor'>
+            <h3 id='core-contributors' className='iconized underlined anchored'>
+              <a href='#core-contributors' className='hidden-anchor'>
                 <Icon iconId='link' />
               </a>
               <Icon iconId='people' />
-              Contributors
+              Core Contributors
             </h3>
             <ol className='flex-c flex-w-w no-list-style about-author-list'>
               <li>
                 <a href='http://emptypipes.org' target='_blank' rel='noopener noreferrer'>Peter Kerpedjiev</a>
               </li>
               <li>
-                <span>Nezar Abdennur</span>
+                <a href='https://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a>
               </li>
               <li>
-                <a href='https://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a>
+                <a href='https://twitter.com/nv1ctus' target='_blank' rel='noopener noreferrer'>Nezar Abdennur</a>
               </li>
               <li>
                 <a href='https://mccalluc.github.io' target='_blank' rel='noopener noreferrer'>Chuck McCallum</a>
               </li>
+            </ol>
+            <ol className='flex-c flex-w-w no-list-style about-author-list'>
+              <li className='no-comma'>(All contributors:</li>
               <li>
-                <a href='http://www.scott-ouellette.com' target='_blank' rel='noopener noreferrer'>Scott Ouellette</a>
+                <a href='https://github.com/higlass/higlass/graphs/contributors' target='_blank' rel='noopener noreferrer'>viewer</a>
               </li>
               <li>
-                <span>Kasper Dinkla</span>
+                <a href='https://github.com/higlass/higlass-app/graphs/contributors' target='_blank' rel='noopener noreferrer'>app</a>
               </li>
               <li>
-                <a href='http://hendrik.strobelt.com' target='_blank' rel='noopener noreferrer'>Hendrik Strobelt</a>
+                <a href='https://github.com/higlass/higlass-docker/graphs/contributors' target='_blank' rel='noopener noreferrer'>docker</a>
               </li>
               <li>
-                <a href='http://scholar.harvard.edu/jluber/' target='_blank' rel='noopener noreferrer'>Jacob Luber</a>
+                <a href='https://github.com/higlass/higlass-manage/graphs/contributors' target='_blank' rel='noopener noreferrer'>manage</a>)
               </li>
+            </ol>
+
+            <h3 id='advisors' className='iconized underlined anchored'>
+              <a href='#advisors' className='hidden-anchor'>
+                <Icon iconId='link' />
+              </a>
+              <Icon iconId='people' />
+              Advisors
+            </h3>
+            <ol className='flex-c flex-w-w no-list-style about-author-list'>
               <li>
-                <span>Grace Hwang</span>
-              </li>
-              <li>
-                <span>Alaleh Azhir</span>
-              </li>
-              <li>
-                <a href='http://kumarcode.com' target='_blank' rel='noopener noreferrer'>Nikhil Kumar</a>
-              </li>
-              <li>
-                <span>Burak Alver</span>
-              </li>
-              <li>
-                <a href='http://vcg.seas.harvard.edu' target='_blank' rel='noopener noreferrer'>Hanspeter Pfister</a>
-              </li>
-              <li>
-                <a href='http://mirnylab.mit.edu/' target='_blank' rel='noopener noreferrer'>Leonid Mirny</a>
+                <a href='http://gehlenborglab.org' target='_blank' rel='noopener noreferrer'>Nils Gehlenborg</a>
               </li>
               <li>
                 <a href='http://compbio.hms.harvard.edu' target='_blank' rel='noopener noreferrer'>Peter Park</a>
               </li>
               <li>
-                <a href='http://gehlenborglab.org' target='_blank' rel='noopener noreferrer'>Nils Gehlenborg</a>
+                <a href='http://mirnylab.mit.edu/' target='_blank' rel='noopener noreferrer'>Leonid Mirny</a>
+              </li>
+              <li>
+                <a href='http://vcg.seas.harvard.edu' target='_blank' rel='noopener noreferrer'>Hanspeter Pfister</a>
               </li>
             </ol>
 
@@ -345,7 +373,28 @@ class About extends React.Component {
                   <a href='https://github.com/flekschas/hipiler' target='_blank' rel='noopener noreferrer'>https://github.com/flekschas/hipiler</a>
                 </div>
               </li>
+              <li className='flex-c iconized'>
+                <Icon iconId='peax' />
+                <div className='flex-c flex-v'>
+                  <p>
+                    <strong><a href='https://github.com/novartis/peax' target='_blank' rel='noopener noreferrer'>Peax</a></strong>: Interactive Concept Learning and Exploration of Epigenomic Patterns
+                  </p>
+                  <a href='https://github.com/novartis/peax' target='_blank' rel='noopener noreferrer'>https://github.com/novartis/peax</a>
+                </div>
+              </li>
             </ul>
+
+            <h3 id='design' className='iconized underlined anchored'>
+              <a href='#design' className='hidden-anchor'>
+                <Icon iconId='link' />
+              </a>
+              <Icon iconId='pen-ruler' />
+              Design
+            </h3>
+
+            <p>
+              The website and logo (<Icon iconId='logo' isInline={true} />) are designed by <a href='https://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a>.
+            </p>
 
             <h3 id='copyright' className='iconized underlined anchored'>
               <a href='#copyright' className='hidden-anchor'>
@@ -356,9 +405,9 @@ class About extends React.Component {
             </h3>
 
             <p>
-              The following sets of beautiful icons have been slightly adjusted by
-              Fritz Lekschas and are used across the application.
-              Huge thanks to the authors for their fantastic work!
+              The following sets of beautiful icons have been slightly adjusted
+              by <a href='https://lekschas.de' target='_blank' rel='noopener noreferrer'>Fritz Lekschas</a> and
+              are used across the application. Huge thanks to the authors for their fantastic work!
             </p>
 
             <ul className='no-list-style large-spacing iconized'>
@@ -376,7 +425,7 @@ class About extends React.Component {
               <a href='#copyright' className='hidden-anchor'>
                 <Icon iconId='link' />
               </a>
-              &copy;
+              <Icon iconId='copyright' />
               Copyrights and Licenses
             </h3>
 

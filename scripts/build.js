@@ -28,6 +28,7 @@ const webpack = require('webpack');
 const bfj = require('bfj');
 const config = require('../config/webpack.config.prod');
 const paths = require('../config/paths');
+const writeConfig = require('./write-config').run;
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const printHostingInstructions = require('react-dev-utils/printHostingInstructions');
@@ -181,6 +182,9 @@ function build(previousFileSizes) {
           .then(() => resolve(resolveArgs))
           .catch(error => reject(new Error(error)));
       }
+
+      console.log('Create config file...');
+      writeConfig(true);
 
       return resolve(resolveArgs);
     });
