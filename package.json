@@ -1,6 +1,6 @@
 {
   "name": "higlass-app",
-  "version": "1.0.0-rc.21",
+  "version": "1.0.0",
   "description": "A fully-featured app for viewing, exploring, and annotating 1D and 2D genomic data",
   "keywords": [
     "higlass",
