@@ -177,9 +177,9 @@ class About extends React.Component {
               </li>
               <li>
                 <strong>Implementation Help: </strong>
-                <a href='http://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>stackoverflow.com</a>
+                <a href='https://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>stackoverflow.com</a>
                 <span> or </span>
-                <a href='http://bioinformatics.stackoverflow.com/questions/ask?tags=higlass&genomics&hi-c&visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackoverflow.com</a>
+                <a href='https://bioinformatics.stackexchange.com/questions/ask?tags=higlass&tags=genomics&tags=visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackexchange.com</a>
               </li>
             </ul>
 
@@ -213,7 +213,7 @@ class About extends React.Component {
               </li>
               <li className='iconized'>
                 <Icon iconId='github' />
-                <span className='m-r-0-5'>Docker contrainer:</span>
+                <span className='m-r-0-5'>Docker container:</span>
                 <a href='https://github.com/higlass/higlass-docker' target='_blank' rel='noopener noreferrer'>https://github.com/higlass/higlass-docker</a>
               </li>
               <li className='iconized'>
