@@ -53,7 +53,7 @@ class Plugins extends React.Component {
               <p>
                 HiGlass can be extended using plugin tracks. Below is list of
                 supported plugin tracks. If you have developed a new awesome
-                track please <a href="https://github.com/hms-dbmi/higlass-app/blob/master/content/plugins.json" target='_blank' rel='noopener noreferrer'>add your track to this file</a> and
+                track please <a href="https://github.com/higlass/higlass-app-content/blob/master/plugins.json" target='_blank' rel='noopener noreferrer'>add your track to this file</a> and
                 submit a pull request.
               </p>
             </div>
