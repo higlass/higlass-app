@@ -1,3 +1,9 @@
+**v1.0.1**
+
+- Add cTracks to the list of projects using HiGlass
+- Fix outdated citation on the homepage of higlass.io
+- Fix a path issue: assume that HGA is running under root by default
+
 **v1.0.0**
 
 - Add list of plugins
