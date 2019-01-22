@@ -227,7 +227,7 @@ class HomeDemos extends React.Component {
               <li>
                 <span
                   className='reference-number'
-                  name='references-peter2017higlass'
+                  name='references-kerpedjiev2018higlass'
                 >
                   [1]
                 </span>
@@ -238,7 +238,7 @@ class HomeDemos extends React.Component {
                   HiGlass: Web-based visual comparison and exploration of genome interaction maps.
                 </span>
                 <span className='reference-journal'>
-                  <em>bioRxiv</em> (2017): 121889.
+                  <em>Genome Biology</em>, 19:125 (2018).
                 </span>
               </li>
               <li>
