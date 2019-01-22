@@ -28,6 +28,7 @@ class Main extends React.Component {
       <Switch>
         <Route exact path='/about' render={About.render} />
         <Route exact path='/blog' component={Blog} />
+        <Route exact path='/blog/*' component={Blog} />
         <Route exact path='/app' render={({ location }) => {
           const query = new URLSearchParams(location.search);
           const viewConfigId = query.get('config');

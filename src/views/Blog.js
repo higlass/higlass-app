@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+import { withRouter } from 'react-router';
 
 // Components
 import Content from '../components/Content';
@@ -32,6 +34,8 @@ class Blog extends React.Component {
   }
 
   render() {
+    const subPath = `${this.props.location.pathname.slice(6)}`;
+
     return (
       <ContentWrapper name='blog'>
         <Content name='blog' rel={true} bottomMargin={false}>
@@ -39,7 +43,7 @@ class Blog extends React.Component {
             <iframe
               className='full-wh'
               frameBorder='0'
-              src='https://higlass.github.io/higlass-blog/'
+              src={`https://higlass.github.io/higlass-blog/${subPath}`}
               style={{ height: this.state.height }}
             />
           </div>
@@ -50,4 +54,8 @@ class Blog extends React.Component {
   }
 }
 
-export default Blog;
+Blog.propTypes = {
+  location: PropTypes.object.isRequired,
+};
+
+export default withRouter(Blog);
