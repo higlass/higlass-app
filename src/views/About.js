@@ -382,6 +382,15 @@ class About extends React.Component {
                   <a href='https://github.com/novartis/peax' target='_blank' rel='noopener noreferrer'>https://github.com/novartis/peax</a>
                 </div>
               </li>
+              <li className='flex-c iconized'>
+                <Icon iconId='dot' />
+                <div className='flex-c flex-v'>
+                  <p>
+                    <strong><a href='https://github.com/visdesignlab/cTracks' target='_blank' rel='noopener noreferrer'>cTracks</a></strong>: Dynamic track visualization of various Next Generation Sequencing measurements
+                  </p>
+                  <a href='https://github.com/visdesignlab/cTracks' target='_blank' rel='noopener noreferrer'>https://github.com/visdesignlab/cTracks</a>
+                </div>
+              </li>
             </ul>
 
             <h3 id='design' className='iconized underlined anchored'>
