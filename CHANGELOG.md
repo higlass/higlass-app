@@ -1,3 +1,7 @@
+**v1.0.3**
+
+- Support deep links to blog posts. E.g., [https://higlass.io/blog/2018/11/05/higlass-overview/](https://higlass.io/blog/2018/11/05/higlass-overview/)
+
 **v1.0.2**
 
 - Avoid strict protocol for higlass views on higlass.io to support https and http
