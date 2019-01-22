@@ -158,7 +158,7 @@ class HomeDemos extends React.Component {
               isDeferredInit={this.state.isExample0Init}
               isStatic={true}
               viewConfigId='default'
-              server='http://higlass.io'
+              server='//higlass.io'
             />
           </div>
 
@@ -174,7 +174,7 @@ class HomeDemos extends React.Component {
               isDeferredInit={this.state.isExample1Init}
               isStatic={true}
               viewConfigId='twoviews'
-              server='http://higlass.io'
+              server='//higlass.io'
             />
           </div>
 
@@ -195,7 +195,7 @@ class HomeDemos extends React.Component {
               isDeferredInit={this.state.isExample2Init}
               isStatic={true}
               viewConfigId='browserlike'
-              server='http://higlass.io'
+              server='//higlass.io'
             />
           </div>
 
@@ -218,7 +218,7 @@ class HomeDemos extends React.Component {
               isDeferredInit={this.state.isExample3Init}
               isStatic={true}
               viewConfigId='browserwithdetails'
-              server='http://higlass.io'
+              server='//higlass.io'
             />
           </div>
 
