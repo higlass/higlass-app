@@ -1,3 +1,10 @@
+**v1.0.2**
+
+- Avoid strict protocol for higlass views on higlass.io to support https and http
+- Fix link to adding plugin tracks
+- Fix link to bioinformatics.stackexchange.com
+- Fix typos
+
 **v1.0.1**
 
 - Add cTracks to the list of projects using HiGlass
