@@ -177,9 +177,7 @@ class About extends React.Component {
               </li>
               <li>
                 <strong>Implementation Help: </strong>
-                <a href='http://stackoverflow.com/questions/ask?tags=higlass' target='_blank' rel='noopener noreferrer'>stackoverflow.com</a>
-                <span> or </span>
-                <a href='http://bioinformatics.stackoverflow.com/questions/ask?tags=higlass&genomics&hi-c&visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackoverflow.com</a>
+                <a href='https://bioinformatics.stackexchange.com/questions/ask?tags=higlass&genomics&hi-c&visualization' target='_blank' rel='noopener noreferrer'>bioinformatics.stackoverflow.com</a>
               </li>
             </ul>
 
