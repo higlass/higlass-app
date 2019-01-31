@@ -106,7 +106,7 @@ class HiGlassViewer extends React.Component {
 
         // Try loading config from HiGlass.io
         return fetchViewConfig(
-          viewConfigId || defaultViewConfigId, 'http://higlass.io'
+          viewConfigId || defaultViewConfigId, '//higlass.io'
         )
           .then(this.setViewConfig)
           .catch((error) => {
