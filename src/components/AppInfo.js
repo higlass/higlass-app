@@ -6,6 +6,10 @@ const URL = '/version.txt';
 
 const logger = Logger('AppInfo');
 
+const hglibVersion = window.hglib && typeof window.hglib.version !== 'undefined'
+  ? window.hglib.verion  // from HiGlass (defined at runtime)
+  : VERSION_HIGLASS_VIEWER;  // from webpack's DefinePlugin (defined at compile time)
+
 class AppInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +42,7 @@ class AppInfo extends React.Component {
       <div className='app-info'>
         <ul className='no-list-style'>
           <li><strong>App</strong>: Version {VERSION_HIGLASS_APP}</li>
-          <li><strong>Viewer</strong>: Version {VERSION_HIGLASS_VIEWER}</li>
+          <li><strong>Viewer</strong>: Version {hglibVersion}</li>
           <li><strong>Server</strong>: Version {this.state.serverVersion}</li>
         </ul>
         <p>
