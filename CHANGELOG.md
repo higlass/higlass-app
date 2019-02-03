@@ -1,3 +1,10 @@
+**v1.0.4**
+
+- Use `window.HGAC_SERVER` for pulling viewconfs
+- Use `window.hglib.version` for the info dialog
+- Do not enforce protocol when loading viewconfs from higlass.io
+- Add link to our Twitter account
+
 **v1.0.3**
 
 - Support deep links to blog posts. E.g., [https://higlass.io/blog/2018/11/05/higlass-overview/](https://higlass.io/blog/2018/11/05/higlass-overview/)
