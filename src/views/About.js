@@ -168,6 +168,10 @@ class About extends React.Component {
 
             <ul className='no-list-style large-spacing'>
               <li>
+                <strong>News: </strong>
+                <a href='https://twitter.com/higlass_io' target='_blank' rel='noopener noreferrer'>Twitter</a>
+              </li>
+              <li>
                 <strong>General: </strong>
                 <a href='http://bit.ly/higlass-slack' target='_blank' rel='noopener noreferrer'>Slack</a>
               </li>
