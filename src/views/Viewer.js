@@ -38,6 +38,10 @@ const resizeTrigger = () => requestNextAnimationFrame(() => {
   window.dispatchEvent(new Event('resize'));
 });
 
+const server = typeof window.HGAC_SERVER !== 'undefined'
+  ? window.HGAC_SERVER  // from compiled `config.js`
+  : HGAC_SERVER;  // from webpack's DefinePlugin
+
 
 class Viewer extends React.Component {
   constructor(props) {
@@ -248,7 +252,9 @@ class Viewer extends React.Component {
             api={(api) => { this.hgApi = api; }}
             enableAltMouseTools={this.props.isAuthenticated}
             hasSubTopBar={this.props.isAuthenticated}
-            viewConfigId={this.props.viewConfigId} />
+            server={server}
+            viewConfigId={this.props.viewConfigId}
+          />
         </Content>
         {this.props.isAuthenticated
           && <ViewerRightBar
