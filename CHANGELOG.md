@@ -1,3 +1,7 @@
+**v1.0.5**
+
+- Update to HiGlass v1.4
+
 **v1.0.4**
 
 - Use `window.HGAC_SERVER` for pulling viewconfs
