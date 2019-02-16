@@ -1,30 +1,32 @@
-import { boundMethod } from 'autobind-decorator';
-import PropTypes from 'prop-types';
-import React from 'react';
-import { withRouter } from 'react-router';
-import { NavLink } from 'react-router-dom';
+import { boundMethod } from "autobind-decorator";
+import PropTypes from "prop-types";
+import React from "react";
+import { withRouter } from "react-router";
+import { NavLink } from "react-router-dom";
 
 // HOCs
-import withPubSub from '../hocs/with-pub-sub';
+import withPubSub from "../hocs/with-pub-sub";
 
 // Components
-import Hamburger from './Hamburger';
-import Icon from './Icon';
+import Hamburger from "./Hamburger";
+import Icon from "./Icon";
 // import TopBarDropDownLogin from './TopBarDropDownLogin';
 // import TopBarDropDownUser from './TopBarDropDownUser';
 
 // Services
-import auth from '../services/auth';
+import auth from "../services/auth";
 
 // Styles
-import './TopBar.scss';
+import "./TopBar.scss";
 
-const hasDemos = typeof window.HGAC_HOMEPAGE_DEMOS !== 'undefined'
-  ? window.HGAC_HOMEPAGE_DEMOS  // from compiled `config.js`
-  : HGAC_HOMEPAGE_DEMOS;  // from webpack's DefinePlugin
-const homeUrl = hasDemos ? '/' : '/app';
+const hasDemos =
+  typeof window.HGAC_HOMEPAGE_DEMOS !== "undefined"
+    ? window.HGAC_HOMEPAGE_DEMOS // from compiled `config.js`
+    : HGAC_HOMEPAGE_DEMOS; // from webpack's DefinePlugin
+const homeUrl = hasDemos ? "/" : "/app";
 
-const isApp = pathname => pathname && !!pathname.match(/\/app(?:(?=.)(\?|\/)|$)/);
+const isApp = pathname =>
+  pathname && !!pathname.match(/\/app(?:(?=.)(\?|\/)|$)/);
 const isHome = pathname => pathname && !!pathname.match(/^\/$/);
 
 class TopBar extends React.Component {
@@ -33,13 +35,13 @@ class TopBar extends React.Component {
 
     this.state = {
       isLoggingIn: false,
-      loginPassword: '',
-      loginUserId: '',
+      loginPassword: "",
+      loginUserId: "",
       menuIsShown: false,
-      userEmail: auth.get('email'),
-      userId: auth.get('username'),
+      userEmail: auth.get("email"),
+      userId: auth.get("username"),
       fullscreenButtonHovered: false,
-      wasAtHome: +isHome(props.location.pathname),
+      wasAtHome: +isHome(props.location.pathname)
     };
 
     this.loginPasswordHandler = this.loginPasswordHandler.bind(this);
@@ -49,8 +51,8 @@ class TopBar extends React.Component {
   }
 
   componentDidMount() {
-    this.unlisten = this.props.history.listen(
-      () => this.setState({ menuIsShown: false })
+    this.unlisten = this.props.history.listen(() =>
+      this.setState({ menuIsShown: false })
     );
   }
 
@@ -58,15 +60,15 @@ class TopBar extends React.Component {
     if (prevProps.isAuthenticated !== this.props.isAuthenticated) {
       this.setState({
         isLoggingIn: false,
-        userEmail: auth.get('email'),
-        userId: auth.get('username'),
+        userEmail: auth.get("email"),
+        userId: auth.get("username")
       });
     }
 
     if (this.state.wasAtHome < 2 && isHome(this.props.location.pathname)) {
       this.setState({
         wasAtHome: this.state.wasAtHome + 1
-      })
+      });
     }
   }
 
@@ -81,7 +83,7 @@ class TopBar extends React.Component {
 
     this.setState({
       isLoggingIn: true,
-      isLoginUnsuccessful: false,
+      isLoginUnsuccessful: false
     });
 
     auth
@@ -89,24 +91,24 @@ class TopBar extends React.Component {
         this.state.loginUserId,
         this.state.loginPassword
       )
-      .then((success) => {
+      .then(success => {
         this.setState({
           isLoggingIn: false,
           isLoginUnsuccessful: !success,
-          isServerUnavailable: false,
+          isServerUnavailable: false
         });
       })
-      .catch((error) => {
-        if (error.message === 'Bad Request') {
+      .catch(error => {
+        if (error.message === "Bad Request") {
           this.setState({
             isLoggingIn: false,
             isLoginUnsuccessful: true,
-            isServerUnavailable: false,
+            isServerUnavailable: false
           });
         } else {
           this.setState({
             isLoggingIn: false,
-            isServerUnavailable: true,
+            isServerUnavailable: true
           });
         }
       });
@@ -127,48 +129,79 @@ class TopBar extends React.Component {
 
   toggleMenu(isOpen) {
     this.setState({
-      menuIsShown: isOpen,
+      menuIsShown: isOpen
     });
   }
 
   render() {
-    const isShaking = (
+    const isShaking =
       this.state.wasAtHome === 1 &&
       isHome(this.props.location.pathname) &&
-      !this.state.fullscreenButtonHovered
-    );
+      !this.state.fullscreenButtonHovered;
 
     return (
-      <header className='top-bar'>
-        <div className={`flex-c flex-jc-sb top-bar-wrapper ${isApp(this.props.location.pathname) ? 'wrap-basic' : 'wrap'}`}>
-          <div className='flex-c branding-launch'>
-            <NavLink to={homeUrl} className='flex-c flex-a-c branding'>
-              <Icon iconId='logo-two-tone' />
-              <span className='higlass'><span className='higlass-hi'>Hi</span>Glass</span>
+      <header className="top-bar">
+        <div
+          className={`flex-c flex-jc-sb top-bar-wrapper ${
+            isApp(this.props.location.pathname) ? "wrap-basic" : "wrap"
+          }`}
+        >
+          <div className="flex-c branding-launch">
+            <NavLink to={homeUrl} className="flex-c flex-a-c branding">
+              <Icon iconId="logo-two-tone" />
+              <span className="higlass">
+                <span className="higlass-hi">Hi</span>Glass
+              </span>
             </NavLink>
             {hasDemos && (
-            <NavLink
-              to='/app'
-              className={`btn icon-only ${isApp(this.props.location.pathname) ? 'is-active' : ''} ${isShaking ? 'is-shaking' : ''}`}
-              title='Launch HiGlass in Full Screen'
-              onMouseEnter={this.mouseEnterHandler}
-            >
-              <Icon iconId='maximize' />
-            </NavLink>
+              <NavLink
+                to="/app"
+                className={`btn icon-only ${
+                  isApp(this.props.location.pathname) ? "is-active" : ""
+                } ${isShaking ? "is-shaking" : ""}`}
+                title="Launch HiGlass in Full Screen"
+                onMouseEnter={this.mouseEnterHandler}
+              >
+                <Icon iconId="maximize" />
+              </NavLink>
             )}
             {hasDemos && isShaking && (
-            <div className="text-only is-sliding-right">
-              <div>Launch in full screen!</div>
-            </div>
+              <div className="text-only is-sliding-right">
+                <div>Launch in full screen!</div>
+              </div>
             )}
           </div>
-          <nav className={`flex-c flex-jc-e flex-a-s is-toggable ${this.state.menuIsShown ? 'is-shown' : ''}`}>
-            <ul className='flex-c flex-jc-e flex-a-s no-list-style primary-nav-list'>
-              <li><NavLink to='/about' activeClassName='is-active'>About</NavLink></li>
-              <li><NavLink to='/blog' activeClassName='is-active'>Blog</NavLink></li>
-              <li><NavLink to='/examples' activeClassName='is-active'>Examples</NavLink></li>
-              <li><NavLink to='/plugins' activeClassName='is-active'>Plugins</NavLink></li>
-              <li><NavLink to='/docs' activeClassName='is-active'>Docs</NavLink></li>
+          <nav
+            className={`flex-c flex-jc-e flex-a-s is-toggable ${
+              this.state.menuIsShown ? "is-shown" : ""
+            }`}
+          >
+            <ul className="flex-c flex-jc-e flex-a-s no-list-style primary-nav-list">
+              <li>
+                <NavLink to="/about" activeClassName="is-active">
+                  About
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/blog" activeClassName="is-active">
+                  Blog
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/examples" activeClassName="is-active">
+                  Examples
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/plugins" activeClassName="is-active">
+                  Plugins
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/docs" activeClassName="is-active">
+                  Docs
+                </NavLink>
+              </li>
               {
                 // <li className='separated-left flex-c flex-jc-c'>
                 //   {this.props.isAuthenticated
@@ -193,14 +226,14 @@ class TopBar extends React.Component {
                 //   }
                 // </li>
               }
-              <li className='separated-left flex-c'>
+              <li className="separated-left flex-c">
                 <a
-                  href='https://github.com/higlass'
-                  target='_blank'
-                  rel='noopener noreferrer'
+                  href="https://github.com/higlass"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <div className='full-wh flex-c flex-a-c'>
-                    <Icon iconId='github'/>
+                  <div className="full-wh flex-c flex-a-c">
+                    <Icon iconId="github" />
                   </div>
                 </a>
               </li>
@@ -221,7 +254,7 @@ TopBar.propTypes = {
   isAuthenticated: PropTypes.bool,
   location: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
-  pubSub: PropTypes.object.isRequired,
+  pubSub: PropTypes.object.isRequired
 };
 
 export default withPubSub(withRouter(TopBar));
