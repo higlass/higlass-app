@@ -25,7 +25,7 @@ const hasDemos = typeof window.HGAC_HOMEPAGE_DEMOS !== 'undefined'
 const homeUrl = hasDemos ? '/' : '/app';
 
 const isApp = pathname => pathname && !!pathname.match(/\/app(?:(?=.)(\?|\/)|$)/);
-const isHome = pathname => pathname && !!pathname.match(/\/$/);
+const isHome = pathname => pathname && !!pathname.match(/^\/$/);
 
 class TopBar extends React.Component {
   constructor(props) {
@@ -132,7 +132,11 @@ class TopBar extends React.Component {
   }
 
   render() {
-    const isShaking = this.state.wasAtHome === 1 && !this.state.fullscreenButtonHovered;
+    const isShaking = (
+      this.state.wasAtHome === 1 &&
+      isHome(this.props.location.pathname) &&
+      !this.state.fullscreenButtonHovered
+    );
 
     return (
       <header className='top-bar'>
