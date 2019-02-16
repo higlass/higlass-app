@@ -1,3 +1,4 @@
+import { boundMethod } from 'autobind-decorator';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router';
@@ -23,8 +24,8 @@ const hasDemos = typeof window.HGAC_HOMEPAGE_DEMOS !== 'undefined'
   : HGAC_HOMEPAGE_DEMOS;  // from webpack's DefinePlugin
 const homeUrl = hasDemos ? '/' : '/app';
 
-const isApp = pathname => pathname && pathname.match(/\/app(?:(?=.)(\?|\/)|$)/);
-const isHome = pathname => pathname && pathname.match(/\/$/);
+const isApp = pathname => pathname && !!pathname.match(/\/app(?:(?=.)(\?|\/)|$)/);
+const isHome = pathname => pathname && !!pathname.match(/\/$/);
 
 class TopBar extends React.Component {
   constructor(props) {
@@ -37,6 +38,8 @@ class TopBar extends React.Component {
       menuIsShown: false,
       userEmail: auth.get('email'),
       userId: auth.get('username'),
+      fullscreenButtonHovered: false,
+      wasAtHome: +isHome(props.location.pathname),
     };
 
     this.loginPasswordHandler = this.loginPasswordHandler.bind(this);
@@ -58,6 +61,12 @@ class TopBar extends React.Component {
         userEmail: auth.get('email'),
         userId: auth.get('username'),
       });
+    }
+
+    if (this.state.wasAtHome < 2 && isHome(this.props.location.pathname)) {
+      this.setState({
+        wasAtHome: this.state.wasAtHome + 1
+      })
     }
   }
 
@@ -107,6 +116,11 @@ class TopBar extends React.Component {
     this.setState({ loginUserId: event.target.value });
   }
 
+  @boundMethod
+  mouseEnterHandler() {
+    this.setState({ fullscreenButtonHovered: true });
+  }
+
   loginPasswordHandler(event) {
     this.setState({ loginPassword: event.target.value });
   }
@@ -118,6 +132,8 @@ class TopBar extends React.Component {
   }
 
   render() {
+    const isShaking = this.state.wasAtHome === 1 && !this.state.fullscreenButtonHovered;
+
     return (
       <header className='top-bar'>
         <div className={`flex-c flex-jc-sb top-bar-wrapper ${isApp(this.props.location.pathname) ? 'wrap-basic' : 'wrap'}`}>
@@ -129,12 +145,14 @@ class TopBar extends React.Component {
             {hasDemos && (
             <NavLink
               to='/app'
-              className={`btn icon-only ${isApp(this.props.location.pathname) ? 'is-active' : ''} ${isHome(this.props.location.pathname) ? 'is-shaking' : ''}`}
-              title='Launch HiGlass in Full Screen'>
+              className={`btn icon-only ${isApp(this.props.location.pathname) ? 'is-active' : ''} ${isShaking ? 'is-shaking' : ''}`}
+              title='Launch HiGlass in Full Screen'
+              onMouseEnter={this.mouseEnterHandler}
+            >
               <Icon iconId='maximize' />
             </NavLink>
             )}
-            {hasDemos && isHome(this.props.location.pathname) && (
+            {hasDemos && isShaking && (
             <div className="text-only is-sliding-right">
               <div>Launch in full screen!</div>
             </div>
