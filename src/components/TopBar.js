@@ -65,6 +65,58 @@ class TopBar extends React.Component {
     this.unlisten();
   }
 
+  /* ------------------------------ Custom Methods -------------------------- */
+
+  login(event) {
+    event.preventDefault();
+
+    this.setState({
+      isLoggingIn: true,
+      isLoginUnsuccessful: false,
+    });
+
+    auth
+      .login(this.props.pubSub.publish)(
+        this.state.loginUserId,
+        this.state.loginPassword
+      )
+      .then((success) => {
+        this.setState({
+          isLoggingIn: false,
+          isLoginUnsuccessful: !success,
+          isServerUnavailable: false,
+        });
+      })
+      .catch((error) => {
+        if (error.message === 'Bad Request') {
+          this.setState({
+            isLoggingIn: false,
+            isLoginUnsuccessful: true,
+            isServerUnavailable: false,
+          });
+        } else {
+          this.setState({
+            isLoggingIn: false,
+            isServerUnavailable: true,
+          });
+        }
+      });
+  }
+
+  loginUserIdHandler(event) {
+    this.setState({ loginUserId: event.target.value });
+  }
+
+  loginPasswordHandler(event) {
+    this.setState({ loginPassword: event.target.value });
+  }
+
+  toggleMenu(isOpen) {
+    this.setState({
+      menuIsShown: isOpen,
+    });
+  }
+
   render() {
     return (
       <header className='top-bar'>
@@ -139,58 +191,6 @@ class TopBar extends React.Component {
         </div>
       </header>
     );
-  }
-
-  /* ------------------------------ Custom Methods -------------------------- */
-
-  login(event) {
-    event.preventDefault();
-
-    this.setState({
-      isLoggingIn: true,
-      isLoginUnsuccessful: false,
-    });
-
-    auth
-      .login(this.props.pubSub.publish)(
-        this.state.loginUserId,
-        this.state.loginPassword
-      )
-      .then((success) => {
-        this.setState({
-          isLoggingIn: false,
-          isLoginUnsuccessful: !success,
-          isServerUnavailable: false,
-        });
-      })
-      .catch((error) => {
-        if (error.message === 'Bad Request') {
-          this.setState({
-            isLoggingIn: false,
-            isLoginUnsuccessful: true,
-            isServerUnavailable: false,
-          });
-        } else {
-          this.setState({
-            isLoggingIn: false,
-            isServerUnavailable: true,
-          });
-        }
-      });
-  }
-
-  loginUserIdHandler(event) {
-    this.setState({ loginUserId: event.target.value });
-  }
-
-  loginPasswordHandler(event) {
-    this.setState({ loginPassword: event.target.value });
-  }
-
-  toggleMenu(isOpen) {
-    this.setState({
-      menuIsShown: isOpen,
-    });
   }
 }
 
