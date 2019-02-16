@@ -1,3 +1,7 @@
+**v1.0.6**
+
+- Fix #10 and #11
+
 **v1.0.5**
 
 - Update to HiGlass v1.4
