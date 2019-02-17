@@ -26,14 +26,20 @@
     margin: 0 0.5rem 0 0;
   }
 
-  .icon {
-    width: 6em;
-    height: 6em;
+  .left-track,
+  .center-track {
+    min-height: 6rem;
   }
 
   span {
-    margin-top: 1rem;
-    font-size: 1.5em;
+    margin-top: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-top: 0;
   }
 
   &:focus,
