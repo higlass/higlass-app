@@ -446,8 +446,18 @@
           }
         }
 
-        &.separated-left::before {
-          display: none;
+        &.separated-left {
+          &::before {
+            display: none;
+          }
+
+          > a {
+            flex-grow: 1;
+
+            .flex-a-c {
+              justify-content: center;
+            }
+          }
         }
       }
     }
