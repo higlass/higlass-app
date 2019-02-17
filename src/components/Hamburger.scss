@@ -88,9 +88,12 @@ $button-bar-space: 0.375rem; // The spacing between button bars
 
     &.hamburger-to-x span::before,
     &.hamburger-to-x span::after {
-      transition-duration: $fast-transition, $fast-transition, $fast-transition,
-        $fast-transition, $fast-transition;
-      transition-delay: $fast-transition, 0s, 0s, 0s, $fast-transition;
+      transition-duration: $fast-transition,
+                           $fast-transition,
+                           $fast-transition,
+                           $fast-transition,
+                           $fast-transition;
+      transition-delay: $medium-transition, 0s, 0s, 0s, $medium-transition;
     }
 
     &.hamburger-to-x span::before {
@@ -127,7 +130,7 @@ $button-bar-space: 0.375rem; // The spacing between button bars
 
     &.hamburger-to-x.is-active span::before,
     &.hamburger-to-x.is-active span::after {
-      transition-delay: 0s, $fast-transition, $fast-transition;
+      transition-delay: 0s, $medium-transition, $medium-transition;
     }
   }
 
