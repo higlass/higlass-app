@@ -1,6 +1,7 @@
 **v1.0.6**
 
 - Fix #10 and #11
+- Fix other minor visual glitches to provide better support for mobile devices
 
 **v1.0.5**
 
