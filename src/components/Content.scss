@@ -26,6 +26,19 @@
       line-height: 1.75em;
     }
   }
+
+  /*
+   * -----------------------------------------------------------------------------
+   * Media Queries
+   * -----------------------------------------------------------------------------
+   */
+
+  /* 400px */
+  @media screen and (max-width: 40em) {
+    > header {
+      text-align: left;
+    }
+  }
 }
 
 .content-wrapper-bottom-bar .content {

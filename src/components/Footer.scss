@@ -58,4 +58,28 @@
     font-size: 0.8em;
     color: transparentize($gray-dark, 0.5);
   }
+
+  /*
+   * -----------------------------------------------------------------------------
+   * Media Queries
+   * -----------------------------------------------------------------------------
+   */
+
+  /* 400px */
+  @media screen and (max-width: 40em) {
+    padding: 1rem 0;
+
+    .wrap {
+      align-items: flex-start;
+    }
+
+    nav > ul {
+      flex-direction: column;
+      text-align: right;
+
+      li {
+        margin-bottom: 0.25em;
+      }
+    }
+  }
 }

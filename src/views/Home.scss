@@ -75,4 +75,24 @@
   [class^="reference-"] {
     margin-right: 0.25rem;
   }
+
+  /*
+   * -----------------------------------------------------------------------------
+   * Media Queries
+   * -----------------------------------------------------------------------------
+   */
+
+  /* 400px */
+  @media screen and (max-width: 30em) {
+    .home-content > section {
+      padding-top: 0.75rem;
+    }
+
+    .home-info-buttons {
+      .drop-area,
+      .button-like-file-select {
+        width: 12rem;
+      }
+    }
+  }
 }
