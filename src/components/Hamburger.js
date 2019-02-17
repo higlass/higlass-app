@@ -12,7 +12,9 @@ class Hamburger extends React.Component {
         className='hamburger-wrapper'
         onClick={this.toggle.bind(this)}>
         <div className={`hamburger hamburger-to-x ${this.props.isActive ? 'is-active' : ''}`}>
-          <span></span>
+          <span className="hamburger-bar-top"></span>
+          <span className="hamburger-bar-middle"></span>
+          <span className="hamburger-bar-bottom"></span>
         </div>
         <div className='hamburger-bg' />
       </button>

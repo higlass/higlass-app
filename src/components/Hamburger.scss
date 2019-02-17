@@ -47,90 +47,45 @@ $button-bar-space: 0.375rem; // The spacing between button bars
     z-index: 1;
     transition: background $fast-transition;
 
-    span {
+    .hamburger-bar-top,
+    .hamburger-bar-middle,
+    .hamburger-bar-bottom, {
       top: ($button-height / 2) - ($bar-thickness / 2);
       left: $button-pad;
       right: $button-pad;
-    }
-
-    span::before,
-    span::after {
-      left: 0;
-      width: 100%;
-      content: "";
-    }
-
-    span,
-    span::before,
-    span::after {
       position: absolute;
       display: block;
       height: $bar-thickness;
       background: $gray-dark;
     }
 
-    span::before {
-      top: -$bar-thickness - $button-bar-space;
+    .hamburger-bar-top {
+      transform: translate(0, -$bar-thickness - $button-bar-space);
     }
 
-    span::after {
-      bottom: -$bar-thickness - $button-bar-space;
+    .hamburger-bar-bottom {
+      transform: translate(0, $bar-thickness + $button-bar-space);
     }
 
-    /**
-     * Hamburger to "x" (htx). Takes on a hamburger shape, bars slide
-     * down to center and transform into an "x".
-     */
-
-    &.hamburger-to-x span {
-      transition: background 0s $fast-transition;
+    &.hamburger-to-x.is-active .hamburger-bar-middle {
+      animation-name: hamburger-bar-middle;
+      animation-timing-function: $easing;
+      animation-duration: $slow-transition;
+      animation-fill-mode: forwards;
     }
 
-    &.hamburger-to-x span::before,
-    &.hamburger-to-x span::after {
-      transition-duration: $fast-transition,
-                           $fast-transition,
-                           $fast-transition,
-                           $fast-transition,
-                           $fast-transition;
-      transition-delay: $medium-transition, 0s, 0s, 0s, $medium-transition;
+    &.hamburger-to-x.is-active  .hamburger-bar-top {
+      animation-name: hamburger-bar-top;
+      animation-timing-function: $easing;
+      animation-duration: $slow-transition;
+      animation-fill-mode: forwards;
     }
 
-    &.hamburger-to-x span::before {
-      transition-property: top, transform, -moz-transform, -webkit-transform,
-        background;
-    }
-
-    &.hamburger-to-x span::after {
-      transition-property: bottom, transform, -moz-transform, -webkit-transform,
-        background;
-    }
-
-    /* active state, i.e. menu open */
-
-    &.hamburger-to-x.is-active span,
-    &.hamburger-to-x.is-active span::before,
-    &.hamburger-to-x.is-active span::after {
-      background: $primary;
-    }
-
-    &.hamburger-to-x.is-active span {
-      background: none;
-    }
-
-    &.hamburger-to-x.is-active span::before {
-      top: 0;
-      transform: rotate(45deg);
-    }
-
-    &.hamburger-to-x.is-active span::after {
-      bottom: 0;
-      transform: rotate(-45deg);
-    }
-
-    &.hamburger-to-x.is-active span::before,
-    &.hamburger-to-x.is-active span::after {
-      transition-delay: 0s, $medium-transition, $medium-transition;
+    &.hamburger-to-x.is-active  .hamburger-bar-bottom {
+      animation-name: hamburger-bar-bottom;
+      animation-timing-function: $easing;
+      animation-duration: $slow-transition;
+      animation-fill-mode: forwards;
     }
   }
 
@@ -139,6 +94,82 @@ $button-bar-space: 0.375rem; // The spacing between button bars
     z-index: 0;
     top: 0;
     opacity: 0;
+    background: $primary;
     transition: opacity $fast-transition $easing;
+  }
+
+  .hamburger.is-active + .hamburger-bg {
+    animation-name: hamburger-bg;
+    animation-timing-function: $easing;
+    animation-duration: $slow-transition;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes hamburger-bar-middle {
+    0% {
+      opacity: 1;
+    }
+    20% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes hamburger-bar-top {
+    0% {
+      transform: translate(0, -$bar-thickness - $button-bar-space);
+    }
+    20% {
+      transform: translate(0, 0);
+    }
+    30% {
+      transform: rotate(0deg);
+    }
+    50% {
+      background: $gray-dark;
+    }
+    80% {
+      transform: rotate(45deg);
+    }
+    100% {
+      background: $white;
+      transform: rotate(45deg);
+    }
+  }
+
+  @keyframes hamburger-bar-bottom {
+    0% {
+      transform: translate(0, $bar-thickness + $button-bar-space);
+    }
+    20% {
+      transform: translate(0, 0);
+    }
+    30% {
+      transform: rotate(0deg);
+    }
+    50% {
+      background: $gray-dark;
+    }
+    80% {
+      transform: rotate(-45deg);
+    }
+    100% {
+      background: $white;
+      transform: rotate(-45deg);
+    }
+  }
+
+  @keyframes hamburger-bg {
+    0% {
+      opacity: 0;
+    }
+    70% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 }

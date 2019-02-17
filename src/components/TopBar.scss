@@ -261,39 +261,6 @@
     top: 0;
     right: 0;
     padding: 0 1rem;
-
-    .hamburger {
-      span,
-      span::before,
-      span::after {
-        background: $gray-dark;
-      }
-
-      &.hamburger-to-x.is-active span {
-        background: none;
-
-        &::before,
-        &::after {
-          animation-delay: $normal-transition;
-          animation-duration: $normal-transition;
-          animation-fill-mode: forwards;
-          animation-name: fade-bg;
-          animation-timing-function: $easing;
-        }
-      }
-    }
-
-    .hamburger-bg {
-      background: $primary;
-    }
-
-    .hamburger.is-active + .hamburger-bg {
-      animation-delay: $normal-transition;
-      animation-duration: $normal-transition;
-      animation-fill-mode: forwards;
-      animation-name: fade-in;
-      animation-timing-function: $easing;
-    }
   }
 
   .text-only {
@@ -324,24 +291,6 @@
    * Animations
    * -----------------------------------------------------------------------------
    */
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-bg {
-    from {
-      background: $primary;
-    }
-    to {
-      background: $white;
-    }
-  }
 
   @keyframes shake {
     10%,
@@ -396,7 +345,14 @@
    * -----------------------------------------------------------------------------
    */
 
-  /* 400px */
+  /* 640px */
+  @media screen and (max-width: 40em) {
+    .fullscreen-launch-hint {
+      display: none;
+    }
+  }
+
+  /* 480px */
   @media screen and (max-width: 30em) {
     .branding-launch {
       position: relative;

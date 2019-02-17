@@ -166,7 +166,7 @@ class TopBar extends React.Component {
               </NavLink>
             )}
             {hasDemos && isShaking && (
-              <div className="text-only is-sliding-right">
+              <div className="fullscreen-launch-hint text-only is-sliding-right">
                 <div>Launch in full screen!</div>
               </div>
             )}
