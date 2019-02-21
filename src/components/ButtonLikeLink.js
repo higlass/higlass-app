@@ -8,12 +8,17 @@ import './ButtonLikeLink.scss';
 const isMailTo = url => url.substr(0, 7) === 'mailto:';
 
 const ButtonLikeLink = props => (
-  <div className={`flex-c flex-a-c button-like-link ${props.className}`} style={props.style}>
+  <div
+    className={`flex-c flex-a-c button-like-link ${props.className}`}
+    style={props.style}
+  >
     {props.external ? (
       <a
         href={props.to}
         target={props.newWindow && !isMailTo(props.to) ? '_blank' : ''}
-        rel={props.newWindow && !isMailTo(props.to) ? 'noopener noreferrer' : ''}
+        rel={
+          props.newWindow && !isMailTo(props.to) ? 'noopener noreferrer' : ''
+        }
       >
         {props.children}
       </a>
@@ -27,7 +32,7 @@ ButtonLikeLink.defaultProps = {
   className: '',
   external: false,
   newWindow: false,
-  style: {},
+  style: {}
 };
 
 ButtonLikeLink.propTypes = {
@@ -36,7 +41,7 @@ ButtonLikeLink.propTypes = {
   to: PropTypes.string.isRequired,
   external: PropTypes.bool,
   newWindow: PropTypes.bool,
-  style: PropTypes.obj,
+  style: PropTypes.obj
 };
 
 export default ButtonLikeLink;
