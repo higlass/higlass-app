@@ -1,3 +1,7 @@
+**v1.1.0**
+
+- Add support for acustom footer for branding the organization running the higlass instance.
+
 **v1.0.6**
 
 - Fix #10 and #11
