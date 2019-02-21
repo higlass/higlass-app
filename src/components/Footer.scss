@@ -59,6 +59,57 @@
     color: transparentize($gray-dark, 0.5);
   }
 
+  #run-by {
+    margin: -0.66rem 0 0.66rem 0;
+    padding: 0.66rem 0;
+    color: $white;
+    background: $primary;
+
+    .run-by-slogan {
+      padding-bottom: 0.25rem;
+    }
+
+    .run-by-organization {
+      margin-bottom: -0.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+
+      a {
+        color: inherit !important;
+
+        &:after {
+          background: $white
+        }
+      }
+    }
+
+    .run-by-logo {
+      margin-right: 0.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    .run-by-contact {
+      margin-bottom: -0.5rem;
+      padding: 0.25em 0.5em;
+      border: 1px solid $white;
+      background: $primary;
+
+      a {
+        color: inherit !important;
+
+        &:after {
+          display: none;
+        }
+      }
+
+      &:hover {
+        color: $black;
+        background: $white;
+      }
+    }
+  }
+
   /*
    * -----------------------------------------------------------------------------
    * Media Queries
