@@ -151,7 +151,7 @@ class HomeDemos extends React.Component {
           </div>
         </section>
         <section className='wrap'>
-          <h3>Single View</h3>
+          <h3 className='hga-h3'>Single View</h3>
           <div ref={this.onRefExample(0)} className="example-1">
             <HiGlassViewer
               isDeferred={true}
@@ -162,7 +162,7 @@ class HomeDemos extends React.Component {
             />
           </div>
 
-          <h3>Two Linked Views</h3>
+          <h3 className='hga-h3'>Two Linked Views</h3>
           <p>
             HiGlass can also be configured to show two or more views. These views can
             be synchronized to always show the same location. For more information,
@@ -178,7 +178,7 @@ class HomeDemos extends React.Component {
             />
           </div>
 
-          <h3>Genome Browser-Like View</h3>
+          <h3 className='hga-h3'>Genome Browser-Like View</h3>
           <p>
             If the 2D view is omitted, HiGlass functions much like a regular
             genome browser. See the documentation for more information about
@@ -199,7 +199,7 @@ class HomeDemos extends React.Component {
             />
           </div>
 
-          <h3>Genome Browser-Like View with Details</h3>
+          <h3 className='hga-h3'>Genome Browser-Like View with Details</h3>
           <p>
             All of the inter-view operations, such as linking and viewport projection
             are also available in the simplified genome browser-like view. The example
