@@ -14,10 +14,10 @@
   "homepage": "/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hms-dbmi/higlass-app.git"
+    "url": "https://github.com/higlass/higlass-app.git"
   },
   "bugs": {
-    "url": "https://github.com/hms-dbmi/higlass-app/issues"
+    "url": "https://github.com/higlass/higlass-app/issues"
   },
   "engines": {
     "node": ">=8"
@@ -26,12 +26,12 @@
     "autobind-decorator": "2.4.0",
     "bootstrap": "3.3.7",
     "deep-equal": "1.0.1",
-    "higlass": "1.4.0",
+    "higlass": "1.6.0",
     "history": "4.7.2",
-    "pixi.js": "4.8.4",
+    "pixi.js-legacy": "5.0.4",
     "prop-types": "15.6.2",
     "pub-sub-es": "1.2.0",
-    "react": "16.7.0",
+    "react": "16.8.6",
     "react-bootstrap": "0.32.1",
     "react-dom": "16.7.0",
     "react-markdown": "4.0.0",
