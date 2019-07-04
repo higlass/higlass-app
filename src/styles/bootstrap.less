@@ -1,15 +1,10 @@
-.twbs,
-div[role=dialog] {
-  @import '../../node_modules/bootstrap/less/bootstrap.less';
+@import '../../node_modules/bootstrap/less/bootstrap.less';
+
+// Needed since Bootstrap overwrites CSS-Module styling of HiGlass...
+.btn-default {
+  background-color: inherit;
 }
 
-.twbs {
-  // Needed since Bootstrap overwrites CSS-Module styling of HiGlass...
-  .btn-default {
-    background-color: inherit;
-  }
-
-  [class^='GenomePositionSearchBox-module_genome-position-search-bar-button-focus-'] {
-    color: #fff;
-  }
+[class^='GenomePositionSearchBox-module_genome-position-search-bar-button-focus-'] {
+  color: #fff;
 }
