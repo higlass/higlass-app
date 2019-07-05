@@ -552,60 +552,60 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     // Generate a service worker script that will precache, and keep up to date,
     // the HTML & assets that are part of the Webpack build.
-    new WorkboxWebpackPlugin.GenerateSW({
-      clientsClaim: true,
-      exclude: [/\.map$/, /asset-manifest\.json$/],
-      importWorkboxFrom: "cdn",
-      navigateFallback: `${publicUrl}/index.html`,
-      navigateFallbackBlacklist: [
-        // Exclude URLs starting with /_, as they're likely an API call
-        new RegExp("^/_"),
-        // Exclude URLs containing a dot, as they're likely a resource in
-        // public/ and not a SPA route
-        new RegExp("/[^/]+\\.[^/]+$"),
-        // Exclude HiGlass server URLs
-        new RegExp("^/api"),
-        new RegExp("^/admin"),
-        // Exclude HiPiler
-        new RegExp("^/hipiler")
-      ],
-      // Cache files not handled by Webpack. E.g., react, hglib, etc.
-      globPatterns: [
-        "analytics.js",
-        "autotrack.custom.js",
-        "hglib.min.js",
-        "hglib.min.css",
-        "react.production.min.js",
-        "react-dom.production.min.js",
-        "react-bootstrap.min.js",
-        "pixi.min.js",
-        "pure-min.css"
-      ],
-      // Cache requests that appear at runtime and are not determined at
-      // compilation
-      runtimeCaching: [
-        // Cache news, examples, and plugins
-        {
-          urlPattern: new RegExp("^https://cdn.rawgit.com"),
-          handler: "staleWhileRevalidate",
-          options: {
-            cacheableResponse: {
-              statuses: [0, 200]
-            }
-          }
-        },
-        // Cache examples and plugin screenshots
-        {
-          urlPattern: new RegExp("^https://cloud.githubusercontent.com"),
-          handler: "staleWhileRevalidate",
-          options: {
-            cacheableResponse: {
-              statuses: [0, 200]
-            }
-          }
-        }
-      ]
-    }),
+    // new WorkboxWebpackPlugin.GenerateSW({
+    //   clientsClaim: true,
+    //   exclude: [/\.map$/, /asset-manifest\.json$/],
+    //   importWorkboxFrom: "cdn",
+    //   navigateFallback: `${publicUrl}/index.html`,
+    //   navigateFallbackBlacklist: [
+    //     // Exclude URLs starting with /_, as they're likely an API call
+    //     new RegExp("^/_"),
+    //     // Exclude URLs containing a dot, as they're likely a resource in
+    //     // public/ and not a SPA route
+    //     new RegExp("/[^/]+\\.[^/]+$"),
+    //     // Exclude HiGlass server URLs
+    //     new RegExp("^/api"),
+    //     new RegExp("^/admin"),
+    //     // Exclude HiPiler
+    //     new RegExp("^/hipiler")
+    //   ],
+    //   // Cache files not handled by Webpack. E.g., react, hglib, etc.
+    //   globPatterns: [
+    //     "analytics.js",
+    //     "autotrack.custom.js",
+    //     "hglib.min.js",
+    //     "hglib.min.css",
+    //     "react.production.min.js",
+    //     "react-dom.production.min.js",
+    //     "react-bootstrap.min.js",
+    //     "pixi.min.js",
+    //     "pure-min.css"
+    //   ],
+    //   // Cache requests that appear at runtime and are not determined at
+    //   // compilation
+    //   runtimeCaching: [
+    //     // Cache news, examples, and plugins
+    //     {
+    //       urlPattern: new RegExp("^https://cdn.rawgit.com"),
+    //       handler: "staleWhileRevalidate",
+    //       options: {
+    //         cacheableResponse: {
+    //           statuses: [0, 200]
+    //         }
+    //       }
+    //     },
+    //     // Cache examples and plugin screenshots
+    //     {
+    //       urlPattern: new RegExp("^https://cloud.githubusercontent.com"),
+    //       handler: "staleWhileRevalidate",
+    //       options: {
+    //         cacheableResponse: {
+    //           statuses: [0, 200]
+    //         }
+    //       }
+    //     }
+    //   ]
+    // }),
     // Expose version numbers.
     new webpack.DefinePlugin({
       VERSION_HIGLASS_APP: JSON.stringify(packageJson.version),
