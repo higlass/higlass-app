@@ -1,3 +1,11 @@
+**v1.1.2**
+
+- Disable service workers
+
+**v1.1.1**
+
+- Fix minor visual glitch with HiGlass `v1.6`
+
 **v1.1.0**
 
 - Add support for acustom footer for branding the organization running the higlass instance.
