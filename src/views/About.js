@@ -61,6 +61,10 @@ class About extends React.Component {
     this.swagJ = 0;
     this.swagInterval = 500;
     this.swagTime = performance.now();
+
+    this.state = {
+      playVideo: false
+    }
   }
 
   componentDidMount() {
@@ -368,72 +372,6 @@ class About extends React.Component {
               </li>
             </ul>
 
-            <h3 id="resources" className="iconized underlined anchored">
-              <a href="#resources" className="hidden-anchor">
-                <Icon iconId="link" />
-              </a>
-              <Icon iconId="books" />
-              Resources
-            </h3>
-
-            <ul className="about-resource-list no-list-style large-spacing">
-              <li id="tutorial-2018-4dn-hic-bootcamp">
-                <strong>
-                  <a
-                    href="https://github.com/hms-dbmi/hic-data-analysis-bootcamp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Tutorial from the Hi-C Data Analysis Bootcamp organized by
-                    Harvard Medical School
-                  </a>
-                </strong>
-                <time dateTime="2018-05-12">(May 2018)</time>
-                <p>
-                  After this tutorial you will be familiar with the
-                  visualization of 3D genome data in HiGlass and how to get
-                  HiGlass up an running.
-                </p>
-              </li>
-              <li id="tutorial-2017-4dn-annual-meeting">
-                <strong>
-                  <a
-                    href="https://github.com/4dn-dcic/2017-annual-meeting-higlass-hipiler-tutorial"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Tutorial from 4D Nucleome Annual Meeting
-                  </a>
-                </strong>
-                <time dateTime="2017-09-18">(Sep 2017)</time>
-                <p>
-                  After this tutorial you know about the functionality of
-                  HiGlass and HiPiler to visually explore sequencing-based 3D
-                  genome data as well as how to get started using the tools on
-                  their own.
-                </p>
-              </li>
-              <li id="tutorial-2017-ismb">
-                <strong>
-                  <a
-                    href="https://github.com/hms-dbmi/3d-genome-processing-tutorial"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Tutorial from ISMB/ECCB 2017
-                  </a>
-                </strong>
-                <time dateTime="2017-06-20">(Jun 2017)</time>
-                <p>
-                  After this tutorial you are able to obtain, process, analyze,
-                  and visualize 3D genome data on their own as well as to
-                  understand some of the logic, motivation and pitfalls
-                  associated with common operations such as matrix balancing and
-                  multi-resolution visualization.
-                </p>
-              </li>
-            </ul>
-
             <h3 id="core-contributors" className="iconized underlined anchored">
               <a href="#core-contributors" className="hidden-anchor">
                 <Icon iconId="link" />
@@ -565,6 +503,130 @@ class About extends React.Component {
                 </a>
               </li>
             </ol>
+
+            <h3 id="introduction" className="iconized underlined anchored">
+              <a href="#introduction" className="hidden-anchor">
+                <Icon iconId="link" />
+              </a>
+              <Icon iconId="video" />
+              Introduction
+            </h3>
+            <div className="video">
+              <div
+                className="placeholder-btn flex-c flex-jc-c flex-a-c"
+                onClick={() => { this.setState({ playVideo: true }); }}
+              >
+                {this.state.playVideo ? (
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/v62k4Ok1S8g?autoplay=1"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <svg className="icon" viewBox="0 0 16 16">
+                    <path
+                      d="M15.84 4.756s-.156-1.102-.636-1.588c-.608-.638-1.29-.64-1.604-.678-2.24-.162-5.6-.166-5.6-.166s-4.16.036-5.44.16c-.356.067-1.156.047-1.764.684C.316 3.655.16 4.755.16 4.755S0 6.05 0 7.345v1.26c0 1.295.16 2.59.16 2.59s.156 1.1.636 1.587c.608.637 1.408.616 1.764.684 1.28.123 5.44.16 5.44.16s3.36-.004 5.6-.166c.314-.038.996-.04 1.604-.678.48-.486.636-1.59.636-1.59S16 9.9 16 8.605V7.346c0-1.296-.16-2.59-.16-2.59z"
+                      className="secondary"/>
+                    <path
+                      d="M6.517 4.8l4.176 2.588c.94.58.924.58-.013 1.156L6.527 11.13c-.9.585-.898.398-.898-.352V5.155c-.002-.688-.002-.937.887-.355z"
+                      className="primary"/>
+                  </svg>
+                )}
+              </div>
+            </div>
+
+            <h3 id="resources" className="iconized underlined anchored">
+              <a href="#resources" className="hidden-anchor">
+                <Icon iconId="link" />
+              </a>
+              <Icon iconId="books" />
+              Resources
+            </h3>
+
+            <ul className="about-resource-list no-list-style large-spacing">
+              <li id="demos-2019-scipy-conference">
+                <strong>
+                  <a
+                    href="https://github.com/higlass/scipy19"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Demos from our talk at the SciPy Conference
+                  </a>
+                </strong>
+                <time dateTime="2019-07-10">(Jul 2019)</time>
+                <p>
+                  The Jupyter notebooks demonstrate how to build HiGlass views
+                  with our Python package{' '}
+                  <a
+                    href="https://github.com/higlass/higlass-python"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    higlass-python
+                  </a>
+                  .
+                </p>
+              </li>
+              <li id="tutorial-2018-4dn-hic-bootcamp">
+                <strong>
+                  <a
+                    href="https://github.com/hms-dbmi/hic-data-analysis-bootcamp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Tutorial from the Hi-C Data Analysis Bootcamp organized by
+                    Harvard Medical School
+                  </a>
+                </strong>
+                <time dateTime="2018-05-12">(May 2018)</time>
+                <p>
+                  After this tutorial you will be familiar with the
+                  visualization of 3D genome data in HiGlass and how to get
+                  HiGlass up an running.
+                </p>
+              </li>
+              <li id="tutorial-2017-4dn-annual-meeting">
+                <strong>
+                  <a
+                    href="https://github.com/4dn-dcic/2017-annual-meeting-higlass-hipiler-tutorial"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Tutorial from 4D Nucleome Annual Meeting
+                  </a>
+                </strong>
+                <time dateTime="2017-09-18">(Sep 2017)</time>
+                <p>
+                  After this tutorial you know about the functionality of
+                  HiGlass and HiPiler to visually explore sequencing-based 3D
+                  genome data as well as how to get started using the tools on
+                  their own.
+                </p>
+              </li>
+              <li id="tutorial-2017-ismb">
+                <strong>
+                  <a
+                    href="https://github.com/hms-dbmi/3d-genome-processing-tutorial"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Tutorial from ISMB/ECCB 2017
+                  </a>
+                </strong>
+                <time dateTime="2017-06-20">(Jun 2017)</time>
+                <p>
+                  After this tutorial you are able to obtain, process, analyze,
+                  and visualize 3D genome data on their own as well as to
+                  understand some of the logic, motivation and pitfalls
+                  associated with common operations such as matrix balancing and
+                  multi-resolution visualization.
+                </p>
+              </li>
+            </ul>
 
             <h3 id="in-use" className="iconized underlined anchored">
               <a href="#in-use" className="hidden-anchor">

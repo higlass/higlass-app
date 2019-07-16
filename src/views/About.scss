@@ -1,5 +1,6 @@
 @import "../styles/colors";
 @import "../styles/ratio";
+@import "../styles/transitions";
 
 .about {
   .about-resource-list time {
@@ -48,6 +49,59 @@
     }
     &:before {
       content: "[";
+    }
+  }
+
+  .video {
+    @include ratio(.5625);
+    max-width: 35rem;
+
+    .placeholder-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 0.25rem;
+      background-image: url('../images/scipy-preview.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      box-shadow: inset 0 0 0 1px $gray-lighter-rgba;
+      transition: box-shadow $fast-transition $easing,
+                  transform $fast-transition $easing;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: inset 0 0 0 2px $primary;
+
+        .icon {
+          opacity: 1;
+
+          .primary {
+            fill: $white;
+          }
+
+          .secondary {
+            fill: $primary;
+          }
+        }
+      }
+
+      .icon {
+        width: 8rem;
+        height: 8rem;
+        opacity: 0.92;
+        transition: opacity $fast-transition $easing;
+
+        .primary {
+          fill: $white;
+        }
+        .secondary {
+          transition: fill $fast-transition $easing;
+          fill: $gray-medium;
+        }
+      }
     }
   }
 }
