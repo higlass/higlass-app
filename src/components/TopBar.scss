@@ -67,7 +67,6 @@
     }
 
     .higlass {
-      position: relative;
       @include underline($black, -2px, 2px);
       transition: color $fast-transition $easing;
     }
