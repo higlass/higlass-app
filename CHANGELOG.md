@@ -1,3 +1,7 @@
+**v1.1.4**
+
+- Switch content URLs to hopefully fix an adblocker issue when loading JSON from GitHub pages
+
 **v1.1.3**
 
 - Disable _undo_ and _redo_ handlers when an input element is focused
