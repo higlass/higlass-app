@@ -1,3 +1,9 @@
+**v1.1.3**
+
+- Disable _undo_ and _redo_ handlers when an input element is focused
+- Move _Core Contributors_ and _PIs_ above tutorial resources in `/about`
+- Add the talk video from the SciPy conference to `/about`
+
 **v1.1.2**
 
 - Disable service workers
