@@ -16,7 +16,7 @@ import SpinnerCenter from '../components/SpinnerCenter';
 // Utils
 import { debounce, loadViewConfig, Logger } from '../utils';
 
-const URL = 'https://higlass.github.io/higlass-app-content/news.json';
+const URL = 'http://content.higlass.io/news';
 
 const logger = Logger('Home');
 

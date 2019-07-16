@@ -11,7 +11,7 @@ import SpinnerCenter from '../components/SpinnerCenter';
 // Services
 import Logger from '../utils/logger';
 
-const URL = 'https://higlass.github.io/higlass-app-content/examples.json';
+const URL = 'http://content.higlass.io/examples';
 
 const logger = Logger('Examples');
 
