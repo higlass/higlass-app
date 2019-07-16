@@ -21,6 +21,9 @@ import createDomEvent from '../factories/dom-event';
 // Services
 import auth from '../services/auth';
 
+// Configs
+import { IGNORED_FOCUS_ELEMENTS } from '../configs';
+
 // Utils
 import loadViewConfig from '../utils/load-view-config';
 import Logger from '../utils/logger';
@@ -152,6 +155,13 @@ class App extends React.Component {
   }
 
   keyDownHandler(event) {
+    if (
+      IGNORED_FOCUS_ELEMENTS.indexOf(
+        document.activeElement.tagName.toLowerCase()
+      ) >= 0
+    )
+      return;
+
     if (event.keyCode === 89 && (event.ctrlKey || event.metaKey)) {  // CMD + Y
       event.preventDefault();
       this.props.redo();
