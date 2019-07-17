@@ -102,11 +102,11 @@ const Footer = () => (
           />
           <Icon
             iconId="logo-mit"
-            title="Massachusetts Institute of Technology"
+            title="Masssachusetts Institute of Technology"
           />
         </div>
         <p className="copyright">
-          &copy; 2018 <NavLink to="/about#copyright">Harvard College</NavLink>.
+          &copy; {new Date().getFullYear()} <NavLink to="/about#copyright">Harvard College</NavLink>.
         </p>
       </div>
 

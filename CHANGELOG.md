@@ -1,3 +1,7 @@
+**v1.1.5**
+
+- Fix year of the copyright
+
 **v1.1.4**
 
 - Switch content URLs to hopefully fix an adblocker issue when loading JSON from GitHub pages
