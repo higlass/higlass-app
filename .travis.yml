@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "8"
+  - "10"
 
 branches:
   only:
@@ -22,8 +22,8 @@ deploy:
   - provider: releases
     skip_cleanup: true
     api_key:
-      secure: "vOqRJIRWTdZHAcO9B/8tBJOBgtFQimWrziDxvQPCepEVT6QADzk5hhbBlILtniYHD2IbgfsC40QLGKIFj5yQeIQm8LzbWTAEt/h2nn8NNEoaV5k2MICXafHwr8bZtG3Vublh+zaYFlNy1ZJNFr0nDFCdTdlFL2U7BkDSlKQlbrk/kOyWtRXufUzdCo/fOzZmLQReJpYNLdyRuEDkf/ClkADfsgvrp68RFRZ6QR5KnXj8Nf2lVfwGqhsTL6GFCItQVFPPhwTAHXiX7/xB/kbLyvpgqIGGeQV5Pm/AYepJEDsARChgaRzipQinHl90YBzrtq1LjlDEcT0bSHjLxc0rF2mPMNHXQpj9aq0IKfz/H1jB+7SO+NokjWjpi1Mk2O2IlEN0Ic185GEbIRi4FBpZUXU+41RtRX1t/HY2j/RmugLxmUO/UB3tX74dVtBfdpNkdZlef3TDrBeVHTOE8esG4OxhnRRTG6Eqkxps6jF4Najo9JVJBmNYQ4/+xK1zplzplZnyxn42wWAtTLTZv7x4kiEPlQb0UtL7CtnvpkPol36bK7Q957YV0lgo6ad1gEIcL8aj/Yf8DreWjApkEbnadV5a6+pv/FP6XaBl7FWUSMLlBcSbF+/7MXzT5sQznOPXQO5RPatjJBEmS3I2P6LUbV0QjoJLoBo2p6skRSR2mRs="
-    file: "build.zip"
+      secure: TSYY55dtlHZyz7RmTzfUKx6mSTofoCMVBGpBZvgfCc3cHYMJN0sPYy51YCqomxBEb0PQx+EKidh9pHMIke6yHlD61n6KdlHWpb7oI3FRdhBdsVgNPiswCSPsEMNhGT0R89th1UrLw4rcwmInSy4YDdo0YdvmGEePjUIq9Veu5iDgoR1o8dxq/pWasRDG6HMgDZ/GwVHvvtRoyZuLrHZ8FxjquygRzpQIccY/HFIT+0IJmYwadkgXGKm3k1xqOB2SexQNmYsfuu/dh9W34AbA0RU4xYwHql4KaruDP3E72cEzFDhimAXlwJsc1K6Gm8H1kSFqno8XTk8HckRU2V9Ew3B0171JDGvSaKSS2fv+nhMcs1EeBTh+XJekKLBhP9Ovb6oKNafLwtr6FyDll6ALeKumUM70knlesNIBGRpvlgq3cp8Aqbft8R9/HVCyMh3t8GQpzJoZ2jTKrklrQ2JW+qU8JXJMaVrG8n6XcnH/Vxdoxjt9bT9FL1/5B5XbKxGq+oPZfnlOl6eAndB+NstgTqCI50C3yOjIREBA1QgxzYIhsY1eUh7t1T08izZ33T8vleMIxhm4iJmwrDZo7mDJ4ygCOTLAx6BkbzReU3CjqOSQpq/hOKMKfOwqnlFHWtGlx7p18dQfMWttj6mrx4usrK9lenuhWoPlenDEvmSPzww=
+    file: build.zip
     on:
       branch: master
       tags: true
@@ -32,7 +32,7 @@ deploy:
     skip_cleanup: true
     email: service@lekschas.de
     api_key:
-      secure: rk+Psp53H+dUqRjPG/3a08yLO9QOZvVd0GWXDx7TXIrbtHSFNZCi/+Tf0iOFTDnSuqq90shMYvC5gwj4exig/yVQ4p+KPDHrlUiwMWqNWuhXwXRxr3Gy+Xm+9/9HavdjFGgYQHASmu9gKKKaDqWTnZ5poFyz5WfHy3BRcJcg+bqBu2X+PcL5DKtBI4tp77cSHwXRZjR/4ddxKb05+xl0Z/xDxEaH53kAv9M15h97Lp1Tz0lddzgsramFIw61Mfdh6+BRCv+RzL8wrrYklAL77/upXKhtg6xJfLeArLibobYzPQYa9KWhobUFj7paxOxV+YpGu3eqRVTM5C+QBLNlnpBhOHxigUS9Tzeyw+igotHGXjVPgSA4ihCGqdVTUaHoLLWzgj4iddWQewzwFURfqNjoHduRBAxBN1yYz8GxQtcdiMuDRnP7O/kas9uVZurHztVGY7M7qU8ICgohllWOq9DAYgcpK6HRTS1QaCaPBNp9RNruyeMBSTQHBBsMjPCgtvRzgXoXcIrnV/Yh1PdSM1hj+RcI1TmZTjvX5KO1KH50l6O+8ipG+sHUHbTcuiOeA/YsFeuAISdf2wQUQd3szntcyfODw/XljGDS1TqnO0FgVgYY5UUeqPl0xTUweUtJmHNYZMJhAN6cqvdYc9ydmcibOPHYFPOSyzcZ7cr1Qg8=
+      secure: tW9eiRjHrQUseuTPgvlKoUPte5GXJlng5joChh5+ZL8aM/cUDa+YdFXB7fHefOYY5MbiILGY2fJ+GLxgyp+2GR1F1ycAiMKPuR7mYq0JFo/aWbQkHLYNDer2wrhSGuehwv/uQjnptPC7+L72bgI6oh3e0/RBSEZ40BZg+fIM9f+nEEmdRChprw6gLzM7IEHyhxTA9wkC1caQXz9YOZreMdtr6jWlBP70MFw9a84lmBGTVCPxcPbudJmbfg49AZwLWV6RsjFUxjC83dGQA2JNIFdvB1oTz7teiWNtaTbt6eHMIkCSW+oKbOlyyZHAwDeDV+iumMf1Y1HJDeDrF2m5gWehyRu2JE2A9lD2VRTEBib4m7VEpsGb99kfSzby8VrCBB4J46MDbfQM3d/R8ojE94zY3Fv+SbJP5tTtqA+1cdI+x3/bx2PxjI0l+SSHznHTGBdIvmSQkSVopHdc80qwPiZep1V0vQmFwWfg3ulDWQ60ZQ15faILlxV/5+yCdYjZa3qhBIbkCb/rjaE7/w1uYL+H/cbyfkUx1di/g5RyIKNgztJWopLqWxNclGj0XOBo690g2e2YlKPN3ILaHAi9LrOL66S5eJVGrIDF8Aam+5ELOIIdPgDSXUcpuEMp/XW70msRX81Zlo53g/b/8MGPy7IcGeYhwcjL4NaobTJ6WAc=
     on:
       branch: master
       tags: true
