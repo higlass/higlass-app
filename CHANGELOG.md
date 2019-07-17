@@ -1,16 +1,10 @@
-**v1.1.5**
-
-- Fix year of the copyright
-
-**v1.1.4**
-
-- Switch content URLs to hopefully fix an adblocker issue when loading JSON from GitHub pages
-
 **v1.1.3**
 
 - Disable _undo_ and _redo_ handlers when an input element is focused
 - Move _Core Contributors_ and _PIs_ above tutorial resources in `/about`
 - Add the talk video from the SciPy conference to `/about`
+- Switch content URLs to hopefully fix an adblocker issue when loading JSON from GitHub pages
+- Fix year of the copyright
 
 **v1.1.2**
 
