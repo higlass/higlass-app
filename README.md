@@ -9,9 +9,9 @@
 
 > The web application for viewing, exploring, and annotating 1D and 2D genomic data.
 
-HiGlass App is used to run http://higlass.io but you can also use it as the starting point for building your own application around HiGlass. For example, it is used in [Novartis' Peax](https://github.com/Novartis/peax) as the frontend application.
+HiGlass App is used to run https://higlass.io but you can also use it as the starting point for building your own application around HiGlass. For example, it is used in [Novartis' Peax](https://github.com/Novartis/peax) as the frontend application.
 
-**URL**: http://higlass.io
+**URL**: https://higlass.io
 
 **Help**: http://bit.ly/higlass-slack
 
