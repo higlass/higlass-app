@@ -1,3 +1,7 @@
+**v1.1.4**
+
+- Use PIXI legacy `v5` for better backwards compatibility
+
 **v1.1.3**
 
 - Disable _undo_ and _redo_ handlers when an input element is focused
