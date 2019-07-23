@@ -1,3 +1,7 @@
+**v1.1.5**
+
+- Avoid mixed protocol issues when loading content
+
 **v1.1.4**
 
 - Use PIXI legacy `v5` for better backwards compatibility
