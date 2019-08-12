@@ -12,19 +12,19 @@
 // opt-in, read http://bit.ly/CRA-PWA.
 
 const isLocalhost = Boolean(
-  window.location.hostname === 'localhost'
-  // [::1] is the IPv6 localhost address.
-  || window.location.hostname === '[::1]'
-  // 127.0.0.1/8 is considered localhost for IPv4.
-  || window.location.hostname.match(
-    /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-  )
+  window.location.hostname === 'localhost' ||
+    // [::1] is the IPv6 localhost address.
+    window.location.hostname === '[::1]' ||
+    // 127.0.0.1/8 is considered localhost for IPv4.
+    window.location.hostname.match(
+      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+    )
 );
 
 function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
-    .then((registration) => {
+    .then(registration => {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {
@@ -34,8 +34,8 @@ function registerValidSW(swUrl, config) {
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
               console.log(
-                'New content is available and will be used when all '
-                + 'tabs for this page are closed. See http://bit.ly/CRA-PWA.'
+                'New content is available and will be used when all ' +
+                  'tabs for this page are closed. See http://bit.ly/CRA-PWA.'
               );
 
               // Execute callback
@@ -57,7 +57,7 @@ function registerValidSW(swUrl, config) {
         };
       };
     })
-    .catch((error) => {
+    .catch(error => {
       console.error('Error during service worker registration:', error);
     });
 }
@@ -65,14 +65,14 @@ function registerValidSW(swUrl, config) {
 function checkValidServiceWorker(swUrl, config) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
-    .then((response) => {
+    .then(response => {
       // Ensure service worker exists, and that we really are getting a JS file.
       if (
-        response.status === 404
-        || response.headers.get('content-type').indexOf('javascript') === -1
+        response.status === 404 ||
+        response.headers.get('content-type').indexOf('javascript') === -1
       ) {
         // No service worker found. Probably a different app. Reload the page.
-        navigator.serviceWorker.ready.then((registration) => {
+        navigator.serviceWorker.ready.then(registration => {
           registration.unregister().then(() => {
             window.location.reload();
           });
@@ -111,8 +111,8 @@ export function register(config) {
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
           console.log(
-            'This web app is being served cache-first by a service '
-            + 'worker. To learn more, visit http://bit.ly/CRA-PWA'
+            'This web app is being served cache-first by a service ' +
+              'worker. To learn more, visit http://bit.ly/CRA-PWA'
           );
         });
       } else {
@@ -125,8 +125,33 @@ export function register(config) {
 
 export function unregister() {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready.then((registration) => {
-      registration.unregister();
-    });
+    navigator.serviceWorker.ready
+      .then(registration => registration.unregister())
+      .then(unregistered => {
+        // An unregistered service worker is not yet unloaded or destroyed. This
+        // can take up to 24 hours or hopefully just a simple reload.
+        if (unregistered) window.location.reload(true);
+      });
+  }
+}
+
+export function unregisterAll() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .getRegistrations()
+      .then(registrations =>
+        Promise.all(
+          registrations.map(registration => registration.unregister())
+        )
+      )
+      .then(unregistered => {
+        // `unregistered` is a list of Boolean values where `true` represents
+        // an unregistered worker.
+        if (unregistered.length && unregistered.some(x => x)) {
+          // An unregistered service worker is not yet unloaded or destroyed.
+          // This can take up to 24 hours or hopefully just a simple reload.
+          window.location.reload(true);
+        }
+      });
   }
 }
