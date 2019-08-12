@@ -183,9 +183,7 @@ class TopBar extends React.Component {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/blog" activeClassName="is-active">
-                  Blog
-                </NavLink>
+                <a href="https://blog.higlass.io">Blog</a>
               </li>
               <li>
                 <NavLink to="/examples" activeClassName="is-active">
@@ -198,9 +196,7 @@ class TopBar extends React.Component {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/docs" activeClassName="is-active">
-                  Docs
-                </NavLink>
+                <a href="https://docs.higlass.io">Docs</a>
               </li>
               {
                 // <li className='separated-left flex-c flex-jc-c'>

@@ -4,8 +4,6 @@ import { Redirect, Route, Switch, withRouter } from 'react-router';
 
 // Views
 import About from '../views/About';
-import Blog from '../views/Blog';
-import Docs from '../views/Docs';
 import Examples from '../views/Examples';
 import Home from '../views/Home';
 import NotFound from '../views/NotFound';
@@ -27,8 +25,6 @@ class Main extends React.Component {
     return (
       <Switch>
         <Route exact path='/about' render={About.render} />
-        <Route exact path='/blog' component={Blog} />
-        <Route exact path='/blog/*' component={Blog} />
         <Route exact path='/app' render={({ location }) => {
           const query = new URLSearchParams(location.search);
           const viewConfigId = query.get('config');
@@ -38,8 +34,6 @@ class Main extends React.Component {
             viewConfigId={viewConfigId} />;
         }} />
         <Route exact path='/examples' component={Examples} />
-        <Route exact path='/docs' component={Docs} />
-        <Route exact path='/docs/*' component={Docs} />
         <Route exact path='/plugins' component={Plugins} />
         {hasDemos ? (
           <Route exact path='/' component={Home} />

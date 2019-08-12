@@ -1,3 +1,7 @@
+## v1.1.7
+
+- Replaced embedded blog and docs with links to the actual blog and docs
+
 ## v1.1.6
 
 - Unregister the service worker
