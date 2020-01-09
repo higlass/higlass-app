@@ -40,10 +40,19 @@ class App extends React.Component {
 
     this.state = {
       dialog: undefined,
+      higlassOptions: {
+        sizeMode: 'bounded'
+      },
       isAuthenticated: auth.isAuthenticated(),
     };
 
     this.domEvent = createDomEvent(props.pubSub);
+
+    this.dialogHandlerBound = this.dialogHandler.bind(this);
+    this.keyDownHandlerBound = this.keyDownHandler.bind(this);
+    this.loginHandlerBound = this.loginHandler.bind(this);
+    this.logoutHandlerBound = this.logoutHandler.bind(this);
+    this.hgSizeModeHandlerBound = this.hgSizeModeHandler.bind(this);
   }
 
   componentDidMount() {
@@ -57,19 +66,23 @@ class App extends React.Component {
     this.domEvent.register('scroll', document);
 
     this.pubSubs.push(
-      this.props.pubSub.subscribe('globalDialog', this.dialogHandler.bind(this))
+      this.props.pubSub.subscribe('globalDialog', this.dialogHandlerBound)
     );
 
     this.pubSubs.push(
-      this.props.pubSub.subscribe('keydown', this.keyDownHandler.bind(this))
+      this.props.pubSub.subscribe('keydown', this.keyDownHandlerBound)
     );
 
     this.pubSubs.push(
-      this.props.pubSub.subscribe('login', this.loginHandler.bind(this))
+      this.props.pubSub.subscribe('login', this.loginHandlerBound)
     );
 
     this.pubSubs.push(
-      this.props.pubSub.subscribe('logout', this.logoutHandler.bind(this))
+      this.props.pubSub.subscribe('logout', this.logoutHandlerBound)
+    );
+
+    this.pubSubs.push(
+      this.props.pubSub.subscribe('hgSizeMode', this.hgSizeModeHandlerBound)
     );
   }
 
@@ -116,7 +129,8 @@ class App extends React.Component {
         <TopBar
           isAuthenticated={this.state.isAuthenticated} />
         <Main
-          isAuthenticated={this.state.isAuthenticated} />
+          isAuthenticated={this.state.isAuthenticated}
+          higlassOptions={this.state.higlassOptions} />
       </div>
     );
   }
@@ -152,6 +166,15 @@ class App extends React.Component {
         logger.error(error);
         this.props.pubSub.publish('globalError', 'Only drop valid JSON view configs.');
       });
+  }
+
+  hgSizeModeHandler(sizeMode) {
+    this.setState({
+      higlassOptions: {
+        ...this.state.higlassOptions,
+        sizeMode,
+      }
+    });
   }
 
   keyDownHandler(event) {

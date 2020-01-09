@@ -31,7 +31,9 @@ class Main extends React.Component {
 
           return <Viewer
             isAuthenticated={this.props.isAuthenticated}
-            viewConfigId={viewConfigId} />;
+            higlassOptions={this.props.higlassOptions}
+            viewConfigId={viewConfigId}
+          />;
         }} />
         <Route exact path='/examples' component={Examples} />
         <Route exact path='/plugins' component={Plugins} />
@@ -48,6 +50,7 @@ class Main extends React.Component {
 
 Main.propTypes = {
   isAuthenticated: PropTypes.bool,
+  higlassOptions: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 };
 
