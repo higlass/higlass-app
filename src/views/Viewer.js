@@ -252,6 +252,7 @@ class Viewer extends React.Component {
             api={(api) => { this.hgApi = api; }}
             enableAltMouseTools={this.props.isAuthenticated}
             hasSubTopBar={this.props.isAuthenticated}
+            options={this.props.higlassOptions}
             server={server}
             viewConfigId={this.props.viewConfigId}
           />
@@ -272,6 +273,7 @@ Viewer.defaultProps = {
 };
 
 Viewer.propTypes = {
+  higlassOptions: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool,
   mouseTool: PropTypes.string,
   pubSub: PropTypes.object.isRequired,

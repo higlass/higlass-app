@@ -12,6 +12,7 @@ import Hamburger from "./Hamburger";
 import Icon from "./Icon";
 // import TopBarDropDownLogin from './TopBarDropDownLogin';
 // import TopBarDropDownUser from './TopBarDropDownUser';
+import TopBarDropDownAppSettings from './TopBarDropDownAppSettings';
 
 // Services
 import auth from "../services/auth";
@@ -222,6 +223,11 @@ class TopBar extends React.Component {
                 //   }
                 // </li>
               }
+              {this.props.location.pathname.substr(0, 4) === '/app' && (
+                <li className='separated-left flex-c flex-jc-c'>
+                  <TopBarDropDownAppSettings closeOnOuterClick />
+                </li>
+              )}
               <li className="separated-left flex-c">
                 <a
                   href="https://github.com/higlass"

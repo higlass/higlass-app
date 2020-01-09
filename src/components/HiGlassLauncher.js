@@ -21,7 +21,7 @@ import '../styles/bootstrap.less';
 const logger = Logger('HiGlassLauncher');  // eslint-disable-line
 
 const defaultOptions = Object.assign({
-  bounded: true,
+  sizeMode: 'bounded',
 }, window.HGAC_DEFAULT_OPTIONS);
 
 
@@ -44,6 +44,12 @@ class HiGlassLauncher extends React.Component {
   shouldComponentUpdate(nextProps) {
     if (nextProps.mouseTool !== this.props.mouseTool) {
       this.setMouseTool(nextProps.mouseTool);
+    }
+
+    if (nextProps.options !== this.props.options && this.api) {
+      Object.entries(nextProps.options).forEach(([key, value]) => {
+        this.api.option(key, value);
+      })
     }
 
     if (deepEqual(this.newViewConfig, nextProps.viewConfig)) {
@@ -112,9 +118,9 @@ class HiGlassLauncher extends React.Component {
       options.mouseTool = this.props.mouseTool;
     }
 
-    options.bounded = this.props.autoExpand
-      ? false
-      : this.props.options.bounded;
+    options.sizeMode = this.props.autoExpand
+      ? 'default'
+      : this.props.options.sizeMode;
 
     const className = !this.props.autoExpand ? 'full-dim' : 'rel';
 

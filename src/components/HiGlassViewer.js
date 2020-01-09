@@ -190,14 +190,16 @@ class HiGlassViewer extends React.Component {
                       isPadded={this.props.isPadded}
                       isZoomFixed={this.props.isZoomFixed}
                       onError={this.onError.bind(this)}
+                      options={this.props.options}
                       viewConfig={this.state.viewConfigStatic}
                     />
                   : <HiGlassLoader
                       api={this.props.api}
                       enableAltMouseTools={this.props.enableAltMouseTools}
-                      onError={this.onError.bind(this)}
                       isPadded={this.props.isPadded}
                       isZoomFixed={this.props.isZoomFixed}
+                      onError={this.onError.bind(this)}
+                      options={this.props.options}
                     />
         )}
       </div>
@@ -222,6 +224,7 @@ HiGlassViewer.propTypes = {
   isPadded: PropTypes.bool,
   isStatic: PropTypes.bool,
   isZoomFixed: PropTypes.bool,
+  options: PropTypes.object.isRequired,
   pubSub: PropTypes.object.isRequired,
   server: PropTypes.string,
   setViewConfig: PropTypes.func.isRequired,

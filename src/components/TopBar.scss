@@ -164,6 +164,26 @@
       padding: 0.25rem;
     }
 
+    &.is-primary-nav {
+      color: $gray-dark;
+      box-shadow: none;
+
+      &:hover,
+      &:focus {
+        color: $black;
+        background: none;
+        box-shadow: none;
+      }
+
+      &:hover {
+        background: none;
+      }
+
+      &:focus {
+        background: $gray-lightest;
+      }
+    }
+
     .icon {
       width: 1rem;
       height: 1rem;
