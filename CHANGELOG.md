@@ -1,6 +1,8 @@
 ## v1.1.8
 
 - Add a drop-down link for the user and python links
+- Update HiGlass to v1.8, PIXI to v5.2, and other dependencies
+- Update several dev libraries
 
 ## v1.1.7
 
