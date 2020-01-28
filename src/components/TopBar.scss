@@ -187,6 +187,7 @@
 
     > a,
     > button,
+    .topbar-button-like,
     button.is-primary-nav {
       margin: 0 0.125rem;
       padding: 0 0.125rem;
@@ -203,7 +204,8 @@
       }
     }
 
-    > a {
+    > a,
+    .topbar-button-like, {
       position: relative;
       display: block;
       box-shadow: none;
@@ -222,6 +224,10 @@
         color: $primary;
         box-shadow: 0 2px 0 0 $primary;
       }
+    }
+
+    .topbar-button-like {
+      cursor: pointer;
     }
 
     > button,

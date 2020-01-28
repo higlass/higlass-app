@@ -10,6 +10,7 @@ import withPubSub from "../hocs/with-pub-sub";
 // Components
 import Hamburger from "./Hamburger";
 import Icon from "./Icon";
+import TopBarDropDownDocs from './TopBarDropDownDocs';
 // import TopBarDropDownLogin from './TopBarDropDownLogin';
 // import TopBarDropDownUser from './TopBarDropDownUser';
 
@@ -196,7 +197,7 @@ class TopBar extends React.Component {
                 </NavLink>
               </li>
               <li>
-                <a href="https://docs.higlass.io">Docs</a>
+                <TopBarDropDownDocs closeOnOuterClick />
               </li>
               {
                 // <li className='separated-left flex-c flex-jc-c'>
