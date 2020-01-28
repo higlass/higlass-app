@@ -3,6 +3,7 @@ import React from 'react';
 // Components
 import DropDownContent from './DropDownContent';
 import DropDownTrigger from './DropDownTrigger';
+import TopBarButtonLikeSpan from './TopBarButtonLikeSpan';
 import TopBarDropDown from './TopBarDropDown';
 
 
@@ -13,7 +14,7 @@ const TopBarDropDownDocs = () => (
     closeOnMouseLeave
   >
     <DropDownTrigger openOnMouseEnter>
-      <span className="topbar-button-like">Docs</span>
+      <TopBarButtonLikeSpan>Docs</TopBarButtonLikeSpan>
     </DropDownTrigger>
     <DropDownContent>
       <nav>
