@@ -5,7 +5,7 @@ import React from 'react';
 import withPubSub from '../hocs/with-pub-sub';
 
 // Utils
-import hasParent from '../utils/has-parent';
+import { debounce, hasParent } from '../utils';
 
 class DropDown extends React.Component {
   constructor(props) {
@@ -16,12 +16,17 @@ class DropDown extends React.Component {
     };
 
     this.pubSubs = [];
+
+    this.clickHandlerBnd = this.clickHandler.bind(this);
+    this.mouseEnterHandlerBnd = this.mouseEnterHandler.bind(this);
+    this.mouseLeaveHandlerBnd = this.mouseLeaveHandler.bind(this);
+    this.closeDb = debounce(this.close.bind(this), 500);
   }
 
   componentDidMount() {
     if (this.props.closeOnOuterClick) {
       this.pubSubs.push(
-        this.props.pubSub.subscribe('click', this.clickHandler.bind(this))
+        this.props.pubSub.subscribe('click', this.clickHandlerBnd)
       );
     }
   }
@@ -48,6 +53,8 @@ class DropDown extends React.Component {
       child => React.cloneElement(child, {
         dropDownIsOpen: this.state.isOpen,
         dropDownToggle: this.toggle.bind(this),
+        dropDownOpen: this.open.bind(this),
+        dropDownClose: this.close.bind(this),
       })
     );
 
@@ -61,7 +68,10 @@ class DropDown extends React.Component {
     return (
       <div
         className={className}
-        ref={(el) => { this.el = el; }}>
+        ref={(el) => { this.el = el; }}
+        onMouseEnter={this.props.closeOnMouseLeave ? this.mouseEnterHandlerBnd : null}
+        onMouseLeave={this.props.closeOnMouseLeave ? this.mouseLeaveHandlerBnd : null}
+      >
         {childrenWithProps}
       </div>
     );
@@ -73,6 +83,14 @@ class DropDown extends React.Component {
     if (!hasParent(event.target, this.el)) {
       this.close();
     }
+  }
+
+  mouseEnterHandler() {
+    this.closeDb.cancel();
+  }
+
+  mouseLeaveHandler() {
+    this.closeDb()
   }
 
   close() {
@@ -102,6 +120,7 @@ DropDown.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   closeOnOuterClick: PropTypes.bool,
+  closeOnMouseLeave: PropTypes.bool,
   id: PropTypes.string,
   pubSub: PropTypes.object.isRequired,
 };
