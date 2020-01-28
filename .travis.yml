@@ -20,6 +20,7 @@ before_deploy:
 
 deploy:
   - provider: releases
+    edge: true
     skip_cleanup: true
     api_key:
       secure: TSYY55dtlHZyz7RmTzfUKx6mSTofoCMVBGpBZvgfCc3cHYMJN0sPYy51YCqomxBEb0PQx+EKidh9pHMIke6yHlD61n6KdlHWpb7oI3FRdhBdsVgNPiswCSPsEMNhGT0R89th1UrLw4rcwmInSy4YDdo0YdvmGEePjUIq9Veu5iDgoR1o8dxq/pWasRDG6HMgDZ/GwVHvvtRoyZuLrHZ8FxjquygRzpQIccY/HFIT+0IJmYwadkgXGKm3k1xqOB2SexQNmYsfuu/dh9W34AbA0RU4xYwHql4KaruDP3E72cEzFDhimAXlwJsc1K6Gm8H1kSFqno8XTk8HckRU2V9Ew3B0171JDGvSaKSS2fv+nhMcs1EeBTh+XJekKLBhP9Ovb6oKNafLwtr6FyDll6ALeKumUM70knlesNIBGRpvlgq3cp8Aqbft8R9/HVCyMh3t8GQpzJoZ2jTKrklrQ2JW+qU8JXJMaVrG8n6XcnH/Vxdoxjt9bT9FL1/5B5XbKxGq+oPZfnlOl6eAndB+NstgTqCI50C3yOjIREBA1QgxzYIhsY1eUh7t1T08izZ33T8vleMIxhm4iJmwrDZo7mDJ4ygCOTLAx6BkbzReU3CjqOSQpq/hOKMKfOwqnlFHWtGlx7p18dQfMWttj6mrx4usrK9lenuhWoPlenDEvmSPzww=
@@ -29,10 +30,11 @@ deploy:
       tags: true
       repo: higlass/higlass-app
   - provider: npm
+    edge: true
     skip_cleanup: true
     email: service@lekschas.de
     api_key:
-      secure: tW9eiRjHrQUseuTPgvlKoUPte5GXJlng5joChh5+ZL8aM/cUDa+YdFXB7fHefOYY5MbiILGY2fJ+GLxgyp+2GR1F1ycAiMKPuR7mYq0JFo/aWbQkHLYNDer2wrhSGuehwv/uQjnptPC7+L72bgI6oh3e0/RBSEZ40BZg+fIM9f+nEEmdRChprw6gLzM7IEHyhxTA9wkC1caQXz9YOZreMdtr6jWlBP70MFw9a84lmBGTVCPxcPbudJmbfg49AZwLWV6RsjFUxjC83dGQA2JNIFdvB1oTz7teiWNtaTbt6eHMIkCSW+oKbOlyyZHAwDeDV+iumMf1Y1HJDeDrF2m5gWehyRu2JE2A9lD2VRTEBib4m7VEpsGb99kfSzby8VrCBB4J46MDbfQM3d/R8ojE94zY3Fv+SbJP5tTtqA+1cdI+x3/bx2PxjI0l+SSHznHTGBdIvmSQkSVopHdc80qwPiZep1V0vQmFwWfg3ulDWQ60ZQ15faILlxV/5+yCdYjZa3qhBIbkCb/rjaE7/w1uYL+H/cbyfkUx1di/g5RyIKNgztJWopLqWxNclGj0XOBo690g2e2YlKPN3ILaHAi9LrOL66S5eJVGrIDF8Aam+5ELOIIdPgDSXUcpuEMp/XW70msRX81Zlo53g/b/8MGPy7IcGeYhwcjL4NaobTJ6WAc=
+      secure: SF430bbOY6MlZbvn/JOBowLIEQww5fcP+Mfljl8iJiraDNHNFT9ZoR+biXHeGq7XbNMQrmIQIZfHj6PCSNwg4T8foqm/gYNSb+KViwwWGwdUeIFDBbUOQ8VnkbRAe87Tjnou0pH3easEVI/qrmJC+jgFT6YSmmj2vDr3M8i7gl3de0qFa2y180gJtZMOcxO/MzVNnXdNyKzj0k1/Q55V3aIo7LHDXwa5oZcFGHM3E9D6CsXxtuh7TlfePGFc6a8MPrWIttRBadeviyDtLtXmoGZfcsuZMVfaDtikURO9/SL0zEt/JvliOohv0KfkO6WConttNFT7UQxITNgjk/Qm182YEnx+2MINyPdDKHlNDIDOoKyc+Kwy6clfZbCsTP/vI55gmNl75nuX/BWwL6o9jTUfeeFOmVFGGK07EGVS5O5HVWqyGdo/LS/pg52lC/yBzSY7ZxKtlo1+HjC3aLyIOQF14YcJoTSMYUB/aaztHKj3mpgm2ypHy8dzPKQ3FU/hovgVOqaHYanik34OzE+jcDdYj6ZCOiyMUuLVhK6FrGr4FXW3/EEmrD4K40Xy+6Hbo1diOqeQEcCNGWKces3OIvlYHp9y9i4Na1nZ1JJbSe/kxEYpR/u0g4whwDS4JzMgQKNNUZedscLvJM29NfLMp/hkT3Pniu/b9U0D5HMzdwY=
     on:
       branch: master
       tags: true
