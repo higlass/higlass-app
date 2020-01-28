@@ -9,6 +9,7 @@ const DropDownTrigger = props => (
       {
         isActive: props.dropDownIsOpen,
         onClick: props.dropDownToggle,
+        onMouseEnter: props.openOnMouseEnter ? props.dropDownOpen : null,
       }
     )}
   </div>
@@ -17,7 +18,10 @@ const DropDownTrigger = props => (
 DropDownTrigger.propTypes = {
   children: PropTypes.node.isRequired,
   dropDownIsOpen: PropTypes.bool,
+  dropDownOpen: PropTypes.func,
+  dropDownClose: PropTypes.func,
   dropDownToggle: PropTypes.func,
+  openOnMouseEnter: PropTypes.bool,
 };
 
 export default DropDownTrigger;
