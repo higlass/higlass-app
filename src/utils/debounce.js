@@ -30,7 +30,7 @@ const debounce = (func, wait, immediate) => {
     }
   };
 
-  debounce.cancel = () => {
+  debounced.cancel = () => {
     clearTimeout(timeout);
     timeout = null;
   };
