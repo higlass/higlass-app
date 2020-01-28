@@ -1,3 +1,7 @@
+## v1.1.8
+
+- Add a drop-down link for the user and python links
+
 ## v1.1.7
 
 - Replaced embedded blog and docs with links to the actual blog and docs
