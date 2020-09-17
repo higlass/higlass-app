@@ -246,7 +246,7 @@ class About extends React.Component {
               <li>
                 <strong>General: </strong>
                 <a
-                  href="http://bit.ly/higlass-slack"
+                  href="https://rb.gy/q9do1b"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
