@@ -1,3 +1,7 @@
+## v1.1.11
+
+- Updated Slack invite link
+
 ## v1.1.10
 
 - Fixed broken links to the docs

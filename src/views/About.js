@@ -250,7 +250,7 @@ class About extends React.Component {
               <li>
                 <strong>General: </strong>
                 <a
-                  href="https://rb.gy/q9do1b"
+                  href="https://join.slack.com/t/higlass/shared_invite/zt-nv5h5hsi-tjM9ydx0EH3Svn4jx~tveQ"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
