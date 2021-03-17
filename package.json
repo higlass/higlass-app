@@ -48,10 +48,10 @@
     "redux-undo": "1.0.0-beta9-9-7"
   },
   "devDependencies": {
-    "@babel/core": "7.8.3",
-    "@babel/plugin-proposal-decorators": "7.8.3",
-    "@babel/preset-env": "7.8.3",
-    "@babel/preset-react": "7.8.3",
+    "@babel/core": "7.13.10",
+    "@babel/plugin-proposal-decorators": "7.13.5",
+    "@babel/preset-env": "7.13.10",
+    "@babel/preset-react": "7.12.13",
     "@svgr/webpack": "2.4.1",
     "autodll-webpack-plugin": "0.4.2",
     "autoprefixer": "9.7.4",
