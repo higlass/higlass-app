@@ -106,7 +106,8 @@ const Footer = () => (
           />
         </div>
         <p className="copyright">
-          &copy; {new Date().getFullYear()} <NavLink to="/about#copyright">Harvard College</NavLink>.
+          &copy; {new Date().getFullYear()}{' '}
+          <NavLink to="/about#copyright">Harvard College</NavLink>.
         </p>
       </div>
 
@@ -138,9 +139,7 @@ const Footer = () => (
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/docs" activeClassName="is-active">
-              Docs
-            </NavLink>
+            <a href="https://docs.higlass.io">Docs</a>
           </li>
         </ul>
       </nav>
