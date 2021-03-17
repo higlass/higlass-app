@@ -56,7 +56,11 @@ class About extends React.Component {
 
     this.pubSubs = [];
 
-    this.swag = [[73, 67, 79, 78, 83], [73, 78, 70, 79], [67, 79, 79, 76]];
+    this.swag = [
+      [73, 67, 79, 78, 83],
+      [73, 78, 70, 79],
+      [67, 79, 79, 76]
+    ];
     this.swagI = 0;
     this.swagJ = 0;
     this.swagInterval = 500;
@@ -64,7 +68,7 @@ class About extends React.Component {
 
     this.state = {
       playVideo: false
-    }
+    };
   }
 
   componentDidMount() {
@@ -514,7 +518,9 @@ class About extends React.Component {
             <div className="video">
               <div
                 className="placeholder-btn flex-c flex-jc-c flex-a-c"
-                onClick={() => { this.setState({ playVideo: true }); }}
+                onClick={() => {
+                  this.setState({ playVideo: true });
+                }}
               >
                 {this.state.playVideo ? (
                   <iframe
@@ -529,10 +535,12 @@ class About extends React.Component {
                   <svg className="icon" viewBox="0 0 16 16">
                     <path
                       d="M15.84 4.756s-.156-1.102-.636-1.588c-.608-.638-1.29-.64-1.604-.678-2.24-.162-5.6-.166-5.6-.166s-4.16.036-5.44.16c-.356.067-1.156.047-1.764.684C.316 3.655.16 4.755.16 4.755S0 6.05 0 7.345v1.26c0 1.295.16 2.59.16 2.59s.156 1.1.636 1.587c.608.637 1.408.616 1.764.684 1.28.123 5.44.16 5.44.16s3.36-.004 5.6-.166c.314-.038.996-.04 1.604-.678.48-.486.636-1.59.636-1.59S16 9.9 16 8.605V7.346c0-1.296-.16-2.59-.16-2.59z"
-                      className="secondary"/>
+                      className="secondary"
+                    />
                     <path
                       d="M6.517 4.8l4.176 2.588c.94.58.924.58-.013 1.156L6.527 11.13c-.9.585-.898.398-.898-.352V5.155c-.002-.688-.002-.937.887-.355z"
-                      className="primary"/>
+                      className="primary"
+                    />
                   </svg>
                 )}
               </div>
@@ -691,6 +699,80 @@ class About extends React.Component {
                     rel="noopener noreferrer"
                   >
                     https://github.com/novartis/peax
+                  </a>
+                </div>
+              </li>
+              <li className="flex-c iconized">
+                <Icon iconId="dot" />
+                <div className="flex-c flex-v">
+                  <p>
+                    <strong>
+                      <a
+                        href="https://epilogos.altius.org/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Altius Epilogos
+                      </a>
+                    </strong>
+                    : Information-theoretic navigation of multi-tissue
+                    functional genomic annotations
+                  </p>
+                  <a
+                    href="https://github.com/meuleman/epilogos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    https://github.com/meuleman/epilogos
+                  </a>
+                </div>
+              </li>
+              <li className="flex-c iconized">
+                <Icon iconId="dot" />
+                <div className="flex-c flex-v">
+                  <p>
+                    <strong>
+                      <a
+                        href="https://index.altius.org/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Altius Index
+                      </a>
+                    </strong>
+                    : Biological spectrum of human DNase I hypersensitive sites
+                  </p>
+                  <a
+                    href="https://github.com/Altius/Index"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    https://github.com/Altius/Index
+                  </a>
+                </div>
+              </li>
+              <li className="flex-c iconized">
+                <Icon iconId="dot" />
+                <div className="flex-c flex-v">
+                  <p>
+                    <strong>
+                      <a
+                        href="https://flekschas.github.io/enhancer-gene-vis/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        ABC Enhancer-Gene Connections
+                      </a>
+                    </strong>
+                    : Genome-wide enhancer map linking risk variants to disease
+                    genes
+                  </p>
+                  <a
+                    href="https://github.com/flekschas/enhancer-gene-vis"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    https://github.com/flekschas/enhancer-gene-vis
                   </a>
                 </div>
               </li>
