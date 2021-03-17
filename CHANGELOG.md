@@ -1,3 +1,12 @@
+## v1.1.10
+
+- Fixed broken links to the docs
+- Added Altius' Epilogos, Altius' Index, and ABC Enhancer-Gene Maps to the example use cases
+
+## v1.1.9
+
+- Unknown. Please ask @pkerpedjiev
+
 ## v1.1.8
 
 - Add a drop-down link for the user and python links
