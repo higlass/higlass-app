@@ -141,7 +141,7 @@ class About extends React.Component {
                 HiGlass is a fast visualization tool for large Hi-C and other
                 genomic data sets. It was created at the{' '}
                 <a
-                  href="http://gehlenborglab.org"
+                  href="https://hidivelab.org/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -174,7 +174,7 @@ class About extends React.Component {
                 </a>
                 , and{' '}
                 <a
-                  href="http://mirnylab.mit.edu/"
+                  href="https://mirnylab.mit.edu/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -190,7 +190,7 @@ class About extends React.Component {
                 </a>{' '}
                 as part of the{' '}
                 <a
-                  href="http://dcic.4dnucleome.org"
+                  href="https://data.4dnucleome.org/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -472,7 +472,7 @@ class About extends React.Component {
             <ol className="flex-c flex-w-w no-list-style about-author-list">
               <li>
                 <a
-                  href="http://gehlenborglab.org"
+                  href="https://hidivelab.org/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -481,7 +481,7 @@ class About extends React.Component {
               </li>
               <li>
                 <a
-                  href="http://compbio.hms.harvard.edu"
+                  href="https://compbio.hms.harvard.edu"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -490,7 +490,7 @@ class About extends React.Component {
               </li>
               <li>
                 <a
-                  href="http://mirnylab.mit.edu/"
+                  href="https://mirnylab.mit.edu/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -499,7 +499,7 @@ class About extends React.Component {
               </li>
               <li>
                 <a
-                  href="http://vcg.seas.harvard.edu"
+                  href="https://vcg.seas.harvard.edu"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -658,7 +658,7 @@ class About extends React.Component {
                   <p>
                     <strong>
                       <a
-                        href="http://hipiler.higlass.io"
+                        href="https://hipiler.higlass.io"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -683,7 +683,7 @@ class About extends React.Component {
                   <p>
                     <strong>
                       <a
-                        href="https://github.com/novartis/peax"
+                        href="https://peax.lekschas.de/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
